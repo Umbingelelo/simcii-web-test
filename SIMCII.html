@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SIMCII · Gestión Territorial Inteligente</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Mapbox -->
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css" rel="stylesheet" />
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
+  <script src="js/config.js"></script>
+
+  <!-- React + Babel -->
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* Tierra que se mide — paleta SIMCII */
+      --hueso:      #F4EFE6;   /* papel base */
+      --hueso-2:    #EDE5D6;   /* papel envejecido */
+      --carbon:     #1A1815;   /* texto principal */
+      --obsidiana:  #0E0D0B;   /* fondos profundos */
+      --cobre:      #C2440E;   /* color de firma, CTAs */
+      --cobre-2:    #D95A22;   /* cobre hover */
+      --azafran:    #E8B14A;   /* highlights cálidos */
+      --liquen:     #5C7548;   /* ok, saludable */
+      --musgo:      #2B3825;   /* liquen profundo */
+      --cordillera: #3B5E6B;   /* datos neutros */
+      --bruma:      #7FA0A8;   /* info secundaria */
+      --magma:      #8B2E1A;   /* alerta crítica */
+
+      /* Tokens funcionales */
+      --line-claro:   rgba(26, 24, 21, 0.12);
+      --line-oscuro:  rgba(244, 239, 230, 0.10);
+      --text-muted:   rgba(26, 24, 21, 0.58);
+      --text-soft:    rgba(26, 24, 21, 0.40);
+
+      /* legacy aliases para código existente */
+      --bg: var(--hueso);
+      --surface: var(--hueso-2);
+      --text: var(--carbon);
+      --accent: var(--cobre);
+      --accent2: var(--azafran);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--hueso);
+      color: var(--carbon);
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .ticker-track { display: inline-flex; animation: ticker 50s linear infinite; white-space: nowrap; }
+    .ticker-track:hover { animation-play-state: paused; }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    @keyframes float1 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+    @keyframes float2 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+
+    @keyframes markerPulse {
+      0%,100% { transform: scale(1); }
+      50%      { transform: scale(1.15); }
+    }
+
+    @keyframes pulse { 0%,100%{opacity:.35} 50%{opacity:.7} }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
+    @keyframes bounceArrow { 0%,100%{transform:translateY(0)} 50%{transform:translateY(4px)} }
+
+    @keyframes ringPulse {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(2.2); opacity: 0; }
+    }
+
+    @keyframes scanSweep {
+      0% { left: 0%; }
+      100% { left: calc(100% - 80px); }
+    }
+    .scan-sweep { animation: scanSweep 3.5s ease-in-out infinite alternate; }
+
+    @keyframes chileScan {
+      0% { top: 0%; opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { top: 100%; opacity: 0; }
+    }
+    .chile-scan { animation: chileScan 5s ease-in-out infinite; top: 0; }
+
+    @keyframes loaderFill { to { transform: scaleX(1); } }
+
+    /* Grano geológico — textura de papel de manifiesto */
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9998;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+      opacity: 0.06; mix-blend-mode: multiply;
+    }
+
+    /* Selección editorial */
+    ::selection { background: var(--cobre); color: var(--hueso); }
+
+    /* Mapbox popup override */
+    .mapboxgl-popup-content {
+      background: transparent !important;
+      padding: 0 !important;
+      box-shadow: 0 16px 48px rgba(14,13,11,0.25) !important;
+      border-radius: 2px !important;
+    }
+    .mapboxgl-popup-tip { display: none !important; }
+    .mapboxgl-ctrl-logo { display: none !important; }
+    .mapboxgl-ctrl-attrib { display: none !important; }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--hueso-2); }
+    ::-webkit-scrollbar-thumb { background: rgba(26,24,21,0.2); border-radius: 0; }
+
+    /* Nav link active states */
+    @media (max-width: 768px) {
+      .nav-links { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel" src="js/nav-hero.jsx"></script>
+  <script type="text/babel" src="js/content.jsx"></script>
+  <script type="text/babel" src="js/maps.jsx"></script>
+  <script type="text/babel" src="js/cta-footer.jsx"></script>
+  <script type="text/babel" src="js/app.jsx"></script>
+</body>
+</html>
