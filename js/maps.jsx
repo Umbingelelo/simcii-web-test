@@ -32,12 +32,88 @@ const INDICATORS = [
   { code: 'SOC-03', label: 'Compromisos activos',    state: 'en ejecución',      fill: 66, color: 'var(--cordillera)' },
 ];
 
+// Mock telemetry per node — illustrative payload shown in the marker popup.
+function getNodeMetrics(n) {
+  if (n.kind === 'env') {
+    return {
+      kindLabel: 'Sensor ambiental',
+      status: { label: 'Operativo', color: 'var(--liquen)' },
+      readings: [
+        { label: 'PM10',  value: '38 µg/m³', fill: 38 },
+        { label: 'NO₂',   value: '12 ppb',   fill: 24 },
+        { label: 'Ruido', value: '52 dB',    fill: 60 },
+      ],
+      lastUpdate: 'hace 1 min',
+    };
+  }
+  if (n.kind === 'com') {
+    return {
+      kindLabel: 'Punto comunitario',
+      status: { label: 'Activo', color: 'var(--cordillera)' },
+      readings: [
+        { label: 'Satisfacción', value: '78 %',       fill: 78 },
+        { label: 'Reportes',     value: '03 / sem',   fill: 22 },
+        { label: 'Compromisos',  value: '12 activos', fill: 66 },
+      ],
+      lastUpdate: 'hace 4 min',
+    };
+  }
+  return {
+    kindLabel: 'Evento detectado',
+    status: { label: 'Atención requerida', color: 'var(--magma)' },
+    readings: [
+      { label: 'Severidad',    value: 'Media',     fill: 55 },
+      { label: 'Correlación',  value: '02 nodos',  fill: 40 },
+      { label: 'Edad evento',  value: '08 min',    fill: 15 },
+    ],
+    lastUpdate: 'hace 8 min',
+  };
+}
+
+function buildPopupHTML(n) {
+  const m = getNodeMetrics(n);
+  const lngStr = `${Math.abs(n.lng).toFixed(3)}° ${n.lng < 0 ? 'W' : 'E'}`;
+  const latStr = `${Math.abs(n.lat).toFixed(3)}° ${n.lat < 0 ? 'S' : 'N'}`;
+  const readings = m.readings.map(r => `
+    <div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px;">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--text-muted);letter-spacing:0.14em;text-transform:uppercase;">${r.label}</span>
+        <span style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12.5px;font-variant-numeric:tabular-nums;color:var(--carbon);">${r.value}</span>
+      </div>
+      <div style="height:2px;background:rgba(26,24,21,0.08);position:relative;">
+        <div style="position:absolute;left:0;top:0;bottom:0;width:${r.fill}%;background:${m.status.color};transition:width 0.6s cubic-bezier(0.16,1,0.3,1);"></div>
+      </div>
+    </div>
+  `).join('');
+  return `
+<div style="background:var(--hueso);border:1px solid var(--carbon);width:300px;font-family:'Inter',sans-serif;color:var(--carbon);overflow:hidden;">
+  <div style="background:var(--carbon);color:var(--hueso);padding:10px 14px;display:flex;justify-content:space-between;align-items:center;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;">
+    <span>${m.kindLabel}</span><span style="opacity:.65;">${n.id}</span>
+  </div>
+  <div style="padding:16px 18px;">
+    <div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:500;letter-spacing:-0.01em;margin-bottom:4px;line-height:1.25;">${n.label}</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--text-soft);letter-spacing:0.16em;margin-bottom:14px;">${latStr} · ${lngStr}</div>
+    <div style="display:inline-flex;align-items:center;gap:7px;padding:4px 9px;background:var(--hueso-2);border:1px solid var(--line-claro);margin-bottom:18px;">
+      <span style="width:6px;height:6px;border-radius:50%;background:${m.status.color};animation:blink 1.2s infinite;"></span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;color:${m.status.color};letter-spacing:0.16em;text-transform:uppercase;">${m.status.label}</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:11px;">${readings}</div>
+  </div>
+  <div style="border-top:1px solid var(--carbon);padding:10px 14px;background:var(--hueso-2);display:flex;justify-content:space-between;align-items:center;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.14em;">
+    <span style="color:var(--text-muted);text-transform:uppercase;">↻ ${m.lastUpdate}</span>
+    <a href="#contact" style="color:var(--cobre);text-decoration:none;font-weight:500;text-transform:uppercase;">Ver detalle →</a>
+  </div>
+</div>
+  `.trim();
+}
+
 // ---------------- PLATFORM MAP ----------------
 function PlatformMap() {
   const [ref, visible] = window.useReveal(0.1);
   const mapRef = React.useRef(null);
   const mapInstance = React.useRef(null);
   const markersRef = React.useRef([]);
+  const popupRef = React.useRef(null);
   const [active, setActive] = React.useState(0);
   const [range, setRange] = React.useState('24 h');
   const [ready, setReady] = React.useState(false);
@@ -205,20 +281,40 @@ function PlatformMap() {
           dot.style.transform = 'translate(-50%,-50%) scale(1)';
         });
 
+        wrap.addEventListener('click', (e) => {
+          e.stopPropagation();
+          setActive(i);
+
+          if (popupRef.current) {
+            popupRef.current.remove();
+            popupRef.current = null;
+          }
+
+          const popup = new mgl.Popup({
+            offset: [0, -18],
+            closeButton: false,
+            closeOnClick: true,
+            anchor: 'bottom',
+            maxWidth: '320px',
+          })
+            .setLngLat([n.lng, n.lat])
+            .setHTML(buildPopupHTML(n))
+            .addTo(map);
+
+          popup.on('close', () => {
+            if (popupRef.current === popup) popupRef.current = null;
+          });
+          popupRef.current = popup;
+
+          map.easeTo({ center: [n.lng, n.lat], duration: 800, essential: true });
+        });
+
         const marker = new mgl.Marker({ element: wrap, anchor: 'center' })
           .setLngLat([n.lng, n.lat])
           .addTo(map);
         marker._nodeIndex = i;
         return marker;
       });
-
-      // Slow camera drift
-      let bearing = -12;
-      const tick = () => {
-        bearing += 0.02;
-        if (mapInstance.current) mapInstance.current.setBearing(bearing);
-      };
-      mapInstance.current._driftInterval = setInterval(tick, 60);
     });
     }
 
@@ -226,7 +322,7 @@ function PlatformMap() {
 
     return () => {
       cancelled = true;
-      if (mapInstance.current?._driftInterval) clearInterval(mapInstance.current._driftInterval);
+      if (popupRef.current) { popupRef.current.remove(); popupRef.current = null; }
       markersRef.current.forEach(m => m.remove());
       if (mapInstance.current) { mapInstance.current.remove(); mapInstance.current = null; }
     };
