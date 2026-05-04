@@ -1,5 +1,5 @@
 
-// Problem, Modules, Sectors, Stats, FounderQuote — editorial light "tierra que se mide"
+// Problem, Modules, Sectors, Stats, FounderQuote — Bitácora Territorial
 
 function useReveal(threshold = 0.15) {
   const ref = React.useRef(null);
@@ -12,21 +12,20 @@ function useReveal(threshold = 0.15) {
   return [ref, visible];
 }
 
-// Chapter label — numbered editorial marker
 function ChapterLabel({ number, title }) {
   return (
     <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, marginBottom: 36 }}>
-      <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 11, color: 'var(--cobre)', letterSpacing: '0.18em' }}>§ {number}</span>
-      <span style={{ flex: 1, height: 1, background: 'var(--line-claro)' }} />
-      <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 10, color: 'var(--text-soft)', letterSpacing: '0.2em', textTransform: 'uppercase' }}>{title}</span>
+      <span style={{ fontFamily: 'Geist Mono, monospace', fontSize: 11, color: 'var(--altiplano)', letterSpacing: '0.18em' }}>§ {number}</span>
+      <span style={{ flex: 1, height: 1, background: 'var(--line)' }} />
+      <span style={{ fontFamily: 'Geist Mono, monospace', fontSize: 10, color: 'var(--text-soft)', letterSpacing: '0.2em', textTransform: 'uppercase' }}>{title}</span>
     </div>
   );
 }
 
-// Geometric monoline icons — on light paper, stroke is carbón
+// Geometric monoline icons
 function Icon({ name, size = 28, color = 'currentColor' }) {
   const s = { width: size, height: size, display: 'block' };
-  const common = { fill: 'none', stroke: color, strokeWidth: 1.2, strokeLinecap: 'round', strokeLinejoin: 'round' };
+  const common = { fill: 'none', stroke: color, strokeWidth: 1.5, strokeLinecap: 'round', strokeLinejoin: 'round' };
   switch (name) {
     case 'environmental':
       return (<svg viewBox="0 0 32 32" style={s} {...common}>
@@ -68,6 +67,12 @@ function Icon({ name, size = 28, color = 'currentColor' }) {
         <path d="M4 26h24M6 26V14M26 26V14M10 26V14M14 26V14M18 26V14M22 26V14" />
         <path d="M4 14l12-8 12 8" />
       </svg>);
+    case 'consulting':
+      return (<svg viewBox="0 0 32 32" style={s} {...common}>
+        <circle cx="16" cy="12" r="8" />
+        <path d="M22 18l4 8H6l4-8" />
+        <path d="M12 12h8M16 8v8" opacity=".5" />
+      </svg>);
     case 'pulse':
       return (<svg viewBox="0 0 32 32" style={s} {...common}>
         <path d="M2 16h8l2-6 4 12 2-6 2 4 2-2h8" />
@@ -81,90 +86,141 @@ function Icon({ name, size = 28, color = 'currentColor' }) {
       return (<svg viewBox="0 0 32 32" style={s} {...common}>
         <path d="M16 4l12 7-12 7-12-7 12-7z" />
         <path d="M4 17l12 7 12-7" />
+        <path d="M4 22l12 7 12-7" opacity=".4" />
       </svg>);
     case 'target':
       return (<svg viewBox="0 0 32 32" style={s} {...common}>
         <circle cx="16" cy="16" r="12" />
         <circle cx="16" cy="16" r="7" />
         <circle cx="16" cy="16" r="1.6" fill={color} stroke="none" />
+        <path d="M16 4v4M16 24v4M4 16h4M24 16h4" opacity=".4" />
       </svg>);
     default: return null;
   }
 }
 
-// -------- Problem: editorial spread, full-width, asymmetric --------
+// -------- Problem: editorial manifesto --------
 function Problem() {
   const [ref, visible] = useReveal();
+  const phrases = [
+    'Lo que no se mide, no existe en el territorio.',
+    'El reporte anual ya no es suficiente.',
+    'La evidencia llega antes que el conflicto.',
+  ];
+
   return (
-    <section id="problem" ref={ref} style={{ padding: '140px 2.5rem 120px', maxWidth: 1320, margin: '0 auto', position: 'relative' }}>
+    <section id="problem" className="problem-section" ref={ref} style={{ padding: '160px 2.5rem', maxWidth: 1320, margin: '0 auto', position: 'relative', background: 'var(--azul-gris)' }}>
       <div style={{ opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(30px)', transition: 'all 0.8s cubic-bezier(0.16,1,0.3,1)' }}>
-        <ChapterLabel number="I" title="El problema" />
+        <ChapterLabel number="02" title="Principio" />
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 100, alignItems: 'start' }}>
-          <div>
-            {/* Giant outlined quote mark */}
-            <div style={{ fontFamily: 'Space Grotesk', fontWeight: 300, fontSize: 140, lineHeight: 0.6, color: 'transparent', WebkitTextStroke: '1px var(--cobre)', marginBottom: 8, marginLeft: -8 }}>«</div>
-
-            <h2 style={{ fontFamily: 'Space Grotesk', fontSize: 'clamp(2rem, 3.8vw, 3.4rem)', fontWeight: 500, letterSpacing: '-0.03em', color: 'var(--carbon)', lineHeight: 1.08, marginBottom: 40, textWrap: 'balance' }}>
-              Operar sobre un territorio <em style={{ fontStyle: 'italic', fontWeight: 400, color: 'var(--cobre)' }}>que no se mide</em> es decidir a ciegas.
-            </h2>
-
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 40, marginTop: 48 }}>
-              <p style={{ fontFamily: 'Inter', fontSize: 15, lineHeight: 1.7, color: 'var(--text-muted)', margin: 0, textWrap: 'pretty' }}>
-                El aire, el agua, el ruido, la percepción de los vecinos — todo genera datos. Lo que falta rara vez es información. Lo que falta es tenerla a tiempo, en un mismo lugar, en un lenguaje comparable.
-              </p>
-              <p style={{ fontFamily: 'Inter', fontSize: 15, lineHeight: 1.7, color: 'var(--text-muted)', margin: 0, textWrap: 'pretty' }}>
-                Para cuando un reporte anual detecta un conflicto, el conflicto ya pasó por tres asambleas, dos prensas y una madrugada de bloqueos.
-              </p>
+        <div style={{ maxWidth: 900, margin: '0 auto' }}>
+          {phrases.map((phrase, i) => (
+            <div key={i}>
+              <p className="problem-phrase" style={{
+                fontFamily: 'Newsreader, serif', fontWeight: 300,
+                fontSize: 'clamp(2rem, 4.5vw, 4rem)',
+                lineHeight: 1.05, color: 'var(--hueso)',
+                letterSpacing: '-0.025em',
+                padding: '40px 0',
+              }}>{phrase}</p>
+              {i < phrases.length - 1 && (
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '8px 0' }}>
+                  <span style={{ fontFamily: 'Geist Mono, monospace', fontSize: 14, color: 'var(--altiplano)' }}>—</span>
+                  <span style={{ flex: 1, height: 1, background: 'var(--line)' }} />
+                </div>
+              )}
             </div>
+          ))}
+        </div>
+
+        {/* Marquee */}
+        <div style={{ marginTop: 80, borderTop: '1px solid var(--line)', borderBottom: '1px solid var(--line)', padding: '24px 0', overflow: 'hidden', position: 'relative' }}>
+          <div className="ticker-track" style={{ fontFamily: 'Geist Mono, monospace', fontSize: 14, color: 'var(--altiplano)', opacity: 0.5, letterSpacing: '0.16em', textTransform: 'uppercase' }}>
+            {'SIN DATOS · NO HAY SOSTENIBILIDAD · '.repeat(12)}
           </div>
-
-          {/* Marginalia card — founder quote treatment */}
-          <aside style={{ borderLeft: '1px solid var(--line-claro)', paddingLeft: 36, paddingTop: 8 }}>
-            <div style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 10, color: 'var(--text-soft)', letterSpacing: '0.18em', textTransform: 'uppercase', marginBottom: 20 }}>Nota del fundador</div>
-            <blockquote style={{ fontFamily: 'Space Grotesk', fontSize: 18, fontWeight: 400, lineHeight: 1.5, color: 'var(--carbon)', margin: 0, letterSpacing: '-0.01em', textWrap: 'pretty' }}>
-              Hoy, gran parte de los datos clave para la toma de decisiones se encuentran dispersos, llegan con retraso o no son comparables, dificultando la anticipación de conflictos y la gestión eficiente de los territorios.
-            </blockquote>
-            <div style={{ marginTop: 28, display: 'flex', alignItems: 'center', gap: 12 }}>
-              <div style={{ width: 36, height: 36, borderRadius: '50%', background: 'var(--cobre)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <span style={{ fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: 13, color: 'var(--hueso)' }}>JF</span>
-              </div>
-              <div>
-                <div style={{ fontFamily: 'Inter', fontSize: 13, fontWeight: 600, color: 'var(--carbon)' }}>Juan Fontaine Correa</div>
-                <div style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 10, color: 'var(--text-soft)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>Fundador · CEO</div>
-              </div>
-            </div>
-          </aside>
         </div>
       </div>
     </section>
   );
 }
 
-// -------- Modules: two-column editorial spread --------
-function ModuleBlock({ iconName, badge, title, lede, items, accent, number }) {
+// -------- Modules: 4 cards --------
+const MODULES = [
+  {
+    num: '03.1',
+    title: 'Gestión social y',
+    titleAccent: 'relacionamiento comunitario',
+    desc: 'Reuniones, actividades, compromisos y acuerdos georreferenciados. La memoria viva del vínculo con el territorio.',
+    categories: ['INTERACCIONES', 'COMPROMISOS', 'CONFLICTIVIDAD', 'EVIDENCIAS', 'ACTORES', 'TEMÁTICAS'],
+    caption: 'Fig. 3.1 — Cada interacción documentada con evidencia y trazabilidad.',
+  },
+  {
+    num: '03.2',
+    title: 'Monitoreo',
+    titleAccent: 'ambiental',
+    desc: 'Sensores y estaciones que entregan lecturas continuas. Tendencias, desviaciones y eventos cruzados con la operación.',
+    categories: ['PM2.5 · 23 µg/m³', 'AQI · 47', 'COV · 0.18 ppm', 'VIENTO SO 4.2 m/s', 'pH 7.4 · TURB 1.1 NTU', 'RUIDO 52 dB'],
+    caption: 'Fig. 3.2 — Lecturas de referencia. Cada instalación genera sus propios valores.',
+  },
+  {
+    num: '03.3',
+    title: 'Monitoreo de',
+    titleAccent: 'percepción y redes',
+    desc: 'Escucha digital estructurada por territorio, actores, temas y tono. Detecta tendencias antes de que escalen.',
+    categories: ['MENCIONES', 'SENTIMIENTO', 'ACTORES INFLUYENTES', 'TENDENCIAS', 'CRISIS POTENCIALES', 'TÓPICOS'],
+    caption: 'Fig. 3.3 — Clasificación automática por taxonomía territorial.',
+  },
+  {
+    num: '03.4',
+    title: 'Dashboard ejecutivo e',
+    titleAccent: 'inteligencia territorial',
+    desc: 'Score territorial compuesto. Indicadores ajustables a la estrategia de cada organización. Una sola pantalla, todas las dimensiones.',
+    categories: ['SCORE TERRITORIAL', 'ZONAS CRÍTICAS', 'INDICADORES COMPUESTOS', 'ALERTAS', 'RECOMENDACIONES', 'AGENTE DE CONSULTA'],
+    caption: 'Fig. 3.4 — Visión consolidada para decisiones estratégicas.',
+  },
+];
+
+function ModuleCard({ mod }) {
+  const [hov, setHov] = React.useState(false);
   return (
-    <article style={{ position: 'relative' }}>
-      <div style={{ fontFamily: 'Space Grotesk', fontWeight: 300, fontSize: 120, lineHeight: 0.7, color: 'transparent', WebkitTextStroke: `1px ${accent}`, marginBottom: 16, letterSpacing: '-0.04em' }}>{number}</div>
-
-      <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 18 }}>
-        <span style={{ width: 22, height: 22, border: `1px solid ${accent}`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: accent }}>
-          <Icon name={iconName} size={12} color={accent} />
-        </span>
-        <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 10, color: accent, letterSpacing: '0.16em', textTransform: 'uppercase' }}>{badge}</span>
+    <article
+      className="module-card"
+      onMouseEnter={() => setHov(true)}
+      onMouseLeave={() => setHov(false)}
+      style={{
+        background: hov ? 'var(--azul-gris-3)' : 'var(--azul-gris-2)',
+        border: `1px solid ${hov ? 'var(--line-strong)' : 'var(--line)'}`,
+        padding: 40,
+        transition: 'all 0.3s',
+      }}
+    >
+      <div style={{ fontFamily: 'Geist Mono, monospace', fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.18em', color: 'var(--altiplano)', marginBottom: 18 }}>
+        § {mod.num} · MÓDULO
       </div>
-
-      <h3 style={{ fontFamily: 'Space Grotesk', fontSize: 26, fontWeight: 600, color: 'var(--carbon)', letterSpacing: '-0.02em', marginBottom: 18, lineHeight: 1.2, textWrap: 'balance' }}>{title}</h3>
-      <p style={{ fontFamily: 'Inter', fontSize: 14, lineHeight: 1.65, color: 'var(--text-muted)', marginBottom: 28, textWrap: 'pretty' }}>{lede}</p>
-
-      <ul style={{ listStyle: 'none', padding: 0, margin: 0, borderTop: '1px solid var(--line-claro)' }}>
-        {items.map((item, i) => (
-          <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 16, padding: '14px 0', borderBottom: '1px dashed var(--line-claro)', fontFamily: 'Inter', fontSize: 13.5, color: 'var(--carbon)', lineHeight: 1.55 }}>
-            <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 10, color: 'var(--text-soft)', flexShrink: 0, marginTop: 2, minWidth: 22 }}>0{i + 1}</span>
-            <span>{item}</span>
-          </li>
+      <h3 style={{
+        fontFamily: 'Newsreader, serif', fontWeight: 500, fontSize: 28,
+        color: 'var(--hueso)', letterSpacing: '-0.02em', marginBottom: 18, lineHeight: 1.2,
+      }}>
+        {mod.title}{' '}
+        <em style={{
+          fontFamily: 'Newsreader, serif', fontStyle: 'italic',
+          fontVariationSettings: '"opsz" 36', color: 'var(--altiplano)', fontWeight: 400,
+        }}>{mod.titleAccent}</em>
+      </h3>
+      <p style={{ fontFamily: 'Geist, sans-serif', fontSize: 15, color: 'var(--text-muted)', lineHeight: 1.55, marginBottom: 28 }}>
+        {mod.desc}
+      </p>
+      <div style={{ fontFamily: 'Geist Mono, monospace', fontSize: 11, color: 'var(--altiplano)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 18, lineHeight: 2 }}>
+        {mod.categories.map((cat, i) => (
+          <span key={i}>
+            {cat}
+            {i < mod.categories.length - 1 && <span style={{ color: 'var(--text-quiet)' }}> · </span>}
+          </span>
         ))}
-      </ul>
+      </div>
+      <div style={{ fontFamily: 'Geist Mono, monospace', fontSize: 10, color: 'var(--text-soft)' }}>
+        {mod.caption}
+      </div>
     </article>
   );
 }
@@ -172,94 +228,64 @@ function ModuleBlock({ iconName, badge, title, lede, items, accent, number }) {
 function Modules() {
   const [ref, visible] = useReveal();
   return (
-    <section id="modules" ref={ref} style={{ padding: '40px 2.5rem 140px', maxWidth: 1320, margin: '0 auto' }}>
+    <section id="modules" className="modules-section" ref={ref} style={{ padding: '40px 2.5rem 140px', maxWidth: 1320, margin: '0 auto' }}>
       <div style={{ opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(30px)', transition: 'all 0.8s cubic-bezier(0.16,1,0.3,1)' }}>
-        <ChapterLabel number="II" title="Cómo funciona" />
+        <ChapterLabel number="03" title="Módulos" />
 
-        <h2 style={{ fontFamily: 'Space Grotesk', fontSize: 'clamp(2rem, 3.6vw, 3.2rem)', fontWeight: 500, letterSpacing: '-0.03em', color: 'var(--carbon)', lineHeight: 1.1, marginBottom: 80, maxWidth: 900, textWrap: 'balance' }}>
-            Dos módulos. <em style={{ fontStyle: 'italic', fontWeight: 400, color: 'var(--cobre)' }}>Un mismo lente.</em>
+        <h2 style={{
+          fontFamily: 'Newsreader, serif',
+          fontSize: 'clamp(2rem, 3.6vw, 3.2rem)', fontWeight: 400,
+          fontVariationSettings: '"opsz" 72',
+          letterSpacing: '-0.025em', color: 'var(--hueso)',
+          lineHeight: 1.05, marginBottom: 80, maxWidth: 900, textWrap: 'balance',
+        }}>
+          Cuatro módulos. <em style={{
+            fontStyle: 'italic', fontWeight: 400, color: 'var(--altiplano)',
+            fontVariationSettings: '"opsz" 36',
+          }}>Un mismo lente.</em>
         </h2>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, position: 'relative' }}>
-          <div style={{ position: 'absolute', left: '50%', top: 0, bottom: 0, width: 1, background: 'var(--line-claro)', transform: 'translateX(-40px)' }} />
-
-          <ModuleBlock
-            number="01"
-            iconName="environmental"
-            badge="Módulo ambiental"
-            title="Monitoreo continuo del entorno natural"
-            lede="Sensores distribuidos en el territorio registran aire, agua y ruido con georreferencia. La plataforma cruza variables para anticipar eventos críticos."
-            accent="var(--liquen)"
-            items={[
-              'PM2.5 / PM10, gases y compuestos volátiles',
-              'Calidad de aire y agua, ruido, olores',
-              'Datos meteorológicos integrados en continuo',
-              'Cruce de variables para anticipar eventos',
-              'Alertas por umbrales normativos y operacionales',
-            ]}
-          />
-          <ModuleBlock
-            number="02"
-            iconName="social"
-            badge="Módulo social"
-            title="Inteligencia comunitaria y territorial"
-            lede="La percepción, los compromisos y la salud del vínculo con el entorno humano se miden con la misma continuidad que el aire."
-            accent="var(--cobre)"
-            items={[
-              'Percepción y satisfacción comunitaria',
-              'Necesidades en salud, educación y empleo local',
-              'Seguimiento de conflictos socioambientales',
-              'Gestión y trazabilidad de compromisos',
-              'Paneles para ejecutivos, autoridades y terreno',
-            ]}
-          />
-        </div>
-
-        {/* Unifying note — editorial footer bar */}
-        <div style={{ marginTop: 80, padding: '24px 0', borderTop: '1px solid var(--cobre)', borderBottom: '1px dashed var(--line-claro)', display: 'flex', alignItems: 'center', gap: 24 }}>
-          <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 10, color: 'var(--cobre)', letterSpacing: '0.2em', textTransform: 'uppercase' }}>∞ Integración</span>
-          <p style={{ fontFamily: 'Space Grotesk', fontSize: 16, color: 'var(--carbon)', margin: 0, lineHeight: 1.4, textWrap: 'pretty' }}>
-            Ambos módulos se integran en <em style={{ fontStyle: 'italic', color: 'var(--cobre)' }}>paneles visuales unificados</em> para la toma de decisiones estratégicas y operacionales.
-          </p>
+        <div className="modules-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+          {MODULES.map((mod, i) => <ModuleCard key={i} mod={mod} />)}
         </div>
       </div>
     </section>
   );
 }
 
-// -------- Sectors: horizontal editorial index --------
+// -------- Sectors: 3x2 grid --------
 const SECTORS = [
-  { icon: 'mining', label: 'Minería', desc: 'Monitoreo de faenas y comunidades aledañas' },
-  { icon: 'energy', label: 'Energía y renovables', desc: 'Gestión territorial de proyectos de largo plazo' },
-  { icon: 'infra', label: 'Infraestructura', desc: 'Seguimiento socioambiental en obra y operación' },
-  { icon: 'forest', label: 'Forestal', desc: 'Impacto en ecosistemas y comunidades' },
-  { icon: 'public', label: 'Sector público', desc: 'Gestión territorial para municipios y servicios' },
+  { icon: 'mining',      label: 'Minería',                desc: 'Operaciones extractivas y su entorno comunitario.' },
+  { icon: 'energy',      label: 'Energía y renovables',   desc: 'Proyectos de generación y transmisión.' },
+  { icon: 'infra',       label: 'Infraestructura',        desc: 'Obras públicas e inversión privada.' },
+  { icon: 'forest',      label: 'Forestal',               desc: 'Manejo y plantaciones.' },
+  { icon: 'public',      label: 'Sector público',         desc: 'Fiscalización y planificación territorial.' },
+  { icon: 'consulting',  label: 'Consultoría e I+D',      desc: 'Asesoría especializada.' },
 ];
 
-function SectorRow({ sector, index }) {
+function SectorCard({ sector }) {
   const [hov, setHov] = React.useState(false);
   return (
     <div
+      className="sector-card"
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
       style={{
-        display: 'grid', gridTemplateColumns: '60px 40px 1fr 2fr 40px',
-        alignItems: 'center', gap: 24,
-        padding: '28px 8px',
-        borderBottom: '1px solid var(--line-claro)',
-        cursor: 'default',
-        background: hov ? 'var(--hueso-2)' : 'transparent',
-        transition: 'background 0.3s',
-      }}>
-      <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 11, color: 'var(--text-soft)', letterSpacing: '0.12em' }}>/ 0{index + 1}</span>
-      <span style={{ color: hov ? 'var(--cobre)' : 'var(--carbon)', transition: 'color 0.3s' }}>
-        <Icon name={sector.icon} size={28} />
-      </span>
-      <h4 style={{ fontFamily: 'Space Grotesk', fontSize: 20, fontWeight: 600, color: 'var(--carbon)', letterSpacing: '-0.015em', margin: 0 }}>{sector.label}</h4>
-      <p style={{ fontFamily: 'Inter', fontSize: 14, color: 'var(--text-muted)', margin: 0, lineHeight: 1.5 }}>{sector.desc}</p>
-      <span style={{ color: hov ? 'var(--cobre)' : 'var(--text-soft)', transition: 'all 0.3s', transform: hov ? 'translateX(4px)' : 'none', display: 'inline-block' }}>
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 9h14m-5-5l5 5-5 5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" /></svg>
-      </span>
+        background: 'var(--azul-gris-2)',
+        border: `1px solid ${hov ? 'var(--altiplano)' : 'var(--line)'}`,
+        padding: 32,
+        transition: 'all 0.3s',
+        transform: hov ? 'translate(-2px, -2px)' : 'none',
+        boxShadow: hov ? '4px 4px 0 rgba(110,240,255,0.2)' : 'none',
+      }}
+    >
+      <Icon name={sector.icon} size={32} color="var(--altiplano)" />
+      <h4 style={{ fontFamily: 'Newsreader, serif', fontWeight: 500, fontSize: 22, color: 'var(--hueso)', marginTop: 16, marginBottom: 8, letterSpacing: '-0.01em' }}>
+        {sector.label}
+      </h4>
+      <p style={{ fontFamily: 'Geist, sans-serif', fontSize: 14, color: 'var(--text-muted)', margin: 0, lineHeight: 1.5 }}>
+        {sector.desc}
+      </p>
     </div>
   );
 }
@@ -267,47 +293,70 @@ function SectorRow({ sector, index }) {
 function Sectors() {
   const [ref, visible] = useReveal();
   return (
-    <section id="sectors" ref={ref} style={{ padding: '0 2.5rem 140px', maxWidth: 1320, margin: '0 auto' }}>
+    <section id="sectors" className="sectors-section" ref={ref} style={{ padding: '0 2.5rem 140px', maxWidth: 1320, margin: '0 auto' }}>
       <div style={{ opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(30px)', transition: 'all 0.8s cubic-bezier(0.16,1,0.3,1)' }}>
-        <ChapterLabel number="III" title="Sectores" />
+        <ChapterLabel number="05" title="Sectores" />
 
-        <h2 style={{ fontFamily: 'Space Grotesk', fontSize: 'clamp(1.9rem, 3.2vw, 2.8rem)', fontWeight: 500, letterSpacing: '-0.03em', color: 'var(--carbon)', textWrap: 'balance', maxWidth: 820, lineHeight: 1.1, marginBottom: 56 }}>
-          Diseñado para industrias que operan en <em style={{ fontStyle: 'italic', fontWeight: 400, color: 'var(--cobre)' }}>territorios complejos</em>.
+        <h2 style={{
+          fontFamily: 'Newsreader, serif',
+          fontSize: 'clamp(1.9rem, 3.2vw, 2.8rem)', fontWeight: 400,
+          fontVariationSettings: '"opsz" 72',
+          letterSpacing: '-0.025em', color: 'var(--hueso)', textWrap: 'balance',
+          maxWidth: 820, lineHeight: 1.05, marginBottom: 56,
+        }}>
+          Diseñado para industrias que operan en <em style={{
+            fontStyle: 'italic', fontWeight: 400, color: 'var(--altiplano)',
+            fontVariationSettings: '"opsz" 36',
+          }}>territorios complejos</em>.
         </h2>
 
-        <div style={{ borderTop: '1px solid var(--carbon)' }}>
-          {SECTORS.map((s, i) => <SectorRow key={i} sector={s} index={i} />)}
+        <div className="sectors-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
+          {SECTORS.map((s, i) => <SectorCard key={i} sector={s} />)}
         </div>
       </div>
     </section>
   );
 }
 
-// -------- Stats: editorial figures strip --------
-const STATS = [
-  { value: '02', label: 'Módulos integrados', sublabel: 'Ambiental + social' },
-  { value: '24/7', label: 'Monitoreo continuo', sublabel: 'Sin interrupciones' },
-  { value: '< 5\'', label: 'Latencia de datos', sublabel: 'Máximo en plataforma' },
-  { value: 'ESG', label: 'Reportería continua', sublabel: 'No anual' },
+// -------- Stats: qualitative differentiators --------
+const DIFFERENTIATORS = [
+  {
+    icon: 'layers',
+    title: 'Integración heterogénea',
+    desc: 'Cuatro fuentes en un solo hub: terreno, ambiente, digital, documental.',
+  },
+  {
+    icon: 'clock',
+    title: 'Trazabilidad completa',
+    desc: 'Cada dato con su origen, fecha y contexto. Auditable de extremo a extremo.',
+  },
+  {
+    icon: 'pulse',
+    title: 'Indicadores comparables',
+    desc: 'Score territorial ajustable. Lo que importa, medible en el tiempo.',
+  },
+  {
+    icon: 'target',
+    title: 'Potencial predictivo',
+    desc: 'Modelos que anticipan conflictos antes de que sean visibles.',
+  },
 ];
 
 function Stats() {
   const [ref, visible] = useReveal(0.3);
   return (
-    <section ref={ref} style={{ background: 'var(--hueso-2)', borderTop: '1px solid var(--line-claro)', borderBottom: '1px solid var(--line-claro)', padding: '88px 2.5rem', marginBottom: 140, position: 'relative', overflow: 'hidden' }}>
+    <section ref={ref} className="diff-section" style={{ background: 'var(--azul-gris-2)', borderTop: '1px solid var(--line)', borderBottom: '1px solid var(--line)', padding: '88px 2.5rem', marginBottom: 140, position: 'relative', overflow: 'hidden' }}>
       <div style={{ maxWidth: 1320, margin: '0 auto', opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(20px)', transition: 'all 0.8s cubic-bezier(0.16,1,0.3,1)' }}>
-        <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, marginBottom: 40 }}>
-          <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 10, color: 'var(--cobre)', letterSpacing: '0.2em', textTransform: 'uppercase' }}>En cifras</span>
-          <span style={{ flex: 1, height: 1, background: 'var(--line-claro)' }} />
-        </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 48 }}>
-          {STATS.map((s, i) => (
-            <div key={i} style={{ borderLeft: i === 0 ? 'none' : '1px solid var(--line-claro)', paddingLeft: i === 0 ? 0 : 32 }}>
-              <div style={{ fontFamily: 'Space Grotesk', fontSize: 'clamp(2.8rem, 4.8vw, 4.2rem)', fontWeight: 500, letterSpacing: '-0.04em', color: 'var(--carbon)', lineHeight: 1, fontVariantNumeric: 'tabular-nums', marginBottom: 16 }}>
-                {s.value}
+        <ChapterLabel number="06" title="Diferenciadores" />
+
+        <div className="diff-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 32 }}>
+          {DIFFERENTIATORS.map((d, i) => (
+            <div key={i} style={{ padding: '0 16px', borderLeft: i === 0 ? 'none' : '1px solid var(--line)', paddingLeft: i === 0 ? 0 : 32 }}>
+              <div style={{ marginBottom: 20 }}>
+                <Icon name={d.icon} size={32} color="var(--altiplano)" />
               </div>
-              <div style={{ fontFamily: 'Space Grotesk', fontSize: 15, fontWeight: 600, color: 'var(--carbon)', marginBottom: 4, letterSpacing: '-0.01em' }}>{s.label}</div>
-              <div style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 10, color: 'var(--text-soft)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>{s.sublabel}</div>
+              <div style={{ fontFamily: 'Newsreader, serif', fontSize: 20, fontWeight: 500, color: 'var(--hueso)', marginBottom: 8, letterSpacing: '-0.01em' }}>{d.title}</div>
+              <div style={{ fontFamily: 'Geist, sans-serif', fontSize: 14, color: 'var(--text-muted)', lineHeight: 1.55 }}>{d.desc}</div>
             </div>
           ))}
         </div>
@@ -316,27 +365,30 @@ function Stats() {
   );
 }
 
-// -------- Founder quote: pull quote editorial --------
+// -------- Founder quote: brand manifesto (no attribution) --------
 function FounderQuote() {
   const [ref, visible] = useReveal();
   return (
-    <section ref={ref} style={{ padding: '0 2.5rem 140px', maxWidth: 1100, margin: '0 auto' }}>
-      <div style={{ opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(30px)', transition: 'all 0.9s cubic-bezier(0.16,1,0.3,1)', display: 'grid', gridTemplateColumns: '120px 1fr', gap: 48, alignItems: 'start' }}>
-        <div style={{ fontFamily: 'Space Grotesk', fontWeight: 300, fontSize: 180, lineHeight: 0.65, color: 'transparent', WebkitTextStroke: '1px var(--cobre)', textAlign: 'center' }}>«</div>
-        <div>
-          <p style={{ fontFamily: 'Space Grotesk', fontSize: 'clamp(1.6rem, 2.8vw, 2.3rem)', fontWeight: 400, letterSpacing: '-0.025em', color: 'var(--carbon)', lineHeight: 1.3, marginBottom: 40, textWrap: 'balance' }}>
-            La innovación es llevar las métricas que las empresas ya dominan en producción y costos al <em style={{ fontStyle: 'italic', color: 'var(--cobre)' }}>ámbito social y medioambiental</em>, y convertirlas en indicadores estratégicos.
-          </p>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-            <div style={{ width: 44, height: 44, borderRadius: '50%', background: 'var(--cobre)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <span style={{ fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: 15, color: 'var(--hueso)' }}>JF</span>
-            </div>
-            <div>
-              <div style={{ fontFamily: 'Inter', fontSize: 14, fontWeight: 600, color: 'var(--carbon)' }}>Juan Fontaine Correa</div>
-              <div style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 10, color: 'var(--text-soft)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>Fundador · CEO · Accionet</div>
-            </div>
-          </div>
-        </div>
+    <section ref={ref} className="founder-section" style={{ padding: '0 2.5rem 140px', maxWidth: 1100, margin: '0 auto', background: 'var(--azul-gris)' }}>
+      <div style={{ opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(30px)', transition: 'all 0.9s cubic-bezier(0.16,1,0.3,1)' }}>
+        <ChapterLabel number="08" title="Manifiesto" />
+
+        <p style={{
+          fontFamily: 'Newsreader, serif', fontWeight: 300,
+          fontSize: 'clamp(1.6rem, 2.8vw, 2.3rem)',
+          letterSpacing: '-0.025em', color: 'var(--hueso)',
+          lineHeight: 1.3, textWrap: 'balance',
+        }}>
+          La innovación es llevar las métricas que las empresas ya dominan en producción y costos al{' '}
+          <em style={{
+            fontFamily: 'Newsreader, serif', fontStyle: 'italic',
+            fontVariationSettings: '"opsz" 36', color: 'var(--altiplano)', fontWeight: 400,
+          }}>ámbito social y medioambiental</em>, y convertirlas en{' '}
+          <em style={{
+            fontFamily: 'Newsreader, serif', fontStyle: 'italic',
+            fontVariationSettings: '"opsz" 36', color: 'var(--altiplano)', fontWeight: 400,
+          }}>indicadores estratégicos</em>.
+        </p>
       </div>
     </section>
   );

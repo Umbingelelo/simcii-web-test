@@ -2,7 +2,7 @@
 // Root App + Tweaks panel
 
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "accentColor": "cobre",
+  "accentColor": "altiplano",
   "showIntro": true
 }/*EDITMODE-END*/;
 
@@ -11,12 +11,13 @@ function TweaksPanel({ visible }) {
 
   React.useEffect(() => {
     const map = {
-      cobre:     { main: '#C2440E', hover: '#D95A22' },
-      azafran:   { main: '#C88A1E', hover: '#E8B14A' },
-      liquen:    { main: '#5C7548', hover: '#7A8F5E' },
-      cordillera:{ main: '#3B5E6B', hover: '#547584' },
+      altiplano:  { main: '#6EF0FF', hover: '#9DF5FF' },
+      fosforo:    { main: '#CFFF04', hover: '#D9FF3D' },
+      ambar:      { main: '#FFB547', hover: '#FFC772' },
+      oxido:      { main: '#8C2A1C', hover: '#A93A29' },
     };
-    const c = map[accent] || map.cobre;
+    const c = map[accent] || map.altiplano;
+    document.documentElement.style.setProperty('--altiplano', c.main);
     document.documentElement.style.setProperty('--cobre', c.main);
     document.documentElement.style.setProperty('--cobre-2', c.hover);
     document.documentElement.style.setProperty('--accent', c.main);
@@ -26,35 +27,35 @@ function TweaksPanel({ visible }) {
   if (!visible) return null;
 
   const accents = [
-    { key: 'cobre',      label: 'Cobre',      color: '#C2440E' },
-    { key: 'azafran',    label: 'Azafrán',    color: '#E8B14A' },
-    { key: 'liquen',     label: 'Liquen',     color: '#5C7548' },
-    { key: 'cordillera', label: 'Cordillera', color: '#3B5E6B' },
+    { key: 'altiplano', label: 'Altiplano', color: '#6EF0FF' },
+    { key: 'fosforo',   label: 'Fósforo',   color: '#CFFF04' },
+    { key: 'ambar',     label: 'Ámbar',     color: '#FFB547' },
+    { key: 'oxido',     label: 'Óxido',     color: '#8C2A1C' },
   ];
 
   return (
-    <div style={{
+    <div className="tweaks-panel" style={{
       position: 'fixed', bottom: 24, right: 24, zIndex: 9999,
-      background: 'var(--hueso)', border: '1px solid var(--carbon)',
-      padding: '20px 22px', width: 240, boxShadow: '6px 6px 0 rgba(26,24,21,0.12)',
+      background: 'var(--azul-gris-2)', border: '1px solid var(--line-strong)',
+      padding: '20px 22px', width: 240, boxShadow: '6px 6px 0 rgba(0,0,0,0.5)',
     }}>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 18, paddingBottom: 10, borderBottom: '1px solid var(--line-claro)' }}>
-        <span style={{ fontFamily: 'Space Grotesk', fontSize: 13, fontWeight: 600, color: 'var(--carbon)', letterSpacing: '-0.01em' }}>Tweaks</span>
-        <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 9, color: 'var(--text-soft)', letterSpacing: '0.18em' }}>V · 01</span>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 18, paddingBottom: 10, borderBottom: '1px solid var(--line)' }}>
+        <span style={{ fontFamily: 'Newsreader, serif', fontSize: 13, fontWeight: 600, color: 'var(--hueso)', letterSpacing: '-0.01em' }}>Tweaks</span>
+        <span style={{ fontFamily: 'Geist Mono, monospace', fontSize: 9, color: 'var(--text-soft)', letterSpacing: '0.18em' }}>V · 01</span>
       </div>
-      <div style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 9.5, color: 'var(--text-muted)', marginBottom: 12, letterSpacing: '0.16em', textTransform: 'uppercase' }}>Color de firma</div>
+      <div style={{ fontFamily: 'Geist Mono, monospace', fontSize: 9.5, color: 'var(--text-muted)', marginBottom: 12, letterSpacing: '0.16em', textTransform: 'uppercase' }}>Color de firma</div>
       <div style={{ display: 'flex', gap: 8, marginBottom: 14 }}>
         {accents.map(a => (
           <button key={a.key} onClick={() => setAccent(a.key)} title={a.label} style={{
             width: 30, height: 30, background: a.color,
-            border: accent === a.key ? '2px solid var(--carbon)' : '1px solid var(--line-claro)',
+            border: accent === a.key ? '2px solid var(--hueso)' : '1px solid var(--line-strong)',
             cursor: 'pointer', transition: 'all 0.2s',
             transform: accent === a.key ? 'translate(-1px,-1px)' : 'none',
-            boxShadow: accent === a.key ? '2px 2px 0 rgba(26,24,21,0.2)' : 'none',
+            boxShadow: accent === a.key ? '2px 2px 0 rgba(0,0,0,0.4)' : 'none',
           }} />
         ))}
       </div>
-      <div style={{ fontFamily: 'Space Grotesk', fontSize: 12, fontStyle: 'italic', color: 'var(--text-muted)' }}>
+      <div style={{ fontFamily: 'Newsreader, serif', fontSize: 12, fontStyle: 'italic', fontVariationSettings: '"opsz" 18', color: 'var(--text-muted)' }}>
         {accents.find(a => a.key === accent)?.label}
       </div>
     </div>

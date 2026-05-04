@@ -5,10 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SIMCII · Gestión Territorial Inteligente</title>
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon-512.png" />
+  <link rel="apple-touch-icon" sizes="192x192" href="assets/favicon-192.png" />
+  <meta name="theme-color" content="#15191C" />
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..800;1,6..72,300..800&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <!-- Mapbox -->
   <link href="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css" rel="stylesheet" />
@@ -24,40 +31,68 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      /* Tierra que se mide — paleta SIMCII */
-      --hueso:      #F4EFE6;   /* papel base */
-      --hueso-2:    #EDE5D6;   /* papel envejecido */
-      --carbon:     #1A1815;   /* texto principal */
-      --obsidiana:  #0E0D0B;   /* fondos profundos */
-      --cobre:      #C2440E;   /* color de firma, CTAs */
-      --cobre-2:    #D95A22;   /* cobre hover */
-      --azafran:    #E8B14A;   /* highlights cálidos */
-      --liquen:     #5C7548;   /* ok, saludable */
-      --musgo:      #2B3825;   /* liquen profundo */
-      --cordillera: #3B5E6B;   /* datos neutros */
-      --bruma:      #7FA0A8;   /* info secundaria */
-      --magma:      #8B2E1A;   /* alerta crítica */
+      /* === BITÁCORA TERRITORIAL === */
 
-      /* Tokens funcionales */
-      --line-claro:   rgba(26, 24, 21, 0.12);
-      --line-oscuro:  rgba(244, 239, 230, 0.10);
-      --text-muted:   rgba(26, 24, 21, 0.58);
-      --text-soft:    rgba(26, 24, 21, 0.40);
+      /* Fondo principal — el azul-gris de la libreta */
+      --azul-gris:    #15191C;
+      --azul-gris-2:  #1B2025;
+      --azul-gris-3:  #232930;
+      --tinta:        #0E1115;
 
-      /* legacy aliases para código existente */
-      --bg: var(--hueso);
-      --surface: var(--hueso-2);
-      --text: var(--carbon);
-      --accent: var(--cobre);
-      --accent2: var(--azafran);
+      /* Texto */
+      --hueso:        #F2EDE4;
+      --sal:          #E8E3D3;
+      --text-muted:   rgba(242, 237, 228, 0.62);
+      --text-soft:    rgba(242, 237, 228, 0.40);
+      --text-quiet:   rgba(242, 237, 228, 0.22);
+
+      /* Líneas */
+      --line:         rgba(242, 237, 228, 0.10);
+      --line-strong:  rgba(242, 237, 228, 0.20);
+
+      /* Marca — el cian es la firma */
+      --altiplano:    #6EF0FF;
+      --altiplano-2:  rgba(110, 240, 255, 0.15);
+      --altiplano-3:  rgba(110, 240, 255, 0.04);
+
+      /* Estados */
+      --fosforo:      #CFFF04;
+      --ambar:        #FFB547;
+      --oxido:        #8C2A1C;
+
+      /* Aliases legacy — mantienen compatibilidad sin tocar JSX */
+      --obsidiana:    var(--tinta);
+      --basalto:      var(--azul-gris);
+      --basalto-2:    var(--azul-gris-2);
+      --basalto-3:    var(--azul-gris-3);
+      --marfil:       var(--hueso);
+      --marfil-2:     var(--sal);
+      --carbon:       var(--hueso);
+      --hueso-2:      var(--azul-gris-2);
+      --cobre:        var(--altiplano);
+      --cobre-2:      var(--altiplano);
+      --azafran:      var(--ambar);
+      --liquen:       var(--fosforo);
+      --musgo:        var(--fosforo);
+      --bruma:        var(--altiplano);
+      --cordillera:   var(--altiplano);
+      --magma:        var(--oxido);
+      --brasa:        var(--ambar);
+      --line-claro:   var(--line);
+      --line-oscuro:  var(--line);
+      --bg:           var(--azul-gris);
+      --surface:      var(--azul-gris-2);
+      --text:         var(--hueso);
+      --accent:       var(--altiplano);
+      --accent2:      var(--ambar);
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      background: var(--hueso);
-      color: var(--carbon);
-      font-family: 'Inter', sans-serif;
+      background: var(--azul-gris);
+      color: var(--hueso);
+      font-family: 'Geist', sans-serif;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
@@ -99,21 +134,21 @@
 
     @keyframes loaderFill { to { transform: scaleX(1); } }
 
-    /* Grano geológico — textura de papel de manifiesto */
+    /* Grano geológico */
     body::before {
       content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9998;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
-      opacity: 0.06; mix-blend-mode: multiply;
+      opacity: 0.035; mix-blend-mode: screen;
     }
 
     /* Selección editorial */
-    ::selection { background: var(--cobre); color: var(--hueso); }
+    ::selection { background: var(--altiplano); color: var(--azul-gris); }
 
     /* Mapbox popup override */
     .mapboxgl-popup-content {
       background: transparent !important;
       padding: 0 !important;
-      box-shadow: 0 16px 48px rgba(14,13,11,0.25) !important;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.5) !important;
       border-radius: 2px !important;
     }
     .mapboxgl-popup-tip { display: none !important; }
@@ -122,13 +157,94 @@
 
     /* Scrollbar */
     ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: var(--hueso-2); }
-    ::-webkit-scrollbar-thumb { background: rgba(26,24,21,0.2); border-radius: 0; }
+    ::-webkit-scrollbar-track { background: var(--azul-gris-2); }
+    ::-webkit-scrollbar-thumb { background: rgba(242,237,228,0.18); border-radius: 0; }
 
-    /* Nav link active states */
+    /* === RESPONSIVE === */
+
+    /* Tablet (≤1024px) */
+    @media (max-width: 1024px) {
+      .hero-grid { grid-template-columns: 1fr !important; gap: 32px !important; padding: 48px 1.5rem 32px !important; }
+      .hero-chile { display: none !important; }
+      .hero-letters span { font-size: clamp(5rem, 18vw, 11rem) !important; }
+      .modules-grid { grid-template-columns: 1fr !important; }
+      .sectors-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .diff-grid { grid-template-columns: repeat(2, 1fr) !important; row-gap: 40px !important; }
+      .diff-grid > div { border-left: none !important; padding-left: 0 !important; padding-right: 0 !important; }
+      .cta-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+      .cta-card { padding: 56px 32px !important; }
+      .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 40px !important; }
+      .footer-grid > div:first-child { grid-column: span 2; }
+      .platform-grid { grid-template-columns: 1fr !important; }
+      .casestudy-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+    }
+
+    /* Mobile (≤768px) */
     @media (max-width: 768px) {
       .nav-links { display: none !important; }
+      .nav-cta-text { display: none !important; }
+      .nav-cta-short { display: inline !important; }
+      .nav-bar { padding: 0 1.25rem !important; height: 60px !important; }
+      .nav-cta { padding: 9px 14px !important; font-size: 12px !important; }
+
+      .bitacora-bar { padding: 8px 1.25rem !important; flex-wrap: wrap; gap: 8px; }
+      .bitacora-bar > div > span { font-size: 9px !important; letter-spacing: 0.12em !important; }
+      .bitacora-bar > span:last-child { font-size: 9px !important; }
+
+      .hero-section { padding-top: 60px !important; min-height: auto !important; }
+      .hero-grid { padding: 36px 1.25rem 24px !important; gap: 24px !important; min-height: auto !important; }
+      .hero-letters { line-height: 0.85 !important; margin-bottom: 28px !important; }
+      .hero-letters span { font-size: clamp(3.6rem, 22vw, 7rem) !important; letter-spacing: -0.04em !important; }
+      .hero-subtitle { font-size: clamp(1.05rem, 4.5vw, 1.6rem) !important; max-width: 100% !important; }
+      .hero-cta { font-size: 12px !important; padding: 12px 18px !important; }
+      .hero-meta { flex-direction: column !important; align-items: flex-start !important; gap: 14px !important; }
+
+      .ticker-bar { padding: 10px 0 !important; }
+
+      .hero-marginalia { display: none !important; }
+
+      .section-pad { padding-left: 1.25rem !important; padding-right: 1.25rem !important; }
+      .problem-section { padding: 60px 1.25rem 80px !important; }
+      .problem-phrase { font-size: clamp(1.6rem, 8vw, 2.6rem) !important; }
+      .modules-section { padding: 60px 1.25rem 80px !important; }
+      .module-card { padding: 32px 24px !important; }
+      .module-card h3 { font-size: clamp(1.4rem, 6vw, 1.9rem) !important; }
+      .sectors-section { padding: 60px 1.25rem 80px !important; }
+      .sectors-grid { grid-template-columns: 1fr !important; gap: 14px !important; }
+      .sector-card { padding: 28px 22px !important; }
+      .diff-section { padding: 56px 1.25rem !important; margin-bottom: 80px !important; }
+      .diff-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+      .casestudy-section { padding: 0 1.25rem 80px !important; }
+      .founder-section { padding: 0 1.25rem 80px !important; }
+
+      .cta-section { padding: 40px 1.25rem 80px !important; }
+      .cta-card { padding: 48px 24px !important; }
+      .cta-card h2 { font-size: clamp(1.7rem, 7vw, 2.4rem) !important; }
+      .cta-card .corner-mark { font-size: 9px !important; }
+
+      .footer-root { padding: 56px 1.25rem 32px !important; }
+      .footer-grid { grid-template-columns: 1fr !important; gap: 36px !important; }
+      .footer-grid > div:first-child { grid-column: auto; }
+      .footer-masthead { gap: 12px !important; }
+      .footer-masthead > div span { font-size: 26px !important; }
+      .footer-masthead > span { font-size: 10px !important; letter-spacing: 0.14em !important; }
+
+      .platform-section { padding: 60px 0 80px !important; }
+      .platform-header { padding: 0 1.25rem !important; }
+      .platform-map { height: 60vh !important; min-height: 420px !important; }
+      .platform-side { padding: 0 1.25rem !important; }
+
+      .tweaks-panel { display: none !important; }
     }
+
+    /* Small mobile (≤480px) */
+    @media (max-width: 480px) {
+      .hero-letters span { font-size: clamp(3rem, 24vw, 5rem) !important; }
+      .nav-bar { padding: 0 1rem !important; }
+      .footer-masthead > div span { font-size: 22px !important; }
+    }
+
+    img { max-width: 100%; height: auto; }
   </style>
 </head>
 <body>
