@@ -5,10 +5,31 @@ function CTASection() {
   const [ref, visible] = window.useReveal();
   const [email, setEmail] = React.useState('');
   const [sent, setSent] = React.useState(false);
+  const [submitting, setSubmitting] = React.useState(false);
+  const [error, setError] = React.useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (email) setSent(true);
+    if (!email || submitting) return;
+    setSubmitting(true);
+    setError('');
+    try {
+      const r = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      const data = await r.json().catch(() => ({}));
+      if (!r.ok || !data.ok) {
+        setError(data.error || 'No se pudo enviar. Intenta nuevamente.');
+        setSubmitting(false);
+        return;
+      }
+      setSent(true);
+    } catch (err) {
+      setError('Sin conexión. Intenta nuevamente.');
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -80,22 +101,31 @@ function CTASection() {
                   onFocus={e => e.target.style.borderBottomColor = 'var(--altiplano)'}
                   onBlur={e => e.target.style.borderBottomColor = 'var(--line-strong)'}
                 />
-                <button type="submit" style={{
+                <button type="submit" disabled={submitting} style={{
                   marginTop: 16,
                   fontFamily: 'Geist, sans-serif', fontWeight: 600, fontSize: 14,
-                  background: 'var(--altiplano)', color: 'var(--azul-gris)',
+                  background: submitting ? 'transparent' : 'var(--altiplano)',
+                  color: submitting ? 'var(--altiplano)' : 'var(--azul-gris)',
                   padding: '15px 27px', border: '1px solid var(--altiplano)',
-                  borderRadius: 2, cursor: 'pointer', letterSpacing: '0.01em',
+                  borderRadius: 2, cursor: submitting ? 'wait' : 'pointer', letterSpacing: '0.01em',
                   transition: 'all 0.25s',
                   alignSelf: 'flex-start',
                   display: 'inline-flex', alignItems: 'center', gap: 10,
+                  opacity: submitting ? 0.7 : 1,
                 }}
-                onMouseEnter={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--altiplano)'; }}
-                onMouseLeave={e => { e.currentTarget.style.background = 'var(--altiplano)'; e.currentTarget.style.color = 'var(--azul-gris)'; }}
+                onMouseEnter={e => { if (submitting) return; e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--altiplano)'; }}
+                onMouseLeave={e => { if (submitting) return; e.currentTarget.style.background = 'var(--altiplano)'; e.currentTarget.style.color = 'var(--azul-gris)'; }}
                 >
-                  Agendar conversación
-                  <svg width="12" height="12" viewBox="0 0 10 10" fill="none"><path d="M1 5h8m-3-3l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                  {submitting ? 'Enviando…' : 'Agendar conversación'}
+                  {!submitting && <svg width="12" height="12" viewBox="0 0 10 10" fill="none"><path d="M1 5h8m-3-3l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>}
                 </button>
+
+                {error && (
+                  <div style={{ marginTop: 12, display: 'flex', alignItems: 'center', gap: 8 }}>
+                    <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--oxido)' }} />
+                    <span style={{ fontFamily: 'Geist Mono, monospace', fontSize: 10, color: 'var(--oxido)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{error}</span>
+                  </div>
+                )}
 
                 <div style={{ marginTop: 20, display: 'flex', alignItems: 'center', gap: 8 }}>
                   <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--fosforo)' }} />
