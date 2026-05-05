@@ -162,11 +162,23 @@
 
     /* === RESPONSIVE === */
 
+    /* Hero stack zone (≤1280px) — Chile dot-strip solo en desktop grande */
+    @media (max-width: 1280px) {
+      .hero-grid { grid-template-columns: 1fr !important; gap: 32px !important; padding: 60px 2rem 40px !important; min-height: auto !important; }
+      .hero-chile { display: none !important; }
+      .hero-letters span { font-size: clamp(5rem, 14vw, 12rem) !important; }
+      .platform-grid { grid-template-columns: 1fr !important; }
+      .casestudy-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+    }
+
+    /* Hero ultra-wide (>1280px) — controlamos que las 6 letras quepan en una sola línea */
+    @media (min-width: 1281px) {
+      .hero-letters span { font-size: clamp(7rem, 11vw, 14rem) !important; }
+    }
+
     /* Tablet (≤1024px) */
     @media (max-width: 1024px) {
-      .hero-grid { grid-template-columns: 1fr !important; gap: 32px !important; padding: 48px 1.5rem 32px !important; }
-      .hero-chile { display: none !important; }
-      .hero-letters span { font-size: clamp(5rem, 18vw, 11rem) !important; }
+      .hero-grid { padding: 48px 1.5rem 32px !important; }
       .modules-grid { grid-template-columns: 1fr !important; }
       .sectors-grid { grid-template-columns: repeat(2, 1fr) !important; }
       .diff-grid { grid-template-columns: repeat(2, 1fr) !important; row-gap: 40px !important; }
@@ -175,8 +187,6 @@
       .cta-card { padding: 56px 32px !important; }
       .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 40px !important; }
       .footer-grid > div:first-child { grid-column: span 2; }
-      .platform-grid { grid-template-columns: 1fr !important; }
-      .casestudy-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
     }
 
     /* Mobile (≤768px) */
