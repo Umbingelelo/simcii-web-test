@@ -100,7 +100,7 @@ function Nav() {
         }}
           onMouseEnter={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--altiplano)'; }}
           onMouseLeave={e => { e.currentTarget.style.background = 'var(--altiplano)'; e.currentTarget.style.color = 'var(--azul-gris)'; }}
-        ><span className="nav-cta-text">Agendar conversación</span><span className="nav-cta-short" style={{ display: 'none' }}>Demo</span>
+        ><span className="nav-cta-text">Solicitar demo</span><span className="nav-cta-short" style={{ display: 'none' }}>Demo</span>
           <svg width="11" height="11" viewBox="0 0 10 10" fill="none"><path d="M1 5h8m-3-3l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
         </a>
       </div>
@@ -298,8 +298,6 @@ function Hero({ introDone }) {
     return () => clearInterval(i);
   }, []);
 
-  const SIMCII_LETTERS = ['S', 'I', 'M', 'C', 'I', 'I'];
-
   return (
     <section id="top" className="hero-section" style={{
       position: 'relative', minHeight: '100vh', overflow: 'hidden',
@@ -330,53 +328,43 @@ function Hero({ introDone }) {
         display: 'grid', gridTemplateColumns: '3fr 2fr', gap: 56,
         alignItems: 'center', minHeight: 'calc(100vh - 160px)',
       }}>
-        {/* LEFT — SIMCII wordmark */}
+        {/* LEFT — Titular comunicacional */}
         <div>
-          {/* SIMCII letters with staggered reveal */}
-          <div className="hero-letters" style={{ marginBottom: 48, lineHeight: 0.85 }}>
-            {SIMCII_LETTERS.map((letter, i) => (
-              <span key={i} style={{
-                display: 'inline-block',
-                fontFamily: 'Newsreader, serif',
-                fontWeight: 400,
-                fontSize: 'clamp(7rem, 16vw, 16rem)',
-                fontVariationSettings: loaded ? '"opsz" 72' : '"opsz" 9',
-                lineHeight: 0.85,
-                letterSpacing: '-0.045em',
-                color: 'var(--hueso)',
-                transform: loaded ? 'translateY(0)' : 'translateY(110%)',
-                opacity: loaded ? 1 : 0,
-                transition: `transform 1.4s cubic-bezier(0.76, 0, 0.24, 1) ${i * 0.08}s, opacity 1s ${i * 0.08}s, font-variation-settings 1.4s cubic-bezier(0.76, 0, 0.24, 1) ${i * 0.08}s`,
-                cursor: 'default',
-              }}
-                onMouseEnter={e => { e.target.style.fontVariationSettings = '"opsz" 144, "wght" 600'; }}
-                onMouseLeave={e => { e.target.style.fontVariationSettings = '"opsz" 72, "wght" 400'; }}
-              >{letter}</span>
-            ))}
-          </div>
+          {/* Eyebrow */}
+          <div style={{
+            fontFamily: 'Geist Mono, monospace', fontSize: 11, color: 'var(--altiplano)',
+            letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 28,
+            opacity: loaded ? 1 : 0, transform: loaded ? 'none' : 'translateY(10px)',
+            transition: 'all 0.9s cubic-bezier(0.16,1,0.3,1) 0.2s',
+          }}>§ 01 · Plataforma SIMCII</div>
+
+          {/* Headline */}
+          <h1 className="hero-headline" style={{
+            fontFamily: 'Newsreader, serif', fontWeight: 400,
+            fontSize: 'clamp(2.6rem, 6.4vw, 6rem)',
+            fontVariationSettings: '"opsz" 72',
+            lineHeight: 1.02,
+            letterSpacing: '-0.035em',
+            color: 'var(--hueso)', marginBottom: 32, textWrap: 'balance',
+            opacity: loaded ? 1 : 0, transform: loaded ? 'none' : 'translateY(24px)',
+            transition: 'all 1.1s cubic-bezier(0.16,1,0.3,1) 0.35s',
+          }}>
+            Gestión territorial <em style={{
+              fontFamily: 'Newsreader, serif', fontStyle: 'italic',
+              fontVariationSettings: '"opsz" 72', color: 'var(--altiplano)', fontWeight: 400,
+            }}>basada en datos</em>.
+          </h1>
 
           {/* Subtitle */}
           <p className="hero-subtitle" style={{
             fontFamily: 'Newsreader, serif', fontWeight: 300,
-            fontSize: 'clamp(1.4rem, 2.4vw, 2.4rem)', lineHeight: 1.2,
-            color: 'var(--hueso)', maxWidth: '38ch', marginBottom: 32,
+            fontSize: 'clamp(1.2rem, 1.9vw, 1.7rem)', lineHeight: 1.35,
+            color: 'var(--text-muted)', maxWidth: '46ch', marginBottom: 44,
             opacity: loaded ? 1 : 0, transform: loaded ? 'none' : 'translateY(20px)',
-            transition: 'all 1s cubic-bezier(0.16,1,0.3,1) 0.8s',
+            transition: 'all 1s cubic-bezier(0.16,1,0.3,1) 0.6s',
+            textWrap: 'pretty',
           }}>
-            Sin datos, la sostenibilidad es relato. <em style={{
-              fontFamily: 'Newsreader, serif', fontStyle: 'italic',
-              fontVariationSettings: '"opsz" 36', color: 'var(--altiplano)', fontWeight: 400,
-            }}>Con datos, es territorio.</em>
-          </p>
-
-          {/* Description */}
-          <p style={{
-            fontFamily: 'Geist, sans-serif', fontSize: 16,
-            color: 'var(--text-muted)', maxWidth: '56ch', lineHeight: 1.55, marginBottom: 40,
-            opacity: loaded ? 1 : 0, transform: loaded ? 'none' : 'translateY(20px)',
-            transition: 'all 1s cubic-bezier(0.16,1,0.3,1) 1s',
-          }}>
-            Plataforma de inteligencia territorial. Integra observación social, ambiental y reputacional en una sola lectura. Para quienes operan donde el territorio importa.
+            Integración, análisis y visualización de información social, ambiental y contextual en tiempo real.
           </p>
 
           {/* CTA link */}
@@ -386,12 +374,12 @@ function Hero({ introDone }) {
             color: 'var(--hueso)', textDecoration: 'none',
             paddingBottom: 6, borderBottom: '1px solid var(--altiplano)',
             display: 'inline-flex', alignItems: 'center', gap: 8,
-            opacity: loaded ? 1 : 0, transition: 'opacity 1s 1.2s',
+            opacity: loaded ? 1 : 0, transition: 'opacity 1s 0.9s',
           }}
             onMouseEnter={e => { if (e.currentTarget.lastChild) e.currentTarget.lastChild.style.transform = 'translateX(4px)'; }}
             onMouseLeave={e => { if (e.currentTarget.lastChild) e.currentTarget.lastChild.style.transform = 'translateX(0)'; }}
           >
-            OBSERVAR LA PLATAFORMA
+            REVISA LA PLATAFORMA
             <span style={{ display: 'inline-block', transition: 'transform 0.3s' }}>→</span>
           </a>
         </div>

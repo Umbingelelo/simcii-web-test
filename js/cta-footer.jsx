@@ -58,7 +58,7 @@ function CTASection() {
 
         <div className="cta-grid" style={{ position: 'relative', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'center' }}>
           <div>
-            <div style={{ fontFamily: 'Geist Mono, monospace', fontSize: 10, color: 'var(--altiplano)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 24 }}>§ 07 · EPÍLOGO</div>
+            <div style={{ fontFamily: 'Geist Mono, monospace', fontSize: 10, color: 'var(--altiplano)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 24 }}>§ 07 · CONTACTO</div>
 
             <h2 style={{
               fontFamily: 'Newsreader, serif', fontWeight: 400,
@@ -67,16 +67,16 @@ function CTASection() {
               letterSpacing: '-0.025em', color: 'var(--hueso)',
               lineHeight: 1.05, marginBottom: 28, textWrap: 'balance',
             }}>
-              Observar antes que reportar.
+              Solicita una <em style={{ fontStyle: 'italic', color: 'var(--altiplano)', fontVariationSettings: '"opsz" 72' }}>demo</em>.
             </h2>
 
             <p style={{
-              fontFamily: 'Newsreader, serif', fontStyle: 'italic',
+              fontFamily: 'Newsreader, serif', fontWeight: 300,
               fontVariationSettings: '"opsz" 36',
-              fontSize: 'clamp(1.1rem, 1.8vw, 1.5rem)',
-              color: 'var(--text-muted)', lineHeight: 1.4, marginBottom: 0, textWrap: 'pretty',
+              fontSize: 'clamp(1.1rem, 1.8vw, 1.4rem)',
+              color: 'var(--text-muted)', lineHeight: 1.5, marginBottom: 0, textWrap: 'pretty',
             }}>
-              Empieza a leer tu territorio en tiempo real.
+              Descubre cómo SIMCII puede ayudarte a anticipar riesgos y tomar decisiones con datos reales.
             </p>
           </div>
 
@@ -116,7 +116,7 @@ function CTASection() {
                 onMouseEnter={e => { if (submitting) return; e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--altiplano)'; }}
                 onMouseLeave={e => { if (submitting) return; e.currentTarget.style.background = 'var(--altiplano)'; e.currentTarget.style.color = 'var(--azul-gris)'; }}
                 >
-                  {submitting ? 'Enviando…' : 'Agendar conversación'}
+                  {submitting ? 'Enviando…' : 'Solicitar demo'}
                   {!submitting && <svg width="12" height="12" viewBox="0 0 10 10" fill="none"><path d="M1 5h8m-3-3l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>}
                 </button>
 
@@ -149,11 +149,6 @@ function CTASection() {
 }
 
 function Footer() {
-  const links = {
-    'Plataforma': ['Módulo ambiental', 'Módulo social', 'Paneles & KPIs', 'Alertas en continuo'],
-    'Sectores': ['Minería', 'Energía y renovables', 'Infraestructura', 'Forestal', 'Sector público'],
-    'Empresa': ['Acerca de Accionet', 'Casos de uso', 'Prensa', 'Contacto'],
-  };
   return (
     <footer className="footer-root" style={{ borderTop: '1px solid var(--line)', padding: '72px 2.5rem 40px', background: 'var(--azul-gris-2)' }}>
       <div style={{ maxWidth: 1320, margin: '0 auto' }}>
@@ -169,10 +164,10 @@ function Footer() {
           <span style={{ fontFamily: 'Geist Mono, monospace', fontSize: 11, color: 'var(--text-soft)', letterSpacing: '0.18em' }}>MMXXVI</span>
         </div>
 
-        <div className="footer-grid" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: 64, marginBottom: 56 }}>
+        <div className="footer-grid" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 64, marginBottom: 56, alignItems: 'start' }}>
           <div>
-            <p style={{ fontFamily: 'Geist, sans-serif', fontSize: 16, color: 'var(--text-muted)', lineHeight: 1.5, maxWidth: 320, textWrap: 'pretty', margin: 0 }}>
-              Plataforma chilena de inteligencia territorial. Una práctica de Accionet para industrias y administraciones que operan donde el territorio importa.
+            <p style={{ fontFamily: 'Geist, sans-serif', fontSize: 16, color: 'var(--text-muted)', lineHeight: 1.6, maxWidth: 560, textWrap: 'pretty', margin: 0 }}>
+              Plataforma de gestión territorial basada en datos. Integración, análisis y visualización de información social, ambiental y contextual para la toma de decisiones en entornos complejos.
             </p>
             <div style={{ marginTop: 28, display: 'flex', gap: 10 }}>
               {['LI', 'TW', 'YT'].map((s, i) => (
@@ -185,21 +180,24 @@ function Footer() {
               ))}
             </div>
           </div>
-          {Object.entries(links).map(([group, items]) => (
-            <div key={group}>
-              <div style={{ fontFamily: 'Geist Mono, monospace', fontSize: 10, fontWeight: 500, color: 'var(--altiplano)', letterSpacing: '0.18em', textTransform: 'uppercase', marginBottom: 22, paddingBottom: 8, borderBottom: '1px solid var(--line)' }}>{group}</div>
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
-                {items.map(item => (
-                  <li key={item}>
-                    <a href="#" style={{ fontFamily: 'Geist, sans-serif', fontSize: 14, color: 'var(--text-muted)', textDecoration: 'none', transition: 'color 0.2s' }}
-                      onMouseEnter={e => e.target.style.color = 'var(--hueso)'}
-                      onMouseLeave={e => e.target.style.color = 'var(--text-muted)'}
-                    >{item}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          <div>
+            <div style={{ fontFamily: 'Geist Mono, monospace', fontSize: 10, fontWeight: 500, color: 'var(--altiplano)', letterSpacing: '0.18em', textTransform: 'uppercase', marginBottom: 18, paddingBottom: 8, borderBottom: '1px solid var(--line)' }}>Contacto</div>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
+              <li>
+                <a href="#demo" style={{ fontFamily: 'Geist, sans-serif', fontSize: 14, color: 'var(--text-muted)', textDecoration: 'none', transition: 'color 0.2s' }}
+                  onMouseEnter={e => e.target.style.color = 'var(--hueso)'}
+                  onMouseLeave={e => e.target.style.color = 'var(--text-muted)'}
+                >Solicitar una demo →</a>
+              </li>
+              <li>
+                <a href="mailto:contacto@accionet.net" style={{ fontFamily: 'Geist, sans-serif', fontSize: 14, color: 'var(--text-muted)', textDecoration: 'none', transition: 'color 0.2s' }}
+                  onMouseEnter={e => e.target.style.color = 'var(--hueso)'}
+                  onMouseLeave={e => e.target.style.color = 'var(--text-muted)'}
+                >contacto@accionet.net</a>
+              </li>
+              <li style={{ fontFamily: 'Geist, sans-serif', fontSize: 14, color: 'var(--text-muted)' }}>Santiago · Chile</li>
+            </ul>
+          </div>
         </div>
 
         <div style={{ borderTop: '1px dashed var(--line)', paddingTop: 24, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16 }}>

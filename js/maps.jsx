@@ -295,10 +295,10 @@ function PlatformMap() {
             letterSpacing: '-0.025em', color: 'var(--hueso)',
             textWrap: 'balance', lineHeight: 1.05, margin: 0, maxWidth: 720,
           }}>
-            Visibilidad total del territorio, <em style={{
+            Visibilidad y comprensión total del territorio, <em style={{
               fontStyle: 'italic', fontWeight: 400, color: 'var(--altiplano)',
               fontVariationSettings: '"opsz" 36',
-            }}>en un solo lente.</em>
+            }}>a través de un sistema integrado.</em>
           </h2>
           <div style={{ display: 'flex', gap: 0, border: '1px solid var(--line-strong)' }}>
             {['24 h', '7 d', '30 d'].map((p) => {
@@ -443,17 +443,17 @@ function CaseStudy() {
               letterSpacing: '-0.025em', color: 'var(--hueso)',
               lineHeight: 1.15, marginBottom: 32, textWrap: 'balance',
             }}>
-              Una faena y su entorno humano, <em style={{
+              Tu operación y su entorno, <em style={{
                 fontStyle: 'italic', color: 'var(--altiplano)',
                 fontVariationSettings: '"opsz" 36',
-              }}>observados al mismo tiempo.</em>
+              }}>en la misma ecuación.</em>
             </h2>
 
-            <p style={{ fontFamily: 'Geist, sans-serif', fontSize: 15, lineHeight: 1.75, color: 'var(--text-muted)', marginBottom: 22, textWrap: 'pretty' }}>
-              Sensores en el perímetro operacional registran aire, agua y ruido. En paralelo, las comunidades vecinas emiten señales propias: satisfacción, reportes, uso de compromisos.
+            <p style={{ fontFamily: 'Geist, sans-serif', fontSize: 16, lineHeight: 1.7, color: 'var(--text-muted)', marginBottom: 22, textWrap: 'pretty' }}>
+              Lo que ocurre fuera de tu operación impacta directamente en ella.
             </p>
-            <p style={{ fontFamily: 'Geist, sans-serif', fontSize: 15, lineHeight: 1.75, color: 'var(--text-muted)', marginBottom: 36, textWrap: 'pretty' }}>
-              Cuando una variable ambiental se correlaciona con un cambio en la percepción, SIMCII lo señala <em style={{ fontFamily: 'Newsreader, serif', fontStyle: 'italic', fontVariationSettings: '"opsz" 36', color: 'var(--altiplano)' }}>antes</em> del siguiente reporte mensual.
+            <p style={{ fontFamily: 'Geist, sans-serif', fontSize: 16, lineHeight: 1.7, color: 'var(--text-muted)', marginBottom: 36, textWrap: 'pretty' }}>
+              SIMCII conecta ambos mundos para que puedas <em style={{ fontFamily: 'Newsreader, serif', fontStyle: 'italic', fontVariationSettings: '"opsz" 36', color: 'var(--altiplano)' }}>anticiparte, no reaccionar.</em>
             </p>
 
             <div style={{ marginTop: 28, display: 'flex', alignItems: 'center', gap: 10 }}>

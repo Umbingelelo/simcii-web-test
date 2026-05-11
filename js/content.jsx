@@ -102,41 +102,41 @@ function Icon({ name, size = 28, color = 'currentColor' }) {
 // -------- Problem: editorial manifesto --------
 function Problem() {
   const [ref, visible] = useReveal();
-  const phrases = [
-    'Lo que no se mide, no existe en el territorio.',
-    'El reporte anual ya no es suficiente.',
-    'La evidencia llega antes que el conflicto.',
-  ];
 
   return (
     <section id="problem" className="problem-section" ref={ref} style={{ padding: '160px 2.5rem', maxWidth: 1320, margin: '0 auto', position: 'relative', background: 'var(--azul-gris)' }}>
       <div style={{ opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(30px)', transition: 'all 0.8s cubic-bezier(0.16,1,0.3,1)' }}>
         <ChapterLabel number="02" title="Principio" />
 
-        <div style={{ maxWidth: 900, margin: '0 auto' }}>
-          {phrases.map((phrase, i) => (
-            <div key={i}>
-              <p className="problem-phrase" style={{
-                fontFamily: 'Newsreader, serif', fontWeight: 300,
-                fontSize: 'clamp(2rem, 4.5vw, 4rem)',
-                lineHeight: 1.05, color: 'var(--hueso)',
-                letterSpacing: '-0.025em',
-                padding: '40px 0',
-              }}>{phrase}</p>
-              {i < phrases.length - 1 && (
-                <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '8px 0' }}>
-                  <span style={{ fontFamily: 'Geist Mono, monospace', fontSize: 14, color: 'var(--altiplano)' }}>—</span>
-                  <span style={{ flex: 1, height: 1, background: 'var(--line)' }} />
-                </div>
-              )}
-            </div>
-          ))}
+        <div style={{ maxWidth: 980, margin: '0 auto', position: 'relative' }}>
+          {/* Quote mark decorative */}
+          <span aria-hidden="true" style={{
+            position: 'absolute', top: -40, left: -12,
+            fontFamily: 'Newsreader, serif', fontWeight: 300,
+            fontSize: 'clamp(5rem, 10vw, 9rem)', lineHeight: 1,
+            color: 'var(--altiplano)', opacity: 0.35,
+          }}>“</span>
+
+          <blockquote className="problem-phrase" style={{
+            fontFamily: 'Newsreader, serif', fontWeight: 300,
+            fontSize: 'clamp(1.7rem, 3.6vw, 3rem)',
+            lineHeight: 1.2, color: 'var(--hueso)',
+            letterSpacing: '-0.02em',
+            padding: '24px 0 0',
+            textWrap: 'balance',
+            margin: 0,
+          }}>
+            Las organizaciones están operando con información fragmentada, reportes tardíos y sin capacidad predictiva. <em style={{
+              fontFamily: 'Newsreader, serif', fontStyle: 'italic',
+              fontVariationSettings: '"opsz" 72', color: 'var(--altiplano)', fontWeight: 400,
+            }}>SIMCII conecta lo que ocurre en el territorio</em>, y lo transforma en inteligencia territorial.
+          </blockquote>
         </div>
 
         {/* Marquee */}
-        <div style={{ marginTop: 80, borderTop: '1px solid var(--line)', borderBottom: '1px solid var(--line)', padding: '24px 0', overflow: 'hidden', position: 'relative' }}>
+        <div style={{ marginTop: 96, borderTop: '1px solid var(--line)', borderBottom: '1px solid var(--line)', padding: '24px 0', overflow: 'hidden', position: 'relative' }}>
           <div className="ticker-track" style={{ fontFamily: 'Geist Mono, monospace', fontSize: 14, color: 'var(--altiplano)', opacity: 0.5, letterSpacing: '0.16em', textTransform: 'uppercase' }}>
-            {'SIN DATOS · NO HAY SOSTENIBILIDAD · '.repeat(12)}
+            {'INTEGRACIÓN · ANÁLISIS · VISUALIZACIÓN · INTELIGENCIA TERRITORIAL · '.repeat(8)}
           </div>
         </div>
       </div>
@@ -150,25 +150,25 @@ const MODULES = [
     num: '03.1',
     title: 'Gestión social y',
     titleAccent: 'relacionamiento comunitario',
-    desc: 'Reuniones, actividades, compromisos y acuerdos georreferenciados. La memoria viva del vínculo con el territorio.',
-    categories: ['INTERACCIONES', 'COMPROMISOS', 'CONFLICTIVIDAD', 'EVIDENCIAS', 'ACTORES', 'TEMÁTICAS'],
+    desc: 'Registro estructurado de interacciones, compromisos y actividades en terreno.',
+    categories: ['INTERACCIONES', 'COMPROMISOS', 'ACTIVIDADES EN TERRENO', 'EVIDENCIAS', 'ACTORES', 'TEMÁTICAS'],
     caption: 'Fig. 3.1 — Cada interacción documentada con evidencia y trazabilidad.',
   },
   {
     num: '03.2',
     title: 'Monitoreo',
     titleAccent: 'ambiental',
-    desc: 'Sensores y estaciones que entregan lecturas continuas. Tendencias, desviaciones y eventos cruzados con la operación.',
+    desc: 'Integración de variables críticas en tiempo real para el seguimiento continuo del entorno.',
     categories: ['PM2.5 · 23 µg/m³', 'AQI · 47', 'COV · 0.18 ppm', 'VIENTO SO 4.2 m/s', 'pH 7.4 · TURB 1.1 NTU', 'RUIDO 52 dB'],
     caption: 'Fig. 3.2 — Lecturas de referencia. Cada instalación genera sus propios valores.',
   },
   {
     num: '03.3',
-    title: 'Monitoreo de',
-    titleAccent: 'percepción y redes',
-    desc: 'Escucha digital estructurada por territorio, actores, temas y tono. Detecta tendencias antes de que escalen.',
-    categories: ['MENCIONES', 'SENTIMIENTO', 'ACTORES INFLUYENTES', 'TENDENCIAS', 'CRISIS POTENCIALES', 'TÓPICOS'],
-    caption: 'Fig. 3.3 — Clasificación automática por taxonomía territorial.',
+    title: 'Contexto',
+    titleAccent: 'territorial',
+    desc: 'Análisis de información pública, estudios privados, escucha digital y señales del entorno que permiten entender dinámicas sociales, económicas y regulatorias.',
+    categories: ['INFORMACIÓN PÚBLICA', 'ESTUDIOS PRIVADOS', 'ESCUCHA DIGITAL', 'DINÁMICAS SOCIALES', 'DINÁMICAS ECONÓMICAS', 'SEÑALES REGULATORIAS'],
+    caption: 'Fig. 3.3 — Lectura cruzada del entorno operacional.',
   },
   {
     num: '03.4',
@@ -239,10 +239,10 @@ function Modules() {
           letterSpacing: '-0.025em', color: 'var(--hueso)',
           lineHeight: 1.05, marginBottom: 80, maxWidth: 900, textWrap: 'balance',
         }}>
-          Cuatro módulos. <em style={{
+          Una plataforma. <em style={{
             fontStyle: 'italic', fontWeight: 400, color: 'var(--altiplano)',
             fontVariationSettings: '"opsz" 36',
-          }}>Un mismo lente.</em>
+          }}>Cuatro capacidades.</em>
         </h2>
 
         <div className="modules-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
@@ -304,10 +304,10 @@ function Sectors() {
           letterSpacing: '-0.025em', color: 'var(--hueso)', textWrap: 'balance',
           maxWidth: 820, lineHeight: 1.05, marginBottom: 56,
         }}>
-          Diseñado para industrias que operan en <em style={{
+          Diseñado para organizaciones con <em style={{
             fontStyle: 'italic', fontWeight: 400, color: 'var(--altiplano)',
             fontVariationSettings: '"opsz" 36',
-          }}>territorios complejos</em>.
+          }}>responsabilidad territorial</em>.
         </h2>
 
         <div className="sectors-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
@@ -371,7 +371,7 @@ function FounderQuote() {
   return (
     <section ref={ref} className="founder-section" style={{ padding: '0 2.5rem 140px', maxWidth: 1100, margin: '0 auto', background: 'var(--azul-gris)' }}>
       <div style={{ opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(30px)', transition: 'all 0.9s cubic-bezier(0.16,1,0.3,1)' }}>
-        <ChapterLabel number="08" title="Manifiesto" />
+        <ChapterLabel number="08" title="Promesa" />
 
         <p style={{
           fontFamily: 'Newsreader, serif', fontWeight: 300,
@@ -379,15 +379,15 @@ function FounderQuote() {
           letterSpacing: '-0.025em', color: 'var(--hueso)',
           lineHeight: 1.3, textWrap: 'balance',
         }}>
-          La innovación es llevar las métricas que las empresas ya dominan en producción y costos al{' '}
+          SIMCII transforma datos territoriales en{' '}
           <em style={{
             fontFamily: 'Newsreader, serif', fontStyle: 'italic',
             fontVariationSettings: '"opsz" 36', color: 'var(--altiplano)', fontWeight: 400,
-          }}>ámbito social y medioambiental</em>, y convertirlas en{' '}
+          }}>decisiones estratégicas</em>. Anticipa conflictos, mejora el relacionamiento y fortalece tu operación con{' '}
           <em style={{
             fontFamily: 'Newsreader, serif', fontStyle: 'italic',
             fontVariationSettings: '"opsz" 36', color: 'var(--altiplano)', fontWeight: 400,
-          }}>indicadores estratégicos</em>.
+          }}>evidencia</em>.
         </p>
       </div>
     </section>
