@@ -1,0 +1,15 @@
+{
+  "name": "simcii-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SIMCII — landing de monitoreo ambiental, social y territorial",
+  "scripts": {
+    "build": "babel js --out-dir js/compiled --extensions \".jsx\" --presets @babel/preset-react",
+    "watch": "babel js --out-dir js/compiled --extensions \".jsx\" --presets @babel/preset-react --watch"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.24.0",
+    "@babel/core": "^7.24.0",
+    "@babel/preset-react": "^7.24.0"
+  }
+}

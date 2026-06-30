@@ -1,5 +1,5 @@
 
-// Problem, Modules, Sectors, Stats, FounderQuote — Bitácora Territorial
+// Problem · Modules · Sectors · Stats · FounderQuote — SIMCII Cordillera Cívica
 
 function useReveal(threshold = 0.15) {
   const ref = React.useRef(null);
@@ -15,9 +15,9 @@ function useReveal(threshold = 0.15) {
 function ChapterLabel({ number, title }) {
   return (
     <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, marginBottom: 36 }}>
-      <span style={{ fontFamily: 'Geist Mono, monospace', fontSize: 11, color: 'var(--altiplano)', letterSpacing: '0.18em' }}>§ {number}</span>
+      <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 11, color: 'var(--altiplano)', letterSpacing: '0.18em' }}>§ {number}</span>
       <span style={{ flex: 1, height: 1, background: 'var(--line)' }} />
-      <span style={{ fontFamily: 'Geist Mono, monospace', fontSize: 10, color: 'var(--text-soft)', letterSpacing: '0.2em', textTransform: 'uppercase' }}>{title}</span>
+      <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 10, color: 'var(--text-soft)', letterSpacing: '0.2em', textTransform: 'uppercase' }}>{title}</span>
     </div>
   );
 }
@@ -112,13 +112,13 @@ function Problem() {
           {/* Quote mark decorative */}
           <span aria-hidden="true" style={{
             position: 'absolute', top: -40, left: -12,
-            fontFamily: 'Newsreader, serif', fontWeight: 300,
+            fontFamily: 'Manrope, sans-serif', fontWeight: 500,
             fontSize: 'clamp(5rem, 10vw, 9rem)', lineHeight: 1,
             color: 'var(--altiplano)', opacity: 0.35,
           }}>“</span>
 
           <blockquote className="problem-phrase" style={{
-            fontFamily: 'Newsreader, serif', fontWeight: 300,
+            fontFamily: 'Manrope, sans-serif', fontWeight: 500,
             fontSize: 'clamp(1.7rem, 3.6vw, 3rem)',
             lineHeight: 1.2, color: 'var(--hueso)',
             letterSpacing: '-0.02em',
@@ -127,15 +127,15 @@ function Problem() {
             margin: 0,
           }}>
             Las organizaciones están operando con información fragmentada, reportes tardíos y sin capacidad predictiva. <em style={{
-              fontFamily: 'Newsreader, serif', fontStyle: 'italic',
-              fontVariationSettings: '"opsz" 72', color: 'var(--altiplano)', fontWeight: 400,
+              fontFamily: 'Manrope, sans-serif', 
+              color: 'var(--altiplano)', fontWeight: 700,
             }}>SIMCII conecta lo que ocurre en el territorio</em>, y lo transforma en inteligencia territorial.
           </blockquote>
         </div>
 
         {/* Marquee */}
         <div style={{ marginTop: 96, borderTop: '1px solid var(--line)', borderBottom: '1px solid var(--line)', padding: '24px 0', overflow: 'hidden', position: 'relative' }}>
-          <div className="ticker-track" style={{ fontFamily: 'Geist Mono, monospace', fontSize: 14, color: 'var(--altiplano)', opacity: 0.5, letterSpacing: '0.16em', textTransform: 'uppercase' }}>
+          <div className="ticker-track" style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 14, color: 'var(--altiplano)', opacity: 0.5, letterSpacing: '0.16em', textTransform: 'uppercase' }}>
             {'INTEGRACIÓN · ANÁLISIS · VISUALIZACIÓN · INTELIGENCIA TERRITORIAL · '.repeat(8)}
           </div>
         </div>
@@ -159,7 +159,7 @@ const MODULES = [
     title: 'Monitoreo',
     titleAccent: 'ambiental',
     desc: 'Integración de variables críticas en tiempo real para el seguimiento continuo del entorno.',
-    categories: ['PM2.5 · 23 µg/m³', 'AQI · 47', 'COV · 0.18 ppm', 'VIENTO SO 4.2 m/s', 'pH 7.4 · TURB 1.1 NTU', 'RUIDO 52 dB'],
+    categories: ['MP2.5 · 23 µg/m³', 'MP10 · 38 µg/m³', 'SO₂ · 12 ppb', 'RUIDO · 52 dB', 'SCORE 0–100', 'ESTACIONES IoT'],
     caption: 'Fig. 3.2 — Lecturas de referencia. Cada instalación genera sus propios valores.',
   },
   {
@@ -175,7 +175,7 @@ const MODULES = [
     title: 'Dashboard ejecutivo e',
     titleAccent: 'inteligencia territorial',
     desc: 'Score territorial compuesto. Indicadores ajustables a la estrategia de cada organización. Una sola pantalla, todas las dimensiones.',
-    categories: ['SCORE TERRITORIAL', 'ZONAS CRÍTICAS', 'INDICADORES COMPUESTOS', 'ALERTAS', 'RECOMENDACIONES', 'AGENTE DE CONSULTA'],
+    categories: ['SCORE TERRITORIAL', 'ZONAS CRÍTICAS', 'INDICADORES COMPUESTOS', 'ALERTAS', 'REPORTES', 'EXPORTACIÓN'],
     caption: 'Fig. 3.4 — Visión consolidada para decisiones estratégicas.',
   },
 ];
@@ -194,23 +194,23 @@ function ModuleCard({ mod }) {
         transition: 'all 0.3s',
       }}
     >
-      <div style={{ fontFamily: 'Geist Mono, monospace', fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.18em', color: 'var(--altiplano)', marginBottom: 18 }}>
+      <div style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.18em', color: 'var(--altiplano)', marginBottom: 18 }}>
         § {mod.num} · MÓDULO
       </div>
       <h3 style={{
-        fontFamily: 'Newsreader, serif', fontWeight: 500, fontSize: 28,
+        fontFamily: 'Manrope, sans-serif', fontWeight: 700, fontSize: 28,
         color: 'var(--hueso)', letterSpacing: '-0.02em', marginBottom: 18, lineHeight: 1.2,
       }}>
         {mod.title}{' '}
         <em style={{
-          fontFamily: 'Newsreader, serif', fontStyle: 'italic',
-          fontVariationSettings: '"opsz" 36', color: 'var(--altiplano)', fontWeight: 400,
+          fontFamily: 'Manrope, sans-serif', 
+          color: 'var(--altiplano)', fontWeight: 700,
         }}>{mod.titleAccent}</em>
       </h3>
-      <p style={{ fontFamily: 'Geist, sans-serif', fontSize: 15, color: 'var(--text-muted)', lineHeight: 1.55, marginBottom: 28 }}>
+      <p style={{ fontFamily: 'Source Sans 3, sans-serif', fontSize: 15, color: 'var(--text-muted)', lineHeight: 1.55, marginBottom: 28 }}>
         {mod.desc}
       </p>
-      <div style={{ fontFamily: 'Geist Mono, monospace', fontSize: 11, color: 'var(--altiplano)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 18, lineHeight: 2 }}>
+      <div style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 11, color: 'var(--altiplano)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 18, lineHeight: 2 }}>
         {mod.categories.map((cat, i) => (
           <span key={i}>
             {cat}
@@ -218,7 +218,7 @@ function ModuleCard({ mod }) {
           </span>
         ))}
       </div>
-      <div style={{ fontFamily: 'Geist Mono, monospace', fontSize: 10, color: 'var(--text-soft)' }}>
+      <div style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 10, color: 'var(--text-soft)' }}>
         {mod.caption}
       </div>
     </article>
@@ -233,15 +233,15 @@ function Modules() {
         <ChapterLabel number="03" title="Módulos" />
 
         <h2 style={{
-          fontFamily: 'Newsreader, serif',
-          fontSize: 'clamp(2rem, 3.6vw, 3.2rem)', fontWeight: 400,
-          fontVariationSettings: '"opsz" 72',
+          fontFamily: 'Manrope, sans-serif',
+          fontSize: 'clamp(2rem, 3.6vw, 3.2rem)', fontWeight: 800,
+         
           letterSpacing: '-0.025em', color: 'var(--hueso)',
           lineHeight: 1.05, marginBottom: 80, maxWidth: 900, textWrap: 'balance',
         }}>
           Una plataforma. <em style={{
-            fontStyle: 'italic', fontWeight: 400, color: 'var(--altiplano)',
-            fontVariationSettings: '"opsz" 36',
+            fontWeight: 400, color: 'var(--altiplano)',
+           
           }}>Cuatro capacidades.</em>
         </h2>
 
@@ -276,14 +276,14 @@ function SectorCard({ sector }) {
         padding: 32,
         transition: 'all 0.3s',
         transform: hov ? 'translate(-2px, -2px)' : 'none',
-        boxShadow: hov ? '4px 4px 0 rgba(110,240,255,0.2)' : 'none',
+        boxShadow: hov ? '4px 4px 0 rgba(92,130,160,0.2)' : 'none',
       }}
     >
       <Icon name={sector.icon} size={32} color="var(--altiplano)" />
-      <h4 style={{ fontFamily: 'Newsreader, serif', fontWeight: 500, fontSize: 22, color: 'var(--hueso)', marginTop: 16, marginBottom: 8, letterSpacing: '-0.01em' }}>
+      <h3 style={{ fontFamily: 'Manrope, sans-serif', fontWeight: 700, fontSize: 22, color: 'var(--hueso)', marginTop: 16, marginBottom: 8, letterSpacing: '-0.01em' }}>
         {sector.label}
-      </h4>
-      <p style={{ fontFamily: 'Geist, sans-serif', fontSize: 14, color: 'var(--text-muted)', margin: 0, lineHeight: 1.5 }}>
+      </h3>
+      <p style={{ fontFamily: 'Source Sans 3, sans-serif', fontSize: 14, color: 'var(--text-muted)', margin: 0, lineHeight: 1.5 }}>
         {sector.desc}
       </p>
     </div>
@@ -298,15 +298,15 @@ function Sectors() {
         <ChapterLabel number="05" title="Sectores" />
 
         <h2 style={{
-          fontFamily: 'Newsreader, serif',
-          fontSize: 'clamp(1.9rem, 3.2vw, 2.8rem)', fontWeight: 400,
-          fontVariationSettings: '"opsz" 72',
+          fontFamily: 'Manrope, sans-serif',
+          fontSize: 'clamp(1.9rem, 3.2vw, 2.8rem)', fontWeight: 800,
+         
           letterSpacing: '-0.025em', color: 'var(--hueso)', textWrap: 'balance',
           maxWidth: 820, lineHeight: 1.05, marginBottom: 56,
         }}>
           Diseñado para organizaciones con <em style={{
-            fontStyle: 'italic', fontWeight: 400, color: 'var(--altiplano)',
-            fontVariationSettings: '"opsz" 36',
+            fontWeight: 400, color: 'var(--altiplano)',
+           
           }}>responsabilidad territorial</em>.
         </h2>
 
@@ -337,8 +337,8 @@ const DIFFERENTIATORS = [
   },
   {
     icon: 'target',
-    title: 'Potencial predictivo',
-    desc: 'Modelos que anticipan conflictos antes de que sean visibles.',
+    title: 'Alertas tempranas',
+    desc: 'Señales del entorno que avisan a tiempo, para anticipar en vez de reaccionar.',
   },
 ];
 
@@ -355,8 +355,8 @@ function Stats() {
               <div style={{ marginBottom: 20 }}>
                 <Icon name={d.icon} size={32} color="var(--altiplano)" />
               </div>
-              <div style={{ fontFamily: 'Newsreader, serif', fontSize: 20, fontWeight: 500, color: 'var(--hueso)', marginBottom: 8, letterSpacing: '-0.01em' }}>{d.title}</div>
-              <div style={{ fontFamily: 'Geist, sans-serif', fontSize: 14, color: 'var(--text-muted)', lineHeight: 1.55 }}>{d.desc}</div>
+              <div style={{ fontFamily: 'Manrope, sans-serif', fontSize: 20, fontWeight: 700, color: 'var(--hueso)', marginBottom: 8, letterSpacing: '-0.01em' }}>{d.title}</div>
+              <div style={{ fontFamily: 'Source Sans 3, sans-serif', fontSize: 14, color: 'var(--text-muted)', lineHeight: 1.55 }}>{d.desc}</div>
             </div>
           ))}
         </div>
@@ -374,19 +374,19 @@ function FounderQuote() {
         <ChapterLabel number="08" title="Promesa" />
 
         <p style={{
-          fontFamily: 'Newsreader, serif', fontWeight: 300,
+          fontFamily: 'Manrope, sans-serif', fontWeight: 500,
           fontSize: 'clamp(1.6rem, 2.8vw, 2.3rem)',
           letterSpacing: '-0.025em', color: 'var(--hueso)',
           lineHeight: 1.3, textWrap: 'balance',
         }}>
           SIMCII transforma datos territoriales en{' '}
           <em style={{
-            fontFamily: 'Newsreader, serif', fontStyle: 'italic',
-            fontVariationSettings: '"opsz" 36', color: 'var(--altiplano)', fontWeight: 400,
+            fontFamily: 'Manrope, sans-serif', 
+            color: 'var(--altiplano)', fontWeight: 700,
           }}>decisiones estratégicas</em>. Anticipa conflictos, mejora el relacionamiento y fortalece tu operación con{' '}
           <em style={{
-            fontFamily: 'Newsreader, serif', fontStyle: 'italic',
-            fontVariationSettings: '"opsz" 36', color: 'var(--altiplano)', fontWeight: 400,
+            fontFamily: 'Manrope, sans-serif', 
+            color: 'var(--altiplano)', fontWeight: 700,
           }}>evidencia</em>.
         </p>
       </div>

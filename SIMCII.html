@@ -3,62 +3,128 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SIMCII · Gestión Territorial Inteligente</title>
+  <title>SIMCII · Plataforma de monitoreo ambiental, social y territorial</title>
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
-  <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png" />
-  <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon-512.png" />
-  <link rel="apple-touch-icon" sizes="192x192" href="assets/favicon-192.png" />
-  <meta name="theme-color" content="#15191C" />
+  <link rel="icon" href="assets/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/svg+xml" href="assets/logo-simcii-oscuro.svg" />
+  <link rel="apple-touch-icon" href="assets/favicon.ico" />
+  <meta name="theme-color" content="#17181B" />
+  <meta name="description" content="SIMCII es una plataforma de monitoreo ambiental, social y territorial: KPIs medioambientales, gestión social y comunitaria, compromisos y licencia social para la operación, con evidencia y en línea." />
+  <meta name="keywords" content="plataforma monitoreo medioambiental, plataforma monitoreo social, plataforma monitoreo sostenibilidad, plataforma monitoreo comunidades, plataforma monitoreo online, regulación medioambiental, compromisos medioambientales, licencia social para la operación, KPIs medioambientales, gestión social, gestión medioambiental, gestión comunitaria, gestión territorios" />
+  <link rel="canonical" href="https://simcii.ai/" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Accionet" />
 
-  <!-- Fonts -->
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SIMCII" />
+  <meta property="og:locale" content="es_CL" />
+  <meta property="og:url" content="https://simcii.ai/" />
+  <meta property="og:title" content="SIMCII · Plataforma de monitoreo ambiental, social y territorial" />
+  <meta property="og:description" content="Monitoreo ambiental, social y territorial en una sola plataforma. KPIs medioambientales, gestión comunitaria, compromisos y licencia social para operar — con evidencia." />
+  <meta property="og:image" content="https://simcii.ai/assets/og-image.png" />
+  <meta property="og:image:alt" content="SIMCII — inteligencia territorial" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SIMCII · Plataforma de monitoreo ambiental, social y territorial" />
+  <meta name="twitter:description" content="Monitoreo ambiental, social y territorial en una sola plataforma. Con evidencia, no con intuición." />
+  <meta name="twitter:image" content="https://simcii.ai/assets/og-image.png" />
+
+  <!-- JSON-LD · Organización + Software -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://simcii.ai/#organization",
+        "name": "SIMCII",
+        "url": "https://simcii.ai/",
+        "logo": "https://simcii.ai/assets/logo-simcii-oscuro.svg",
+        "description": "Plataforma de monitoreo ambiental, social y territorial.",
+        "parentOrganization": { "@type": "Organization", "name": "Accionet" },
+        "areaServed": "CL",
+        "email": "contacto@accionet.net"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "SIMCII",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "url": "https://simcii.ai/",
+        "description": "Plataforma de monitoreo ambiental, social y territorial: KPIs medioambientales, gestión social y comunitaria, compromisos, regulación y licencia social para la operación, con scores por territorio y alertas.",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "CLP", "description": "Demo a solicitud" },
+        "publisher": { "@id": "https://simcii.ai/#organization" }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Fonts — Manrope (display) · Source Sans 3 (texto) · JetBrains Mono (datos) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..800;1,6..72,300..800&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
   <!-- Mapbox -->
   <link href="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css" rel="stylesheet" />
   <script src="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
   <script src="js/config.js"></script>
 
-  <!-- React + Babel -->
-  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <!-- Three.js (UMD) — elemento 3D: cordillera de 3 planos -->
+  <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+
+  <!-- React (producción) — JSX precompilado, sin Babel en navegador -->
+  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      /* === BITÁCORA TERRITORIAL === */
+      /* === SIMCII · CORDILLERA CÍVICA (dark corrected) ===
+         Paleta del Manual de Marca v3.0. La terracota es SEÑAL, nunca superficie. */
 
-      /* Fondo principal — el azul-gris de la libreta */
-      --azul-gris:    #15191C;
-      --azul-gris-2:  #1B2025;
-      --azul-gris-3:  #232930;
-      --tinta:        #0E1115;
+      /* Marca — tokens canónicos */
+      --paper:         #F5F2EB;   /* blanco documento  */
+      --bg:            #17181B;   /* negro institucional */
+      --surface:       #1F2024;   /* card / panel */
+      --surface-2:     #26282C;   /* elevado / hover */
+      --ink:           #121316;   /* CTA / footer profundo */
+      --gris-ciudad:   #8A8C8E;   /* estructura/labels — NUNCA texto de lectura */
+      --azul-civico:   #2F5D7C;   /* acento confianza: fills, botón sólido */
+      --azul-claro:    #6B90AC;   /* acento sobre oscuro: links/eyebrows/énfasis (AA en texto pequeño) */
+      --azul-deep:     #234A63;   /* profundidad / plano medio cordillera */
+      --terracota:     #B96B45;   /* SEÑAL puntual: plano frontal, alerta, acento hero */
+      --terracota-deep:#9B4F30;   /* error / alerta severa */
+
+      /* Fondo / superficies (nombres legacy → valores de marca) */
+      --azul-gris:    var(--bg);
+      --azul-gris-2:  var(--surface);
+      --azul-gris-3:  var(--surface-2);
+      --tinta:        var(--ink);
 
       /* Texto */
-      --hueso:        #F2EDE4;
-      --sal:          #E8E3D3;
-      --text-muted:   rgba(242, 237, 228, 0.62);
-      --text-soft:    rgba(242, 237, 228, 0.40);
-      --text-quiet:   rgba(242, 237, 228, 0.22);
+      --hueso:        #F5F2EB;
+      --sal:          #E8E3D5;
+      --text-muted:   rgba(245, 242, 235, 0.64);
+      --text-soft:    rgba(245, 242, 235, 0.55);
+      --text-quiet:   rgba(245, 242, 235, 0.22);
 
       /* Líneas */
-      --line:         rgba(242, 237, 228, 0.10);
-      --line-strong:  rgba(242, 237, 228, 0.20);
+      --line:         rgba(245, 242, 235, 0.10);
+      --line-strong:  rgba(245, 242, 235, 0.18);
 
-      /* Marca — el cian es la firma */
-      --altiplano:    #6EF0FF;
-      --altiplano-2:  rgba(110, 240, 255, 0.15);
-      --altiplano-3:  rgba(110, 240, 255, 0.04);
+      /* Acento primario (firma) = azul cívico claro, legible sobre oscuro */
+      --altiplano:    var(--azul-claro);
+      --altiplano-2:  rgba(92, 130, 160, 0.15);
+      --altiplano-3:  rgba(92, 130, 160, 0.05);
 
-      /* Estados */
-      --fosforo:      #CFFF04;
-      --ambar:        #FFB547;
-      --oxido:        #8C2A1C;
+      /* Estados — señal en terracota (rara) */
+      --fosforo:      var(--azul-claro);   /* "ok / en vivo" → azul info (sin verde neón) */
+      --ambar:        var(--terracota);    /* atención / señal */
+      --oxido:        var(--terracota-deep); /* error */
 
       /* Aliases legacy — mantienen compatibilidad sin tocar JSX */
       --obsidiana:    var(--tinta);
@@ -80,22 +146,27 @@
       --brasa:        var(--ambar);
       --line-claro:   var(--line);
       --line-oscuro:  var(--line);
-      --bg:           var(--azul-gris);
-      --surface:      var(--azul-gris-2);
       --text:         var(--hueso);
       --accent:       var(--altiplano);
       --accent2:      var(--ambar);
     }
 
     html { scroll-behavior: smooth; }
+    /* Offset para que el nav fijo no tape los títulos al saltar por ancla */
+    section[id] { scroll-margin-top: 84px; }
 
     body {
-      background: var(--azul-gris);
-      color: var(--hueso);
-      font-family: 'Geist', sans-serif;
+      background: var(--bg);
+      color: var(--paper);
+      font-family: 'Source Sans 3', system-ui, sans-serif;
+      font-size: 16px; line-height: 1.55;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
+
+    h1, h2, h3, h4, h5, .font-display { font-family: 'Manrope', system-ui, sans-serif; }
+    /* La marca no usa itálica: el énfasis es por color/peso */
+    em { font-style: normal; }
 
     .ticker-track { display: inline-flex; animation: ticker 50s linear infinite; white-space: nowrap; }
     .ticker-track:hover { animation-play-state: paused; }
@@ -134,15 +205,21 @@
 
     @keyframes loaderFill { to { transform: scaleX(1); } }
 
-    /* Grano geológico */
+    /* Grano sutil de papel/territorio */
     body::before {
       content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9998;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
-      opacity: 0.035; mix-blend-mode: screen;
+      opacity: 0.025; mix-blend-mode: overlay;
     }
 
     /* Selección editorial */
-    ::selection { background: var(--altiplano); color: var(--azul-gris); }
+    ::selection { background: var(--azul-civico); color: var(--paper); }
+
+    /* Cordillera como separador de sección (silueta de 3 planos) */
+    .cordillera-sep { display:block; width:100%; height:46px; }
+    .cordillera-sep .plano-fondo  { fill: var(--gris-ciudad); opacity:.32; }
+    .cordillera-sep .plano-medio  { fill: var(--azul-deep); opacity:.85; }
+    .cordillera-sep .plano-frontal{ fill: var(--terracota); }
 
     /* Mapbox popup override */
     .mapboxgl-popup-content {
@@ -157,8 +234,24 @@
 
     /* Scrollbar */
     ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: var(--azul-gris-2); }
-    ::-webkit-scrollbar-thumb { background: rgba(242,237,228,0.18); border-radius: 0; }
+    ::-webkit-scrollbar-track { background: var(--surface); }
+    ::-webkit-scrollbar-thumb { background: rgba(245,242,235,0.18); border-radius: 0; }
+
+    /* Accesibilidad: foco visible gestionado */
+    a:focus-visible, button:focus-visible, input:focus-visible {
+      outline: 2px solid var(--azul-claro); outline-offset: 2px;
+    }
+
+    /* Respeta prefers-reduced-motion: desactiva loops/parallax/3D-orbit */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+      }
+      .ticker-track, .scan-sweep, .chile-scan { animation: none !important; }
+    }
 
     /* === RESPONSIVE === */
 
@@ -218,6 +311,8 @@
       .diff-section { padding: 56px 1.25rem !important; margin-bottom: 80px !important; }
       .diff-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
       .casestudy-section { padding: 0 1.25rem 80px !important; }
+      .casestudy-grid { grid-template-columns: 1fr !important; }
+      .scores-grid { grid-template-columns: repeat(2, 1fr) !important; }
       .founder-section { padding: 0 1.25rem 80px !important; }
 
       .cta-section { padding: 40px 1.25rem 80px !important; }
@@ -250,12 +345,32 @@
   </style>
 </head>
 <body>
-  <div id="root"></div>
+  <div id="root">
+    <!-- Contenido base rastreable (se reemplaza al hidratar React) -->
+    <noscript>
+      <main style="max-width:760px;margin:0 auto;padding:48px 24px;color:#F5F2EB;font-family:system-ui,sans-serif;">
+        <h1>SIMCII — Plataforma de monitoreo ambiental, social y territorial</h1>
+        <p>SIMCII integra el monitoreo ambiental, social y territorial en una sola plataforma online. Mide, lee y anticipa el territorio con evidencia.</p>
+        <h2>Qué hace SIMCII</h2>
+        <ul>
+          <li>Monitoreo medioambiental: estaciones, parámetros y KPIs medioambientales con score 0–100.</li>
+          <li>Gestión social y comunitaria: actores, compromisos medioambientales y alertas territoriales.</li>
+          <li>Contexto y regulación medioambiental: señales del entorno y cumplimiento (RCA).</li>
+          <li>Sostenibilidad y licencia social para la operación, con datos comparables por territorio.</li>
+        </ul>
+        <h2>Para quién</h2>
+        <p>Minería, energía y renovables, infraestructura, forestal, sector público y consultoría.</p>
+        <p><a href="mailto:contacto@accionet.net" style="color:#5C82A0;">Solicitar una demo</a> · Santiago, Chile · por Accionet.</p>
+      </main>
+    </noscript>
+  </div>
 
-  <script type="text/babel" src="js/nav-hero.jsx"></script>
-  <script type="text/babel" src="js/content.jsx"></script>
-  <script type="text/babel" src="js/maps.jsx"></script>
-  <script type="text/babel" src="js/cta-footer.jsx"></script>
-  <script type="text/babel" src="js/app.jsx"></script>
+  <!-- JSX precompilado (npm run build · ver js/*.jsx como fuente) -->
+  <script src="js/compiled/cordillera.js"></script>
+  <script src="js/compiled/nav-hero.js"></script>
+  <script src="js/compiled/content.js"></script>
+  <script src="js/compiled/maps.js"></script>
+  <script src="js/compiled/cta-footer.js"></script>
+  <script src="js/compiled/app.js"></script>
 </body>
 </html>
