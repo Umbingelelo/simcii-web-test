@@ -63,7 +63,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/maplibre-gl@5.9.0/dist/maplibre-gl.css" rel="stylesheet" />
   <link rel="stylesheet" href="/assets/v4.css" />
 </head>
@@ -86,12 +86,16 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <div class="hero-copy">
-          <span class="hero-live"><span class="dot" aria-hidden="true"></span>Red de monitoreo en vivo · Antofagasta &amp; Valparaíso</span>
-          <h1 class="h-display" id="hero-title">El territorio, medido en tiempo real.</h1>
-          <p class="hero-sub">SIMCII convierte estaciones, comunidad y contexto en <span class="serif-hit">evidencia</span>: scores comparables de 0 a 100 por territorio, alertas tempranas y trazabilidad completa.</p>
+          <div class="hero-ficha" role="list" aria-label="Estado de la red">
+            <span role="listitem"><b>●</b> red en vivo</span>
+            <span role="listitem">8 estaciones</span>
+            <span role="listitem">Antofagasta · Valparaíso</span>
+          </div>
+          <h1 class="h-display" id="hero-title"><span class="thin">El territorio,</span><span class="hl">medido en</span><span class="hl">tiempo real.</span></h1>
+          <p class="hero-sub">Estaciones, comunidad y contexto convertidos en <span class="hit">evidencia</span>: scores de 0 a 100 por territorio, alertas tempranas y trazabilidad completa.</p>
           <div class="hero-actions">
             <a class="btn" href="#demo" data-magnetic>Solicitar una demo</a>
-            <a class="btn-ghost" href="https://exponor.simcii.ai" target="_blank" rel="noopener">Explorar la demo en vivo ↗</a>
+            <a class="btn-ghost" href="https://exponor.simcii.ai" target="_blank" rel="noopener">Explorar la demo en vivo <span class="g g-out" aria-hidden="true"></span></a>
           </div>
         </div>
         <div class="hero-map">
@@ -121,9 +125,9 @@
     <section class="sec" id="evolucion">
       <div class="wrap">
         <div class="sec-head">
-          <span class="kicker">Evolución</span>
-          <h2 class="h-sec">Un territorio no se entiende en una foto: se lee <span class="serif-hit">en el tiempo</span>.</h2>
-          <p>Los scores de SIMCII son series continuas. La tendencia — no el dato aislado — es la que avisa antes de que el problema escale.</p>
+          <div class="cota"><span class="tri"></span><span class="lbl">Evolución</span><span class="ln"></span><span class="alt">serie · 30 días</span></div>
+          <h2 class="h-sec">Un territorio no se entiende en una foto: se lee <span class="hit">en el tiempo</span>.</h2>
+          <p>Los scores son series continuas. La tendencia avisa antes que el dato aislado.</p>
         </div>
         <div class="chart-shell">
           <div class="chart-top">
@@ -144,8 +148,8 @@
     <section class="sec" id="capacidades" style="padding-top:0">
       <div class="wrap">
         <div class="sec-head">
-          <span class="kicker">Capacidades</span>
-          <h2 class="h-sec">Todo lo que tu equipo territorial necesita, junto.</h2>
+          <div class="cota"><span class="tri"></span><span class="lbl">Capacidades</span><span class="ln"></span><span class="alt">6 módulos</span></div>
+          <h2 class="h-sec">Lo que tu equipo territorial necesita, junto.</h2>
         </div>
         <div class="bento">
           <div class="cell cell-hero">
@@ -188,7 +192,7 @@
     <section class="sec" style="padding-top:0">
       <div class="wrap">
         <div class="sec-head">
-          <span class="kicker">Método</span>
+          <div class="cota"><span class="tri"></span><span class="lbl">Método</span><span class="ln"></span><span class="alt">4 etapas</span></div>
           <h2 class="h-sec">De la señal a la decisión.</h2>
         </div>
         <div class="pasos">
@@ -204,7 +208,7 @@
     <section class="sec quote">
       <div class="wrap">
         <figure>
-          <blockquote>«No es una maqueta: SIMCII opera hoy, en producción, monitoreando aire, olores, ruido y meteorología <strong>cada cinco minutos</strong>.»</blockquote>
+          <blockquote>No es una maqueta: SIMCII opera hoy, en producción, midiendo aire, olores, ruido y meteorología <strong>cada cinco minutos</strong>.</blockquote>
           <figcaption>Proyecto de remediación urbana · Región de Valparaíso · reporte diario automático y canal de denuncias</figcaption>
         </figure>
       </div>
@@ -213,22 +217,26 @@
     <!-- INDUSTRIAS -->
     <section class="sec" id="industrias">
       <div class="wrap">
+        <div class="ind-wrap">
+        <span class="vlabel" aria-hidden="true">Industrias · 08 rubros</span>
+        <div>
         <div class="ind-head">
           <div class="sec-head" style="margin-bottom:0">
-            <span class="kicker">Industrias</span>
             <h2 class="h-sec">Hecha para el territorio chileno.</h2>
           </div>
-          <span class="mono" style="color:var(--soft)">Desliza →</span>
+          <span class="mono" style="color:var(--soft)">Desliza <span class="g" aria-hidden="true"></span></span>
         </div>
         <div class="carrusel" tabindex="0" aria-label="Industrias que usan SIMCII">
-          <a class="ind" href="/industrias/mineria"><span class="mono">01</span><h3>Minería</h3><p>Faenas, comunidades aledañas y licencia social con evidencia.</p><span>Casos de uso →</span></a>
-          <a class="ind" href="/industrias/energia"><span class="mono">02</span><h3>Energía y renovables</h3><p>Del desarrollo a la operación, portafolios comparables.</p><span>Casos de uso →</span></a>
-          <a class="ind" href="/industrias/salmonicultura"><span class="mono">03</span><h3>Salmonicultura</h3><p>Centros de cultivo y convivencia costera en un score.</p><span>Casos de uso →</span></a>
-          <a class="ind" href="/industrias/forestal"><span class="mono">04</span><h3>Forestal</h3><p>Patrimonio disperso y compromisos de vecindad.</p><span>Casos de uso →</span></a>
-          <a class="ind" href="/industrias/inmobiliario"><span class="mono">05</span><h3>Proyectos inmobiliarios</h3><p>Obras, vecinos y mitigaciones con respaldo fechado.</p><span>Casos de uso →</span></a>
-          <a class="ind" href="/industrias/sanitarias"><span class="mono">06</span><h3>Sanitarias</h3><p>Plantas y redes que conviven con la ciudad.</p><span>Casos de uso →</span></a>
-          <a class="ind" href="/industrias/carreteras"><span class="mono">07</span><h3>Carreteras y concesiones</h3><p>Trazados largos, leídos tramo a tramo.</p><span>Casos de uso →</span></a>
-          <a class="ind" href="/industrias/sector-publico"><span class="mono">08</span><h3>Sector público</h3><p>Los territorios en scores comparables, con evidencia.</p><span>Casos de uso →</span></a>
+          <a class="ind" href="/industrias/mineria"><span class="mono">01</span><h3>Minería</h3><p>Faenas, comunidades aledañas y licencia social con evidencia.</p><span>Casos de uso <span class="g" aria-hidden="true"></span></span></a>
+          <a class="ind" href="/industrias/energia"><span class="mono">02</span><h3>Energía y renovables</h3><p>Del desarrollo a la operación, portafolios comparables.</p><span>Casos de uso <span class="g" aria-hidden="true"></span></span></a>
+          <a class="ind" href="/industrias/salmonicultura"><span class="mono">03</span><h3>Salmonicultura</h3><p>Centros de cultivo y convivencia costera en un score.</p><span>Casos de uso <span class="g" aria-hidden="true"></span></span></a>
+          <a class="ind" href="/industrias/forestal"><span class="mono">04</span><h3>Forestal</h3><p>Patrimonio disperso y compromisos de vecindad.</p><span>Casos de uso <span class="g" aria-hidden="true"></span></span></a>
+          <a class="ind" href="/industrias/inmobiliario"><span class="mono">05</span><h3>Proyectos inmobiliarios</h3><p>Obras, vecinos y mitigaciones con respaldo fechado.</p><span>Casos de uso <span class="g" aria-hidden="true"></span></span></a>
+          <a class="ind" href="/industrias/sanitarias"><span class="mono">06</span><h3>Sanitarias</h3><p>Plantas y redes que conviven con la ciudad.</p><span>Casos de uso <span class="g" aria-hidden="true"></span></span></a>
+          <a class="ind" href="/industrias/carreteras"><span class="mono">07</span><h3>Carreteras y concesiones</h3><p>Trazados largos, leídos tramo a tramo.</p><span>Casos de uso <span class="g" aria-hidden="true"></span></span></a>
+          <a class="ind" href="/industrias/sector-publico"><span class="mono">08</span><h3>Sector público</h3><p>Los territorios en scores comparables, con evidencia.</p><span>Casos de uso <span class="g" aria-hidden="true"></span></span></a>
+        </div>
+        </div>
         </div>
       </div>
     </section>
@@ -238,10 +246,10 @@
       <div class="wrap conf">
         <div class="conf-col">
           <h3>Seguridad de nivel industrial</h3>
-          <div class="row"><span class="tick">→</span><div><b>Cifrado en el borde</b><span>TLS 1.3 y HTTPS forzado en todo el tráfico.</span></div></div>
-          <div class="row"><span class="tick">→</span><div><b>Red aislada</b><span>Base de datos sin exposición pública; administración solo por VPN.</span></div></div>
-          <div class="row"><span class="tick">→</span><div><b>Aislamiento por cliente</b><span>Datos segregados por organización; acceso siempre vía API.</span></div></div>
-          <div class="row"><span class="tick">→</span><div><b>Ley N° 21.719</b><span>Diseñada para cumplir la nueva Ley de Protección de Datos de Chile.</span></div></div>
+          <div class="row"><span class="tick" aria-hidden="true"><span class="g" style="width:9px;height:9px"></span></span><div><b>Cifrado en el borde</b><span>TLS 1.3 y HTTPS forzado en todo el tráfico.</span></div></div>
+          <div class="row"><span class="tick" aria-hidden="true"><span class="g" style="width:9px;height:9px"></span></span><div><b>Red aislada</b><span>Base de datos sin exposición pública; administración solo por VPN.</span></div></div>
+          <div class="row"><span class="tick" aria-hidden="true"><span class="g" style="width:9px;height:9px"></span></span><div><b>Aislamiento por cliente</b><span>Datos segregados por organización; acceso siempre vía API.</span></div></div>
+          <div class="row"><span class="tick" aria-hidden="true"><span class="g" style="width:9px;height:9px"></span></span><div><b>Ley N° 21.719</b><span>Diseñada para cumplir la nueva Ley de Protección de Datos de Chile.</span></div></div>
         </div>
         <div class="conf-col">
           <h3>Operativa en semanas</h3>
@@ -256,24 +264,24 @@
     <section class="sec" id="faq" style="padding-top:0">
       <div class="wrap">
         <div class="sec-head">
-          <span class="kicker">Preguntas frecuentes</span>
+          <div class="cota"><span class="tri"></span><span class="lbl">Preguntas frecuentes</span><span class="ln"></span><span class="alt">04</span></div>
           <h2 class="h-sec">Lo que preguntan antes de partir.</h2>
         </div>
         <div class="faq">
           <details open>
-            <summary>¿Qué es SIMCII?<span class="plus" aria-hidden="true">+</span></summary>
+            <summary><span class="fnum">01</span>¿Qué es SIMCII?<span class="tri" aria-hidden="true"></span></summary>
             <p>Una plataforma de inteligencia territorial que integra monitoreo ambiental, relacionamiento comunitario, contexto y compromisos en scores comparables de 0 a 100 por territorio, con evidencia trazable — cada dato conserva su fuente y su fecha.</p>
           </details>
           <details>
-            <summary>¿Cuánto tarda la implementación?<span class="plus" aria-hidden="true">+</span></summary>
+            <summary><span class="fnum">02</span>¿Cuánto tarda la implementación?<span class="tri" aria-hidden="true"></span></summary>
             <p>Semanas, no trimestres: levantamiento y definición (semanas 1–2), integración y configuración (semanas 3–5), y salida a producción con acompañamiento desde la semana 6. Los plazos exactos se ajustan en el kick-off.</p>
           </details>
           <details>
-            <summary>¿Cómo protege SIMCII los datos?<span class="plus" aria-hidden="true">+</span></summary>
+            <summary><span class="fnum">03</span>¿Cómo protege SIMCII los datos?<span class="tri" aria-hidden="true"></span></summary>
             <p>Con defensa en profundidad: TLS 1.3, base de datos sin exposición pública, sesiones JWT con control por rol y por fila, aislamiento por cliente y trazabilidad de accesos — en cumplimiento de la Ley N° 21.719 de Chile.</p>
           </details>
           <details>
-            <summary>¿SIMCII reemplaza mis estaciones de monitoreo?<span class="plus" aria-hidden="true">+</span></summary>
+            <summary><span class="fnum">04</span>¿SIMCII reemplaza mis estaciones de monitoreo?<span class="tri" aria-hidden="true"></span></summary>
             <p>No. SIMCII es la capa de lectura: se conecta a la infraestructura de medición existente y consolida sus datos en una sola lectura comparable. No exige reemplazar equipos ni programas de monitoreo.</p>
           </details>
         </div>
@@ -284,7 +292,7 @@
     <section class="sec final" id="demo">
       <div class="wrap final-grid">
         <div>
-          <h2>Conoce el territorio <span class="serif-hit">antes</span> de decidir.</h2>
+          <h2>Conoce el territorio <span class="hit">antes</span> de decidir.</h2>
           <p class="sub">Demo con datos de ejemplo, sin compromiso. Respondemos en 24 horas hábiles.</p>
           <p class="final-mail"><a href="mailto:contacto@accionet.net">contacto@accionet.net</a></p>
         </div>
@@ -333,8 +341,8 @@
         <div>
           <h4>Contacto</h4>
           <ul>
-            <li><a href="#demo">Solicitar una demo →</a></li>
-            <li><a href="https://exponor.simcii.ai" target="_blank" rel="noopener">Demo en vivo ↗</a></li>
+            <li><a href="#demo">Solicitar una demo</a></li>
+            <li><a href="https://exponor.simcii.ai" target="_blank" rel="noopener">Demo en vivo</a></li>
             <li><a href="mailto:contacto@accionet.net">contacto@accionet.net</a></li>
             <li>Santiago · Chile</li>
           </ul>
