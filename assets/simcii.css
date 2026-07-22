@@ -272,3 +272,7 @@
     @media (max-width: 640px) {
       .method-grid { grid-template-columns: 1fr !important; }
     }
+    @media (max-width: 900px) {
+      .impl-axis { display: none !important; }
+      .promise-plate { grid-template-columns: 1fr !important; }
+    }

@@ -154,12 +154,6 @@ function Problem() {
           </blockquote>
         </div>
 
-        {/* Marquee */}
-        <div style={{ marginTop: 96, borderTop: '1px solid var(--line)', borderBottom: '1px solid var(--line)', padding: '24px 0', overflow: 'hidden', position: 'relative' }}>
-          <div className="ticker-track" style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 14, color: 'var(--altiplano)', opacity: 0.5, letterSpacing: '0.16em', textTransform: 'uppercase' }}>
-            {'INTEGRACIÓN · ANÁLISIS · VISUALIZACIÓN · INTELIGENCIA TERRITORIAL · '.repeat(8)}
-          </div>
-        </div>
       </div>
     </section>
   );
@@ -420,22 +414,28 @@ function FounderQuote() {
       <div style={{ opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(30px)', transition: 'all 0.9s cubic-bezier(0.16,1,0.3,1)' }}>
         <ChapterLabel number="11" title="Promesa" />
 
-        <p style={{
-          fontFamily: 'Manrope, sans-serif', fontWeight: 500,
-          fontSize: 'clamp(1.6rem, 2.8vw, 2.3rem)',
-          letterSpacing: '-0.025em', color: 'var(--hueso)',
-          lineHeight: 1.3, textWrap: 'balance',
-        }}>
-          SIMCII transforma datos territoriales en{' '}
-          <em style={{
-            fontFamily: 'Manrope, sans-serif', 
-            color: 'var(--altiplano)', fontWeight: 700,
-          }}>decisiones estratégicas</em>. Anticipa conflictos, mejora el relacionamiento y fortalece tu operación con{' '}
-          <em style={{
-            fontFamily: 'Manrope, sans-serif', 
-            color: 'var(--altiplano)', fontWeight: 700,
-          }}>evidencia</em>.
-        </p>
+        <div style={{ border: '1px solid var(--line-strong)', background: 'var(--surface)', padding: 'clamp(32px, 5vw, 56px)', display: 'grid', gridTemplateColumns: 'auto 1fr', gap: 'clamp(20px, 4vw, 48px)', alignItems: 'start' }} className="promise-plate">
+          <svg width="56" height="40" viewBox="0 0 56 40" aria-hidden="true" style={{ flex: 'none', marginTop: 6 }}>
+            <path d="M2 36L18 12l8 10L38 6l16 26" fill="none" stroke="var(--terracota)" strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" />
+            <path d="M2 39h52" stroke="var(--line-strong)" strokeWidth="1" />
+          </svg>
+          <p style={{
+            fontFamily: 'Manrope, sans-serif', fontWeight: 500,
+            fontSize: 'clamp(1.4rem, 2.4vw, 2rem)',
+            letterSpacing: '-0.025em', color: 'var(--hueso)',
+            lineHeight: 1.3, textWrap: 'balance', margin: 0,
+          }}>
+            SIMCII transforma datos territoriales en{' '}
+            <em style={{
+              fontFamily: 'Manrope, sans-serif',
+              color: 'var(--altiplano)', fontWeight: 700,
+            }}>decisiones estratégicas</em>. Anticipa conflictos, mejora el relacionamiento y fortalece tu operación con{' '}
+            <em style={{
+              fontFamily: 'Manrope, sans-serif',
+              color: 'var(--altiplano)', fontWeight: 700,
+            }}>evidencia</em>.
+          </p>
+        </div>
       </div>
     </section>
   );
@@ -569,10 +569,19 @@ function Implementation() {
           Cada organización tiene un ecosistema de datos distinto. La implementación se co-construye — los plazos exactos se ajustan en el kick-off.
         </p>
 
-        <div className="impl-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
+        {/* Eje de tiempo: línea con hitos y flecha — la implementación es una secuencia real */}
+        <svg className="impl-axis" viewBox="0 0 1200 24" preserveAspectRatio="none" aria-hidden="true" style={{ display: 'block', width: '100%', height: 24, marginBottom: 28 }}>
+          <line x1="0" y1="12" x2="1188" y2="12" stroke="var(--line-strong)" strokeWidth="1.5" />
+          <path d="M1188 6l10 6-10 6" fill="none" stroke="var(--line-strong)" strokeWidth="1.5" />
+          {[8, 408, 808].map((x, i) => (
+            <circle key={i} cx={x} cy="12" r="5" fill="var(--terracota)" />
+          ))}
+        </svg>
+
+        <div className="impl-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 48 }}>
           {IMPL_PHASES.map((p) => (
-            <div key={p.phase} style={{ background: 'var(--azul-gris-2)', border: '1px solid var(--line)', padding: 32 }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 16 }}>
+            <div key={p.phase}>
+              <div style={{ display: 'flex', gap: 14, alignItems: 'baseline', marginBottom: 12 }}>
                 <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 10, color: 'var(--altiplano)', letterSpacing: '0.18em', textTransform: 'uppercase' }}>{p.phase}</span>
                 <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 10, color: 'var(--text-soft)', letterSpacing: '0.12em' }}>{p.when}</span>
               </div>

@@ -441,8 +441,8 @@ function Hero({
     style: {
       fontFamily: 'Manrope, sans-serif',
       fontWeight: 800,
-      fontSize: 'clamp(2.6rem, 6.4vw, 5.6rem)',
-      lineHeight: 0.98,
+      fontSize: 'clamp(2.3rem, 4.6vw, 4.1rem)',
+      lineHeight: 1.0,
       letterSpacing: '-0.035em',
       color: 'var(--paper)',
       marginBottom: 32,
@@ -470,7 +470,7 @@ function Hero({
       transition: 'all 1s cubic-bezier(0.16,1,0.3,1) 0.6s',
       textWrap: 'pretty'
     }
-  }, "Integra datos ambientales, sociales y de contexto en una sola vista. Mide, lee y anticipa el territorio con evidencia \u2014 no con intuici\xF3n."), /*#__PURE__*/React.createElement("div", {
+  }, "Integra datos ambientales, sociales y de contexto en una sola vista: mide, lee y anticipa el territorio con evidencia."), /*#__PURE__*/React.createElement("div", {
     className: "hero-meta",
     style: {
       display: 'flex',

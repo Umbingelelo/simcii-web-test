@@ -343,26 +343,7 @@ function Problem() {
       color: 'var(--altiplano)',
       fontWeight: 700
     }
-  }, "SIMCII conecta lo que ocurre en el territorio"), ", y lo transforma en inteligencia territorial.")), /*#__PURE__*/React.createElement("div", {
-    style: {
-      marginTop: 96,
-      borderTop: '1px solid var(--line)',
-      borderBottom: '1px solid var(--line)',
-      padding: '24px 0',
-      overflow: 'hidden',
-      position: 'relative'
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "ticker-track",
-    style: {
-      fontFamily: 'JetBrains Mono, monospace',
-      fontSize: 14,
-      color: 'var(--altiplano)',
-      opacity: 0.5,
-      letterSpacing: '0.16em',
-      textTransform: 'uppercase'
-    }
-  }, 'INTEGRACIÓN · ANÁLISIS · VISUALIZACIÓN · INTELIGENCIA TERRITORIAL · '.repeat(8)))));
+  }, "SIMCII conecta lo que ocurre en el territorio"), ", y lo transforma en inteligencia territorial."))));
 }
 
 // -------- Modules: 4 cards --------
@@ -791,15 +772,47 @@ function FounderQuote() {
   }, /*#__PURE__*/React.createElement(ChapterLabel, {
     number: "11",
     title: "Promesa"
-  }), /*#__PURE__*/React.createElement("p", {
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      border: '1px solid var(--line-strong)',
+      background: 'var(--surface)',
+      padding: 'clamp(32px, 5vw, 56px)',
+      display: 'grid',
+      gridTemplateColumns: 'auto 1fr',
+      gap: 'clamp(20px, 4vw, 48px)',
+      alignItems: 'start'
+    },
+    className: "promise-plate"
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: "56",
+    height: "40",
+    viewBox: "0 0 56 40",
+    "aria-hidden": "true",
+    style: {
+      flex: 'none',
+      marginTop: 6
+    }
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M2 36L18 12l8 10L38 6l16 26",
+    fill: "none",
+    stroke: "var(--terracota)",
+    strokeWidth: "2.5",
+    strokeLinejoin: "round",
+    strokeLinecap: "round"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M2 39h52",
+    stroke: "var(--line-strong)",
+    strokeWidth: "1"
+  })), /*#__PURE__*/React.createElement("p", {
     style: {
       fontFamily: 'Manrope, sans-serif',
       fontWeight: 500,
-      fontSize: 'clamp(1.6rem, 2.8vw, 2.3rem)',
+      fontSize: 'clamp(1.4rem, 2.4vw, 2rem)',
       letterSpacing: '-0.025em',
       color: 'var(--hueso)',
       lineHeight: 1.3,
-      textWrap: 'balance'
+      textWrap: 'balance',
+      margin: 0
     }
   }, "SIMCII transforma datos territoriales en", ' ', /*#__PURE__*/React.createElement("em", {
     style: {
@@ -813,7 +826,7 @@ function FounderQuote() {
       color: 'var(--altiplano)',
       fontWeight: 700
     }
-  }, "evidencia"), ".")));
+  }, "evidencia"), "."))));
 }
 
 // -------- Method: De la señal a la decisión (4 pasos sobre perfil ascendente) --------
@@ -1146,26 +1159,50 @@ function Implementation() {
       marginBottom: 48,
       textWrap: 'pretty'
     }
-  }, "Cada organizaci\xF3n tiene un ecosistema de datos distinto. La implementaci\xF3n se co-construye \u2014 los plazos exactos se ajustan en el kick-off."), /*#__PURE__*/React.createElement("div", {
+  }, "Cada organizaci\xF3n tiene un ecosistema de datos distinto. La implementaci\xF3n se co-construye \u2014 los plazos exactos se ajustan en el kick-off."), /*#__PURE__*/React.createElement("svg", {
+    className: "impl-axis",
+    viewBox: "0 0 1200 24",
+    preserveAspectRatio: "none",
+    "aria-hidden": "true",
+    style: {
+      display: 'block',
+      width: '100%',
+      height: 24,
+      marginBottom: 28
+    }
+  }, /*#__PURE__*/React.createElement("line", {
+    x1: "0",
+    y1: "12",
+    x2: "1188",
+    y2: "12",
+    stroke: "var(--line-strong)",
+    strokeWidth: "1.5"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M1188 6l10 6-10 6",
+    fill: "none",
+    stroke: "var(--line-strong)",
+    strokeWidth: "1.5"
+  }), [8, 408, 808].map((x, i) => /*#__PURE__*/React.createElement("circle", {
+    key: i,
+    cx: x,
+    cy: "12",
+    r: "5",
+    fill: "var(--terracota)"
+  }))), /*#__PURE__*/React.createElement("div", {
     className: "impl-grid",
     style: {
       display: 'grid',
       gridTemplateColumns: 'repeat(3, 1fr)',
-      gap: 24
+      gap: 48
     }
   }, IMPL_PHASES.map(p => /*#__PURE__*/React.createElement("div", {
-    key: p.phase,
-    style: {
-      background: 'var(--azul-gris-2)',
-      border: '1px solid var(--line)',
-      padding: 32
-    }
+    key: p.phase
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
-      justifyContent: 'space-between',
+      gap: 14,
       alignItems: 'baseline',
-      marginBottom: 16
+      marginBottom: 12
     }
   }, /*#__PURE__*/React.createElement("span", {
     style: {
