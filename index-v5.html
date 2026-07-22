@@ -9,7 +9,7 @@
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="author" content="Accionet" />
   <link rel="icon" href="/assets/favicon.ico" sizes="any" />
-  <meta name="theme-color" content="#F7F4EE" />
+  <meta name="theme-color" content="#101114" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="SIMCII" />
   <meta property="og:locale" content="es_CL" />
@@ -42,7 +42,7 @@
 <body>
 
 <header class="nav">
-  <a class="nav-logo" href="/" aria-label="SIMCII — inicio"><img src="/assets/logo-simcii-claro.svg" alt="SIMCII" /></a>
+  <a class="nav-logo" href="/" aria-label="SIMCII — inicio"><svg class="iso" viewBox="0 0 30 14" aria-hidden="true"><polyline points="1,13 8,3 13,9 19,2 29,12" fill="none" stroke="#C06A42" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></svg><span class="wordmark">SIMCII</span><span class="wordtag">Inteligencia territorial</span></a>
   <nav class="nav-menu" aria-label="Principal">
     <a href="#plataforma">Plataforma</a>
     <a href="#mapa">Red en vivo</a>
@@ -94,17 +94,26 @@
     <div class="wrap">
       <div class="sec-head">
         <h2 class="hs">Así se ve tu operación <em>en una sola pantalla</em>.</h2>
-        <p>Capturas reales de la plataforma. Cada instalación define sus parámetros, umbrales y territorios.</p>
+        <p>Esto no es una imagen: es una muestra funcional de la plataforma, con datos de ejemplo moviéndose como en producción.</p>
       </div>
-      <div class="prod">
-        <div class="prod-head"><h3>Resumen ejecutivo en vivo</h3><span class="mono">Plataforma SIMCII</span></div>
-        <div class="prod-grid">
-          <figure><img src="/assets/capturas/exponor-01-resumen.jpg" alt="Panel de SIMCII: scores territoriales, parámetros en tiempo real y mapa de calor." loading="lazy" /><figcaption>Scores + parámetros en tiempo real + mapa de calor</figcaption></figure>
-          <div class="prod-col">
-            <figure><img src="/assets/capturas/exponor-06-puntajes.jpg" alt="Evolución de puntajes por territorio en SIMCII." loading="lazy" /><figcaption>Evolución de puntajes</figcaption></figure>
-            <figure><img src="/assets/capturas/exponor-04-comunidad.jpg" alt="Módulo de comunidad: actores y alertas tempranas." loading="lazy" /><figcaption>Comunidad y alertas tempranas</figcaption></figure>
+      <div class="play" id="play">
+        <div class="play-bar"><span class="dg" aria-hidden="true"></span><span class="mono">SIMCII · resumen general — muestra funcional</span><span class="mono clock" id="play-clock">--:--:--</span></div>
+        <div class="play-grid">
+          <div class="play-scores">
+            <div class="ps"><span class="mono">General</span><b data-ps="69.1">69.1<small> /100</small></b><span class="bar"><i style="width:69%;background:#E0B15C"></i></span></div>
+            <div class="ps"><span class="mono">Territorial</span><b data-ps="79.8">79.8<small> /100</small></b><span class="bar"><i style="width:80%;background:#6FBF8B"></i></span></div>
+            <div class="ps"><span class="mono">Contexto</span><b data-ps="73.7">73.7<small> /100</small></b><span class="bar"><i style="width:74%;background:#E0B15C"></i></span></div>
+            <div class="ps"><span class="mono">Comunidad</span><b data-ps="53.8">53.8<small> /100</small></b><span class="bar"><i style="width:54%;background:#C06A42"></i></span></div>
+          </div>
+          <div class="play-side">
+            <div class="pp" data-pp="40.5" data-max="150"><span class="k">MP10</span><span class="v">40.5</span><span class="u">µg/m³</span><span class="st st-ok">normal</span></div>
+            <div class="pp" data-pp="13.6" data-max="37.5"><span class="k">MP2.5</span><span class="v">13.6</span><span class="u">µg/m³</span><span class="st st-ok">normal</span></div>
+            <div class="pp" data-pp="23.6" data-max="250"><span class="k">SO₂</span><span class="v">23.6</span><span class="u">µg/m³</span><span class="st st-ok">normal</span></div>
+            <div class="pp" data-pp="50.1" data-max="65"><span class="k">NPSEQ</span><span class="v">50.1</span><span class="u">dB</span><span class="st st-w">precaución</span></div>
+            <div class="play-chart"><span class="mono">Score general · última hora</span><svg viewBox="0 0 300 74" preserveAspectRatio="none"><polyline id="play-line" fill="none" stroke="#7FA3BF" stroke-width="1.8" stroke-linejoin="round" points=""/></svg></div>
           </div>
         </div>
+      </div>
       </div>
     </div>
   </section>
@@ -118,7 +127,7 @@
       </div>
       <div class="mapa-shell">
         <div id="mapbox"></div>
-        <div class="mapa-fallback" id="mapa-fallback" hidden><img src="/assets/capturas/exponor-04-comunidad.jpg" alt="Mapa de estaciones de monitoreo en la plataforma SIMCII." loading="lazy" /></div>
+        <div class="mapa-fallback" id="mapa-fallback" hidden><span>El mapa en vivo se carga con la clave Mapbox de la operación</span></div>
         <span class="mapa-tag">8 estaciones · datos de ejemplo</span>
       </div>
     </div>
@@ -210,7 +219,7 @@
 <footer class="footer">
   <div class="wrap">
     <div class="fgrid">
-      <div class="fbrand"><img src="/assets/logo-simcii-claro.svg" alt="SIMCII" /><p>Plataforma de monitoreo ambiental, social y territorial. Mide, lee y anticipa el territorio con evidencia.</p></div>
+      <div class="fbrand"><span class="lock"><svg class="iso" viewBox="0 0 30 14" aria-hidden="true"><polyline points="1,13 8,3 13,9 19,2 29,12" fill="none" stroke="#C06A42" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></svg><span class="wordmark">SIMCII</span></span><p>Plataforma de monitoreo ambiental, social y territorial. Mide, lee y anticipa el territorio con evidencia.</p></div>
       <div><h4>Soluciones</h4><ul>
         <li><a href="/soluciones/monitoreo-ambiental">Monitoreo ambiental</a></li>
         <li><a href="/soluciones/relacionamiento-comunitario">Relacionamiento comunitario</a></li>

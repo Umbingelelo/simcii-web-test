@@ -218,3 +218,55 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
   else start();
 })();
+
+/* ---- playground en vivo: datos que se mueven como en producción ---- */
+(function () {
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const play = document.getElementById('play');
+  if (!play) return;
+  const clock = document.getElementById('play-clock');
+  const line = document.getElementById('play-line');
+  const scores = [...play.querySelectorAll('[data-ps]')];
+  const params = [...play.querySelectorAll('[data-pp]')];
+  const hist = [];
+  let g = 69.1;
+  function fmtClock() {
+    const d = new Date();
+    return [d.getHours(), d.getMinutes(), d.getSeconds()].map((n) => String(n).padStart(2, '0')).join(':');
+  }
+  function drawLine() {
+    if (!line) return;
+    const min = Math.min(...hist) - 1, max = Math.max(...hist) + 1;
+    line.setAttribute('points', hist.map((v, i) => `${(i / (Math.max(hist.length - 1, 1))) * 300},${72 - ((v - min) / (max - min)) * 66}`).join(' '));
+  }
+  for (let i = 0; i < 40; i++) { g += (Math.random() - 0.5) * 0.6; hist.push(+g.toFixed(1)); }
+  drawLine();
+  if (clock) clock.textContent = fmtClock();
+  if (reduce) return;
+  setInterval(() => { if (clock) clock.textContent = fmtClock(); }, 1000);
+  setInterval(() => {
+    // parámetros: deriva pequeña + flash
+    params.forEach((row) => {
+      if (Math.random() < 0.55) return;
+      const v = row.querySelector('.v');
+      const base = parseFloat(row.dataset.pp);
+      const nv = Math.max(0, base + (Math.random() - 0.5) * base * 0.12);
+      v.textContent = nv.toFixed(1);
+      row.classList.add('flash');
+      setTimeout(() => row.classList.remove('flash'), 500);
+    });
+    // scores: deriva lenta + barra
+    scores.forEach((el) => {
+      const base = parseFloat(el.dataset.ps);
+      const nv = Math.min(96, Math.max(35, base + (Math.random() - 0.5) * 1.4));
+      el.firstChild.textContent = nv.toFixed(1);
+      const bar = el.parentElement.querySelector('.bar i');
+      if (bar) bar.style.width = nv.toFixed(0) + '%';
+    });
+    // serie del score general
+    g = Math.min(80, Math.max(58, g + (Math.random() - 0.5) * 0.9));
+    hist.push(+g.toFixed(1));
+    if (hist.length > 40) hist.shift();
+    drawLine();
+  }, 2400);
+})();
