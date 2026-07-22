@@ -394,7 +394,7 @@ function Hero({
       textTransform: 'uppercase',
       color: 'var(--text-soft)'
     }
-  }, "SIMCII \xB7 INTELIGENCIA TERRITORIAL \xB7 \xA7 01")), /*#__PURE__*/React.createElement("span", {
+  }, "SIMCII \xB7 INTELIGENCIA TERRITORIAL \xB7 01")), /*#__PURE__*/React.createElement("span", {
     style: {
       fontFamily: 'JetBrains Mono, monospace',
       fontSize: 11,
@@ -436,7 +436,7 @@ function Hero({
       transform: loaded ? 'none' : 'translateY(10px)',
       transition: 'all 0.9s cubic-bezier(0.16,1,0.3,1) 0.2s'
     }
-  }, "\xA7 01 \xB7 Plataforma de monitoreo territorial"), /*#__PURE__*/React.createElement("h1", {
+  }, /*#__PURE__*/React.createElement(window.SectionMark, null), " 01 \xB7 Plataforma de monitoreo territorial"), /*#__PURE__*/React.createElement("h1", {
     className: "hero-headline",
     style: {
       fontFamily: 'Manrope, sans-serif',
@@ -604,7 +604,7 @@ function Hero({
       letterSpacing: '0.14em',
       textTransform: 'uppercase'
     }
-  }, "\xA7 01 \xB7 2026"), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement(window.SectionMark, null), " 01 \xB7 2026"), /*#__PURE__*/React.createElement("div", {
     className: "hero-marginalia",
     style: {
       position: 'absolute',

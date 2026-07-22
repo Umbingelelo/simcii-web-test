@@ -250,7 +250,30 @@ function Cordillera3D({
     "aria-hidden": "true"
   });
 }
+
+// Marcador de sección — mini cordillera (reemplaza al § tipográfico)
+function SectionMark() {
+  return /*#__PURE__*/React.createElement("svg", {
+    width: "18",
+    height: "9",
+    viewBox: "0 0 24 12",
+    "aria-hidden": "true",
+    style: {
+      display: 'inline-block',
+      verticalAlign: 'baseline',
+      marginRight: 4
+    }
+  }, /*#__PURE__*/React.createElement("polyline", {
+    points: "1,11 7,3 11,8 16,2 23,9",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "1.6",
+    strokeLinejoin: "round",
+    strokeLinecap: "round"
+  }));
+}
 Object.assign(window, {
   Cordillera3D,
-  SvgCordilleraFallback
+  SvgCordilleraFallback,
+  SectionMark
 });

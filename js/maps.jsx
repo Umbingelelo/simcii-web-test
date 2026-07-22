@@ -269,7 +269,7 @@ function PlatformMap() {
             )}
 
             <div style={{ position: 'absolute', bottom: 16, left: 16, fontFamily: 'JetBrains Mono, monospace', fontSize: 10, color: 'var(--text-soft)', letterSpacing: '0.14em', textTransform: 'uppercase', zIndex: 2 }}>
-              § 04 · Estaciones, comunidad y alertas
+              <window.SectionMark /> 04 · Estaciones, comunidad y alertas
             </div>
           </div>
 

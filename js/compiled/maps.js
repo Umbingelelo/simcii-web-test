@@ -518,7 +518,7 @@ function PlatformMap() {
       textTransform: 'uppercase',
       zIndex: 2
     }
-  }, "\xA7 04 \xB7 Estaciones, comunidad y alertas")), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement(window.SectionMark, null), " 04 \xB7 Estaciones, comunidad y alertas")), /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
       flexDirection: 'column',
