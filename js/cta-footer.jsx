@@ -156,7 +156,7 @@ function Footer() {
           <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 11, color: 'var(--text-soft)', letterSpacing: '0.18em' }}>2026</span>
         </div>
 
-        <div className="footer-grid" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 64, marginBottom: 56, alignItems: 'start' }}>
+        <div className="footer-grid" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: 64, marginBottom: 56, alignItems: 'start' }}>
           <div>
             <p style={{ fontFamily: 'Source Sans 3, sans-serif', fontSize: 16, color: 'var(--text-muted)', lineHeight: 1.6, maxWidth: 560, textWrap: 'pretty', margin: 0 }}>
               Plataforma de monitoreo ambiental, social y territorial. Integra datos de estaciones, contexto y comunidad para gestionar compromisos, anticipar alertas y sostener la licencia social para operar — con evidencia.
@@ -171,6 +171,41 @@ function Footer() {
                 </a>
               ))}
             </div>
+          </div>
+          <div>
+            <div style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 10, fontWeight: 500, color: 'var(--azul-claro)', letterSpacing: '0.18em', textTransform: 'uppercase', marginBottom: 18, paddingBottom: 8, borderBottom: '1px solid var(--line)' }}>Soluciones</div>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
+              {[
+                { label: 'Monitoreo ambiental', href: '/soluciones/monitoreo-ambiental' },
+                { label: 'Relacionamiento comunitario', href: '/soluciones/relacionamiento-comunitario' },
+                { label: 'Cumplimiento RCA', href: '/soluciones/cumplimiento-rca' },
+                { label: 'Gestión territorial', href: '/soluciones/gestion-territorial' },
+              ].map(l => (
+                <li key={l.href}>
+                  <a href={l.href} style={{ fontFamily: 'Source Sans 3, sans-serif', fontSize: 14, color: 'var(--text-muted)', textDecoration: 'none', transition: 'color 0.2s' }}
+                    onMouseEnter={e => e.target.style.color = 'var(--paper)'}
+                    onMouseLeave={e => e.target.style.color = 'var(--text-muted)'}
+                  >{l.label}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <div style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 10, fontWeight: 500, color: 'var(--azul-claro)', letterSpacing: '0.18em', textTransform: 'uppercase', marginBottom: 18, paddingBottom: 8, borderBottom: '1px solid var(--line)' }}>Industrias</div>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
+              {[
+                { label: 'Minería', href: '/industrias/mineria' },
+                { label: 'Energía y renovables', href: '/industrias/energia' },
+                { label: 'Sector público', href: '/industrias/sector-publico' },
+              ].map(l => (
+                <li key={l.href}>
+                  <a href={l.href} style={{ fontFamily: 'Source Sans 3, sans-serif', fontSize: 14, color: 'var(--text-muted)', textDecoration: 'none', transition: 'color 0.2s' }}
+                    onMouseEnter={e => e.target.style.color = 'var(--paper)'}
+                    onMouseLeave={e => e.target.style.color = 'var(--text-muted)'}
+                  >{l.label}</a>
+                </li>
+              ))}
+            </ul>
           </div>
           <div>
             <div style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 10, fontWeight: 500, color: 'var(--azul-claro)', letterSpacing: '0.18em', textTransform: 'uppercase', marginBottom: 18, paddingBottom: 8, borderBottom: '1px solid var(--line)' }}>Contacto</div>

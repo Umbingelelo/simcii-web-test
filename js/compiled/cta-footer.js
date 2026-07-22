@@ -348,7 +348,7 @@ function Footer() {
     className: "footer-grid",
     style: {
       display: 'grid',
-      gridTemplateColumns: '2fr 1fr',
+      gridTemplateColumns: '2fr 1fr 1fr 1fr',
       gap: 64,
       marginBottom: 56,
       alignItems: 'start'
@@ -402,6 +402,95 @@ function Footer() {
       letterSpacing: '0.08em'
     }
   }, s))))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: 'JetBrains Mono, monospace',
+      fontSize: 10,
+      fontWeight: 500,
+      color: 'var(--azul-claro)',
+      letterSpacing: '0.18em',
+      textTransform: 'uppercase',
+      marginBottom: 18,
+      paddingBottom: 8,
+      borderBottom: '1px solid var(--line)'
+    }
+  }, "Soluciones"), /*#__PURE__*/React.createElement("ul", {
+    style: {
+      listStyle: 'none',
+      padding: 0,
+      margin: 0,
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 12
+    }
+  }, [{
+    label: 'Monitoreo ambiental',
+    href: '/soluciones/monitoreo-ambiental'
+  }, {
+    label: 'Relacionamiento comunitario',
+    href: '/soluciones/relacionamiento-comunitario'
+  }, {
+    label: 'Cumplimiento RCA',
+    href: '/soluciones/cumplimiento-rca'
+  }, {
+    label: 'Gestión territorial',
+    href: '/soluciones/gestion-territorial'
+  }].map(l => /*#__PURE__*/React.createElement("li", {
+    key: l.href
+  }, /*#__PURE__*/React.createElement("a", {
+    href: l.href,
+    style: {
+      fontFamily: 'Source Sans 3, sans-serif',
+      fontSize: 14,
+      color: 'var(--text-muted)',
+      textDecoration: 'none',
+      transition: 'color 0.2s'
+    },
+    onMouseEnter: e => e.target.style.color = 'var(--paper)',
+    onMouseLeave: e => e.target.style.color = 'var(--text-muted)'
+  }, l.label))))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: 'JetBrains Mono, monospace',
+      fontSize: 10,
+      fontWeight: 500,
+      color: 'var(--azul-claro)',
+      letterSpacing: '0.18em',
+      textTransform: 'uppercase',
+      marginBottom: 18,
+      paddingBottom: 8,
+      borderBottom: '1px solid var(--line)'
+    }
+  }, "Industrias"), /*#__PURE__*/React.createElement("ul", {
+    style: {
+      listStyle: 'none',
+      padding: 0,
+      margin: 0,
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 12
+    }
+  }, [{
+    label: 'Minería',
+    href: '/industrias/mineria'
+  }, {
+    label: 'Energía y renovables',
+    href: '/industrias/energia'
+  }, {
+    label: 'Sector público',
+    href: '/industrias/sector-publico'
+  }].map(l => /*#__PURE__*/React.createElement("li", {
+    key: l.href
+  }, /*#__PURE__*/React.createElement("a", {
+    href: l.href,
+    style: {
+      fontFamily: 'Source Sans 3, sans-serif',
+      fontSize: 14,
+      color: 'var(--text-muted)',
+      textDecoration: 'none',
+      transition: 'color 0.2s'
+    },
+    onMouseEnter: e => e.target.style.color = 'var(--paper)',
+    onMouseLeave: e => e.target.style.color = 'var(--text-muted)'
+  }, l.label))))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     style: {
       fontFamily: 'JetBrains Mono, monospace',
       fontSize: 10,
