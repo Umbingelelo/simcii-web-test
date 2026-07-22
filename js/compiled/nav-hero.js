@@ -527,13 +527,9 @@ function Hero({
     strokeLinecap: "round",
     strokeLinejoin: "round"
   }))), /*#__PURE__*/React.createElement("a", {
-    href: "#platform",
-    onClick: e => {
-      e.preventDefault();
-      document.getElementById('platform')?.scrollIntoView({
-        behavior: 'smooth'
-      });
-    },
+    href: "https://exponor.simcii.ai",
+    target: "_blank",
+    rel: "noopener",
     style: {
       fontFamily: 'JetBrains Mono, monospace',
       fontSize: 12,
@@ -547,11 +543,11 @@ function Hero({
       alignItems: 'center',
       gap: 8
     }
-  }, "Ver la plataforma", /*#__PURE__*/React.createElement("span", {
+  }, "Explorar la demo en vivo", /*#__PURE__*/React.createElement("span", {
     style: {
       display: 'inline-block'
     }
-  }, "\u2192")))), /*#__PURE__*/React.createElement("aside", {
+  }, "\u2197")))), /*#__PURE__*/React.createElement("aside", {
     className: "hero-chile",
     style: {
       position: 'relative',

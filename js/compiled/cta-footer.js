@@ -90,7 +90,7 @@ function CTASection() {
       color: 'var(--azul-claro)',
       letterSpacing: '0.2em'
     }
-  }, /*#__PURE__*/React.createElement(window.SectionMark, null), " 09 \xB7 CONTACTO"), /*#__PURE__*/React.createElement("span", {
+  }, /*#__PURE__*/React.createElement(window.SectionMark, null), " 12 \xB7 CONTACTO"), /*#__PURE__*/React.createElement("span", {
     className: "corner-mark",
     style: {
       position: 'absolute',

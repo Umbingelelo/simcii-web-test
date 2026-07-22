@@ -237,15 +237,15 @@ function Hero({ introDone }) {
             >Solicitar demo
               <svg width="12" height="12" viewBox="0 0 10 10" fill="none"><path d="M1 5h8m-3-3l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
             </a>
-            <a href="#platform" onClick={(e) => { e.preventDefault(); document.getElementById('platform')?.scrollIntoView({ behavior: 'smooth' }); }} style={{
+            <a href="https://exponor.simcii.ai" target="_blank" rel="noopener" style={{
               fontFamily: 'JetBrains Mono, monospace', fontSize: 12,
               textTransform: 'uppercase', letterSpacing: '0.12em',
               color: 'var(--paper)', textDecoration: 'none',
               paddingBottom: 6, borderBottom: '1px solid var(--azul-claro)',
               display: 'inline-flex', alignItems: 'center', gap: 8,
             }}>
-              Ver la plataforma
-              <span style={{ display: 'inline-block' }}>→</span>
+              Explorar la demo en vivo
+              <span style={{ display: 'inline-block' }}>↗</span>
             </a>
           </div>
         </div>

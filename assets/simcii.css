@@ -260,3 +260,15 @@
     }
 
     img { max-width: 100%; height: auto; }
+
+    /* Refresh 2026-07: método, seguridad, implementación */
+    @media (max-width: 1024px) {
+      .method-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .method-profile { display: none !important; }
+      .security-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+      .impl-grid { grid-template-columns: 1fr !important; }
+      .sectors-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    }
+    @media (max-width: 640px) {
+      .method-grid { grid-template-columns: 1fr !important; }
+    }
