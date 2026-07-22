@@ -3,6 +3,7 @@ body { background: var(--bg); color: var(--paper); font-family: 'Source Sans 3',
 .page-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 72px; padding: 0 2.5rem; max-width: 1440px; margin: 0 auto; border-bottom: 1px solid var(--line); }
 .page-header a { text-decoration: none; }
 .page-header .brand { display: flex; align-items: center; gap: 10px; color: var(--paper); font-family: Manrope, sans-serif; font-weight: 800; font-size: 18px; letter-spacing: -0.02em; }
+.page-header .brand img { height: 32px !important; width: auto; }
 .page-header nav { display: flex; gap: 20px; align-items: center; }
 .page-header nav a { font-family: 'Source Sans 3', sans-serif; font-size: 14px; color: var(--text-muted); }
 .page-header nav a:hover { color: var(--paper); }
