@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SIMCII · Plataforma de monitoreo ambiental y territorial en Chile</title>
+  <meta name="description" content="Plataforma chilena de monitoreo ambiental, social y territorial: KPIs medioambientales, relacionamiento comunitario, compromisos RCA y licencia social para operar — con evidencia." />
+  <link rel="canonical" href="https://simcii.ai/" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Accionet" />
+  <link rel="icon" href="/assets/favicon.ico" sizes="any" />
+  <meta name="theme-color" content="#F7F4EE" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SIMCII" />
+  <meta property="og:locale" content="es_CL" />
+  <meta property="og:url" content="https://simcii.ai/" />
+  <meta property="og:title" content="SIMCII · Plataforma de monitoreo ambiental y territorial en Chile" />
+  <meta property="og:description" content="Mide lo que pasa. Anticipa lo que viene. Monitoreo ambiental, social y territorial con evidencia." />
+  <meta property="og:image" content="https://simcii.ai/assets/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SIMCII · Plataforma de monitoreo ambiental y territorial en Chile" />
+  <meta name="twitter:description" content="Mide lo que pasa. Anticipa lo que viene. Monitoreo con evidencia." />
+  <meta name="twitter:image" content="https://simcii.ai/assets/og-image.png" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"Organization","@id":"https://simcii.ai/#organization","name":"SIMCII","url":"https://simcii.ai/","logo":"https://simcii.ai/assets/logo-simcii-oscuro.svg","description":"Plataforma de monitoreo ambiental, social y territorial.","parentOrganization":{"@type":"Organization","name":"Accionet"},"areaServed":"CL","email":"contacto@accionet.net"},
+    {"@type":"SoftwareApplication","name":"SIMCII","applicationCategory":"BusinessApplication","operatingSystem":"Web","url":"https://simcii.ai/","description":"Plataforma de monitoreo ambiental, social y territorial: KPIs medioambientales, gestión social y comunitaria, compromisos, regulación y licencia social para la operación, con scores por territorio y alertas.","offers":{"@type":"Offer","price":"0","priceCurrency":"CLP","description":"Demo a solicitud"},"publisher":{"@id":"https://simcii.ai/#organization"}},
+    {"@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"¿Qué es SIMCII?","acceptedAnswer":{"@type":"Answer","text":"Una plataforma de inteligencia territorial que integra monitoreo ambiental, relacionamiento comunitario, contexto y compromisos en scores comparables de 0 a 100 por territorio, con evidencia trazable."}},
+      {"@type":"Question","name":"¿Cuánto tarda la implementación?","acceptedAnswer":{"@type":"Answer","text":"Semanas: levantamiento (1–2), integración y configuración (3–5) y producción con acompañamiento desde la semana 6."}},
+      {"@type":"Question","name":"¿Cómo protege SIMCII los datos?","acceptedAnswer":{"@type":"Answer","text":"Defensa en profundidad: TLS 1.3, base de datos sin exposición pública, sesiones JWT con control por rol, aislamiento por cliente y trazabilidad, en cumplimiento de la Ley N° 21.719."}},
+      {"@type":"Question","name":"¿SIMCII reemplaza mis estaciones de monitoreo?","acceptedAnswer":{"@type":"Answer","text":"No. Se conecta a la infraestructura existente y consolida sus datos en una sola lectura comparable, con fuente y fecha por dato."}}
+    ]}
+  ]}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/v5.css" />
+</head>
+<body>
+
+<header class="nav">
+  <a class="nav-logo" href="/" aria-label="SIMCII — inicio"><img src="/assets/logo-simcii-claro.svg" alt="SIMCII" /></a>
+  <nav class="nav-menu" aria-label="Principal">
+    <a href="#plataforma">Plataforma</a>
+    <a href="#mapa">Red en vivo</a>
+    <a href="#industrias">Industrias</a>
+    <a href="#faq">Preguntas</a>
+    <a class="btn" href="#demo">Solicitar una demo</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- 1 · HERO: promesa + cordillera de partículas -->
+  <section class="hero">
+    <div id="terrain" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="hero-inner">
+        <span class="voice">SIMCII · Inteligencia territorial</span>
+        <h1 class="hd">Mide lo que pasa.<br /><em>Anticipa lo que viene.</em></h1>
+        <p class="hero-sub">SIMCII lee tu territorio completo — aire, ruido, comunidad y compromisos — y lo convierte en scores de 0 a 100 con evidencia trazable.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#demo">Solicitar una demo</a>
+          <a class="btn-2" href="#plataforma">Ver cómo funciona</a>
+        </div>
+        <div class="hero-datos" role="list" aria-label="Cifras de operación">
+          <div role="listitem"><b>5 min</b><span>frecuencia de datos</span></div>
+          <div role="listitem"><b>4</b><span>dominios ambientales</span></div>
+          <div role="listitem"><b>0–100</b><span>scores por territorio</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · CÓMO FUNCIONA -->
+  <section class="sec alt" id="plataforma">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="hs">Conecta tus datos. Lee tu territorio. <em>Decide con evidencia.</em></h2>
+      </div>
+      <div class="tres">
+        <div class="paso"><span class="n">Paso 1</span><h3>Conecta</h3><p>Tus estaciones, registros de terreno y fuentes públicas entran solos a la plataforma. Sin planillas.</p></div>
+        <div class="paso"><span class="n">Paso 2</span><h3>Lee</h3><p>Cada territorio queda en cuatro scores comparables: General, Territorial, Contexto y Comunidad.</p></div>
+        <div class="paso"><span class="n">Paso 3</span><h3>Anticipa</h3><p>Las alertas avisan cuando una tendencia cambia — antes del incidente, del reclamo o de la multa.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · PRODUCTO REAL -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="hs">Así se ve tu operación <em>en una sola pantalla</em>.</h2>
+        <p>Capturas reales de la plataforma. Cada instalación define sus parámetros, umbrales y territorios.</p>
+      </div>
+      <div class="prod">
+        <div class="prod-head"><h3>Resumen ejecutivo en vivo</h3><span class="mono">Plataforma SIMCII</span></div>
+        <div class="prod-grid">
+          <figure><img src="/assets/capturas/exponor-01-resumen.jpg" alt="Panel de SIMCII: scores territoriales, parámetros en tiempo real y mapa de calor." loading="lazy" /><figcaption>Scores + parámetros en tiempo real + mapa de calor</figcaption></figure>
+          <div class="prod-col">
+            <figure><img src="/assets/capturas/exponor-06-puntajes.jpg" alt="Evolución de puntajes por territorio en SIMCII." loading="lazy" /><figcaption>Evolución de puntajes</figcaption></figure>
+            <figure><img src="/assets/capturas/exponor-04-comunidad.jpg" alt="Módulo de comunidad: actores y alertas tempranas." loading="lazy" /><figcaption>Comunidad y alertas tempranas</figcaption></figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · MAPA VIVO (Mapbox, API key propia) -->
+  <section class="sec alt" id="mapa">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="hs">Tu red de monitoreo, <em>en el mapa</em>.</h2>
+        <p>Cada estación reporta su score en tiempo real. Pasa el cursor por los puntos.</p>
+      </div>
+      <div class="mapa-shell">
+        <div id="mapbox"></div>
+        <div class="mapa-fallback" id="mapa-fallback" hidden><img src="/assets/capturas/exponor-04-comunidad.jpg" alt="Mapa de estaciones de monitoreo en la plataforma SIMCII." loading="lazy" /></div>
+        <span class="mapa-tag">8 estaciones · datos de ejemplo</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · MÓDULOS -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head"><h2 class="hs">Cuatro módulos. <em>Una lectura.</em></h2></div>
+      <div class="mods">
+        <a class="mod" href="/soluciones/monitoreo-ambiental"><span class="mono">Ambiental</span><h3>Monitorea el entorno sin planillas</h3><p>Estaciones y parámetros en KPIs con umbrales, series históricas y alertas por desviación.</p><b>Ver solución</b></a>
+        <a class="mod" href="/soluciones/relacionamiento-comunitario"><span class="mono">Comunidad</span><h3>Gestiona la relación con evidencia</h3><p>Actores, compromisos, reclamos y encuestas con historial trazable por territorio.</p><b>Ver solución</b></a>
+        <a class="mod" href="/soluciones/cumplimiento-rca"><span class="mono">Cumplimiento</span><h3>Controla tu RCA antes del vencimiento</h3><p>Cada compromiso con estado, plazo, responsable y evidencia lista para fiscalización.</p><b>Ver solución</b></a>
+        <a class="mod" href="/soluciones/gestion-territorial"><span class="mono">Territorio</span><h3>Compara territorios con una misma vara</h3><p>Scores General, Territorial, Contexto y Comunidad — comparables entre sí y en el tiempo.</p><b>Ver solución</b></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · INDUSTRIAS -->
+  <section class="sec alt" id="industrias">
+    <div class="wrap">
+      <div class="sec-head"><h2 class="hs">Donde hay territorio, <em>SIMCII lee</em>.</h2></div>
+      <div class="inds">
+        <a class="indu" href="/industrias/mineria"><span class="mono">01</span><h3>Minería</h3><p>Faenas, comunidades y licencia social.</p></a>
+        <a class="indu" href="/industrias/energia"><span class="mono">02</span><h3>Energía y renovables</h3><p>Portafolios comparables por proyecto.</p></a>
+        <a class="indu" href="/industrias/salmonicultura"><span class="mono">03</span><h3>Salmonicultura</h3><p>Centros de cultivo y convivencia costera.</p></a>
+        <a class="indu" href="/industrias/forestal"><span class="mono">04</span><h3>Forestal</h3><p>Patrimonio disperso y vecindad rural.</p></a>
+        <a class="indu" href="/industrias/inmobiliario"><span class="mono">05</span><h3>Inmobiliario</h3><p>Obras, vecinos y mitigaciones.</p></a>
+        <a class="indu" href="/industrias/sanitarias"><span class="mono">06</span><h3>Sanitarias</h3><p>Plantas y redes en la ciudad.</p></a>
+        <a class="indu" href="/industrias/carreteras"><span class="mono">07</span><h3>Carreteras</h3><p>Trazados leídos tramo a tramo.</p></a>
+        <a class="indu" href="/industrias/sector-publico"><span class="mono">08</span><h3>Sector público</h3><p>Territorios en scores comparables.</p></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · CONFIANZA -->
+  <section class="sec">
+    <div class="wrap conf">
+      <div>
+        <h3>Protege los datos como se protege una operación</h3>
+        <div class="row"><span class="t"></span><div><b>Cifrado en el borde</b><span>TLS 1.3 y HTTPS forzado en todo el tráfico.</span></div></div>
+        <div class="row"><span class="t"></span><div><b>Red aislada</b><span>Base de datos sin exposición pública; administración solo por VPN.</span></div></div>
+        <div class="row"><span class="t"></span><div><b>Aislamiento por cliente</b><span>Datos segregados por organización; acceso siempre vía API.</span></div></div>
+        <div class="row"><span class="t"></span><div><b>Ley N° 21.719</b><span>Diseñada para cumplir la nueva Ley de Protección de Datos de Chile.</span></div></div>
+      </div>
+      <div>
+        <h3>Parte en semanas, no en trimestres</h3>
+        <div class="row"><span class="chip">Sem 1–2</span><div><b>Levantamiento</b><span>Qué fuentes se integran y qué indicadores importan a tu operación.</span></div></div>
+        <div class="row"><span class="chip">Sem 3–5</span><div><b>Integración</b><span>Estaciones, fuentes, scores, umbrales y alertas para tu territorio.</span></div></div>
+        <div class="row"><span class="chip">Sem 6+</span><div><b>Producción</b><span>Jefe de proyecto dedicado como contraparte directa.</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 · FAQ -->
+  <section class="sec alt" id="faq">
+    <div class="wrap">
+      <div class="sec-head"><h2 class="hs">Pregunta antes. <em>Decide mejor.</em></h2></div>
+      <div class="faq">
+        <details open><summary><span class="fn">01</span>¿Qué es SIMCII?<span class="tr" aria-hidden="true"></span></summary><p>Una plataforma de inteligencia territorial que integra monitoreo ambiental, relacionamiento comunitario, contexto y compromisos en scores comparables de 0 a 100 por territorio, con evidencia trazable.</p></details>
+        <details><summary><span class="fn">02</span>¿Cuánto tarda la implementación?<span class="tr" aria-hidden="true"></span></summary><p>Semanas: levantamiento y definición (1–2), integración y configuración (3–5), y salida a producción con acompañamiento desde la semana 6. Los plazos exactos se ajustan en el kick-off.</p></details>
+        <details><summary><span class="fn">03</span>¿Cómo protege SIMCII los datos?<span class="tr" aria-hidden="true"></span></summary><p>Con defensa en profundidad: TLS 1.3, base de datos sin exposición pública, sesiones JWT con control por rol y por fila, aislamiento por cliente y trazabilidad de accesos — en cumplimiento de la Ley N° 21.719.</p></details>
+        <details><summary><span class="fn">04</span>¿SIMCII reemplaza mis estaciones de monitoreo?<span class="tr" aria-hidden="true"></span></summary><p>No. Se conecta a la infraestructura de medición existente y consolida sus datos en una sola lectura comparable. No exige reemplazar equipos ni programas.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9 · CTA -->
+  <section class="sec final" id="demo">
+    <div class="wrap final-grid">
+      <div>
+        <h2>Conoce el territorio <em>antes</em> de decidir.</h2>
+        <p class="sub">Demo con datos de ejemplo, sin compromiso. Respondemos en 24 horas hábiles.</p>
+        <p class="mail"><a href="mailto:contacto@accionet.net">contacto@accionet.net</a></p>
+      </div>
+      <div class="fcard">
+        <form data-demo-form novalidate>
+          <label for="email">Correo corporativo</label>
+          <input id="email" type="email" placeholder="tu@empresa.cl" required autocomplete="email" />
+          <p class="ferr" data-form-error hidden><span class="pip"></span><span data-error-text></span></p>
+          <button class="btn" type="submit">Solicitar una demo</button>
+          <p class="fnote"><span class="pip"></span>Respondemos en 24 h hábiles</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="fbrand"><img src="/assets/logo-simcii-claro.svg" alt="SIMCII" /><p>Plataforma de monitoreo ambiental, social y territorial. Mide, lee y anticipa el territorio con evidencia.</p></div>
+      <div><h4>Soluciones</h4><ul>
+        <li><a href="/soluciones/monitoreo-ambiental">Monitoreo ambiental</a></li>
+        <li><a href="/soluciones/relacionamiento-comunitario">Relacionamiento comunitario</a></li>
+        <li><a href="/soluciones/cumplimiento-rca">Cumplimiento RCA</a></li>
+        <li><a href="/soluciones/gestion-territorial">Gestión territorial</a></li>
+      </ul></div>
+      <div><h4>Industrias</h4><ul>
+        <li><a href="/industrias/mineria">Minería</a></li>
+        <li><a href="/industrias/energia">Energía y renovables</a></li>
+        <li><a href="/industrias/salmonicultura">Salmonicultura</a></li>
+        <li><a href="/industrias/forestal">Forestal</a></li>
+        <li><a href="/industrias/inmobiliario">Proyectos inmobiliarios</a></li>
+        <li><a href="/industrias/sanitarias">Sanitarias</a></li>
+        <li><a href="/industrias/carreteras">Carreteras y concesiones</a></li>
+        <li><a href="/industrias/sector-publico">Sector público</a></li>
+      </ul></div>
+      <div><h4>Contacto</h4><ul>
+        <li><a href="#demo">Solicitar una demo</a></li>
+        <li><a href="mailto:contacto@accionet.net">contacto@accionet.net</a></li>
+        <li>Santiago · Chile</li>
+      </ul></div>
+    </div>
+    <div class="flegal"><span>© 2026 Accionet SpA · Santiago, Chile</span><a href="https://simcii.ai">simcii.ai</a></div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/three@0.160.0/build/three.min.js" defer></script>
+<script src="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
+<script src="https://unpkg.com/lenis@1.3.25/dist/lenis.min.js" defer></script>
+<script src="/js/v5.js" defer></script>
+</body>
+</html>
