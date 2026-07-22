@@ -1,0 +1,262 @@
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* === SIMCII · CORDILLERA CÍVICA (dark corrected) ===
+         Paleta del Manual de Marca v3.0. La terracota es SEÑAL, nunca superficie. */
+
+      /* Marca — tokens canónicos */
+      --paper:         #F5F2EB;   /* blanco documento  */
+      --bg:            #17181B;   /* negro institucional */
+      --surface:       #1F2024;   /* card / panel */
+      --surface-2:     #26282C;   /* elevado / hover */
+      --ink:           #121316;   /* CTA / footer profundo */
+      --gris-ciudad:   #8A8C8E;   /* estructura/labels — NUNCA texto de lectura */
+      --azul-civico:   #2F5D7C;   /* acento confianza: fills, botón sólido */
+      --azul-claro:    #6B90AC;   /* acento sobre oscuro: links/eyebrows/énfasis (AA en texto pequeño) */
+      --azul-deep:     #234A63;   /* profundidad / plano medio cordillera */
+      --terracota:     #B96B45;   /* SEÑAL puntual: plano frontal, alerta, acento hero */
+      --terracota-deep:#9B4F30;   /* error / alerta severa */
+
+      /* Fondo / superficies (nombres legacy → valores de marca) */
+      --azul-gris:    var(--bg);
+      --azul-gris-2:  var(--surface);
+      --azul-gris-3:  var(--surface-2);
+      --tinta:        var(--ink);
+
+      /* Texto */
+      --hueso:        #F5F2EB;
+      --sal:          #E8E3D5;
+      --text-muted:   rgba(245, 242, 235, 0.64);
+      --text-soft:    rgba(245, 242, 235, 0.55);
+      --text-quiet:   rgba(245, 242, 235, 0.22);
+
+      /* Líneas */
+      --line:         rgba(245, 242, 235, 0.10);
+      --line-strong:  rgba(245, 242, 235, 0.18);
+
+      /* Acento primario (firma) = azul cívico claro, legible sobre oscuro */
+      --altiplano:    var(--azul-claro);
+      --altiplano-2:  rgba(92, 130, 160, 0.15);
+      --altiplano-3:  rgba(92, 130, 160, 0.05);
+
+      /* Estados — señal en terracota (rara) */
+      --fosforo:      var(--azul-claro);   /* "ok / en vivo" → azul info (sin verde neón) */
+      --ambar:        var(--terracota);    /* atención / señal */
+      --oxido:        var(--terracota-deep); /* error */
+
+      /* Aliases legacy — mantienen compatibilidad sin tocar JSX */
+      --obsidiana:    var(--tinta);
+      --basalto:      var(--azul-gris);
+      --basalto-2:    var(--azul-gris-2);
+      --basalto-3:    var(--azul-gris-3);
+      --marfil:       var(--hueso);
+      --marfil-2:     var(--sal);
+      --carbon:       var(--hueso);
+      --hueso-2:      var(--azul-gris-2);
+      --cobre:        var(--altiplano);
+      --cobre-2:      var(--altiplano);
+      --azafran:      var(--ambar);
+      --liquen:       var(--fosforo);
+      --musgo:        var(--fosforo);
+      --bruma:        var(--altiplano);
+      --cordillera:   var(--altiplano);
+      --magma:        var(--oxido);
+      --brasa:        var(--ambar);
+      --line-claro:   var(--line);
+      --line-oscuro:  var(--line);
+      --text:         var(--hueso);
+      --accent:       var(--altiplano);
+      --accent2:      var(--ambar);
+    }
+
+    html { scroll-behavior: smooth; }
+    /* Offset para que el nav fijo no tape los títulos al saltar por ancla */
+    section[id] { scroll-margin-top: 84px; }
+
+    body {
+      background: var(--bg);
+      color: var(--paper);
+      font-family: 'Source Sans 3', system-ui, sans-serif;
+      font-size: 16px; line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, .font-display { font-family: 'Manrope', system-ui, sans-serif; }
+    /* La marca no usa itálica: el énfasis es por color/peso */
+    em { font-style: normal; }
+
+    .ticker-track { display: inline-flex; animation: ticker 50s linear infinite; white-space: nowrap; }
+    .ticker-track:hover { animation-play-state: paused; }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    @keyframes float1 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+    @keyframes float2 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+
+    @keyframes markerPulse {
+      0%,100% { transform: scale(1); }
+      50%      { transform: scale(1.15); }
+    }
+
+    @keyframes pulse { 0%,100%{opacity:.35} 50%{opacity:.7} }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
+    @keyframes bounceArrow { 0%,100%{transform:translateY(0)} 50%{transform:translateY(4px)} }
+
+    @keyframes ringPulse {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(2.2); opacity: 0; }
+    }
+
+    @keyframes scanSweep {
+      0% { left: 0%; }
+      100% { left: calc(100% - 80px); }
+    }
+    .scan-sweep { animation: scanSweep 3.5s ease-in-out infinite alternate; }
+
+    @keyframes chileScan {
+      0% { top: 0%; opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { top: 100%; opacity: 0; }
+    }
+    .chile-scan { animation: chileScan 5s ease-in-out infinite; top: 0; }
+
+    @keyframes loaderFill { to { transform: scaleX(1); } }
+
+    /* Grano sutil de papel/territorio */
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9998;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+      opacity: 0.025; mix-blend-mode: overlay;
+    }
+
+    /* Selección editorial */
+    ::selection { background: var(--azul-civico); color: var(--paper); }
+
+    /* Cordillera como separador de sección (silueta de 3 planos) */
+    .cordillera-sep { display:block; width:100%; height:46px; }
+    .cordillera-sep .plano-fondo  { fill: var(--gris-ciudad); opacity:.32; }
+    .cordillera-sep .plano-medio  { fill: var(--azul-deep); opacity:.85; }
+    .cordillera-sep .plano-frontal{ fill: var(--terracota); }
+
+    /* Mapbox popup override */
+    .mapboxgl-popup-content {
+      background: transparent !important;
+      padding: 0 !important;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.5) !important;
+      border-radius: 2px !important;
+    }
+    .mapboxgl-popup-tip { display: none !important; }
+    .mapboxgl-ctrl-logo { display: none !important; }
+    .mapboxgl-ctrl-attrib { display: none !important; }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--surface); }
+    ::-webkit-scrollbar-thumb { background: rgba(245,242,235,0.18); border-radius: 0; }
+
+    /* Accesibilidad: foco visible gestionado */
+    a:focus-visible, button:focus-visible, input:focus-visible {
+      outline: 2px solid var(--azul-claro); outline-offset: 2px;
+    }
+
+    /* Respeta prefers-reduced-motion: desactiva loops/parallax/3D-orbit */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+      }
+      .ticker-track, .scan-sweep, .chile-scan { animation: none !important; }
+    }
+
+    /* === RESPONSIVE === */
+
+    /* Hero stack zone (≤1280px) — Chile dot-strip solo en desktop grande */
+    @media (max-width: 1280px) {
+      .hero-grid { grid-template-columns: 1fr !important; gap: 32px !important; padding: 60px 2rem 40px !important; min-height: auto !important; }
+      .hero-chile { display: none !important; }
+      .hero-headline { font-size: clamp(2.4rem, 6vw, 5rem) !important; }
+      .platform-grid { grid-template-columns: 1fr !important; }
+      .casestudy-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+    }
+
+    /* Tablet (≤1024px) */
+    @media (max-width: 1024px) {
+      .hero-grid { padding: 48px 1.5rem 32px !important; }
+      .modules-grid { grid-template-columns: 1fr !important; }
+      .sectors-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .diff-grid { grid-template-columns: repeat(2, 1fr) !important; row-gap: 40px !important; }
+      .diff-grid > div { border-left: none !important; padding-left: 0 !important; padding-right: 0 !important; }
+      .cta-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+      .cta-card { padding: 56px 32px !important; }
+      .footer-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+    }
+
+    /* Mobile (≤768px) */
+    @media (max-width: 768px) {
+      .nav-links { display: none !important; }
+      .nav-cta-text { display: none !important; }
+      .nav-cta-short { display: inline !important; }
+      .nav-bar { padding: 0 1.25rem !important; height: 60px !important; }
+      .nav-cta { padding: 9px 14px !important; font-size: 12px !important; }
+
+      .bitacora-bar { padding: 8px 1.25rem !important; flex-wrap: wrap; gap: 8px; }
+      .bitacora-bar > div > span { font-size: 9px !important; letter-spacing: 0.12em !important; }
+      .bitacora-bar > span:last-child { font-size: 9px !important; }
+
+      .hero-section { padding-top: 60px !important; min-height: auto !important; }
+      .hero-grid { padding: 36px 1.25rem 24px !important; gap: 24px !important; min-height: auto !important; }
+      .hero-headline { font-size: clamp(2rem, 8.5vw, 3.4rem) !important; line-height: 1.05 !important; margin-bottom: 24px !important; }
+      .hero-subtitle { font-size: clamp(1.05rem, 4.5vw, 1.5rem) !important; max-width: 100% !important; margin-bottom: 32px !important; }
+      .hero-cta { font-size: 12px !important; padding: 12px 18px !important; }
+      .hero-meta { flex-direction: column !important; align-items: flex-start !important; gap: 14px !important; }
+
+      .ticker-bar { padding: 10px 0 !important; }
+
+      .hero-marginalia { display: none !important; }
+
+      .section-pad { padding-left: 1.25rem !important; padding-right: 1.25rem !important; }
+      .problem-section { padding: 60px 1.25rem 80px !important; }
+      .problem-phrase { font-size: clamp(1.6rem, 8vw, 2.6rem) !important; }
+      .modules-section { padding: 60px 1.25rem 80px !important; }
+      .module-card { padding: 32px 24px !important; }
+      .module-card h3 { font-size: clamp(1.4rem, 6vw, 1.9rem) !important; }
+      .sectors-section { padding: 60px 1.25rem 80px !important; }
+      .sectors-grid { grid-template-columns: 1fr !important; gap: 14px !important; }
+      .sector-card { padding: 28px 22px !important; }
+      .diff-section { padding: 56px 1.25rem !important; margin-bottom: 80px !important; }
+      .diff-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+      .casestudy-section { padding: 0 1.25rem 80px !important; }
+      .casestudy-grid { grid-template-columns: 1fr !important; }
+      .scores-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .founder-section { padding: 0 1.25rem 80px !important; }
+
+      .cta-section { padding: 40px 1.25rem 80px !important; }
+      .cta-card { padding: 48px 24px !important; }
+      .cta-card h2 { font-size: clamp(1.7rem, 7vw, 2.4rem) !important; }
+      .cta-card .corner-mark { font-size: 9px !important; }
+
+      .footer-root { padding: 56px 1.25rem 32px !important; }
+      .footer-grid { grid-template-columns: 1fr !important; gap: 36px !important; }
+      .footer-masthead { gap: 12px !important; }
+      .footer-masthead > div span { font-size: 26px !important; }
+      .footer-masthead > span { font-size: 10px !important; letter-spacing: 0.14em !important; }
+
+      .platform-section { padding: 60px 0 80px !important; }
+      .platform-header { padding: 0 1.25rem !important; }
+      .platform-map { height: 60vh !important; min-height: 420px !important; }
+      .platform-side { padding: 0 1.25rem !important; }
+
+      .tweaks-panel { display: none !important; }
+    }
+
+    /* Small mobile (≤480px) */
+    @media (max-width: 480px) {
+      .hero-headline { font-size: clamp(1.8rem, 9vw, 2.6rem) !important; }
+      .nav-bar { padding: 0 1rem !important; }
+      .footer-masthead > div span { font-size: 22px !important; }
+    }
+
+    img { max-width: 100%; height: auto; }
