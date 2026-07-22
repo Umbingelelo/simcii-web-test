@@ -357,7 +357,7 @@ function PlatformMap() {
       transition: 'all 0.8s cubic-bezier(0.16,1,0.3,1)'
     }
   }, /*#__PURE__*/React.createElement(window.ChapterLabel, {
-    number: "04",
+    number: "05",
     title: "La plataforma"
   }), /*#__PURE__*/React.createElement("div", {
     style: {
@@ -518,7 +518,7 @@ function PlatformMap() {
       textTransform: 'uppercase',
       zIndex: 2
     }
-  }, /*#__PURE__*/React.createElement(window.SectionMark, null), " 04 \xB7 Estaciones, comunidad y alertas")), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement(window.SectionMark, null), " 05 \xB7 Estaciones, comunidad y alertas")), /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
       flexDirection: 'column',
@@ -725,7 +725,8 @@ function PlatformMap() {
 function BrowserFrame({
   src,
   alt,
-  label
+  label,
+  domain = 'exponor.simcii.ai'
 }) {
   return /*#__PURE__*/React.createElement("figure", {
     style: {
@@ -765,7 +766,7 @@ function BrowserFrame({
       letterSpacing: '0.1em',
       marginLeft: 8
     }
-  }, "simcii-poc.accionet.net")), /*#__PURE__*/React.createElement("img", {
+  }, domain)), /*#__PURE__*/React.createElement("img", {
     src: src,
     alt: alt,
     loading: "lazy",
@@ -828,17 +829,18 @@ function CountUp({
 }
 const DEMO_SCORES = [{
   label: 'General',
-  value: 71.2
+  value: 69.1
 }, {
   label: 'Territorial',
-  value: 85.7
+  value: 79.8
 }, {
   label: 'Contexto',
-  value: 73.9
+  value: 73.7
 }, {
   label: 'Comunidad',
-  value: 53.9
+  value: 53.8
 }];
+const OPS_FACTS = ['Datos cada 5 minutos', 'Reporte diario automático', 'Aire · olores · ruido · meteorología', 'Denuncias con seguimiento'];
 function CaseStudy() {
   const [ref, visible] = window.useReveal(0.12);
   return /*#__PURE__*/React.createElement("section", {
@@ -857,8 +859,8 @@ function CaseStudy() {
       transition: 'all 0.8s cubic-bezier(0.16,1,0.3,1)'
     }
   }, /*#__PURE__*/React.createElement(window.ChapterLabel, {
-    number: "07",
-    title: "La plataforma en uso"
+    number: "06",
+    title: "En operaci\xF3n"
   }), /*#__PURE__*/React.createElement("h2", {
     style: {
       fontFamily: 'Manrope, sans-serif',
@@ -871,21 +873,54 @@ function CaseStudy() {
       maxWidth: 820,
       textWrap: 'balance'
     }
-  }, "Un score por territorio, ", /*#__PURE__*/React.createElement("span", {
+  }, "No es una maqueta: ", /*#__PURE__*/React.createElement("span", {
     style: {
       color: 'var(--azul-claro)'
     }
-  }, "no una hoja de c\xE1lculo.")), /*#__PURE__*/React.createElement("p", {
+  }, "est\xE1 operando.")), /*#__PURE__*/React.createElement("p", {
     style: {
       fontFamily: 'Source Sans 3, sans-serif',
       fontSize: 16,
       lineHeight: 1.6,
       color: 'var(--text-muted)',
-      maxWidth: 640,
-      marginBottom: 48,
+      maxWidth: 680,
+      marginBottom: 24,
       textWrap: 'pretty'
     }
-  }, "SIMCII compone indicadores ambientales y sociales en puntajes comparables (0\u2013100) y los muestra sobre el mapa, los actores y los compromisos. Lo que sigue son capturas reales del POC con datos demostrativos."), /*#__PURE__*/React.createElement("div", {
+  }, "SIMCII monitorea hoy, en producci\xF3n, un proyecto de remediaci\xF3n urbana en la costa de la Regi\xF3n de Valpara\xEDso: aire, olores, ruido y meteorolog\xEDa en continuo, con reporte diario autom\xE1tico y canal de denuncias ciudadanas. Y en Antofagasta mantiene una ", /*#__PURE__*/React.createElement("a", {
+    href: "https://exponor.simcii.ai",
+    target: "_blank",
+    rel: "noopener",
+    style: {
+      color: 'var(--azul-claro)'
+    }
+  }, "demo p\xFAblica con datos en vivo"), " que puedes explorar ahora mismo."), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      gap: '10px 28px',
+      marginBottom: 48
+    }
+  }, OPS_FACTS.map((f, i) => /*#__PURE__*/React.createElement("span", {
+    key: i,
+    style: {
+      display: 'inline-flex',
+      alignItems: 'center',
+      gap: 8,
+      fontFamily: 'JetBrains Mono, monospace',
+      fontSize: 10,
+      color: 'var(--text-soft)',
+      letterSpacing: '0.14em',
+      textTransform: 'uppercase'
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      width: 6,
+      height: 6,
+      borderRadius: '50%',
+      background: 'var(--azul-claro)'
+    }
+  }), f))), /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'grid',
       gridTemplateColumns: 'repeat(4, 1fr)',
@@ -936,9 +971,9 @@ function CaseStudy() {
       alignItems: 'start'
     }
   }, /*#__PURE__*/React.createElement(BrowserFrame, {
-    src: "assets/capturas/01-home.png",
-    alt: "Resumen general de SIMCII: scores territoriales, par\xE1metros en tiempo real y mapa de zonas de riesgo.",
-    label: "Fig. 02 \xB7 Resumen general \xB7 scores y mapa"
+    src: "assets/capturas/exponor-01-resumen.jpg",
+    alt: "Resumen general de SIMCII en la demo de Antofagasta: scores territoriales, par\xE1metros en tiempo real y mapa de calor.",
+    label: "Fig. 06.1 \xB7 Resumen general \xB7 scores y mapa en vivo"
   }), /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'grid',
@@ -946,16 +981,24 @@ function CaseStudy() {
       gap: 24
     }
   }, /*#__PURE__*/React.createElement(BrowserFrame, {
-    src: "assets/capturas/04-comunidad.png",
-    alt: "M\xF3dulo de comunidad: actores territoriales y relacionamiento.",
-    label: "Fig. 03 \xB7 Comunidad y actores"
+    src: "assets/capturas/exponor-04-comunidad.jpg",
+    alt: "M\xF3dulo de comunidad de SIMCII: actores territoriales, alertas tempranas y escucha social sobre el mapa.",
+    label: "Fig. 06.2 \xB7 Comunidad y actores"
   }), /*#__PURE__*/React.createElement(BrowserFrame, {
-    src: "assets/capturas/05-gestion.png",
-    alt: "Gesti\xF3n territorial: compromisos y seguimiento.",
-    label: "Fig. 04 \xB7 Gesti\xF3n y compromisos"
+    src: "assets/capturas/exponor-06-puntajes.jpg",
+    alt: "Evoluci\xF3n de los puntajes Territorio, Comunidad y Contexto de SIMCII en el tiempo.",
+    label: "Fig. 06.3 \xB7 Evoluci\xF3n de puntajes"
   }))), /*#__PURE__*/React.createElement("div", {
     style: {
       marginTop: 24,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      flexWrap: 'wrap',
+      gap: 16
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
       display: 'flex',
       alignItems: 'center',
       gap: 10
@@ -974,7 +1017,24 @@ function CaseStudy() {
       letterSpacing: '0.16em',
       textTransform: 'uppercase'
     }
-  }, "Capturas del POC \xB7 datos demostrativos"))));
+  }, "Capturas de la demo p\xFAblica \xB7 Antofagasta \xB7 datos en vivo")), /*#__PURE__*/React.createElement("a", {
+    href: "https://exponor.simcii.ai",
+    target: "_blank",
+    rel: "noopener",
+    style: {
+      fontFamily: 'JetBrains Mono, monospace',
+      fontSize: 11,
+      textTransform: 'uppercase',
+      letterSpacing: '0.12em',
+      color: 'var(--paper)',
+      textDecoration: 'none',
+      paddingBottom: 5,
+      borderBottom: '1px solid var(--azul-claro)',
+      display: 'inline-flex',
+      alignItems: 'center',
+      gap: 8
+    }
+  }, "Explorar la demo en vivo ", /*#__PURE__*/React.createElement("span", null, "\u2197")))));
 }
 Object.assign(window, {
   PlatformMap,

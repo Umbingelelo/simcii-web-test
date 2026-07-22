@@ -19,11 +19,14 @@ function App() {
         <Hero introDone={introDone} />
         <Ticker />
         <Problem />
+        <Method />
         <Modules />
         <PlatformMap />
+        <CaseStudy />
         <Sectors />
         <Stats />
-        <CaseStudy />
+        <Security />
+        <Implementation />
         <FounderQuote />
         <CTASection />
       </main>

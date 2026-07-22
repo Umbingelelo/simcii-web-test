@@ -50,7 +50,7 @@ function CTASection() {
           <path d="M0 120 L200 100 L380 116 L560 96 L720 118 L900 100 L1080 118 L1200 108 L1200 120 Z" fill="var(--terracota)" opacity="0.85" />
         </svg>
 
-        <span className="corner-mark" style={{ position: 'absolute', top: 24, left: 24, fontFamily: 'JetBrains Mono, monospace', fontSize: 10, color: 'var(--azul-claro)', letterSpacing: '0.2em' }}><window.SectionMark /> 09 · CONTACTO</span>
+        <span className="corner-mark" style={{ position: 'absolute', top: 24, left: 24, fontFamily: 'JetBrains Mono, monospace', fontSize: 10, color: 'var(--azul-claro)', letterSpacing: '0.2em' }}><window.SectionMark /> 12 · CONTACTO</span>
         <span className="corner-mark" style={{ position: 'absolute', top: 24, right: 24, fontFamily: 'JetBrains Mono, monospace', fontSize: 10, color: 'var(--text-soft)', letterSpacing: '0.2em' }}>SIMCII · 2026</span>
 
         <div className="cta-grid" style={{ position: 'relative', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'center' }}>

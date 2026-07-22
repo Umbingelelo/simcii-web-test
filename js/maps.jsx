@@ -219,7 +219,7 @@ function PlatformMap() {
     <section id="platform" className="platform-section" ref={ref} style={{ padding: '0 2.5rem 140px', maxWidth: 1320, margin: '0 auto' }}>
       <div style={{ opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(30px)', transition: 'all 0.8s cubic-bezier(0.16,1,0.3,1)' }}>
 
-        <window.ChapterLabel number="04" title="La plataforma" />
+        <window.ChapterLabel number="05" title="La plataforma" />
 
         <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 20, marginBottom: 48 }}>
           <h2 style={{
@@ -269,7 +269,7 @@ function PlatformMap() {
             )}
 
             <div style={{ position: 'absolute', bottom: 16, left: 16, fontFamily: 'JetBrains Mono, monospace', fontSize: 10, color: 'var(--text-soft)', letterSpacing: '0.14em', textTransform: 'uppercase', zIndex: 2 }}>
-              <window.SectionMark /> 04 · Estaciones, comunidad y alertas
+              <window.SectionMark /> 05 · Estaciones, comunidad y alertas
             </div>
           </div>
 
@@ -334,7 +334,7 @@ function PlatformMap() {
 }
 
 // ---------------- LA PLATAFORMA EN USO (capturas reales) ----------------
-function BrowserFrame({ src, alt, label }) {
+function BrowserFrame({ src, alt, label, domain = 'exponor.simcii.ai' }) {
   return (
     <figure style={{ margin: 0, border: '1px solid var(--line-strong)', background: 'var(--surface)', overflow: 'hidden' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 14px', borderBottom: '1px solid var(--line)', background: 'var(--surface-2)' }}>
@@ -343,7 +343,7 @@ function BrowserFrame({ src, alt, label }) {
             <span key={i} style={{ width: 9, height: 9, borderRadius: '50%', background: c, opacity: 0.7 }} />
           ))}
         </span>
-        <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 10, color: 'var(--text-soft)', letterSpacing: '0.1em', marginLeft: 8 }}>simcii-poc.accionet.net</span>
+        <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 10, color: 'var(--text-soft)', letterSpacing: '0.1em', marginLeft: 8 }}>{domain}</span>
       </div>
       <img src={src} alt={alt} loading="lazy" style={{ width: '100%', display: 'block' }} />
       {label && <figcaption style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 10, color: 'var(--text-soft)', letterSpacing: '0.12em', textTransform: 'uppercase', padding: '10px 14px', borderTop: '1px solid var(--line)' }}>{label}</figcaption>}
@@ -377,10 +377,17 @@ function CountUp({ to, decimals = 1, duration = 1200 }) {
 }
 
 const DEMO_SCORES = [
-  { label: 'General', value: 71.2 },
-  { label: 'Territorial', value: 85.7 },
-  { label: 'Contexto', value: 73.9 },
-  { label: 'Comunidad', value: 53.9 },
+  { label: 'General', value: 69.1 },
+  { label: 'Territorial', value: 79.8 },
+  { label: 'Contexto', value: 73.7 },
+  { label: 'Comunidad', value: 53.8 },
+];
+
+const OPS_FACTS = [
+  'Datos cada 5 minutos',
+  'Reporte diario automático',
+  'Aire · olores · ruido · meteorología',
+  'Denuncias con seguimiento',
 ];
 
 function CaseStudy() {
@@ -389,17 +396,25 @@ function CaseStudy() {
     <section id="casestudy" className="casestudy-section" ref={ref} style={{ padding: '0 2.5rem 140px', maxWidth: 1320, margin: '0 auto' }}>
       <div style={{ opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(30px)', transition: 'all 0.8s cubic-bezier(0.16,1,0.3,1)' }}>
 
-        <window.ChapterLabel number="07" title="La plataforma en uso" />
+        <window.ChapterLabel number="06" title="En operación" />
 
         <h2 style={{
           fontFamily: 'Manrope, sans-serif', fontSize: 'clamp(1.9rem, 3.2vw, 2.8rem)', fontWeight: 800,
           letterSpacing: '-0.03em', color: 'var(--paper)', lineHeight: 1.02, marginBottom: 18, maxWidth: 820, textWrap: 'balance',
         }}>
-          Un score por territorio, <span style={{ color: 'var(--azul-claro)' }}>no una hoja de cálculo.</span>
+          No es una maqueta: <span style={{ color: 'var(--azul-claro)' }}>está operando.</span>
         </h2>
-        <p style={{ fontFamily: 'Source Sans 3, sans-serif', fontSize: 16, lineHeight: 1.6, color: 'var(--text-muted)', maxWidth: 640, marginBottom: 48, textWrap: 'pretty' }}>
-          SIMCII compone indicadores ambientales y sociales en puntajes comparables (0–100) y los muestra sobre el mapa, los actores y los compromisos. Lo que sigue son capturas reales del POC con datos demostrativos.
+        <p style={{ fontFamily: 'Source Sans 3, sans-serif', fontSize: 16, lineHeight: 1.6, color: 'var(--text-muted)', maxWidth: 680, marginBottom: 24, textWrap: 'pretty' }}>
+          SIMCII monitorea hoy, en producción, un proyecto de remediación urbana en la costa de la Región de Valparaíso: aire, olores, ruido y meteorología en continuo, con reporte diario automático y canal de denuncias ciudadanas. Y en Antofagasta mantiene una <a href="https://exponor.simcii.ai" target="_blank" rel="noopener" style={{ color: 'var(--azul-claro)' }}>demo pública con datos en vivo</a> que puedes explorar ahora mismo.
         </p>
+
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px 28px', marginBottom: 48 }}>
+          {OPS_FACTS.map((f, i) => (
+            <span key={i} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontFamily: 'JetBrains Mono, monospace', fontSize: 10, color: 'var(--text-soft)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
+              <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--azul-claro)' }} />{f}
+            </span>
+          ))}
+        </div>
 
         {/* Scores reales del demo */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 1, background: 'var(--line)', border: '1px solid var(--line-strong)', marginBottom: 48 }} className="scores-grid">
@@ -415,16 +430,27 @@ function CaseStudy() {
         </div>
 
         <div className="casestudy-grid" style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 24, alignItems: 'start' }}>
-          <BrowserFrame src="assets/capturas/01-home.png" alt="Resumen general de SIMCII: scores territoriales, parámetros en tiempo real y mapa de zonas de riesgo." label="Fig. 02 · Resumen general · scores y mapa" />
+          <BrowserFrame src="assets/capturas/exponor-01-resumen.jpg" alt="Resumen general de SIMCII en la demo de Antofagasta: scores territoriales, parámetros en tiempo real y mapa de calor." label="Fig. 06.1 · Resumen general · scores y mapa en vivo" />
           <div style={{ display: 'grid', gridTemplateRows: '1fr 1fr', gap: 24 }}>
-            <BrowserFrame src="assets/capturas/04-comunidad.png" alt="Módulo de comunidad: actores territoriales y relacionamiento." label="Fig. 03 · Comunidad y actores" />
-            <BrowserFrame src="assets/capturas/05-gestion.png" alt="Gestión territorial: compromisos y seguimiento." label="Fig. 04 · Gestión y compromisos" />
+            <BrowserFrame src="assets/capturas/exponor-04-comunidad.jpg" alt="Módulo de comunidad de SIMCII: actores territoriales, alertas tempranas y escucha social sobre el mapa." label="Fig. 06.2 · Comunidad y actores" />
+            <BrowserFrame src="assets/capturas/exponor-06-puntajes.jpg" alt="Evolución de los puntajes Territorio, Comunidad y Contexto de SIMCII en el tiempo." label="Fig. 06.3 · Evolución de puntajes" />
           </div>
         </div>
 
-        <div style={{ marginTop: 24, display: 'flex', alignItems: 'center', gap: 10 }}>
-          <span style={{ width: 8, height: 1, background: 'var(--text-soft)' }} />
-          <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 10, color: 'var(--text-soft)', letterSpacing: '0.16em', textTransform: 'uppercase' }}>Capturas del POC · datos demostrativos</span>
+        <div style={{ marginTop: 24, display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <span style={{ width: 8, height: 1, background: 'var(--text-soft)' }} />
+            <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 10, color: 'var(--text-soft)', letterSpacing: '0.16em', textTransform: 'uppercase' }}>Capturas de la demo pública · Antofagasta · datos en vivo</span>
+          </div>
+          <a href="https://exponor.simcii.ai" target="_blank" rel="noopener" style={{
+            fontFamily: 'JetBrains Mono, monospace', fontSize: 11,
+            textTransform: 'uppercase', letterSpacing: '0.12em',
+            color: 'var(--paper)', textDecoration: 'none',
+            paddingBottom: 5, borderBottom: '1px solid var(--azul-claro)',
+            display: 'inline-flex', alignItems: 'center', gap: 8,
+          }}>
+            Explorar la demo en vivo <span>↗</span>
+          </a>
         </div>
       </div>
     </section>
