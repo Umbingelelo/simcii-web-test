@@ -174,7 +174,7 @@ function Hero({ introDone }) {
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 11, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--text-soft)' }}>
-            SIMCII · INTELIGENCIA TERRITORIAL · § 01
+            SIMCII · INTELIGENCIA TERRITORIAL · 01
           </span>
         </div>
         <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 11, color: 'var(--azul-claro)', letterSpacing: '0.16em', display: 'inline-flex', alignItems: 'center', gap: 7 }}>
@@ -196,7 +196,7 @@ function Hero({ introDone }) {
             letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 28,
             opacity: loaded ? 1 : 0, transform: loaded ? 'none' : 'translateY(10px)',
             transition: 'all 0.9s cubic-bezier(0.16,1,0.3,1) 0.2s',
-          }}>§ 01 · Plataforma de monitoreo territorial</div>
+          }}><window.SectionMark /> 01 · Plataforma de monitoreo territorial</div>
 
           <h1 className="hero-headline" style={{
             fontFamily: 'Manrope, sans-serif', fontWeight: 800,
@@ -272,7 +272,7 @@ function Hero({ introDone }) {
         position: 'absolute', bottom: 32, left: 40,
         fontFamily: 'JetBrains Mono, monospace', fontSize: 10,
         color: 'var(--text-soft)', letterSpacing: '0.14em', textTransform: 'uppercase',
-      }}>§ 01 · 2026</div>
+      }}><window.SectionMark /> 01 · 2026</div>
       <div className="hero-marginalia" style={{
         position: 'absolute', bottom: 32, right: 40,
         fontFamily: 'JetBrains Mono, monospace', fontSize: 10,

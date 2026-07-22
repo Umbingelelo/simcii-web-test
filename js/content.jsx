@@ -15,7 +15,7 @@ function useReveal(threshold = 0.15) {
 function ChapterLabel({ number, title }) {
   return (
     <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, marginBottom: 36 }}>
-      <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 11, color: 'var(--altiplano)', letterSpacing: '0.18em' }}>§ {number}</span>
+      <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 11, color: 'var(--altiplano)', letterSpacing: '0.18em' }}><window.SectionMark /> {number}</span>
       <span style={{ flex: 1, height: 1, background: 'var(--line)' }} />
       <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 10, color: 'var(--text-soft)', letterSpacing: '0.2em', textTransform: 'uppercase' }}>{title}</span>
     </div>
@@ -195,7 +195,7 @@ function ModuleCard({ mod }) {
       }}
     >
       <div style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.18em', color: 'var(--altiplano)', marginBottom: 18 }}>
-        § {mod.num} · MÓDULO
+        <window.SectionMark /> {mod.num} · MÓDULO
       </div>
       <h3 style={{
         fontFamily: 'Manrope, sans-serif', fontWeight: 700, fontSize: 28,

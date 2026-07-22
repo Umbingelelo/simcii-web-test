@@ -36,7 +36,7 @@ function ChapterLabel({
       color: 'var(--altiplano)',
       letterSpacing: '0.18em'
     }
-  }, "\xA7 ", number), /*#__PURE__*/React.createElement("span", {
+  }, /*#__PURE__*/React.createElement(window.SectionMark, null), " ", number), /*#__PURE__*/React.createElement("span", {
     style: {
       flex: 1,
       height: 1,
@@ -372,7 +372,7 @@ function ModuleCard({
       color: 'var(--altiplano)',
       marginBottom: 18
     }
-  }, "\xA7 ", mod.num, " \xB7 M\xD3DULO"), /*#__PURE__*/React.createElement("h3", {
+  }, /*#__PURE__*/React.createElement(window.SectionMark, null), " ", mod.num, " \xB7 M\xD3DULO"), /*#__PURE__*/React.createElement("h3", {
     style: {
       fontFamily: 'Manrope, sans-serif',
       fontWeight: 700,

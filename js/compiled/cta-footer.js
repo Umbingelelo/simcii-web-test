@@ -90,7 +90,7 @@ function CTASection() {
       color: 'var(--azul-claro)',
       letterSpacing: '0.2em'
     }
-  }, "\xA7 09 \xB7 CONTACTO"), /*#__PURE__*/React.createElement("span", {
+  }, /*#__PURE__*/React.createElement(window.SectionMark, null), " 09 \xB7 CONTACTO"), /*#__PURE__*/React.createElement("span", {
     className: "corner-mark",
     style: {
       position: 'absolute',
@@ -474,6 +474,21 @@ function Footer() {
   }, {
     label: 'Energía y renovables',
     href: '/industrias/energia'
+  }, {
+    label: 'Salmonicultura',
+    href: '/industrias/salmonicultura'
+  }, {
+    label: 'Forestal',
+    href: '/industrias/forestal'
+  }, {
+    label: 'Proyectos inmobiliarios',
+    href: '/industrias/inmobiliario'
+  }, {
+    label: 'Sanitarias',
+    href: '/industrias/sanitarias'
+  }, {
+    label: 'Carreteras y concesiones',
+    href: '/industrias/carreteras'
   }, {
     label: 'Sector público',
     href: '/industrias/sector-publico'

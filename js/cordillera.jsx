@@ -164,4 +164,13 @@ function Cordillera3D({ height = 540, style }) {
   return <div ref={mountRef} style={{ width: '100%', height, ...style }} aria-hidden="true" />;
 }
 
-Object.assign(window, { Cordillera3D, SvgCordilleraFallback });
+// Marcador de sección — mini cordillera (reemplaza al § tipográfico)
+function SectionMark() {
+  return (
+    <svg width="18" height="9" viewBox="0 0 24 12" aria-hidden="true" style={{ display: 'inline-block', verticalAlign: 'baseline', marginRight: 4 }}>
+      <polyline points="1,11 7,3 11,8 16,2 23,9" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+Object.assign(window, { Cordillera3D, SvgCordilleraFallback, SectionMark });

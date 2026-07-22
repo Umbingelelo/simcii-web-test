@@ -71,12 +71,12 @@
       <a href="/soluciones/relacionamiento-comunitario">Comunidades</a>
       <a href="/soluciones/cumplimiento-rca">RCA</a>
       <a href="/soluciones/gestion-territorial">Territorio</a>
-      <a href="/#demo" class="cta">Solicitar demo</a>
+      <a href="#demo" class="cta">Solicitar demo</a>
     </nav>
   </header>
 
   <main class="page-main">
-    <p class="page-eyebrow">§ Soluciones · Gestión territorial</p>
+    <p class="page-eyebrow"><svg class="eyebrow-mark" viewBox="0 0 24 12" aria-hidden="true"><polyline points="1,11 7,3 11,8 16,2 23,9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></svg> Soluciones · Gestión territorial</p>
     <h1>Inteligencia territorial: el territorio se lee en capas</h1>
     <p>Un territorio no es un solo dato. Es la calidad del aire y del agua, la relación con sus comunidades, la regulación que lo rige y las señales de su entorno — capas distintas que suelen mirarse por separado. <strong>SIMCII</strong> las integra y las resume en <strong>cuatro scores de 0 a 100</strong>, comparables entre territorios y en el tiempo.</p>
 
@@ -104,16 +104,61 @@
       <div><h3>¿Cómo se contrata SIMCII?</h3><p>SIMCII se implementa por operación o territorio, con demo a solicitud. Escríbenos a <a href="mailto:contacto@accionet.net">contacto@accionet.net</a>.</p></div>
     </section>
 
-    <div class="page-cta">
+    <div class="page-cta" id="demo">
       <h2 style="margin-top:0;">Su territorio, en cuatro scores</h2>
       <p>Demo con datos de ejemplo, sin compromiso.</p>
-      <a class="btn" href="/#demo">Solicitar una demo</a>
+      <form class="page-form" data-demo-form novalidate>
+        <label for="demo-email">Correo corporativo</label>
+        <input id="demo-email" type="email" placeholder="tu@empresa.cl" required autocomplete="email" />
+        <button type="submit">Solicitar demo</button>
+        <p class="form-error" data-form-error hidden></p>
+        <p class="form-note"><span class="dot dot-ok"></span> Respondemos en 24 h hábiles</p>
+      </form>
     </div>
   </main>
 
-  <footer class="page-footer">
-    <span>© 2026 Accionet SpA · Santiago, Chile</span>
-    <span><a href="/">SIMCII</a> · <a href="mailto:contacto@accionet.net">contacto@accionet.net</a></span>
+  <footer class="page-footer-full">
+    <div class="pff-grid">
+      <div class="pff-brand">
+        <img src="/assets/logo-simcii-oscuro.svg" alt="SIMCII" />
+        <p>Plataforma de monitoreo ambiental, social y territorial. Integra datos de estaciones, contexto y comunidad para gestionar compromisos, anticipar alertas y sostener la licencia social para operar — con evidencia.</p>
+      </div>
+      <div>
+        <h4>Soluciones</h4>
+        <ul>
+          <li><a href="/soluciones/monitoreo-ambiental">Monitoreo ambiental</a></li>
+          <li><a href="/soluciones/relacionamiento-comunitario">Relacionamiento comunitario</a></li>
+          <li><a href="/soluciones/cumplimiento-rca">Cumplimiento RCA</a></li>
+          <li><a href="/soluciones/gestion-territorial">Gestión territorial</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Industrias</h4>
+        <ul>
+          <li><a href="/industrias/mineria">Minería</a></li>
+          <li><a href="/industrias/energia">Energía y renovables</a></li>
+          <li><a href="/industrias/salmonicultura">Salmonicultura</a></li>
+          <li><a href="/industrias/forestal">Forestal</a></li>
+          <li><a href="/industrias/inmobiliario">Proyectos inmobiliarios</a></li>
+          <li><a href="/industrias/sanitarias">Sanitarias</a></li>
+          <li><a href="/industrias/carreteras">Carreteras y concesiones viales</a></li>
+          <li><a href="/industrias/sector-publico">Sector público</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="#demo">Solicitar una demo →</a></li>
+          <li><a href="mailto:contacto@accionet.net">contacto@accionet.net</a></li>
+          <li>Santiago · Chile</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pff-legal">
+      <span>© 2026 Accionet SpA · Santiago, Chile · Todos los derechos reservados</span>
+      <a href="/">simcii.ai</a>
+    </div>
   </footer>
+  <script src="/assets/pages.js" defer></script>
 </body>
 </html>
