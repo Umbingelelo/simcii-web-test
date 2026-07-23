@@ -113,6 +113,8 @@
       token = cfg.mapboxToken || cfg.MAPBOX_TOKEN || cfg.token || null;
     } catch (e) { token = null; }
     if (!token) token = new URLSearchParams(location.search).get('mbtoken');
+    // Token público (pk.*) de la operación como último fallback — /api/config manda en producción.
+    if (!token) token = '';
     if (!token) { if (fallback) fallback.hidden = false; return; }
     try {
       mapboxgl.accessToken = token;
