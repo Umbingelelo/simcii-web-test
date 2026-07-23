@@ -112,6 +112,7 @@
       const cfg = await r.json();
       token = cfg.mapboxToken || cfg.MAPBOX_TOKEN || cfg.token || null;
     } catch (e) { token = null; }
+    if (!token) token = new URLSearchParams(location.search).get('mbtoken');
     if (!token) { if (fallback) fallback.hidden = false; return; }
     try {
       mapboxgl.accessToken = token;
@@ -122,9 +123,12 @@
         zoom: 3.6,
         attributionControl: true,
       });
+      let mapLoaded = false;
       map.scrollZoom.disable();
       map.addControl(new mapboxgl.NavigationControl({ showCompass: false }), 'top-right');
       map.on('load', () => {
+        mapLoaded = true;
+        if (fallback) fallback.hidden = true;
         STATIONS.forEach((s) => {
           const node = document.createElement('div');
           node.className = 'stn';
@@ -141,7 +145,7 @@
         });
         map.fitBounds([[-72.6, -34.0], [-69.6, -22.8]], { padding: 44, duration: reduce ? 0 : 2000 });
       });
-      map.on('error', () => { if (fallback) fallback.hidden = false; });
+      map.on('error', () => { if (!mapLoaded && fallback) fallback.hidden = false; });
       new ResizeObserver(() => map.resize()).observe(el.parentElement);
     } catch (e) { if (fallback) fallback.hidden = false; }
   }
@@ -211,7 +215,7 @@
       if (!wrap) return;
       gsap.from(wrap.querySelectorAll(i), { y: 28, opacity: 0, stagger: 0.05, duration: 0.55, ease: 'expo.out', scrollTrigger: { trigger: wrap, start: 'top 85%', once: true } });
     });
-    gsap.from('.prod', { y: 44, opacity: 0, duration: 0.9, ease: 'expo.out', scrollTrigger: { trigger: '.prod', start: 'top 84%', once: true } });
+    gsap.from('.play', { y: 44, opacity: 0, duration: 0.9, ease: 'expo.out', scrollTrigger: { trigger: '.play', start: 'top 84%', once: true } });
     gsap.from('.mapa-shell', { y: 44, opacity: 0, duration: 0.9, ease: 'expo.out', scrollTrigger: { trigger: '.mapa-shell', start: 'top 84%', once: true } });
     window.addEventListener('load', () => ST.refresh());
   }
