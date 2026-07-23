@@ -272,3 +272,38 @@
     @media (max-width: 640px) {
       .method-grid { grid-template-columns: 1fr !important; }
     }
+    @media (max-width: 900px) {
+      .impl-axis { display: none !important; }
+      .promise-plate { grid-template-columns: 1fr !important; }
+    }
+
+    /* === FX: altímetro + grano (coreografía de scroll) === */
+    .altimeter {
+      position: fixed; right: 26px; top: 50%; transform: translateY(-50%);
+      z-index: 900; display: flex; flex-direction: column; align-items: flex-end; gap: 12px;
+      font-family: 'JetBrains Mono', monospace; pointer-events: none; user-select: none;
+    }
+    .alt-scale {
+      position: relative; width: 10px; height: 180px;
+      border-right: 1px solid var(--line-strong);
+      background-image: repeating-linear-gradient(to bottom, var(--line) 0 1px, transparent 1px 12px);
+      background-position: right top; background-size: 5px 100%; background-repeat: no-repeat;
+    }
+    .alt-needle {
+      position: absolute; right: -3px; top: 100%; width: 7px; height: 7px;
+      background: var(--terracota); transform: translateY(-50%) rotate(45deg);
+    }
+    .alt-read { display: flex; align-items: baseline; gap: 5px; }
+    .alt-value { font-size: 15px; font-weight: 500; color: var(--paper); font-variant-numeric: tabular-nums; letter-spacing: 0.06em; }
+    .alt-unit { font-size: 8px; color: var(--text-soft); letter-spacing: 0.14em; text-transform: uppercase; }
+    .alt-chapter { font-size: 9px; color: var(--azul-claro); letter-spacing: 0.16em; text-transform: uppercase; text-align: right; max-width: 120px; }
+    @media (max-width: 1279px) { .altimeter { display: none; } }
+    @media print { .altimeter { display: none; } }
+
+    /* Grano de material — profundidad sutil, nunca protagonista */
+    body::after {
+      content: ''; position: fixed; inset: 0; z-index: 2000; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+      opacity: 0.035; mix-blend-mode: overlay;
+    }
+    @media (prefers-reduced-motion: reduce) { body::after { display: none; } }
