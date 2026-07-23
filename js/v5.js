@@ -95,10 +95,10 @@
     { name: 'Ruido Norte RUI-001', dom: 'Ruido', lng: -70.392, lat: -23.628, score: 71 },
     { name: 'Ruido Sur RUI-002', dom: 'Ruido', lng: -70.399, lat: -23.666, score: 74 },
     { name: 'Estación UCN MET-001', dom: 'Meteorología', lng: -70.4095, lat: -23.681, score: 88 },
-    { name: 'Las Salinas Norte', dom: 'Aire · BTEX', lng: -71.552, lat: -33.0055, score: 76 },
-    { name: 'Las Salinas Sur', dom: 'Aire · MP', lng: -71.556, lat: -33.016, score: 79 },
-    { name: 'Olores V-01', dom: 'Olores', lng: -71.548, lat: -33.011, score: 64 },
-    { name: 'Meteo Viña MET-V', dom: 'Meteorología', lng: -71.543, lat: -33.024, score: 84 },
+    { name: 'Las Salinas Norte', dom: 'Aire · BTEX', lng: -71.5462, lat: -32.9985, score: 76 },
+    { name: 'Las Salinas Sur', dom: 'Aire · MP', lng: -71.5498, lat: -33.0043, score: 79 },
+    { name: 'Olores V-01', dom: 'Olores', lng: -71.5525, lat: -33.0092, score: 64 },
+    { name: 'Meteo Viña MET-V', dom: 'Meteorología', lng: -71.5405, lat: -33.0128, score: 84 },
   ];
   const colorFor = (s) => (s >= 75 ? '#3E8E5F' : s >= 65 ? '#C98F2E' : '#B45F38');
 
@@ -138,23 +138,20 @@
           map.setFog({ color: '#101114', 'high-color': '#16324a', 'horizon-blend': 0.12, 'star-intensity': 0.12 });
         } catch (err) {}
         // halos de cobertura por score
-        map.addSource('stns', { type: 'geojson', data: { type: 'FeatureCollection', features: STATIONS.map((s) => ({ type: 'Feature', geometry: { type: 'Point', coordinates: [s.lng, s.lat] }, properties: { c: colorFor(s.score) } })) } });
-        map.addLayer({ id: 'stn-glow', type: 'circle', source: 'stns', paint: { 'circle-radius': 38, 'circle-color': ['get', 'c'], 'circle-opacity': 0.14, 'circle-blur': 0.9 } });
-        map.addLayer({ id: 'stn-ring', type: 'circle', source: 'stns', paint: { 'circle-radius': 19, 'circle-color': 'rgba(0,0,0,0)', 'circle-stroke-width': 1.2, 'circle-stroke-color': ['get', 'c'], 'circle-stroke-opacity': 0.5 } });
-        STATIONS.forEach((s) => {
-          const node = document.createElement('div');
-          node.className = 'stn';
-          node.style.setProperty('--stn-c', colorFor(s.score));
-          node.innerHTML = '<i></i>';
-          node.setAttribute('aria-label', s.name + ': score ' + s.score + ' de 100');
-          const popup = new mapboxgl.Popup({ closeButton: false, offset: 14 })
-            .setLngLat([s.lng, s.lat])
-            .setHTML('<div class="pop-name">' + s.name + '</div><div class="pop-dom">' + s.dom + '</div><div class="pop-score" style="color:' + colorFor(s.score) + '">' + s.score + '<small> /100</small></div>');
-          new mapboxgl.Marker({ element: node }).setLngLat([s.lng, s.lat]).addTo(map);
-          node.addEventListener('mouseenter', () => popup.addTo(map));
-          node.addEventListener('mouseleave', () => popup.remove());
-          node.addEventListener('click', () => popup.addTo(map));
+        map.addSource('stns', { type: 'geojson', data: { type: 'FeatureCollection', features: STATIONS.map((s) => ({ type: 'Feature', geometry: { type: 'Point', coordinates: [s.lng, s.lat] }, properties: { c: colorFor(s.score), name: s.name, dom: s.dom, score: s.score } })) } });
+        map.addLayer({ id: 'stn-glow', type: 'circle', source: 'stns', paint: { 'circle-radius': 36, 'circle-color': ['get', 'c'], 'circle-opacity': 0.15, 'circle-blur': 0.9, 'circle-pitch-alignment': 'map' } });
+        map.addLayer({ id: 'stn-ring', type: 'circle', source: 'stns', paint: { 'circle-radius': 16, 'circle-color': 'rgba(0,0,0,0)', 'circle-stroke-width': 1.2, 'circle-stroke-color': ['get', 'c'], 'circle-stroke-opacity': 0.55 } });
+        map.addLayer({ id: 'stn-core', type: 'circle', source: 'stns', paint: { 'circle-radius': 6, 'circle-color': ['get', 'c'], 'circle-stroke-width': 1.6, 'circle-stroke-color': 'rgba(255,255,255,0.85)' } });
+        const pop = new mapboxgl.Popup({ closeButton: false, offset: 14 });
+        map.on('mouseenter', 'stn-core', (e) => {
+          map.getCanvas().style.cursor = 'pointer';
+          const f = e.features[0];
+          pop.setLngLat(f.geometry.coordinates)
+            .setHTML('<div class="pop-name">' + f.properties.name + '</div><div class="pop-dom">' + f.properties.dom + '</div><div class="pop-score" style="color:' + f.properties.c + '">' + f.properties.score + '<small> /100</small></div>')
+            .addTo(map);
         });
+        map.on('mouseleave', 'stn-core', () => { map.getCanvas().style.cursor = ''; pop.remove(); });
+        map.on('click', 'stn-core', (e) => { pop.setLngLat(e.features[0].geometry.coordinates).addTo(map); });
         // recorrido automático entre las dos redes (se detiene al interactuar)
         if (!reduce) {
           const stops = [

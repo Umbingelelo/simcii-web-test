@@ -97,22 +97,43 @@
         <p>Esto no es una imagen: es una muestra funcional de la plataforma, con datos de ejemplo moviéndose como en producción.</p>
       </div>
       <div class="play" id="play">
-        <div class="play-bar"><span class="dg" aria-hidden="true"></span><span class="mono">SIMCII · resumen general — muestra funcional</span><span class="mono clock" id="play-clock">--:--:--</span></div>
-        <div class="play-grid">
-          <div class="play-scores">
-            <div class="ps"><span class="mono">General</span><b data-ps="69.1">69.1<small> /100</small></b><span class="bar"><i style="width:69%;background:#E0B15C"></i></span></div>
-            <div class="ps"><span class="mono">Territorial</span><b data-ps="79.8">79.8<small> /100</small></b><span class="bar"><i style="width:80%;background:#6FBF8B"></i></span></div>
-            <div class="ps"><span class="mono">Contexto</span><b data-ps="73.7">73.7<small> /100</small></b><span class="bar"><i style="width:74%;background:#E0B15C"></i></span></div>
-            <div class="ps"><span class="mono">Comunidad</span><b data-ps="53.8">53.8<small> /100</small></b><span class="bar"><i style="width:54%;background:#C06A42"></i></span></div>
-          </div>
-          <div class="play-side" style="border-left:1px solid var(--line)">
-            <div class="pp" data-pp="40.5" data-max="150"><span class="k">MP10</span><span class="v">40.5</span><span class="u">µg/m³</span><span class="st st-ok">normal</span></div>
-            <div class="pp" data-pp="13.6" data-max="37.5"><span class="k">MP2.5</span><span class="v">13.6</span><span class="u">µg/m³</span><span class="st st-ok">normal</span></div>
-            <div class="pp" data-pp="23.6" data-max="250"><span class="k">SO₂</span><span class="v">23.6</span><span class="u">µg/m³</span><span class="st st-ok">normal</span></div>
-            <div class="pp" data-pp="50.1" data-max="65"><span class="k">NPSEQ</span><span class="v">50.1</span><span class="u">dB</span><span class="st st-w">precaución</span></div>
-            <div class="pp" data-pp="14.2" data-max="60"><span class="k">VIENTO</span><span class="v">14.2</span><span class="u">km/h</span><span class="st st-ok">normal</span></div>
-            <div class="play-log" id="play-log"><span class="mono" style="color:var(--tx-3)">Bitácora · 12 compromisos activos · 2 por vencer</span></div>
-            <div class="play-chart"><span class="mono">Score general · última hora</span><svg viewBox="0 0 300 74" preserveAspectRatio="none"><polyline id="play-line" fill="none" stroke="#7FA3BF" stroke-width="1.8" stroke-linejoin="round" points=""/></svg></div>
+        <div class="play-bar"><span class="dg" aria-hidden="true"></span><span class="mono">SIMCII · muestra funcional — datos de ejemplo</span><span class="mono clock" id="play-clock">--:--:--</span></div>
+        <div class="app">
+          <aside class="app-side">
+            <div class="app-brand"><img src="/assets/logo-simcii-oscuro.svg" alt="" style="height:34px;width:auto" /><span class="mono" style="color:var(--tx-3)">Faena Norte · operativo</span></div>
+            <nav class="app-nav" aria-label="Módulos de la muestra">
+              <span class="it active">Inicio</span>
+              <span class="it">Territorio<b data-side>79.8</b><u><i style="width:80%;background:#6FBF8B"></i></u></span>
+              <span class="it">Contexto<b data-side>73.7</b><u><i style="width:74%;background:#E0B15C"></i></u></span>
+              <span class="it">Comunidad<b data-side>53.8</b><u><i style="width:54%;background:#C06A42"></i></u></span>
+              <span class="it">Gestión territorial</span>
+              <span class="it">Puntajes</span>
+            </nav>
+            <div class="app-foot mono">Ayuda · Modo claro · Colapsar</div>
+          </aside>
+          <div class="app-main">
+            <div class="app-head"><div><h4>Resumen general</h4><span>Últimas 24 horas</span></div><span class="live-chip"><span class="dg"></span>EN VIVO</span></div>
+            <div class="play-scores">
+              <div class="ps"><span class="mono">General</span><b data-ps="69.1">69.1<small> /100</small></b><span class="bar"><i style="width:69%;background:#E0B15C"></i></span></div>
+              <div class="ps"><span class="mono">Territorial</span><b data-ps="79.8">79.8<small> /100</small></b><span class="bar"><i style="width:80%;background:#6FBF8B"></i></span></div>
+              <div class="ps"><span class="mono">Contexto</span><b data-ps="73.7">73.7<small> /100</small></b><span class="bar"><i style="width:74%;background:#E0B15C"></i></span></div>
+              <div class="ps"><span class="mono">Comunidad</span><b data-ps="53.8">53.8<small> /100</small></b><span class="bar"><i style="width:54%;background:#C06A42"></i></span></div>
+            </div>
+            <div class="app-cols">
+              <div class="app-panel">
+                <span class="mono ph">Parámetros en tiempo real</span>
+                <div class="pp" data-pp="40.5" data-max="150"><span class="k">MP10</span><span class="v">40.5</span><span class="u">µg/m³</span><span class="st st-ok">normal</span></div>
+                <div class="pp" data-pp="13.6" data-max="37.5"><span class="k">MP2.5</span><span class="v">13.6</span><span class="u">µg/m³</span><span class="st st-ok">normal</span></div>
+                <div class="pp" data-pp="23.6" data-max="250"><span class="k">SO₂</span><span class="v">23.6</span><span class="u">µg/m³</span><span class="st st-ok">normal</span></div>
+                <div class="pp" data-pp="50.1" data-max="65"><span class="k">NPSEQ</span><span class="v">50.1</span><span class="u">dB</span><span class="st st-w">precaución</span></div>
+                <div class="pp" data-pp="14.2" data-max="60"><span class="k">VIENTO</span><span class="v">14.2</span><span class="u">km/h</span><span class="st st-ok">normal</span></div>
+                <div class="pp" data-pp="18.4" data-max="40"><span class="k">TEMP</span><span class="v">18.4</span><span class="u">°C</span><span class="st st-ok">normal</span></div>
+              </div>
+              <div class="app-panel">
+                <div class="play-log" id="play-log"><span class="mono ph">Bitácora · 12 compromisos activos · 2 por vencer</span></div>
+                <div class="play-chart"><span class="mono ph">Score general · última hora</span><svg viewBox="0 0 300 74" preserveAspectRatio="none"><polyline id="play-line" fill="none" stroke="#7FA3BF" stroke-width="1.8" stroke-linejoin="round" points=""/></svg></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
