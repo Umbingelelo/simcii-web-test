@@ -121,8 +121,8 @@
       const map = new mapboxgl.Map({
         container: el,
         style: 'mapbox://styles/mapbox/dark-v11',
-        center: [-71.2, -28.4],
-        zoom: 3.6,
+        center: [-70.4005, -23.652],
+        zoom: 12.1, pitch: 52, bearing: -14,
         attributionControl: true,
       });
       let mapLoaded = false;
@@ -131,6 +131,16 @@
       map.on('load', () => {
         mapLoaded = true;
         if (fallback) fallback.hidden = true;
+        // relieve 3D + atmósfera
+        try {
+          map.addSource('dem', { type: 'raster-dem', url: 'mapbox://mapbox.mapbox-terrain-dem-v1', tileSize: 512, maxzoom: 14 });
+          map.setTerrain({ source: 'dem', exaggeration: 1.55 });
+          map.setFog({ color: '#101114', 'high-color': '#16324a', 'horizon-blend': 0.12, 'star-intensity': 0.12 });
+        } catch (err) {}
+        // halos de cobertura por score
+        map.addSource('stns', { type: 'geojson', data: { type: 'FeatureCollection', features: STATIONS.map((s) => ({ type: 'Feature', geometry: { type: 'Point', coordinates: [s.lng, s.lat] }, properties: { c: colorFor(s.score) } })) } });
+        map.addLayer({ id: 'stn-glow', type: 'circle', source: 'stns', paint: { 'circle-radius': 38, 'circle-color': ['get', 'c'], 'circle-opacity': 0.14, 'circle-blur': 0.9 } });
+        map.addLayer({ id: 'stn-ring', type: 'circle', source: 'stns', paint: { 'circle-radius': 19, 'circle-color': 'rgba(0,0,0,0)', 'circle-stroke-width': 1.2, 'circle-stroke-color': ['get', 'c'], 'circle-stroke-opacity': 0.5 } });
         STATIONS.forEach((s) => {
           const node = document.createElement('div');
           node.className = 'stn';
@@ -145,7 +155,16 @@
           node.addEventListener('mouseleave', () => popup.remove());
           node.addEventListener('click', () => popup.addTo(map));
         });
-        map.fitBounds([[-72.6, -34.0], [-69.6, -22.8]], { padding: 44, duration: reduce ? 0 : 2000 });
+        // recorrido automático entre las dos redes (se detiene al interactuar)
+        if (!reduce) {
+          const stops = [
+            { center: [-71.5495, -33.014], zoom: 13.1, pitch: 55, bearing: 20 },
+            { center: [-70.4005, -23.652], zoom: 12.1, pitch: 52, bearing: -14 },
+          ];
+          let si = 0, touring = true;
+          const tour = setInterval(() => { if (!touring) return; map.flyTo({ ...stops[si], duration: 5200, essential: false }); si = (si + 1) % stops.length; }, 9000);
+          ['mousedown', 'wheel', 'touchstart'].forEach((ev) => el.addEventListener(ev, () => { touring = false; clearInterval(tour); }, { once: true, passive: true }));
+        }
       });
       map.on('error', () => { if (!mapLoaded && fallback) fallback.hidden = false; });
       new ResizeObserver(() => map.resize()).observe(el.parentElement);
@@ -275,4 +294,34 @@
     if (hist.length > 40) hist.shift();
     drawLine();
   }, 2400);
+})();
+
+/* ---- bitácora en vivo del playground ---- */
+(function () {
+  const log = document.getElementById('play-log');
+  if (!log) return;
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const MSGS = [
+    'MP10 dentro de umbral · Estación Costa',
+    'Compromiso RCA-114 actualizado con evidencia',
+    'Reporte diario generado y despachado',
+    'Alerta de ruido nocturno cerrada · RUI-001',
+    'Nueva encuesta territorial recibida · Sector Norte',
+    'Estación UCN sincronizada · 240 mediciones',
+    'Denuncia ciudadana asignada · en seguimiento',
+    'Score de comunidad recalculado · 53.8',
+  ];
+  function stamp() { const d = new Date(); return String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0'); }
+  let mi = 0;
+  function push() {
+    const ev = document.createElement('div');
+    ev.className = 'ev new';
+    ev.innerHTML = '<span class="tm">' + stamp() + '</span><span>' + MSGS[mi % MSGS.length] + '</span>';
+    mi++;
+    log.insertBefore(ev, log.children[1] || null);
+    setTimeout(() => ev.classList.remove('new'), 900);
+    while (log.children.length > 5) log.removeChild(log.lastChild);
+  }
+  push(); push(); push();
+  if (!reduce) setInterval(push, 4200);
 })();
