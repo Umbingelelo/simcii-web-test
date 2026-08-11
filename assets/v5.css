@@ -89,7 +89,10 @@ p{color:var(--tx-2);max-width:64ch}
 .mod p{font-size:14.5px}
 .mod b{display:inline-block;margin-top:14px;font-weight:700;font-size:14px;color:var(--terra)}
 /* industrias */
-.inds{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.inds{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.mods-nota{margin-top:20px;font-size:14.5px;color:var(--tx-2)}
+.mods-nota a{color:var(--terra);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(185,107,69,.4)}
+.mods-nota a:hover{border-bottom-color:var(--terra)}
 .indu{background:#1A1C21;border:1px solid var(--line);border-radius:14px;padding:22px;text-decoration:none;color:var(--tx);transition:border-color .24s,transform .24s var(--e)}
 .indu:hover{border-color:var(--azul);transform:translateY(-3px)}
 .indu .mono{color:var(--tx-3)}

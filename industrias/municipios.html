@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Control ambiental y telemetría para municipios · SIMCII</title>
+  <meta name="description" content="Plataforma de control ambiental y telemetría para municipios: estaciones en línea, calidad del aire, ruido y denuncias vecinales en una sola lectura comunal." />
+  <link rel="canonical" href="https://simcii.ai/industrias/municipios" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Accionet" />
+  <link rel="icon" href="/assets/favicon.ico" sizes="any" />
+  <meta name="theme-color" content="#17181B" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SIMCII" />
+  <meta property="og:locale" content="es_CL" />
+  <meta property="og:url" content="https://simcii.ai/industrias/municipios" />
+  <meta property="og:title" content="Control ambiental y telemetría para municipios · SIMCII" />
+  <meta property="og:description" content="Estaciones en línea, calidad del aire, ruido y denuncias vecinales en una sola lectura comunal, con evidencia trazable." />
+  <meta property="og:image" content="https://simcii.ai/assets/og-image.png" />
+  <meta property="og:image:alt" content="SIMCII · plataforma de monitoreo ambiental y territorial" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Control ambiental y telemetría para municipios · SIMCII" />
+  <meta name="twitter:description" content="Estaciones en línea, calidad del aire, ruido y denuncias vecinales en una sola lectura comunal." />
+  <meta name="twitter:image" content="https://simcii.ai/assets/og-image.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/sub.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://simcii.ai/#organization",
+        "name": "SIMCII",
+        "url": "https://simcii.ai/",
+        "logo": "https://simcii.ai/assets/logo-simcii-oscuro.svg",
+        "email": "contacto@accionet.net",
+        "sameAs": ["https://www.accionet.cl/"],
+        "areaServed": { "@type": "Country", "name": "Chile" },
+        "address": { "@type": "PostalAddress", "addressLocality": "Santiago", "addressCountry": "CL" },
+        "parentOrganization": {
+          "@type": "Organization",
+          "@id": "https://simcii.ai/#accionet",
+          "name": "Accionet",
+          "legalName": "Accionet SpA",
+          "url": "https://www.accionet.cl/",
+          "sameAs": ["https://www.accionet.cl/"]
+        }
+      },
+      {
+        "@type": "Service",
+        "name": "Control ambiental y telemetría para municipios",
+        "serviceType": "Plataforma de control ambiental y telemetría municipal",
+        "areaServed": "CL",
+        "url": "https://simcii.ai/industrias/municipios",
+        "provider": { "@id": "https://simcii.ai/#organization" },
+        "description": "Control ambiental y telemetría para municipios y comunas: estaciones de monitoreo en línea, calidad del aire, ruido, denuncias vecinales y compromisos, en scores comparables de 0 a 100 con evidencia trazable."
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://simcii.ai/" },
+          { "@type": "ListItem", "position": 2, "name": "Industrias", "item": "https://simcii.ai/#industrias" },
+          { "@type": "ListItem", "position": 3, "name": "Municipios", "item": "https://simcii.ai/industrias/municipios" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "¿Qué es el control ambiental municipal con telemetría?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Es leer el estado ambiental de la comuna con datos que llegan solos desde las estaciones de monitoreo, en vez de esperar informes mensuales. La telemetría transmite las mediciones — material particulado, ruido, meteorología — a una plataforma central donde quedan comparables en el tiempo, con alertas cuando un parámetro se desvía del umbral." }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Sirve si el municipio no tiene estaciones propias?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Sí. SIMCII se conecta a la infraestructura de medición disponible en el territorio — estaciones del municipio, de titulares de proyectos con obligaciones de monitoreo, o fuentes públicas de la comuna — y consolida esos datos en una sola lectura. También es posible partir solo con la capa social: denuncias, actores y compromisos." }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Cómo se conectan las denuncias vecinales con los datos ambientales?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Cada denuncia queda registrada con su ubicación, fecha, estado y responsable, y sobre el mismo territorio se leen las mediciones del período. Eso permite responder al vecino con el dato del momento en que reclamó, y detectar si un sector concentra denuncias que las mediciones confirman." }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Se pueden comparar distintos sectores de la comuna?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Sí. SIMCII entrega scores de 0 a 100 por territorio — unidad vecinal, sector o comuna completa — construidos con la misma metodología, de modo que la comparación entre zonas y entre períodos es directa y explicable." }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Cuánto tarda la implementación en un municipio?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Semanas, no trimestres: levantamiento de fuentes e indicadores (1–2), integración y configuración de umbrales y alertas (3–5), y operación con acompañamiento desde la semana 6." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="page-header">
+    <a href="/" class="brand"><img src="/assets/logo-simcii-oscuro.svg" alt="SIMCII" height="32" /></a>
+    <nav>
+      <a href="/soluciones/monitoreo-ambiental">Monitoreo ambiental</a>
+      <a href="/soluciones/telemetria-ambiental">Telemetría</a>
+      <a href="/soluciones/relacionamiento-comunitario">Comunidades</a>
+      <a href="/soluciones/cumplimiento-rca">RCA</a>
+      <a href="#demo" class="cta">Solicitar demo</a>
+    </nav>
+  </header>
+
+  <main class="page-main">
+    <span class="stake">Industrias<i></i>Municipios</span>
+    <h1>Control ambiental y telemetría para municipios</h1>
+    <p>Un municipio responde por la calidad ambiental de su comuna ante los vecinos, el concejo y la autoridad sectorial — casi siempre con un equipo pequeño y datos que llegan tarde. <strong>SIMCII</strong> conecta la telemetría de las estaciones de monitoreo con las denuncias vecinales y los compromisos de la comuna, y entrega una lectura única: <strong>scores de 0 a 100 por territorio</strong>, con la fuente y la fecha de cada dato a la vista.</p>
+
+    <h2>El problema del municipio: los datos existen, pero no llegan a tiempo</h2>
+    <p>La información ambiental de una comuna suele estar repartida y desfasada. Las mediciones de calidad del aire llegan en informes mensuales o trimestrales, cuando el episodio ya pasó. Las denuncias por ruido, olores o polvo entran por la oficina de partes, por redes sociales o por el teléfono del concejal, y viven en registros que no se cruzan con ninguna medición. Los compromisos que asumieron los proyectos instalados en la comuna están en resoluciones que nadie revisa hasta que hay conflicto.</p>
+    <p>El resultado es conocido: la dirección de medio ambiente reacciona a lo que ya ocurrió, no puede demostrar con datos lo que sí está haciendo, y cada cambio de administración parte de cero. No es un problema de voluntad ni de equipo — es un problema de lectura.</p>
+
+    <h2>Qué aporta la telemetría ambiental en una comuna</h2>
+    <p>La telemetría es simplemente que el dato llegue solo, desde el equipo hasta la plataforma, sin que nadie tenga que ir a descargarlo. Sobre esa base, el control ambiental municipal cambia de naturaleza:</p>
+    <ul>
+      <li><strong>Estaciones en línea</strong>: material particulado (MP10 y MP2.5), gases, ruido y variables meteorológicas actualizados de forma continua, sin planillas intermedias.</li>
+      <li><strong>Umbrales y alertas</strong>: cada parámetro se compara contra el umbral definido — normativo o propio de la comuna — y la desviación avisa a su responsable cuando ocurre, no en el informe del mes siguiente.</li>
+      <li><strong>Series históricas comparables</strong>: el mismo indicador leído mes a mes y año a año, para distinguir un episodio puntual de una tendencia real.</li>
+      <li><strong>Contexto meteorológico</strong>: viento, temperatura y humedad junto a la medición, porque un peak de polvo con viento norte y uno sin viento no cuentan la misma historia.</li>
+      <li><strong>Evidencia trazable</strong>: cada valor conserva su estación de origen y su fecha, lista para responder una consulta del concejo o un requerimiento de la autoridad.</li>
+    </ul>
+    <p>El detalle técnico de cómo llegan y se validan esos datos está en la <a href="/soluciones/telemetria-ambiental">solución de telemetría ambiental</a>.</p>
+
+    <h2>Del dato al control: lo que el municipio hace con la lectura</h2>
+    <ul>
+      <li><strong>Denuncias vecinales con respuesta</strong>: cada denuncia queda con ubicación, fecha, estado y responsable, y se lee junto a las mediciones de ese territorio en ese período. La respuesta al vecino deja de ser una promesa y pasa a ser un dato.</li>
+      <li><strong>Fiscalización priorizada</strong>: los sectores que concentran denuncias y desviaciones simultáneas indican dónde poner las horas de terreno disponibles, que siempre son menos que los frentes abiertos.</li>
+      <li><strong>Seguimiento de compromisos</strong>: los compromisos de proyectos instalados en la comuna, y los propios del municipio, quedan con plazo, responsable y evidencia. La plataforma lo hace del mismo modo que el <a href="/soluciones/cumplimiento-rca">seguimiento de compromisos RCA</a>.</li>
+      <li><strong>Relación con organizaciones</strong>: juntas de vecinos, comités y agrupaciones con su historial de reuniones, acuerdos y reclamos — la memoria institucional que hoy se va con las personas. Ver <a href="/soluciones/relacionamiento-comunitario">relacionamiento comunitario</a>.</li>
+      <li><strong>Cuenta pública con respaldo</strong>: los indicadores del período, su evolución y su evidencia, disponibles cuando toca rendir — no reconstruidos a última hora.</li>
+    </ul>
+
+    <h2>Comparar sectores de la comuna con la misma vara</h2>
+    <p>SIMCII entrega cuatro scores comparables — General, Territorial, de Contexto y de Comunidad — calculados con la misma metodología para cada territorio definido: una unidad vecinal, un sector, la comuna completa o el conjunto de comunas de una asociación municipal. Comparables entre sí y comparables en el tiempo.</p>
+    <p>Eso permite discusiones distintas en el concejo y con la comunidad: no "el sector norte está mal" sino "el sector norte está en 54 y bajó 6 puntos en el semestre, empujado por ruido y por denuncias sin cierre". El score no reemplaza el criterio de la autoridad; le pone piso de evidencia. La metodología completa está en <a href="/soluciones/gestion-territorial">gestión territorial</a>.</p>
+
+    <h2>Qué necesita el municipio para partir</h2>
+    <p>No hace falta comprar equipamiento nuevo ni reemplazar los sistemas existentes. SIMCII es la capa de lectura: se conecta a las estaciones y registros que ya operan en el territorio — propios del municipio o de terceros con obligación de monitoreo — y los consolida. Si la comuna aún no tiene telemetría instalada, es posible partir por la capa social y de compromisos, e incorporar las mediciones cuando existan.</p>
+    <p>La implementación se mide en semanas: levantamiento de fuentes e indicadores (semanas 1–2), integración, umbrales y alertas (3–5), operación con acompañamiento desde la semana 6, con un jefe de proyecto dedicado como contraparte. Los datos quedan aislados por organización y bajo el estándar de seguridad de la plataforma, diseñado para cumplir la Ley N° 21.719 de Protección de Datos Personales.</p>
+
+    <h2>Municipios y sector público</h2>
+    <p>Esta página trata el caso municipal — la comuna, sus vecinos y sus estaciones. Para gobiernos regionales, ministerios y servicios que responden por varios territorios a la vez, la lectura es la misma pero la escala cambia: revise <a href="/industrias/sector-publico">SIMCII para el sector público</a>.</p>
+
+    <svg class="cordillera-divider" viewBox="0 0 1200 48" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,44 150,20 300,36 480,8 640,30 820,14 1000,34 1200,18" fill="none" stroke="#B96B45" stroke-width="2"/><polyline points="0,46 180,30 360,42 560,20 760,38 960,26 1200,40" fill="none" stroke="#234A63" stroke-width="1.5"/></svg>
+
+    <h2>Preguntas frecuentes</h2>
+    <section class="page-faq">
+      <div><h3>¿Qué es el control ambiental municipal con telemetría?</h3><p>Es leer el estado ambiental de la comuna con datos que llegan solos desde las estaciones de monitoreo, en vez de esperar informes mensuales. La telemetría transmite las mediciones — material particulado, ruido, meteorología — a una plataforma central donde quedan comparables en el tiempo, con alertas cuando un parámetro se desvía del umbral.</p></div>
+      <div><h3>¿Sirve si el municipio no tiene estaciones propias?</h3><p>Sí. SIMCII se conecta a la infraestructura de medición disponible en el territorio — estaciones del municipio, de titulares de proyectos con obligaciones de monitoreo, o fuentes públicas de la comuna — y consolida esos datos en una sola lectura. También es posible partir solo con la capa social: denuncias, actores y compromisos.</p></div>
+      <div><h3>¿Cómo se conectan las denuncias vecinales con los datos ambientales?</h3><p>Cada denuncia queda registrada con su ubicación, fecha, estado y responsable, y sobre el mismo territorio se leen las mediciones del período. Eso permite responder al vecino con el dato del momento en que reclamó, y detectar si un sector concentra denuncias que las mediciones confirman.</p></div>
+      <div><h3>¿Se pueden comparar distintos sectores de la comuna?</h3><p>Sí. SIMCII entrega scores de 0 a 100 por territorio — unidad vecinal, sector o comuna completa — construidos con la misma metodología, de modo que la comparación entre zonas y entre períodos es directa y explicable.</p></div>
+      <div><h3>¿Cuánto tarda la implementación en un municipio?</h3><p>Semanas, no trimestres: levantamiento de fuentes e indicadores (1–2), integración y configuración de umbrales y alertas (3–5), y operación con acompañamiento desde la semana 6.</p></div>
+    </section>
+
+    <div class="page-cta" id="demo">
+      <h2 style="margin-top:0;">Su comuna, en una sola lectura</h2>
+      <p>Demo con datos de ejemplo, sin compromiso.</p>
+      <form class="page-form" data-demo-form novalidate>
+        <label for="demo-email">Correo corporativo</label>
+        <input id="demo-email" type="email" placeholder="tu@empresa.cl" required autocomplete="email" />
+        <button type="submit">Solicitar demo</button>
+        <p class="form-error" data-form-error hidden></p>
+        <p class="form-note"><span class="dot dot-ok"></span> Respondemos en 24 h hábiles</p>
+      </form>
+    </div>
+  </main>
+
+  <footer class="page-footer-full">
+    <div class="pff-grid">
+      <div class="pff-brand">
+        <img src="/assets/logo-simcii-oscuro.svg" alt="SIMCII" />
+        <p>Plataforma de monitoreo ambiental, social y territorial. Integra telemetría de estaciones, contexto y comunidad para gestionar compromisos, anticipar alertas y sostener la licencia social para operar — con evidencia.</p>
+      </div>
+      <div>
+        <h4>Soluciones</h4>
+        <ul>
+          <li><a href="/soluciones/monitoreo-ambiental">Monitoreo ambiental</a></li>
+          <li><a href="/soluciones/telemetria-ambiental">Telemetría ambiental</a></li>
+          <li><a href="/soluciones/relacionamiento-comunitario">Relacionamiento comunitario</a></li>
+          <li><a href="/soluciones/cumplimiento-rca">Cumplimiento ambiental y RCA</a></li>
+          <li><a href="/soluciones/gestion-territorial">Gestión territorial</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Industrias</h4>
+        <ul>
+          <li><a href="/industrias/mineria">Minería</a></li>
+          <li><a href="/industrias/energia">Energía y renovables</a></li>
+          <li><a href="/industrias/salmonicultura">Salmonicultura</a></li>
+          <li><a href="/industrias/forestal">Forestal</a></li>
+          <li><a href="/industrias/inmobiliario">Proyectos inmobiliarios</a></li>
+          <li><a href="/industrias/sanitarias">Sanitarias</a></li>
+          <li><a href="/industrias/carreteras">Carreteras y concesiones viales</a></li>
+          <li><a href="/industrias/municipios">Municipios</a></li>
+          <li><a href="/industrias/sector-publico">Sector público</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="#demo">Solicitar una demo →</a></li>
+          <li><a href="mailto:contacto@accionet.net">contacto@accionet.net</a></li>
+          <li>Santiago · Chile</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pff-legal">
+      <span>© 2026 <a href="https://www.accionet.cl/">Accionet SpA</a> · Santiago, Chile · Todos los derechos reservados</span>
+      <a href="/">simcii.ai</a>
+    </div>
+  </footer>
+  <script src="/assets/pages.js" defer></script>
+</body>
+</html>

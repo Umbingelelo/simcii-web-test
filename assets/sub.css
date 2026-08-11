@@ -54,5 +54,6 @@ img{max-width:100%;height:auto;display:block}
 .pff-legal{border-top:1px solid var(--line);padding-top:16px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .pff-legal span,.pff-legal a{font-family:var(--m);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--tx3);text-decoration:none}
 @media(max-width:1023px){.pff-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:929px){.page-header nav{gap:16px}.page-header nav a{font-size:13px}.page-header .cta{padding:10px 14px}}
 @media(max-width:719px){.page-header nav a:not(.cta){display:none}.page-main{padding:48px 20px 64px}.pff-grid{grid-template-columns:1fr;gap:28px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}}

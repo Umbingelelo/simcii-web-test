@@ -7,6 +7,7 @@
   <meta name="description" content="Software de monitoreo ambiental online: estaciones, parámetros y KPIs con score 0–100, alertas y evidencia trazable para operaciones en Chile." />
   <link rel="canonical" href="https://simcii.ai/soluciones/monitoreo-ambiental" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Accionet" />
   <link rel="icon" href="/assets/favicon.ico" sizes="any" />
   <meta name="theme-color" content="#17181B" />
   <meta property="og:type" content="website" />
@@ -16,6 +17,13 @@
   <meta property="og:title" content="Plataforma de monitoreo ambiental en Chile · SIMCII" />
   <meta property="og:description" content="Estaciones, parámetros y KPIs ambientales con score 0–100, alertas y evidencia trazable." />
   <meta property="og:image" content="https://simcii.ai/assets/og-image.png" />
+  <meta property="og:image:alt" content="SIMCII · plataforma de monitoreo ambiental y territorial" />
+  <meta property="og:image:width" content="2400" />
+  <meta property="og:image:height" content="1260" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Plataforma de monitoreo ambiental en Chile · SIMCII" />
+  <meta name="twitter:description" content="Estaciones, parámetros y KPIs ambientales con score 0–100, alertas y evidencia trazable." />
+  <meta name="twitter:image" content="https://simcii.ai/assets/og-image.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -24,6 +32,33 @@
   {
     "@context": "https://schema.org",
     "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://simcii.ai/#organization",
+        "name": "SIMCII",
+        "url": "https://simcii.ai/",
+        "logo": "https://simcii.ai/assets/logo-simcii-oscuro.svg",
+        "email": "contacto@accionet.net",
+        "sameAs": ["https://www.accionet.cl/"],
+        "areaServed": { "@type": "Country", "name": "Chile" },
+        "address": { "@type": "PostalAddress", "addressLocality": "Santiago", "addressCountry": "CL" },
+        "parentOrganization": {
+          "@type": "Organization",
+          "@id": "https://simcii.ai/#accionet",
+          "name": "Accionet",
+          "legalName": "Accionet SpA",
+          "url": "https://www.accionet.cl/",
+          "sameAs": ["https://www.accionet.cl/"]
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://simcii.ai/" },
+          { "@type": "ListItem", "position": 2, "name": "Soluciones", "item": "https://simcii.ai/#plataforma" },
+          { "@type": "ListItem", "position": 3, "name": "Monitoreo ambiental", "item": "https://simcii.ai/soluciones/monitoreo-ambiental" }
+        ]
+      },
       {
         "@type": "Service",
         "name": "Monitoreo ambiental SIMCII",
@@ -67,6 +102,7 @@
     <a href="/" class="brand"><img src="/assets/logo-simcii-oscuro.svg" alt="SIMCII" height="32" /></a>
     <nav>
       <a href="/soluciones/monitoreo-ambiental">Monitoreo ambiental</a>
+      <a href="/soluciones/telemetria-ambiental">Telemetría</a>
       <a href="/soluciones/relacionamiento-comunitario">Comunidades</a>
       <a href="/soluciones/cumplimiento-rca">RCA</a>
       <a href="/soluciones/gestion-territorial">Territorio</a>
@@ -82,6 +118,7 @@
     <h2>Qué mide</h2>
     <ul>
       <li><strong>Estaciones y parámetros</strong>: integra la infraestructura de medición existente (aire, agua, ruido y otros parámetros según la operación).</li>
+      <li><strong>Telemetría</strong>: los datos llegan desde las estaciones de forma automática — el detalle del flujo está en <a href="/soluciones/telemetria-ambiental">telemetría ambiental</a>.</li>
       <li><strong>KPIs medioambientales</strong>: cada parámetro se normaliza y compara contra umbrales definidos por la operación y la regulación.</li>
       <li><strong>Score ambiental 0–100</strong>: una lectura comparable por territorio y en el tiempo, componible con los scores Territorial, de Contexto y de Comunidad.</li>
       <li><strong>Alertas</strong>: desviaciones sobre umbral generan alertas para actuar antes de que escalen a un incidente o a un incumplimiento.</li>
@@ -90,8 +127,11 @@
     <h2>Cómo funciona en la operación</h2>
     <p>El equipo ambiental deja de consolidar planillas: los datos llegan a SIMCII, se normalizan y quedan disponibles para sostenibilidad, asuntos públicos y gerencia en el mismo lugar donde se gestionan los <a href="/soluciones/cumplimiento-rca">compromisos RCA</a> y el <a href="/soluciones/relacionamiento-comunitario">relacionamiento comunitario</a>. La conversación con comunidades y autoridades parte de la misma evidencia.</p>
 
+    <h2>Un sistema de seguimiento ambiental, no un tablero más</h2>
+    <p>La diferencia entre un visualizador y un sistema de seguimiento ambiental está en lo que ocurre después del gráfico. SIMCII guarda el histórico completo con fuente y fecha, compara cada parámetro contra su umbral, avisa cuando la tendencia cambia y deja ese mismo dato disponible para acreditar un compromiso o responder una consulta. El seguimiento no termina cuando el dato se dibuja: termina cuando alguien puede actuar sobre él y demostrar después qué hizo.</p>
+
     <h2>Para quién</h2>
-    <p>Operaciones en Chile con obligaciones ambientales y territoriales: <a href="/industrias/mineria">minería</a>, <a href="/industrias/energia">energía y renovables</a>, infraestructura, forestal y <a href="/industrias/sector-publico">sector público</a>.</p>
+    <p>Operaciones en Chile con obligaciones ambientales y territoriales: <a href="/industrias/mineria">minería</a>, <a href="/industrias/energia">energía y renovables</a>, infraestructura, forestal, <a href="/industrias/municipios">municipios</a> y <a href="/industrias/sector-publico">sector público</a>.</p>
 
     <svg class="cordillera-divider" viewBox="0 0 1200 48" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,44 150,20 300,36 480,8 640,30 820,14 1000,34 1200,18" fill="none" stroke="#B96B45" stroke-width="2"/><polyline points="0,46 180,30 360,42 560,20 760,38 960,26 1200,40" fill="none" stroke="#234A63" stroke-width="1.5"/></svg>
 
@@ -126,8 +166,9 @@
         <h4>Soluciones</h4>
         <ul>
           <li><a href="/soluciones/monitoreo-ambiental">Monitoreo ambiental</a></li>
+          <li><a href="/soluciones/telemetria-ambiental">Telemetría ambiental</a></li>
           <li><a href="/soluciones/relacionamiento-comunitario">Relacionamiento comunitario</a></li>
-          <li><a href="/soluciones/cumplimiento-rca">Cumplimiento RCA</a></li>
+          <li><a href="/soluciones/cumplimiento-rca">Cumplimiento ambiental y RCA</a></li>
           <li><a href="/soluciones/gestion-territorial">Gestión territorial</a></li>
         </ul>
       </div>
@@ -141,6 +182,7 @@
           <li><a href="/industrias/inmobiliario">Proyectos inmobiliarios</a></li>
           <li><a href="/industrias/sanitarias">Sanitarias</a></li>
           <li><a href="/industrias/carreteras">Carreteras y concesiones viales</a></li>
+          <li><a href="/industrias/municipios">Municipios</a></li>
           <li><a href="/industrias/sector-publico">Sector público</a></li>
         </ul>
       </div>
@@ -154,7 +196,7 @@
       </div>
     </div>
     <div class="pff-legal">
-      <span>© 2026 Accionet SpA · Santiago, Chile · Todos los derechos reservados</span>
+      <span>© 2026 <a href="https://www.accionet.cl/">Accionet SpA</a> · Santiago, Chile · Todos los derechos reservados</span>
       <a href="/">simcii.ai</a>
     </div>
   </footer>

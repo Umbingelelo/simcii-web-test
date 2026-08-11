@@ -7,6 +7,7 @@
   <meta name="description" content="Para centros de cultivo y plantas en el sur de Chile: monitoreo ambiental, relación con comunidades costeras y compromisos con evidencia." />
   <link rel="canonical" href="https://simcii.ai/industrias/salmonicultura" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Accionet" />
   <link rel="icon" href="/assets/favicon.ico" sizes="any" />
   <meta name="theme-color" content="#17181B" />
   <meta property="og:type" content="website" />
@@ -16,6 +17,13 @@
   <meta property="og:title" content="Monitoreo territorial para salmonicultura · SIMCII" />
   <meta property="og:description" content="Para centros de cultivo y plantas en el sur de Chile: monitoreo ambiental, relación con comunidades costeras y compromisos con evidencia." />
   <meta property="og:image" content="https://simcii.ai/assets/og-image.png" />
+  <meta property="og:image:alt" content="SIMCII · plataforma de monitoreo ambiental y territorial" />
+  <meta property="og:image:width" content="2400" />
+  <meta property="og:image:height" content="1260" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Monitoreo territorial para salmonicultura · SIMCII" />
+  <meta name="twitter:description" content="Para centros de cultivo y plantas en el sur de Chile: monitoreo ambiental, relación con comunidades costeras y compromisos con evidencia." />
+  <meta name="twitter:image" content="https://simcii.ai/assets/og-image.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -24,6 +32,33 @@
   {
     "@context": "https://schema.org",
     "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://simcii.ai/#organization",
+        "name": "SIMCII",
+        "url": "https://simcii.ai/",
+        "logo": "https://simcii.ai/assets/logo-simcii-oscuro.svg",
+        "email": "contacto@accionet.net",
+        "sameAs": ["https://www.accionet.cl/"],
+        "areaServed": { "@type": "Country", "name": "Chile" },
+        "address": { "@type": "PostalAddress", "addressLocality": "Santiago", "addressCountry": "CL" },
+        "parentOrganization": {
+          "@type": "Organization",
+          "@id": "https://simcii.ai/#accionet",
+          "name": "Accionet",
+          "legalName": "Accionet SpA",
+          "url": "https://www.accionet.cl/",
+          "sameAs": ["https://www.accionet.cl/"]
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://simcii.ai/" },
+          { "@type": "ListItem", "position": 2, "name": "Industrias", "item": "https://simcii.ai/#industrias" },
+          { "@type": "ListItem", "position": 3, "name": "Salmonicultura", "item": "https://simcii.ai/industrias/salmonicultura" }
+        ]
+      },
       {
         "@type": "Service",
         "name": "SIMCII para salmonicultura",
@@ -67,6 +102,7 @@
     <a href="/" class="brand"><img src="/assets/logo-simcii-oscuro.svg" alt="SIMCII" height="32" /></a>
     <nav>
       <a href="/soluciones/monitoreo-ambiental">Monitoreo ambiental</a>
+      <a href="/soluciones/telemetria-ambiental">Telemetría</a>
       <a href="/soluciones/relacionamiento-comunitario">Comunidades</a>
       <a href="/soluciones/cumplimiento-rca">RCA</a>
       <a href="/soluciones/gestion-territorial">Territorio</a>
@@ -131,8 +167,9 @@
         <h4>Soluciones</h4>
         <ul>
           <li><a href="/soluciones/monitoreo-ambiental">Monitoreo ambiental</a></li>
+          <li><a href="/soluciones/telemetria-ambiental">Telemetría ambiental</a></li>
           <li><a href="/soluciones/relacionamiento-comunitario">Relacionamiento comunitario</a></li>
-          <li><a href="/soluciones/cumplimiento-rca">Cumplimiento RCA</a></li>
+          <li><a href="/soluciones/cumplimiento-rca">Cumplimiento ambiental y RCA</a></li>
           <li><a href="/soluciones/gestion-territorial">Gestión territorial</a></li>
         </ul>
       </div>
@@ -146,6 +183,7 @@
           <li><a href="/industrias/inmobiliario">Proyectos inmobiliarios</a></li>
           <li><a href="/industrias/sanitarias">Sanitarias</a></li>
           <li><a href="/industrias/carreteras">Carreteras y concesiones viales</a></li>
+          <li><a href="/industrias/municipios">Municipios</a></li>
           <li><a href="/industrias/sector-publico">Sector público</a></li>
         </ul>
       </div>
@@ -159,7 +197,7 @@
       </div>
     </div>
     <div class="pff-legal">
-      <span>© 2026 Accionet SpA · Santiago, Chile · Todos los derechos reservados</span>
+      <span>© 2026 <a href="https://www.accionet.cl/">Accionet SpA</a> · Santiago, Chile · Todos los derechos reservados</span>
       <a href="/">simcii.ai</a>
     </div>
   </footer>
