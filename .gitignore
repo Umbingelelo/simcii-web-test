@@ -6,3 +6,8 @@
 .DS_Store
 
 node_modules
+
+# skills locales (instaladas por agente, no forman parte del sitio)
+.agents/skills/
+.claude/skills/
+skills-lock.json
