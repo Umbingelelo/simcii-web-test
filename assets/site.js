@@ -360,17 +360,39 @@ if (fondo && !reduce) {
 const mapa = document.querySelector('[data-mapa]');
 if (mapa) enVista(mapa, () => initMap().catch(() => { document.getElementById('mapa-fallback').hidden = false; }), '400px 0px');
 
-const STATIONS = [
-  { name: 'Estación Costa AIR-001', dom: 'Aire', lng: -70.3975, lat: -23.6415, score: 82 },
-  { name: 'Ruido Norte RUI-001', dom: 'Ruido', lng: -70.392, lat: -23.628, score: 71 },
-  { name: 'Ruido Sur RUI-002', dom: 'Ruido', lng: -70.399, lat: -23.666, score: 74 },
-  { name: 'Estación UCN MET-001', dom: 'Meteorología', lng: -70.4095, lat: -23.681, score: 88 },
-  { name: 'Las Salinas Norte', dom: 'Aire · BTEX', lng: -71.5462, lat: -32.9985, score: 76 },
-  { name: 'Las Salinas Sur', dom: 'Aire · MP', lng: -71.5498, lat: -33.0043, score: 79 },
-  { name: 'Olores V-01', dom: 'Olores', lng: -71.5525, lat: -33.0092, score: 64 },
-  { name: 'Meteo Viña MET-V', dom: 'Meteorología', lng: -71.5405, lat: -33.0128, score: 84 },
+/* Red de ejemplo: dos zonas, estaciones con lectura base y reclamos cercanos */
+const ZONAS = {
+  antofagasta: {
+    nombre: 'Antofagasta', sub: 'Puerto y borde costero',
+    vista: { center: [-70.3975, -23.6450], zoom: 13.6, pitch: 58, bearing: -18 },
+    viento: 'Viento OSO 4,2 m/s', hacia: 'ENE',
+    pluma: { desde: [-70.4038, -23.6488], rumbo: 60, km: 1.8 },
+    area: { nombre: 'Zona portuaria', poly: [[-70.4085, -23.6455], [-70.4012, -23.6440], [-70.3995, -23.6520], [-70.4060, -23.6540]], etiqueta: [-70.4060, -23.6530] },
+  },
+  salinas: {
+    nombre: 'Viña del Mar', sub: 'Predio Las Salinas',
+    vista: { center: [-71.5468, -33.0050], zoom: 14.2, pitch: 60, bearing: 24 },
+    viento: 'Viento SO 3,1 m/s', hacia: 'NE',
+    pluma: { desde: [-71.5506, -33.0078], rumbo: 40, km: 1.1 },
+    area: { nombre: 'Predio Las Salinas', poly: [[-71.5545, -33.0015], [-71.5470, -33.0002], [-71.5458, -33.0090], [-71.5530, -33.0110]], etiqueta: [-71.5542, -33.0028] },
+  },
+};
+const ESTACIONES = [
+  { id: 'AIR-001', nombre: 'Estación Costa', zona: 'antofagasta', tipo: 'Aire', var: 'MP10', unidad: 'µg/m³', v: 41, dec: 0, score: 82, ref: 'Norma diaria 130 µg/m³', lng: -70.3965, lat: -23.6335 },
+  { id: 'AIR-002', nombre: 'Puerto', zona: 'antofagasta', tipo: 'Aire', var: 'MP10', unidad: 'µg/m³', v: 104, dec: 0, score: 62, ref: 'Norma diaria 130 µg/m³', lng: -70.4022, lat: -23.6478 },
+  { id: 'RUI-001', nombre: 'Ruido Norte', zona: 'antofagasta', tipo: 'Ruido', var: 'Nivel', unidad: 'dB(A)', v: 61, dec: 0, score: 71, ref: 'Límite diurno de la zona 70 dB(A)', lng: -70.392, lat: -23.628 },
+  { id: 'RUI-002', nombre: 'Ruido Sur', zona: 'antofagasta', tipo: 'Ruido', var: 'Nivel', unidad: 'dB(A)', v: 58, dec: 0, score: 74, ref: 'Límite diurno de la zona 70 dB(A)', lng: -70.399, lat: -23.666 },
+  { id: 'MET-001', nombre: 'Meteo UCN', zona: 'antofagasta', tipo: 'Meteorología', var: 'Viento SO', unidad: 'm/s', v: 4.2, dec: 1, score: 88, ref: 'Dirección y velocidad cada 1 min', lng: -70.4095, lat: -23.681 },
+  { id: 'AIR-101', nombre: 'Las Salinas Norte', zona: 'salinas', tipo: 'Aire', var: 'BTEX', unidad: 'µg/m³', v: 3.1, dec: 1, score: 76, ref: 'Benceno, tolueno, etilbenceno y xilenos', lng: -71.5462, lat: -32.9985 },
+  { id: 'AIR-102', nombre: 'Las Salinas Sur', zona: 'salinas', tipo: 'Aire', var: 'MP2,5', unidad: 'µg/m³', v: 18, dec: 0, score: 79, ref: 'Norma diaria 50 µg/m³', lng: -71.5498, lat: -33.0043 },
+  { id: 'OLR-101', nombre: 'Olores V-01', zona: 'salinas', tipo: 'Olores', var: 'Olor', unidad: 'ouE/m³', v: 2.4, dec: 1, score: 61, ref: 'Unidades de olor europeas', lng: -71.5525, lat: -33.0092 },
+  { id: 'MET-101', nombre: 'Meteo Viña', zona: 'salinas', tipo: 'Meteorología', var: 'Viento SO', unidad: 'm/s', v: 3.1, dec: 1, score: 84, ref: 'Dirección y velocidad cada 1 min', lng: -71.5405, lat: -33.0128 },
 ];
-const colorFor = (s) => (s >= 75 ? '#5DBB84' : s >= 65 ? '#E39A4A' : '#F07A6A');
+const RECLAMOS = [
+  { id: '#209', zona: 'antofagasta', motivo: 'Polvo en las ventanas', hace: 25, cerca: 'AIR-002', lng: -70.3935, lat: -23.6436 },
+  { id: '#214', zona: 'salinas', motivo: 'Olor a combustible', hace: 12, cerca: 'OLR-101', lng: -71.5468, lat: -33.0040 },
+];
+const estado = (s) => (s >= 75 ? ['ok', 'Bien'] : s >= 65 ? ['warn', 'Atención'] : ['err', 'Alerta']);
 
 function cargar(tag, attrs) {
   return new Promise((ok, mal) => {
@@ -380,7 +402,39 @@ function cargar(tag, attrs) {
   });
 }
 
+// Cono de la pluma: origen y arco a «km» en dirección «rumbo» (0 = norte)
+function cono([lng, lat], rumbo, km, abre = 17) {
+  const pts = [[lng, lat]];
+  for (let a = -abre; a <= abre; a += abre / 6) {
+    const b = ((rumbo + a) * Math.PI) / 180;
+    pts.push([lng + (Math.sin(b) * km) / (111.32 * Math.cos((lat * Math.PI) / 180)), lat + (Math.cos(b) * km) / 110.57]);
+  }
+  pts.push([lng, lat]);
+  return { type: 'Polygon', coordinates: [pts] };
+}
+
+// Paleta Basalto sobre dark-v11
+function basalto(map) {
+  for (const l of map.getStyle().layers) {
+    const id = l.id;
+    const p = (k, v) => { try { map.setPaintProperty(id, k, v); } catch { /* capa sin esa propiedad */ } };
+    if (l.type === 'background') p('background-color', '#1A1D20');
+    else if (l.type === 'fill') p('fill-color', /water/.test(id) ? '#111316' : /building/.test(id) ? '#24282C' : '#1D2023');
+    else if (l.type === 'line') {
+      if (/water|river|stream/.test(id)) p('line-color', '#15181B');
+      else if (/motorway|trunk|primary/.test(id)) p('line-color', '#454B51');
+      else if (/road|street|bridge|tunnel|path/.test(id)) p('line-color', '#32373C');
+      else if (/admin|boundary/.test(id)) p('line-color', '#41474D');
+    } else if (l.type === 'symbol') {
+      if (/poi|transit|airport/.test(id)) { map.setLayoutProperty(id, 'visibility', 'none'); continue; }
+      p('text-color', /settlement|place/.test(id) ? '#B9BBB5' : '#7E817C');
+      p('text-halo-color', '#1A1D20');
+    }
+  }
+}
+
 async function initMap() {
+  const shell = document.querySelector('[data-mapa]');
   const el = document.getElementById('mapbox');
   const fallback = document.getElementById('mapa-fallback');
   let token = null;
@@ -388,52 +442,214 @@ async function initMap() {
   if (!token) token = new URLSearchParams(location.search).get('mbtoken');
   if (!token) { fallback.hidden = false; return; }
   await Promise.all([
-    cargar('link', { rel: 'stylesheet', href: 'https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css' }),
-    cargar('script', { src: 'https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js' }),
+    cargar('link', { rel: 'stylesheet', href: 'https://api.mapbox.com/mapbox-gl-js/v3.10.0/mapbox-gl.css' }),
+    cargar('script', { src: 'https://api.mapbox.com/mapbox-gl-js/v3.10.0/mapbox-gl.js' }),
   ]);
   const { mapboxgl } = window;
   mapboxgl.accessToken = token;
-  const map = new mapboxgl.Map({ container: el, style: 'mapbox://styles/mapbox/dark-v11', center: [-70.4005, -23.652], zoom: 12.1, pitch: 52, bearing: -14 });
+  const angosto = matchMedia('(max-width: 900px)');
+  const relleno = () => (angosto.matches ? { left: 0, top: 0, right: 0, bottom: 0 } : { left: 360, top: 0, right: 0, bottom: 0 });
+  let zona = 'salinas';
+  const map = new mapboxgl.Map({
+    container: el, style: 'mapbox://styles/mapbox/dark-v11', ...ZONAS[zona].vista, padding: relleno(),
+    cooperativeGestures: true, attributionControl: false,
+    locale: {
+      'ScrollZoomBlocker.CtrlMessage': 'Usa Ctrl + rueda para acercar el mapa',
+      'ScrollZoomBlocker.CmdMessage': 'Usa ⌘ + rueda para acercar el mapa',
+      'TouchPanBlocker.Message': 'Usa dos dedos para mover el mapa',
+      'NavigationControl.ZoomIn': 'Acercar', 'NavigationControl.ZoomOut': 'Alejar', 'NavigationControl.ResetBearing': 'Volver al norte',
+    },
+  });
+  map.addControl(new mapboxgl.NavigationControl({ visualizePitch: true }), 'top-right');
+  map.addControl(new mapboxgl.AttributionControl({ compact: true }), 'bottom-right');
+
+  // Panel: zonas, lista de estaciones y ficha
+  const panel = document.createElement('aside');
+  panel.className = 'red';
+  panel.setAttribute('aria-label', 'Estaciones de la red');
+  panel.innerHTML = `
+    <div class="red-zonas">${Object.entries(ZONAS).map(([k, z]) => `<button type="button" data-zona="${k}"><b>${z.nombre}</b><span>${z.sub}</span></button>`).join('')}</div>
+    <p class="red-viento"></p>
+    <ul class="red-lista"></ul>
+    <div class="red-ficha" aria-live="polite"></div>`;
+  shell.append(panel);
+  const lista = panel.querySelector('.red-lista');
+  const ficha = panel.querySelector('.red-ficha');
+  const viento = panel.querySelector('.red-viento');
+
+  const hist = new Map(ESTACIONES.map((s) => [s.id, Array.from({ length: 30 }, (_, i) => Math.sin(i / 3 + s.v) * 0.5)]));
+  const lee = (s) => {
+    const e = hist.get(s.id).at(-1);
+    const v = s.v * (1 + e * 0.06);
+    return { v: v.toLocaleString('es-CL', { minimumFractionDigits: s.dec, maximumFractionDigits: s.dec }), score: Math.round(s.score - e * 3) };
+  };
+  const hora = () => new Date().toLocaleTimeString('es-CL', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+
+  // Marcadores HTML: punto cuadrado + etiqueta con la lectura
+  const marcas = new Map();
+  for (const s of ESTACIONES) {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'mb-est';
+    b.innerHTML = '<i></i><span><b></b> <em></em></span>';
+    b.querySelector('b').textContent = s.id;
+    b.addEventListener('click', () => elige(s.id, true));
+    marcas.set(s.id, b);
+    new mapboxgl.Marker({ element: b, anchor: 'left', offset: [-6, 0] }).setLngLat([s.lng, s.lat]).addTo(map);
+  }
+  for (const r of RECLAMOS) {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'mb-rec';
+    b.setAttribute('aria-label', `Reclamo ${r.id}: ${r.motivo}`);
+    b.innerHTML = `<i></i><span>Reclamo ${r.id}</span>`;
+    b.addEventListener('click', () => eligeReclamo(r));
+    new mapboxgl.Marker({ element: b, anchor: 'left', offset: [-7, 0] }).setLngLat([r.lng, r.lat]).addTo(map);
+  }
+  for (const z of Object.values(ZONAS)) {
+    const t = document.createElement('span');
+    t.className = 'mb-area';
+    t.textContent = z.area.nombre;
+    new mapboxgl.Marker({ element: t }).setLngLat(z.area.etiqueta).addTo(map);
+  }
+
+  let elegida = null;
+  let listaZona = null;
+  const pintaLista = () => {
+    if (listaZona !== zona) {
+      listaZona = zona;
+      lista.replaceChildren(...ESTACIONES.filter((s) => s.zona === zona).map((s) => {
+        const li = document.createElement('li');
+        li.innerHTML = '<button type="button"><i></i><span><b></b><small></small></span><em></em></button>';
+        li.dataset.id = s.id;
+        li.querySelector('b').textContent = `${s.id} · ${s.nombre}`;
+        li.querySelector('button').addEventListener('click', () => elige(s.id, true));
+        return li;
+      }));
+    }
+    for (const li of lista.children) {
+      const s = ESTACIONES.find((x) => x.id === li.dataset.id);
+      const { v, score } = lee(s);
+      const [cls, palabra] = estado(score);
+      li.querySelector('button').classList.toggle('is-on', s.id === elegida);
+      li.querySelector('i').className = `st-${cls}`;
+      li.querySelector('small').textContent = `${s.tipo} · ${palabra}`;
+      li.querySelector('em').textContent = `${v} ${s.unidad}`;
+    }
+  };
+  const pintaMarcas = () => {
+    for (const s of ESTACIONES) {
+      const { v, score } = lee(s);
+      const b = marcas.get(s.id);
+      b.dataset.st = estado(score)[0];
+      b.classList.toggle('is-on', s.id === elegida);
+      b.querySelector('em').textContent = `${s.var} ${v} ${s.unidad}`;
+      b.setAttribute('aria-label', `${s.id} ${s.nombre}: ${s.var} ${v} ${s.unidad}, score ${score}`);
+    }
+  };
+  const linea = (s) => {
+    const h = hist.get(s.id);
+    return h.map((e, i) => `${(i / (h.length - 1)) * 260},${24 - e * 20}`).join(' ');
+  };
+  const pintaFicha = () => {
+    const s = ESTACIONES.find((x) => x.id === elegida);
+    if (!s) return;
+    const { v, score } = lee(s);
+    const [cls, palabra] = estado(score);
+    const rec = RECLAMOS.find((r) => r.cerca === s.id);
+    ficha.innerHTML = `
+      <p class="rf-cab"><span></span><span class="st-txt-${cls}"></span></p>
+      <p class="rf-lectura"><b></b> <span></span></p>
+      <svg viewBox="0 0 260 48" preserveAspectRatio="none" aria-hidden="true"><polyline fill="none" stroke="#8FA6E0" stroke-width="1.6" points="${linea(s)}" /></svg>
+      <p class="rf-ref"></p>
+      ${rec ? '<p class="rf-rec"></p>' : ''}
+      <p class="rf-hora"></p>`;
+    const q = (c) => ficha.querySelector(c);
+    q('.rf-cab span').textContent = `${s.id} · ${s.nombre}`;
+    q(`.st-txt-${cls}`).textContent = `${palabra} · score ${score}`;
+    q('.rf-lectura b').textContent = v;
+    q('.rf-lectura span').textContent = `${s.unidad} · ${s.var}`;
+    q('.rf-ref').textContent = s.ref;
+    if (rec) q('.rf-rec').textContent = `Reclamo ${rec.id} a ${rec.hace} min de aquí: «${rec.motivo}». Cae dentro de la pluma estimada.`;
+    q('.rf-hora').textContent = `Última lectura ${hora()}`;
+  };
+  const elige = (id, mover) => {
+    elegida = id;
+    const s = ESTACIONES.find((x) => x.id === id);
+    if (s.zona !== zona) ponZona(s.zona, false);
+    pintaLista(); pintaMarcas(); pintaFicha();
+    if (mover) { quieto(); map.flyTo({ center: [s.lng, s.lat], zoom: Math.max(map.getZoom(), 14.4), padding: relleno(), duration: reduce ? 0 : 1600, essential: true }); }
+  };
+  const eligeReclamo = (r) => {
+    elige(r.cerca, false);
+    quieto();
+    map.flyTo({ center: [r.lng, r.lat], zoom: 14.6, padding: relleno(), duration: reduce ? 0 : 1600, essential: true });
+  };
+  const ponZona = (k, mover = true) => {
+    zona = k;
+    panel.querySelectorAll('[data-zona]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.zona === k)));
+    viento.textContent = `${ZONAS[k].viento} · pluma estimada hacia el ${ZONAS[k].hacia}`;
+    if (mover) {
+      // al cambiar de zona, se abre la estación con peor score
+      elige(ESTACIONES.filter((s) => s.zona === k).sort((a, b) => a.score - b.score)[0].id, false);
+      map.flyTo({ ...ZONAS[k].vista, padding: relleno(), duration: reduce ? 0 : 2400, essential: true });
+    }
+  };
+  panel.querySelectorAll('[data-zona]').forEach((b) => b.addEventListener('click', () => { quieto(); ponZona(b.dataset.zona); }));
+
+  // Giro lento de cámara hasta que la persona toque el mapa
+  let girar = !reduce;
+  const quieto = () => { girar = false; map.stop(); };
+  const gira = () => { if (girar && visible) map.easeTo({ bearing: map.getBearing() + 10, duration: 9000, easing: (x) => x }); };
+  map.on('moveend', (e) => { if (!e.originalEvent) gira(); });
+  ['dragstart', 'zoomstart', 'rotatestart', 'pitchstart'].forEach((ev) => map.on(ev, (e) => { if (e.originalEvent) quieto(); }));
+
+  let visible = true;
+  new IntersectionObserver(([en]) => { visible = en.isIntersecting; if (visible) gira(); }).observe(shell);
   let cargado = false;
-  map.scrollZoom.disable();
-  map.addControl(new mapboxgl.NavigationControl({ showCompass: false }), 'top-right');
   map.on('load', () => {
     cargado = true;
     fallback.hidden = true;
+    basalto(map);
     try {
       map.addSource('dem', { type: 'raster-dem', url: 'mapbox://mapbox.mapbox-terrain-dem-v1', tileSize: 512, maxzoom: 14 });
-      map.setTerrain({ source: 'dem', exaggeration: 1.55 });
-      map.setFog({ color: '#1A1D20', 'high-color': '#212529', 'horizon-blend': 0.12, 'star-intensity': 0 });
+      map.setTerrain({ source: 'dem', exaggeration: 1.4 });
+      map.setFog({ color: '#1A1D20', 'high-color': '#212529', 'horizon-blend': 0.1, 'space-color': '#1A1D20', 'star-intensity': 0 });
     } catch { /* sin relieve */ }
-    map.addSource('stns', { type: 'geojson', data: { type: 'FeatureCollection', features: STATIONS.map((s) => ({ type: 'Feature', geometry: { type: 'Point', coordinates: [s.lng, s.lat] }, properties: { c: colorFor(s.score), name: s.name, dom: s.dom, score: s.score } })) } });
-    map.addLayer({ id: 'stn-ring', type: 'circle', source: 'stns', paint: { 'circle-radius': 16, 'circle-color': 'rgba(0,0,0,0)', 'circle-stroke-width': 1.2, 'circle-stroke-color': ['get', 'c'], 'circle-stroke-opacity': 0.55 } });
-    map.addLayer({ id: 'stn-core', type: 'circle', source: 'stns', paint: { 'circle-radius': 6, 'circle-color': ['get', 'c'], 'circle-stroke-width': 1.6, 'circle-stroke-color': '#ECEAE4' } });
-    const pop = new mapboxgl.Popup({ closeButton: false, offset: 14 });
-    const muestra = (f) => {
-      const p = f.properties;
-      const div = document.createElement('div');
-      div.innerHTML = '<div class="pop-name"></div><div class="pop-dom"></div><div class="pop-score"><span></span><small> /100</small></div>';
-      div.querySelector('.pop-name').textContent = p.name;
-      div.querySelector('.pop-dom').textContent = p.dom;
-      div.querySelector('.pop-score span').textContent = p.score;
-      div.querySelector('.pop-score').style.color = p.c;
-      pop.setLngLat(f.geometry.coordinates).setDOMContent(div).addTo(map);
-    };
-    map.on('mouseenter', 'stn-core', (e) => { map.getCanvas().style.cursor = 'pointer'; muestra(e.features[0]); });
-    map.on('mouseleave', 'stn-core', () => { map.getCanvas().style.cursor = ''; pop.remove(); });
-    map.on('click', 'stn-core', (e) => muestra(e.features[0]));
-    if (!reduce) {
-      const stops = [
-        { center: [-71.5495, -33.014], zoom: 13.1, pitch: 55, bearing: 20 },
-        { center: [-70.4005, -23.652], zoom: 12.1, pitch: 52, bearing: -14 },
-      ];
-      let si = 0;
-      const tour = setInterval(() => { map.flyTo({ ...stops[si], duration: 5200, essential: false }); si = (si + 1) % stops.length; }, 9000);
-      ['mousedown', 'wheel', 'touchstart'].forEach((ev) => el.addEventListener(ev, () => clearInterval(tour), { once: true, passive: true }));
-    }
+    const etiquetas = map.getStyle().layers.find((l) => l.type === 'symbol')?.id;
+    map.addLayer({
+      id: 'edificios', type: 'fill-extrusion', source: 'composite', 'source-layer': 'building', minzoom: 13.5, filter: ['==', 'extrude', 'true'],
+      paint: { 'fill-extrusion-color': '#2A2F34', 'fill-extrusion-height': ['get', 'height'], 'fill-extrusion-base': ['get', 'min_height'], 'fill-extrusion-opacity': 0.9 },
+    }, etiquetas);
+    const fc = (features) => ({ type: 'FeatureCollection', features });
+    map.addSource('areas', { type: 'geojson', data: fc(Object.values(ZONAS).map((z) => ({ type: 'Feature', geometry: { type: 'Polygon', coordinates: [[...z.area.poly, z.area.poly[0]]] } }))) });
+    map.addLayer({ id: 'areas-f', type: 'fill', source: 'areas', paint: { 'fill-color': '#ECEAE4', 'fill-opacity': 0.04 } }, etiquetas);
+    map.addLayer({ id: 'areas-l', type: 'line', source: 'areas', paint: { 'line-color': '#ECEAE4', 'line-opacity': 0.5, 'line-width': 1.2, 'line-dasharray': [3, 2] } }, etiquetas);
+    // pluma: tres conos superpuestos, más denso cerca del origen
+    const plumas = [];
+    for (const z of Object.values(ZONAS)) for (const f of [1, 0.66, 0.36]) plumas.push({ type: 'Feature', geometry: cono(z.pluma.desde, z.pluma.rumbo, z.pluma.km * f, 17 * (0.6 + f * 0.4)) });
+    map.addSource('pluma', { type: 'geojson', data: fc(plumas) });
+    map.addLayer({ id: 'pluma-f', type: 'fill', source: 'pluma', paint: { 'fill-color': '#8FA6E0', 'fill-opacity': 0.12 } }, etiquetas);
+    map.addSource('radios', { type: 'geojson', data: fc(ESTACIONES.map((s) => ({ type: 'Feature', geometry: { type: 'Point', coordinates: [s.lng, s.lat] } }))) });
+    map.addLayer({ id: 'radios', type: 'circle', source: 'radios', paint: { 'circle-radius': ['interpolate', ['exponential', 2], ['zoom'], 12, 10, 16, 160], 'circle-color': '#ECEAE4', 'circle-opacity': 0.025, 'circle-stroke-width': 1, 'circle-stroke-color': '#ECEAE4', 'circle-stroke-opacity': 0.12, 'circle-pitch-alignment': 'map' } }, etiquetas);
+    ponZona(zona, false);
+    elige('OLR-101', false);
+    gira();
   });
   map.on('error', () => { if (!cargado) fallback.hidden = false; });
-  new ResizeObserver(() => map.resize()).observe(el.parentElement);
+  angosto.addEventListener('change', () => map.setPadding(relleno()));
+  new ResizeObserver(() => map.resize()).observe(el);
+
+  // Lecturas en vivo (datos de ejemplo): caminata aleatoria acotada
+  setInterval(() => {
+    if (!visible || !cargado) return;
+    for (const s of ESTACIONES) {
+      const h = hist.get(s.id);
+      h.push(Math.max(-1, Math.min(1, h.at(-1) + (Math.random() - 0.5) * 0.5)));
+      h.shift();
+    }
+    pintaMarcas(); pintaLista(); pintaFicha();
+  }, 3000);
 }
 
 /* ---- Demo guiada: cinco pasos cortos y, al lado, la demo que se va armando ---- */
