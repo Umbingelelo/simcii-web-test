@@ -267,17 +267,101 @@
       <video data-fondo muted loop playsinline preload="none" poster="/assets/video/datos-fondo.webp"><source src="/assets/video/datos-fondo.mp4" type="video/mp4" /></video>
     </div>
     <div class="marco cierre-grid">
-      <div>
+      <div class="cierre-texto">
         <h2 class="display display-s">Conoce el territorio <em>antes</em> de decidir.</h2>
         <p class="lead">Demo con datos de ejemplo, sin compromiso. Respondemos en 24 horas hábiles.</p>
+        <div class="lectura" data-lectura aria-hidden="true">
+          <p class="lectura-tit">Tu demo, mientras respondes</p>
+          <p class="lectura-op" data-l="industria">Elige tu tipo de operación para empezar.</p>
+          <ul class="lectura-pistas" data-l="pistas"></ul>
+          <p class="lectura-nota" data-l="escala"></p>
+          <p class="lectura-nota" data-l="dolor"></p>
+        </div>
         <p class="correo"><a href="mailto:contacto@accionet.net">contacto@accionet.net</a></p>
       </div>
-      <form class="form" data-demo-form novalidate>
-        <label for="email">Correo corporativo</label>
-        <input id="email" type="email" placeholder="tu@empresa.cl" required autocomplete="email" />
+      <form class="guia" data-guia novalidate>
+        <div class="guia-cab">
+          <span data-guia-cuenta>Paso 1 de 5</span>
+          <span class="guia-barra" aria-hidden="true"><i data-guia-barra></i></span>
+        </div>
+
+        <fieldset class="guia-paso" data-paso>
+          <legend>¿En qué tipo de operación trabajas?</legend>
+          <div class="opciones">
+            <label><input type="radio" name="industria" value="mineria" /><span>Minería</span></label>
+            <label><input type="radio" name="industria" value="energia" /><span>Energía y renovables</span></label>
+            <label><input type="radio" name="industria" value="salmonicultura" /><span>Salmonicultura</span></label>
+            <label><input type="radio" name="industria" value="forestal" /><span>Forestal</span></label>
+            <label><input type="radio" name="industria" value="inmobiliario" /><span>Inmobiliario</span></label>
+            <label><input type="radio" name="industria" value="sanitarias" /><span>Sanitarias</span></label>
+            <label><input type="radio" name="industria" value="carreteras" /><span>Carreteras</span></label>
+            <label><input type="radio" name="industria" value="municipio" /><span>Municipio</span></label>
+            <label><input type="radio" name="industria" value="publico" /><span>Sector público</span></label>
+            <label><input type="radio" name="industria" value="otra" /><span>Otra</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="guia-paso" data-paso hidden>
+          <legend>¿Qué te gustaría ver en un solo lugar?</legend>
+          <p class="guia-ayuda">Marca todo lo que aplique. Con eso armamos la demo.</p>
+          <div class="opciones">
+            <label><input type="checkbox" name="lecturas" value="aire" /><span>Aire</span></label>
+            <label><input type="checkbox" name="lecturas" value="ruido" /><span>Ruido</span></label>
+            <label><input type="checkbox" name="lecturas" value="agua" /><span>Agua</span></label>
+            <label><input type="checkbox" name="lecturas" value="meteo" /><span>Meteorología</span></label>
+            <label><input type="checkbox" name="lecturas" value="comunidad" /><span>Comunidad y reclamos</span></label>
+            <label><input type="checkbox" name="lecturas" value="rca" /><span>Compromisos RCA</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="guia-paso" data-paso hidden>
+          <legend>¿Qué tan grande es el territorio?</legend>
+          <p class="guia-sub">Faenas, proyectos o sectores</p>
+          <div class="opciones opciones-fila">
+            <label><input type="radio" name="sitios" value="1" /><span>Uno</span></label>
+            <label><input type="radio" name="sitios" value="2-5" /><span>De 2 a 5</span></label>
+            <label><input type="radio" name="sitios" value="6+" /><span>Más de 5</span></label>
+          </div>
+          <p class="guia-sub">Estaciones de monitoreo que ya tienes</p>
+          <div class="opciones opciones-fila">
+            <label><input type="radio" name="estaciones" value="0" /><span>Ninguna</span></label>
+            <label><input type="radio" name="estaciones" value="1-5" /><span>De 1 a 5</span></label>
+            <label><input type="radio" name="estaciones" value="6-20" /><span>De 6 a 20</span></label>
+            <label><input type="radio" name="estaciones" value="20+" /><span>Más de 20</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="guia-paso" data-paso hidden>
+          <legend>¿Qué te quita más tiempo hoy?</legend>
+          <div class="opciones opciones-lista">
+            <label><input type="radio" name="dolor" value="planillas" /><span>Juntar datos de planillas que llegan tarde</span></label>
+            <label><input type="radio" name="dolor" value="reclamos" /><span>Cruzar los reclamos con lo que miden las estaciones</span></label>
+            <label><input type="radio" name="dolor" value="rca" /><span>Seguir compromisos RCA y su evidencia</span></label>
+            <label><input type="radio" name="dolor" value="reportes" /><span>Preparar reportes para la comunidad o la autoridad</span></label>
+          </div>
+          <label class="campo" for="g-mensaje">Si quieres, cuéntanos más <span>(opcional)</span></label>
+          <textarea id="g-mensaje" name="mensaje" rows="3" maxlength="800" placeholder="Por ejemplo: tenemos 3 estaciones de MP10 y los reclamos llegan por WhatsApp."></textarea>
+        </fieldset>
+
+        <fieldset class="guia-paso" data-paso hidden>
+          <legend>¿A quién le escribimos?</legend>
+          <label class="campo" for="g-nombre">Nombre</label>
+          <input id="g-nombre" name="nombre" type="text" autocomplete="name" maxlength="120" />
+          <label class="campo" for="g-empresa">Organización</label>
+          <input id="g-empresa" name="empresa" type="text" autocomplete="organization" maxlength="120" />
+          <label class="campo" for="email">Correo de trabajo</label>
+          <input id="email" name="email" type="email" placeholder="tu@empresa.cl" required autocomplete="email" maxlength="200" />
+          <label class="campo" for="g-telefono">Teléfono <span>(opcional, si prefieres que te llamemos)</span></label>
+          <input id="g-telefono" name="telefono" type="tel" autocomplete="tel" maxlength="40" />
+          <p class="guia-ayuda">Usamos estos datos sólo para coordinar la demo.</p>
+        </fieldset>
+
         <p class="form-error" data-form-error hidden></p>
-        <button class="btn btn-1" type="submit">Solicitar una demo</button>
-        <p class="form-nota">Respondemos en 24 h hábiles</p>
+        <div class="guia-nav">
+          <button class="btn btn-2" type="button" data-atras hidden>Atrás</button>
+          <button class="btn btn-1" type="button" data-siguiente>Siguiente</button>
+          <button class="btn btn-1" type="submit" data-enviar hidden>Solicitar una demo</button>
+        </div>
       </form>
     </div>
   </section>

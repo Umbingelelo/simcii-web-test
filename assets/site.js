@@ -436,37 +436,128 @@ async function initMap() {
   new ResizeObserver(() => map.resize()).observe(el.parentElement);
 }
 
-/* ---- Formulario de demo → /api/contact (mismos mensajes que producción) ---- */
-document.querySelectorAll('form[data-demo-form]').forEach((form) => {
-  const input = form.querySelector('input[type="email"]');
-  const button = form.querySelector('button[type="submit"]');
-  const error = form.querySelector('[data-form-error]');
-  error.id = 'form-error';
-  input.setAttribute('aria-describedby', 'form-error');
-  input.addEventListener('input', () => { error.hidden = true; input.removeAttribute('aria-invalid'); });
-  form.addEventListener('submit', async (ev) => {
-    ev.preventDefault();
-    const email = input.value.trim();
-    if (!email || button.disabled) return;
-    const prev = button.textContent;
-    button.disabled = true;
-    button.textContent = 'Enviando…';
+/* ---- Demo guiada: cinco pasos cortos y, al lado, la demo que se va armando ---- */
+const guia = document.querySelector('form[data-guia]');
+if (guia) {
+  const NOMBRES = {
+    industria: { mineria: 'Minería', energia: 'Energía y renovables', salmonicultura: 'Salmonicultura', forestal: 'Forestal', inmobiliario: 'Inmobiliario', sanitarias: 'Sanitarias', carreteras: 'Carreteras', municipio: 'Municipio', publico: 'Sector público', otra: 'Otra operación' },
+    sitios: { 1: 'Un sitio', '2-5': 'De 2 a 5 sitios', '6+': 'Más de 5 sitios' },
+    estaciones: { 0: 'sin estaciones todavía', '1-5': '1 a 5 estaciones', '6-20': '6 a 20 estaciones', '20+': 'más de 20 estaciones' },
+    dolor: { planillas: 'juntar los datos sin planillas', reclamos: 'cruzar los reclamos con las mediciones', rca: 'seguir los compromisos RCA y su evidencia', reportes: 'preparar los reportes para la comunidad o la autoridad' },
+  };
+  const PISTAS = {
+    aire: ['Aire', 'MP10, MP2,5 y gases', 82], ruido: ['Ruido', 'de día y de noche', 64], agua: ['Agua', 'calidad y caudal', 71],
+    meteo: ['Meteorología', 'viento y lluvia', 88], comunidad: ['Comunidad', 'reclamos y actores', 54], rca: ['Compromisos RCA', 'plazos y evidencia', 69],
+  };
+  const FOCO = { reclamos: 'comunidad', rca: 'rca' };
+
+  const pasos = [...guia.querySelectorAll('[data-paso]')];
+  const cuenta = guia.querySelector('[data-guia-cuenta]');
+  const barra = guia.querySelector('[data-guia-barra]');
+  const atras = guia.querySelector('[data-atras]');
+  const siguiente = guia.querySelector('[data-siguiente]');
+  const enviar = guia.querySelector('[data-enviar]');
+  const error = guia.querySelector('[data-form-error]');
+  const email = guia.querySelector('input[type="email"]');
+  const lectura = document.querySelector('[data-lectura]');
+  const L = lectura ? Object.fromEntries([...lectura.querySelectorAll('[data-l]')].map((el) => [el.dataset.l, el])) : null;
+  error.id = 'guia-error';
+  let actual = 0;
+
+  const valor = (nombre) => guia.querySelector(`input[name="${nombre}"]:checked`)?.value || '';
+  const marcadas = () => [...guia.querySelectorAll('input[name="lecturas"]:checked')].map((i) => i.value);
+
+  const pinta = () => {
+    if (!L) return;
+    const ind = valor('industria');
+    L.industria.textContent = ind ? NOMBRES.industria[ind] : 'Elige tu tipo de operación para empezar.';
+    const foco = FOCO[valor('dolor')];
+    const lista = marcadas();
+    const yaEstan = new Set([...L.pistas.children].map((li) => li.dataset.k));
+    [...L.pistas.children].forEach((li) => { if (!lista.includes(li.dataset.k)) li.remove(); });
+    for (const k of lista) {
+      if (yaEstan.has(k)) continue;
+      const [nombre, detalle, ancho] = PISTAS[k];
+      const li = document.createElement('li');
+      li.dataset.k = k;
+      li.innerHTML = '<p><b></b><br /><span></span></p><i></i>';
+      li.querySelector('b').textContent = nombre;
+      li.querySelector('span').textContent = detalle;
+      li.querySelector('i').style.setProperty('--w', `${ancho}%`);
+      L.pistas.append(li);
+    }
+    [...L.pistas.children].forEach((li) => li.classList.toggle('is-foco', li.dataset.k === foco));
+    const sitios = valor('sitios'), est = valor('estaciones');
+    L.escala.textContent = [sitios && NOMBRES.sitios[sitios], est && NOMBRES.estaciones[est]].filter(Boolean).join(', ');
+    const dolor = valor('dolor');
+    L.dolor.textContent = dolor ? `Empezamos por ${NOMBRES.dolor[dolor]}.` : '';
+  };
+
+  const falla = (msg, campo) => {
+    error.textContent = msg;
+    error.hidden = false;
+    if (campo) { campo.setAttribute('aria-invalid', 'true'); campo.setAttribute('aria-describedby', 'guia-error'); campo.focus(); }
+  };
+  const ir = (n, enfocar = true) => {
+    actual = n;
+    pasos.forEach((p, i) => { p.hidden = i !== n; });
+    cuenta.textContent = `Paso ${n + 1} de ${pasos.length}`;
+    barra.style.width = `${((n + 1) / pasos.length) * 100}%`;
+    atras.hidden = n === 0;
+    siguiente.hidden = n === pasos.length - 1;
+    enviar.hidden = n !== pasos.length - 1;
     error.hidden = true;
+    if (!enfocar) return;
+    const legend = pasos[n].querySelector('legend');
+    legend.tabIndex = -1;
+    legend.focus({ preventScroll: true });
+  };
+  const avanza = () => {
+    if (actual === 0 && !valor('industria')) { falla('Elige una opción para seguir. Si ninguna calza, marca «Otra».'); return; }
+    ir(actual + 1);
+  };
+
+  siguiente.addEventListener('click', avanza);
+  atras.addEventListener('click', () => ir(actual - 1));
+  guia.addEventListener('change', (ev) => {
+    error.hidden = true;
+    pinta();
+    // la primera pregunta tiene una sola respuesta: avanza sola
+    if (ev.target.name === 'industria') setTimeout(() => { if (actual === 0) ir(1); }, 280);
+  });
+  guia.addEventListener('keydown', (ev) => {
+    if (ev.key === 'Enter' && ev.target.tagName !== 'TEXTAREA' && actual < pasos.length - 1) { ev.preventDefault(); avanza(); }
+  });
+  email.addEventListener('input', () => { error.hidden = true; email.removeAttribute('aria-invalid'); });
+
+  guia.addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+    const correo = email.value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)) { falla('Escribe un correo con el formato nombre@empresa.cl.', email); return; }
+    if (enviar.disabled) return;
+    const campo = (n) => guia.elements[n].value.trim();
+    const datos = {
+      email: correo, nombre: campo('nombre'), empresa: campo('empresa'), telefono: campo('telefono'), mensaje: campo('mensaje'),
+      industria: valor('industria'), lecturas: marcadas(), sitios: valor('sitios'), estaciones: valor('estaciones'), dolor: valor('dolor'),
+    };
+    enviar.disabled = true;
+    enviar.textContent = 'Enviando…';
     try {
-      const r = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email }) });
-      const data = await r.json().catch(() => ({}));
-      if (!r.ok || !data.ok) throw new Error(data.error || 'No se pudo enviar. Intenta nuevamente.');
+      const r = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(datos) });
+      const res = await r.json().catch(() => ({}));
+      if (!r.ok || !res.ok) throw new Error(res.error || 'No se pudo enviar. Intenta nuevamente.');
       const ok = document.createElement('div');
       ok.className = 'form-ok';
       ok.setAttribute('role', 'status');
-      ok.innerHTML = '<b>Recibido</b><p>Gracias. Te contactaremos pronto.</p>';
-      form.replaceChildren(ok);
+      ok.innerHTML = '<b>Recibido</b><p></p>';
+      ok.querySelector('p').textContent = `Gracias${datos.nombre ? `, ${datos.nombre.split(' ')[0]}` : ''}. Te escribiremos a ${correo} para coordinar la demo.`;
+      guia.replaceChildren(ok);
     } catch (err) {
-      error.textContent = err.message && err.message !== 'Failed to fetch' ? err.message : 'Sin conexión. Intenta nuevamente.';
-      error.hidden = false;
-      input.setAttribute('aria-invalid', 'true');
-      button.disabled = false;
-      button.textContent = prev;
+      enviar.disabled = false;
+      enviar.textContent = 'Solicitar una demo';
+      falla(err.message && err.message !== 'Failed to fetch' ? err.message : 'Sin conexión. Intenta nuevamente.');
     }
   });
-});
+  ir(0, false);
+  pinta();
+}

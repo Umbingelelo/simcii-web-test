@@ -18,6 +18,11 @@ const FROM = process.env.CONTACT_FROM_EMAIL || 'SIMCII <no-reply@accionet.cl>';
 const TO = (process.env.CONTACT_TO_EMAIL || 'cristian@accionet.net,juanandres@accionet.net,juanpablo@accionet.net')
   .split(',').map((s) => s.trim()).filter(Boolean);
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const INDUSTRIAS = { mineria: 'Minería', energia: 'Energía y renovables', salmonicultura: 'Salmonicultura', forestal: 'Forestal', inmobiliario: 'Inmobiliario', sanitarias: 'Sanitarias', carreteras: 'Carreteras', municipio: 'Municipio', publico: 'Sector público', otra: 'Otra' };
+const LECTURAS = { aire: 'Aire', ruido: 'Ruido', agua: 'Agua', meteo: 'Meteorología', comunidad: 'Comunidad y reclamos', rca: 'Compromisos RCA' };
+const SITIOS = { 1: 'Uno', '2-5': 'De 2 a 5', '6+': 'Más de 5' };
+const ESTACIONES = { 0: 'Ninguna', '1-5': 'De 1 a 5', '6-20': 'De 6 a 20', '20+': 'Más de 20' };
+const DOLORES = { planillas: 'Juntar datos de planillas que llegan tarde', reclamos: 'Cruzar los reclamos con lo que miden las estaciones', rca: 'Seguir compromisos RCA y su evidencia', reportes: 'Preparar reportes para la comunidad o la autoridad' };
 
 const ses = new SESv2Client({ region: REGION, credentials: awsCredentialsProvider({ roleArn: ROLE_ARN }) });
 
@@ -55,29 +60,40 @@ module.exports = async function handler(req, res) {
     return res.status(400).json({ ok: false, error: 'Email inválido' });
   }
 
-  const referer = (req.headers.referer || '').toString().slice(0, 200);
-  const userAgent = (req.headers['user-agent'] || '').toString().slice(0, 200);
-  const recibido = new Date().toLocaleString('es-CL', { timeZone: 'America/Santiago', dateStyle: 'long', timeStyle: 'short' });
+  // Respuestas de la demo guiada (todas opcionales; sólo se aceptan valores conocidos)
+  const texto = (v, max) => (typeof v === 'string' ? v.trim().slice(0, max) : '');
+  const de = (mapa, v) => (Object.hasOwn(mapa, v) ? mapa[v] : '');
+  const lecturas = (Array.isArray(body.lecturas) ? body.lecturas : []).map((v) => de(LECTURAS, v)).filter(Boolean);
+  const filas = [
+    ['Nombre', texto(body.nombre, 120)],
+    ['Organización', texto(body.empresa, 120)],
+    ['Correo', email],
+    ['Teléfono', texto(body.telefono, 40)],
+    ['Operación', de(INDUSTRIAS, body.industria)],
+    ['Quiere ver', lecturas.join(', ')],
+    ['Sitios', de(SITIOS, body.sitios)],
+    ['Estaciones', de(ESTACIONES, body.estaciones)],
+    ['Le quita tiempo', de(DOLORES, body.dolor)],
+    ['Comentario', texto(body.mensaje, 800)],
+  ].filter(([, v]) => v);
 
-  const subject = `Solicitud de demo SIMCII · ${email}`;
+  const referer = (req.headers.referer || '').toString().slice(0, 200);
+  const recibido = new Date().toLocaleString('es-CL', { timeZone: 'America/Santiago', dateStyle: 'long', timeStyle: 'short' });
+  filas.push(['Recibido', recibido], ['Página', referer || '—']);
+
+  const quien = texto(body.empresa, 120) || texto(body.nombre, 120) || email;
+  const subject = `Solicitud de demo SIMCII · ${quien}`;
   const text = [
-    'Alguien pidió una demo en simcii.ai.',
+    'Alguien pidió una demo en simcii.ai. Responde este correo para escribirle directamente.',
     '',
-    `Correo: ${email}`,
-    `Recibido: ${recibido}`,
-    `Página: ${referer || '—'}`,
-    `Navegador: ${userAgent || '—'}`,
-    '',
-    'Responde este correo para escribirle directamente.',
+    ...filas.map(([k, v]) => `${k}: ${v}`),
   ].join('\n');
   const html = `
-    <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;max-width:560px;padding:24px;color:#1C1F22;">
+    <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;max-width:600px;padding:24px;color:#1C1F22;">
       <h2 style="font-size:18px;margin:0 0 12px;">Solicitud de demo SIMCII</h2>
       <p style="margin:0 0 16px;">Alguien pidió una demo en simcii.ai. Responde este correo para escribirle directamente.</p>
       <table style="border-collapse:collapse;font-size:14px;">
-        <tr><td style="padding:6px 12px 6px 0;color:#5C605C;">Correo</td><td style="padding:6px 0;"><a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></td></tr>
-        <tr><td style="padding:6px 12px 6px 0;color:#5C605C;">Recibido</td><td style="padding:6px 0;">${escapeHtml(recibido)}</td></tr>
-        <tr><td style="padding:6px 12px 6px 0;color:#5C605C;">Página</td><td style="padding:6px 0;">${escapeHtml(referer || '—')}</td></tr>
+        ${filas.map(([k, v]) => `<tr><td style="padding:6px 16px 6px 0;color:#5C605C;vertical-align:top;white-space:nowrap;">${escapeHtml(k)}</td><td style="padding:6px 0;">${k === 'Correo' ? `<a href="mailto:${escapeHtml(v)}">${escapeHtml(v)}</a>` : escapeHtml(v).replace(/\n/g, '<br>')}</td></tr>`).join('')}
       </table>
     </div>`;
 
