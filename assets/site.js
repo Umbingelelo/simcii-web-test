@@ -91,26 +91,121 @@ async function montarTerritorio(fig) {
     }
   };
 
-  // Rótulos: estaciones con su score y la localidad (anclas exportadas desde Blender).
-  // E-07 se rotula a la izquierda para no tapar E-03 ni los reclamos.
-  const IZQUIERDA = new Set(['E-07']);
-  const rotulos = datos.estaciones.map((st) => {
-    const el = document.createElement('span');
-    el.textContent = `${st.id} · ${st.score}`;
-    if (st.sobre) el.className = 'is-sobre';
-    capa.append(el);
-    return { el, a: new THREE.Vector3(...st.pos), izq: IZQUIERDA.has(st.id) };
+  // ---- Puntos del mapa (estaciones y lugares) con su ficha ----
+  const ficha = fig.querySelector('[data-ficha]');
+  const chips = fig.querySelector('[data-chips]');
+  const campos = Object.fromEntries([...ficha.querySelectorAll('[data-f]')].map((el) => [el.dataset.f, el]));
+  const CORTO = (tipo) => (tipo.startsWith('Calidad') ? 'Aire' : tipo.startsWith('Agua') ? 'Agua' : tipo);
+  const CLASE = { r214: 'is-reclamo', c14: 'is-compromiso' };
+  const IZQUIERDA = new Set(['E-07', 'c14', 'localidad']); // rótulos a la izquierda de su ancla para no tapar a los vecinos
+  const puntos = [
+    ...datos.estaciones.map((st) => ({ ...st, nombre: `Estación ${st.id}`, rotulo: st.id, sub: CORTO(st.tipo), clase: st.sobre ? 'is-sobre' : '' })),
+    ...datos.elementos.map((el) => ({ ...el, rotulo: el.nombre, sub: '', clase: CLASE[el.id] || 'is-zona' })),
+  ];
+  const boton = (padre, clase, texto, sub) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = clase;
+    b.textContent = texto;
+    if (sub) { const em = document.createElement('em'); em.textContent = sub; b.append(em); }
+    b.setAttribute('aria-pressed', 'false');
+    padre.append(b);
+    return b;
+  };
+  for (const pt of puntos) {
+    pt.a = new THREE.Vector3(...pt.pos);
+    pt.izq = IZQUIERDA.has(pt.id);
+    pt.btn = boton(capa, `rot ${pt.clase}`, pt.rotulo, pt.sub);
+    pt.chip = boton(chips, '', pt.rotulo, '');
+  }
+
+  // Pulso de transmisión en la base de cada estación
+  const anillo = new THREE.RingGeometry(0.09, 0.115, 40).rotateX(-Math.PI / 2);
+  const pulsos = datos.estaciones.map((st, i) => {
+    const mesh = new THREE.Mesh(anillo, new THREE.MeshBasicMaterial({ color: st.sobre ? 0x8FA6E0 : 0xECEAE4, transparent: true, opacity: 0, depthWrite: false }));
+    mesh.position.set(...st.base);
+    mesh.userData = { fase: i * 0.37, id: st.id };
+    scene.add(mesh);
+    return mesh;
   });
-  const zona = document.createElement('span');
-  zona.className = 'is-zona';
-  zona.textContent = 'Localidad Norte';
-  capa.append(zona);
-  rotulos.push({ el: zona, a: new THREE.Vector3(...datos.localidad), izq: false });
+
+  // Polvo: sale del rajo y viaja con el viento del este hacia la localidad
+  const N = 240;
+  const desde = new THREE.Vector3(...datos.polvo.desde);
+  const rumbo = new THREE.Vector3(...datos.polvo.hacia).sub(desde);
+  const largo = rumbo.length();
+  rumbo.normalize();
+  const lado = new THREE.Vector3(-rumbo.z, 0, rumbo.x);
+  const origen = new Float32Array(N * 3), vida = new Float32Array(N), xyz = new Float32Array(N * 3), rgb = new Float32Array(N * 3);
+  const nace = (i, azar) => {
+    const ang = Math.random() * Math.PI * 2, r = Math.random() * datos.polvo.radio * 0.7;
+    origen[i * 3] = desde.x + Math.cos(ang) * r;
+    origen[i * 3 + 1] = desde.y + Math.random() * 0.15;
+    origen[i * 3 + 2] = desde.z + Math.sin(ang) * r;
+    vida[i] = azar ? Math.random() : 0;
+  };
+  for (let i = 0; i < N; i++) nace(i, true);
+  const polvoGeo = new THREE.BufferGeometry();
+  polvoGeo.setAttribute('position', new THREE.BufferAttribute(xyz, 3));
+  polvoGeo.setAttribute('color', new THREE.BufferAttribute(rgb, 3));
+  const polvo = new THREE.Points(polvoGeo, new THREE.PointsMaterial({ size: 0.05, vertexColors: true, transparent: true, opacity: 0.9, depthWrite: false }));
+  polvo.visible = false;
+  scene.add(polvo);
+  const claro = new THREE.Color(0xC9C7C1), fondo = new THREE.Color(0x1A1D20), c = new THREE.Color();
+  const muevePolvo = (dt, t) => {
+    for (let i = 0; i < N; i++) {
+      vida[i] += dt * 0.12;
+      if (vida[i] > 1) nace(i, false);
+      const d = vida[i] * largo, ola = Math.sin(t * 1.3 + i) * 0.12 * vida[i];
+      xyz[i * 3] = origen[i * 3] + rumbo.x * d + lado.x * ola;
+      xyz[i * 3 + 1] = origen[i * 3 + 1] + vida[i] * 0.35;
+      xyz[i * 3 + 2] = origen[i * 3 + 2] + rumbo.z * d + lado.z * ola;
+      c.copy(fondo).lerp(claro, Math.min(1, vida[i] * 6, (1 - vida[i]) * 3) * 0.9);
+      rgb[i * 3] = c.r; rgb[i * 3 + 1] = c.g; rgb[i * 3 + 2] = c.b;
+    }
+    polvoGeo.attributes.position.needsUpdate = true;
+    polvoGeo.attributes.color.needsUpdate = true;
+  };
+
+  // Selección: ficha, rótulo activo y lectura que se mueve como en producción
+  let sel = null, manual = false;
+  const elegir = (pt, porUsuario) => {
+    sel = pt;
+    if (porUsuario) { manual = true; ficha.setAttribute('aria-live', 'polite'); }
+    for (const q of puntos) {
+      q.btn.setAttribute('aria-pressed', String(q === pt));
+      q.chip.setAttribute('aria-pressed', String(q === pt));
+    }
+    ficha.hidden = false;
+    ficha.className = `ficha ${pt.clase}`;
+    campos.tipo.textContent = pt.tipo;
+    campos.nombre.textContent = pt.nombre;
+    campos.lectura.textContent = pt.lectura;
+    campos.detalle.textContent = pt.detalle;
+    campos.score.hidden = pt.score == null;
+    if (pt.score != null) {
+      campos.score.querySelector('b').textContent = `${pt.score}/100`;
+      campos.score.querySelector('u').style.width = `${pt.score}%`;
+    }
+    if (reduce) pinta(0);
+  };
+  for (const pt of puntos) {
+    pt.btn.addEventListener('click', () => elegir(pt, true));
+    pt.chip.addEventListener('click', () => elegir(pt, true));
+  }
+  const enVivo = () => {
+    if (!sel || sel.score == null) return;
+    const m = sel.lectura.match(/\d+(?:,\d+)?/);
+    if (!m) return;
+    const dec = m[0].includes(',') ? 1 : 0;
+    const n = parseFloat(m[0].replace(',', '.')) * (1 + (Math.random() - 0.5) * 0.03);
+    campos.lectura.textContent = sel.lectura.replace(m[0], n.toFixed(dec).replace('.', ','));
+  };
 
   const mira = new THREE.Vector3(0, 0.2, 0);
   const base = new THREE.Vector3(6.4, 7.4, 9.4).multiplyScalar(1.05); // misma vista que el render de Blender
   const eje = new THREE.Vector3(0, 1, 0), v = new THREE.Vector3();
-  let ancho = 1, alto = 1, px = 0, activa = false, t0 = null;
+  let ancho = 1, alto = 1, px = 0, activa = false, t0 = null, antes = 0;
 
   const encuadre = () => {
     const r = escena.getBoundingClientRect();
@@ -119,23 +214,38 @@ async function montarTerritorio(fig) {
     camera.aspect = ancho / alto;
     camera.updateProjectionMatrix();
   };
-  const pinta = (ahora) => {
+  function pinta(ahora) {
     const t = reduce ? 9 : (ahora - (t0 ?? ahora)) / 1000;
+    const dt = Math.min(0.05, Math.max(0, t - antes));
+    antes = t;
     if (t < 2.2) sube(t);
-    else if (!fig.classList.contains('is-listo')) { sube(9); fig.classList.add('is-listo'); }
+    else if (!fig.classList.contains('is-listo')) {
+      sube(9);
+      fig.classList.add('is-listo');
+      polvo.visible = !reduce;
+      if (!sel) elegir(puntos.find((q) => q.sobre) || puntos[0], false);
+    }
+    if (polvo.visible) muevePolvo(dt, t);
+    for (const p of pulsos) {
+      const elegido = sel && sel.id === p.userData.id;
+      const k = reduce ? 0.35 : (t * 0.45 + p.userData.fase) % 1;
+      p.scale.setScalar(1 + k * (elegido ? 7 : 4.5));
+      p.material.opacity = t < 2.2 ? 0 : (1 - k) * (elegido ? 0.9 : 0.45);
+    }
     const giro = reduce ? 0 : Math.sin(t / 5) * 0.08 + px * 0.12;
     camera.position.copy(base).applyAxisAngle(eje, giro).add(mira);
     camera.lookAt(mira);
     camera.updateMatrixWorld();
     renderer.render(scene, camera);
-    for (const r of rotulos) {
-      v.copy(r.a).project(camera);
+    for (const pt of puntos) {
+      const el = pt.btn;
+      v.copy(pt.a).project(camera);
       let x = (v.x * 0.5 + 0.5) * ancho;
-      if (r.izq) x -= r.el.offsetWidth;
-      x = Math.min(Math.max(0, x), ancho - r.el.offsetWidth);
-      r.el.style.transform = `translate(${x.toFixed(1)}px, ${((-v.y * 0.5 + 0.5) * alto - r.el.offsetHeight).toFixed(1)}px)`;
+      if (pt.izq) x -= el.offsetWidth;
+      x = Math.min(Math.max(0, x), ancho - el.offsetWidth);
+      el.style.transform = `translate(${x.toFixed(1)}px, ${((-v.y * 0.5 + 0.5) * alto - el.offsetHeight).toFixed(1)}px)`;
     }
-  };
+  }
   const bucle = (ahora) => { if (!activa) return; pinta(ahora); requestAnimationFrame(bucle); };
 
   encuadre();
@@ -150,12 +260,21 @@ async function montarTerritorio(fig) {
     const r = escena.getBoundingClientRect();
     px = (e.clientX - r.left) / r.width - 0.5;
   });
+  // Recorrido automático por los puntos hasta que la persona elige uno
+  const RECORRIDO = ['E-03', 'r214', 'localidad', 'faena', 'c14', 'E-07', 'E-01', 'E-05', 'E-09'];
+  let paso = 0;
+  setInterval(() => {
+    if (!activa || manual || !fig.classList.contains('is-listo')) return;
+    paso = (paso + 1) % RECORRIDO.length;
+    elegir(puntos.find((q) => q.id === RECORRIDO[paso]), false);
+  }, 5000);
+  setInterval(() => { if (activa) enVivo(); }, 2500);
   new ResizeObserver(encuadre).observe(escena);
   new IntersectionObserver(([e]) => {
-    const antes = activa;
+    const estaba = activa;
     activa = e.isIntersecting;
     if (activa && t0 === null) t0 = performance.now();
-    if (activa && !antes) requestAnimationFrame(bucle);
+    if (activa && !estaba) requestAnimationFrame(bucle);
   }, { threshold: 0.35 }).observe(escena);
   pinta(performance.now());
 }

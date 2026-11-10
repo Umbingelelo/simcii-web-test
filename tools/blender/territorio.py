@@ -46,14 +46,19 @@ rnd = random.Random(7)
 
 # ---- Elementos del territorio (coordenadas de mapa, y hacia el norte) ----
 LOCALIDAD = [(-0.95, 0.15), (-0.35, 0.95), (0.35, 0.75), (0.45, -0.05), (-0.35, -0.45)]
-ESTACIONES = [  # id, x, y, score, sobre umbral
-    ("E-01", -0.9, 1.6, 82, False),
-    ("E-03", -0.15, 0.25, 54, True),
-    ("E-05", -1.6, -1.3, 76, False),
-    ("E-07", 0.6, -1.25, 71, False),
-    ("E-09", 1.55, 0.7, 88, False),
+ESTACIONES = [  # id, x, y, score, sobre umbral, tipo, lectura, detalle
+    ("E-01", -0.9, 1.6, 82, False, "Meteorología", "Viento 14 km/h del este", "Transmite cada 5 minutos"),
+    ("E-03", -0.15, 0.25, 54, True, "Calidad del aire", "MP10 142 µg/m³ · umbral 130", "Sobre el umbral desde las 08:00"),
+    ("E-05", -1.6, -1.3, 76, False, "Agua del estero", "pH 7,4 · turbiedad 12 NTU", "Dentro de la norma"),
+    ("E-07", 0.6, -1.25, 71, False, "Ruido", "52 dB(A) · límite nocturno 55", "Cerca del límite de noche"),
+    ("E-09", 1.55, 0.7, 88, False, "Calidad del aire", "MP10 64 µg/m³ · umbral 130", "Dentro de la norma"),
 ]
 RECLAMOS = 14
+FAENA = (2.15, -0.75)      # centro del rajo
+RAJO_R = 0.62
+PLANTA = [(1.55, -1.6, 0.24, 0.42), (1.8, -1.6, 0.24, 0.32), (1.55, -1.85, 0.24, 0.26), (1.83, -1.87, 0.2, 0.58)]  # x, y, lado, alto
+INTERNO = ((1.3, -1.4), (1.72, 0.85))  # camino interno de la faena hasta el camino principal
+C14 = (1.38, -0.55)        # compromiso C-14 sobre el camino interno
 
 
 def camino(t):
@@ -120,6 +125,10 @@ MATS.update({
     "estacion": material("Estación", "#ECEAE4", rough=0.6),
     "sobre": material("Estación sobre umbral", "#8FA6E0", rough=0.6),
     "reclamo": material("Reclamo", "#E39A4A", rough=0.6),
+    "rajo": material("Rajo", "#50565C"),
+    "rajo2": material("Rajo banco", "#42484E"),
+    "planta": material("Planta", "#B9B6AE"),
+    "compromiso": material("Compromiso", "#B8A046", rough=0.5),
 })
 
 
@@ -148,17 +157,27 @@ def columna(nombre, mat, x, y, w, h, z0=0.0):
     return ob
 
 
+def dist_segmento(x, y, a, b):
+    ax, ay = a; bx, by = b
+    t = max(0.0, min(1.0, ((x - ax) * (bx - ax) + (y - ay) * (by - ay)) / ((bx - ax) ** 2 + (by - ay) ** 2)))
+    return math.hypot(x - (ax + t * (bx - ax)), y - (ay + t * (by - ay)))
+
+
 alturas = {}
 for i in range(NX):
     for j in range(NY):
         x, y = X0 + (i + 0.5) * CELL, Y0 + (j + 0.5) * CELL
         h = elevacion(x, y)
         mat = None
+        d_rajo = math.hypot(x - FAENA[0], y - FAENA[1])
         if abs(x - estero_x(y)) < 0.13 and y < 1.3:  # nace al pie del cordón
             h, mat = 0.04, "estero"
+        elif d_rajo < RAJO_R:  # rajo en bancos: fondo bajo y borde alto
+            banco = int(d_rajo / RAJO_R * 5)
+            h, mat = 0.08 + 0.11 * banco, ("rajo" if banco % 2 else "rajo2")
         elif dentro(LOCALIDAD, x, y):
             h, mat = 0.16 + rnd.choice([0, 0, 0.05, 0.1]), "localidad"
-        elif dist_camino(x, y) < 0.07:
+        elif dist_camino(x, y) < 0.07 or dist_segmento(x, y, *INTERNO) < 0.06:
             mat = "camino"
         h = max(STEP, round(h / STEP) * STEP)
         if mat is None:
@@ -173,25 +192,47 @@ def altura_en(x, y):
     return alturas[(i, j)]
 
 
-anclas = {"estaciones": [], "localidad": None}
-for ident, x, y, score, sobre in ESTACIONES:
+def three(x, y, z):
+    """Coordenadas three (Y arriba): Blender (x, y, z) → (x, z, -y)."""
+    return [round(x, 3), round(z, 3), round(-y, 3)]
+
+
+anclas = {"estaciones": [], "elementos": []}
+for ident, x, y, score, sobre, tipo, lectura, detalle in ESTACIONES:
     base = altura_en(x, y)
     barra = 0.1 + 0.9 * score / 100
     columna(f"{ident}_barra", "sobre" if sobre else "estacion", x, y, 0.13, barra, base)
-    # three: (x, z, -y)
-    anclas["estaciones"].append({"id": ident, "score": score, "sobre": sobre,
-                                 "pos": [round(x, 3), round(base + barra + 0.05, 3), round(-y, 3)]})
+    anclas["estaciones"].append({"id": ident, "score": score, "sobre": sobre, "tipo": tipo, "lectura": lectura,
+                                 "detalle": detalle, "pos": three(x, y, base + barra + 0.05),
+                                 "base": three(x, y, base + 0.01)})
 
-n = 0
-while n < RECLAMOS:
+for k, (x, y, lado, alto) in enumerate(PLANTA):
+    columna(f"planta{k}", "planta", x, y, lado, alto, altura_en(x, y))
+columna("C-14", "compromiso", C14[0], C14[1], 0.09, 0.32, altura_en(*C14))
+
+reclamos = []
+while len(reclamos) < RECLAMOS:
     x, y = rnd.uniform(-0.9, 0.45), rnd.uniform(-0.45, 0.95)
     if not dentro(LOCALIDAD, x, y):
         continue
-    columna(f"reclamo{n}", "reclamo", x, y, 0.055, 0.055, altura_en(x, y) + 0.06)
-    n += 1
+    z = altura_en(x, y) + 0.06
+    columna(f"reclamo{len(reclamos)}", "reclamo", x, y, 0.055, 0.055, z)
+    reclamos.append((x, y, z))
 cx = sum(p[0] for p in LOCALIDAD) / len(LOCALIDAD)
 cy = sum(p[1] for p in LOCALIDAD) / len(LOCALIDAD)
-anclas["localidad"] = [round(cx + 0.75, 3), 0.35, round(-(cy - 0.95), 3)]  # al sureste, delante en la vista
+r214 = reclamos[0]
+anclas["elementos"] = [
+    {"id": "faena", "nombre": "Faena Norte", "tipo": "Operación", "lectura": "Rajo y planta de procesos",
+     "detalle": "3 compromisos RCA activos", "pos": three(FAENA[0] + 0.1, FAENA[1] - 0.35, 0.75)},
+    {"id": "localidad", "nombre": "Localidad Norte", "tipo": "Comunidad", "lectura": "4.200 habitantes",
+     "detalle": "14 reclamos abiertos, 4 nuevos esta semana", "pos": three(cx - 0.75, cy - 0.7, 0.35)},
+    {"id": "r214", "nombre": "Reclamo #214", "tipo": "Comunidad", "lectura": "Polvo en calle Los Aromos",
+     "detalle": "5 sep, 08:40 · relacionado con E-03", "pos": three(r214[0], r214[1], r214[2] + 0.12)},
+    {"id": "c14", "nombre": "C-14", "tipo": "Compromiso RCA", "lectura": "Humectación de caminos internos",
+     "detalle": "En curso · 60 % de avance", "pos": three(C14[0], C14[1], altura_en(*C14) + 0.4)},
+]
+# polvo: del rajo hacia la localidad, con el viento del este que mide E-01
+anclas["polvo"] = {"desde": three(FAENA[0], FAENA[1], 0.35), "hacia": three(cx, cy, 0.3), "radio": RAJO_R}
 anclas["extension"] = [NX * CELL, NY * CELL]
 
 with open(os.path.join(OUT, "territorio.json"), "w") as fh:

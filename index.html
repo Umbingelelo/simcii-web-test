@@ -85,17 +85,27 @@
       </div>
       <figure class="mapa3d" data-territorio>
         <div class="mapa3d-escena">
-          <img class="mapa3d-respaldo" src="/assets/3d/territorio.webp" alt="Mapa 3D de un territorio de ejemplo con cinco estaciones. La altura de cada barra es su score: E-01 82, E-03 54, E-05 76, E-07 71 y E-09 88. La estación E-03 está sobre el umbral de MP10 y los reclamos de la semana se concentran a su alrededor, en Localidad Norte." width="1600" height="1100" />
+          <img class="mapa3d-respaldo" src="/assets/3d/territorio.webp" alt="Mapa 3D de un territorio de ejemplo: una faena con rajo y planta, Localidad Norte y cinco estaciones. La altura de cada barra es su score: E-01 meteorología 82, E-03 calidad del aire 54, E-05 agua del estero 76, E-07 ruido 71 y E-09 calidad del aire 88. E-03 está sobre el umbral de MP10 y los reclamos de la semana se concentran a su alrededor, en Localidad Norte." width="1600" height="1100" />
           <canvas data-territorio-canvas aria-hidden="true"></canvas>
-          <div class="mapa3d-rotulos" aria-hidden="true" data-rotulos></div>
+          <div class="mapa3d-rotulos" data-rotulos></div>
         </div>
+        <div class="ficha" data-ficha hidden>
+          <p class="ficha-tipo" data-f="tipo"></p>
+          <p class="ficha-nombre" data-f="nombre"></p>
+          <p class="ficha-lectura" data-f="lectura"></p>
+          <p class="ficha-detalle" data-f="detalle"></p>
+          <div class="ficha-score" data-f="score"><span>Score</span><b></b><i><u></u></i></div>
+        </div>
+        <div class="mapa3d-chips" data-chips role="group" aria-label="Puntos del mapa"></div>
         <figcaption class="mapa3d-pie">
           <ul class="leyenda">
             <li><i class="l-estacion"></i>Estación: la altura es su score (0–100, más alto es mejor)</li>
-            <li><i class="l-sobre"></i>E-03, sobre el umbral de MP10</li>
+            <li><i class="l-sobre"></i>Sobre el umbral</li>
             <li><i class="l-reclamo"></i>Reclamo</li>
+            <li><i class="l-compromiso"></i>Compromiso RCA</li>
+            <li><i class="l-polvo"></i>Polvo que sale de la faena</li>
           </ul>
-          <p>Datos de ejemplo. La estación E-03 está sobre el umbral de MP10 y los reclamos de la semana se concentran a su alrededor, en Localidad Norte.</p>
+          <p>Datos de ejemplo. Toca un punto del mapa para ver qué mide y cómo está.</p>
         </figcaption>
       </figure>
     </div>

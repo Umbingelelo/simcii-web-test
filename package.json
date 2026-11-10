@@ -2,5 +2,9 @@
   "name": "simcii-web",
   "version": "1.0.0",
   "private": true,
-  "description": "SIMCII — landing de monitoreo ambiental, social y territorial"
+  "description": "SIMCII — landing de monitoreo ambiental, social y territorial",
+  "dependencies": {
+    "@aws-sdk/client-sesv2": "^3.1165.0",
+    "@vercel/functions": "^3.11.1"
+  }
 }

@@ -4,9 +4,17 @@
    "id": "E-01",
    "score": 82,
    "sobre": false,
+   "tipo": "Meteorología",
+   "lectura": "Viento 14 km/h del este",
+   "detalle": "Transmite cada 5 minutos",
    "pos": [
     -0.9,
     1.388,
+    -1.6
+   ],
+   "base": [
+    -0.9,
+    0.51,
     -1.6
    ]
   },
@@ -14,9 +22,17 @@
    "id": "E-03",
    "score": 54,
    "sobre": true,
+   "tipo": "Calidad del aire",
+   "lectura": "MP10 142 µg/m³ · umbral 130",
+   "detalle": "Sobre el umbral desde las 08:00",
    "pos": [
     -0.15,
     0.786,
+    -0.25
+   ],
+   "base": [
+    -0.15,
+    0.16,
     -0.25
    ]
   },
@@ -24,9 +40,17 @@
    "id": "E-05",
    "score": 76,
    "sobre": false,
+   "tipo": "Agua del estero",
+   "lectura": "pH 7,4 · turbiedad 12 NTU",
+   "detalle": "Dentro de la norma",
    "pos": [
     -1.6,
     0.934,
+    1.3
+   ],
+   "base": [
+    -1.6,
+    0.11,
     1.3
    ]
   },
@@ -34,9 +58,17 @@
    "id": "E-07",
    "score": 71,
    "sobre": false,
+   "tipo": "Ruido",
+   "lectura": "52 dB(A) · límite nocturno 55",
+   "detalle": "Cerca del límite de noche",
    "pos": [
     0.6,
     0.889,
+    1.25
+   ],
+   "base": [
+    0.6,
+    0.11,
     1.25
    ]
   },
@@ -44,18 +76,84 @@
    "id": "E-09",
    "score": 88,
    "sobre": false,
+   "tipo": "Calidad del aire",
+   "lectura": "MP10 64 µg/m³ · umbral 130",
+   "detalle": "Dentro de la norma",
    "pos": [
     1.55,
     1.092,
     -0.7
+   ],
+   "base": [
+    1.55,
+    0.16,
+    -0.7
    ]
   }
  ],
- "localidad": [
-  0.58,
-  0.35,
-  0.68
+ "elementos": [
+  {
+   "id": "faena",
+   "nombre": "Faena Norte",
+   "tipo": "Operación",
+   "lectura": "Rajo y planta de procesos",
+   "detalle": "3 compromisos RCA activos",
+   "pos": [
+    2.25,
+    0.75,
+    1.1
+   ]
+  },
+  {
+   "id": "localidad",
+   "nombre": "Localidad Norte",
+   "tipo": "Comunidad",
+   "lectura": "4.200 habitantes",
+   "detalle": "14 reclamos abiertos, 4 nuevos esta semana",
+   "pos": [
+    -0.92,
+    0.35,
+    0.43
+   ]
+  },
+  {
+   "id": "r214",
+   "nombre": "Reclamo #214",
+   "tipo": "Comunidad",
+   "lectura": "Polvo en calle Los Aromos",
+   "detalle": "5 sep, 08:40 · relacionado con E-03",
+   "pos": [
+    -0.361,
+    0.43,
+    0.305
+   ]
+  },
+  {
+   "id": "c14",
+   "nombre": "C-14",
+   "tipo": "Compromiso RCA",
+   "lectura": "Humectación de caminos internos",
+   "detalle": "En curso · 60 % de avance",
+   "pos": [
+    1.38,
+    0.5,
+    0.55
+   ]
+  }
  ],
+ "polvo": {
+  "desde": [
+   2.15,
+   0.35,
+   0.75
+  ],
+  "hacia": [
+   -0.17,
+   0.3,
+   -0.27
+  ],
+  "radio": 0.62
+ },
  "extension": [
   7.2,
   5.0
