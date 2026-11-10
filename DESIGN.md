@@ -2,7 +2,22 @@
 
 > Fuente de verdad del diseño. El CSS, los tokens y los componentes son proyecciones de este archivo. Si divergen, gana DESIGN.md.
 > Base: **Manual de Marca SIMCII v3.0 "Cordillera Cívica"** (mayo 2026) + skill `frontend-design-deslop`.
-> Última actualización: 2026-06-30.
+> Última actualización: 2026-11-10.
+
+## v6 · Dirección B «Testigo» (en producción, `/`)
+
+Rediseño del sitio con la marca provisional de `Documentacion/SIMCII/01-marca` (hito 2). **El contenido es el de producción** (textos, secciones, muestra funcional, mapa, FAQ, formulario); cambia sólo la forma. Home: `index.html` + `assets/site.css` + `assets/site.js`. Subpáginas (`soluciones/`, `industrias/`): mismo HTML de antes con `assets/sub.css` en la marca nueva.
+
+- **Color (tema Basalto, `temas.css`)**: fondo `#1A1D20`, superficie `#212529`/`#2A2F34`, línea `#30353A`, texto caliche `#ECEAE4`, secundario `#9A9D98`, acento lapislázuli claro `#8FA6E0` sólo para datos (estación sobre umbral) y foco. Estados: `#5DBB84` / `#E39A4A` / `#F07A6A`; el naranja marca reclamos en el mapa.
+- **Tipo**: Archivo variable autoalojada (`assets/fonts`, subset latino, 100 KB). Titulares en ancho 72 / peso 700–720 en mayúsculas; cuerpo en ancho 100.
+- **Hero, mapa de Blender** (`tools/blender/territorio.py`): un territorio de ejemplo hecho de 3.600 columnas, como un gráfico de barras del relieve (cordón al norte, estero, camino, Localidad Norte). Encima van los datos: cinco estaciones como barras cuya altura es el score, E-03 en lapislázuli por estar sobre el umbral de MP10, y los reclamos como marcas naranjas en la localidad. Nombres según `ejemplos-plataforma/pantallas/territorio_*`. En la web el terreno se levanta desde E-03 hacia afuera y luego suben las estaciones; los rótulos salen de `territorio.json`. Fallback: render Cycles del mismo modelo (sin WebGL o con `prefers-reduced-motion`).
+- **Video de producto, sólo como fondo**: un fragmento de los flujos de datos (Remotion, escena 1) en bucle detrás del bloque de demo, atenuado con un degradado. Sin subtítulos ni audio; con `prefers-reduced-motion` queda el póster.
+- Sin fotografía generada con IA.
+
+### Regenerar assets
+- Mapa: `blender -b -P tools/blender/territorio.py -- /tmp/terr --render`, luego `npx @gltf-transform/cli instance /tmp/terr/territorio.glb t1.glb`, `npx @gltf-transform/cli meshopt t1.glb assets/3d/territorio.glb`, copiar `territorio.json` y `cwebp` de `territorio.png` a `assets/3d/territorio.webp`.
+- Fondo: en el proyecto Remotion, `npx remotion render src/index.ts Simcii conecta.mp4 --frames=15-205 --props='{"captions":false}' --muted`; de ahí 4,75–5,8 s recortado a las dos franjas sin texto (ondas de mediciones y puntos de reclamos, `crop=1370:250:448:345`), a media velocidad e ida y vuelta (`assets/video/datos-fondo.mp4`, 1280×234, sin audio) y su póster `.webp`.
+- `assets/og-image.png` (2400×1260): titular de la home más el render del mapa.
 
 ## Phase 0 — Discovery (commit to words)
 
@@ -86,3 +101,4 @@ Pendiente: correr `references/slop-checklist.md` al cerrar el reskin. Registrar 
 
 ## Changelog
 - 2026-06-30 · v0.1 · Discovery + sistema + reality gate. Antes de implementación.
+- 2026-11-10 · v6 · Marca Dirección B en todo el sitio, promovida a `/`: mapa del territorio en columnas desde Blender en el hero, video de producto sólo como fondo del bloque de demo, subpáginas con `sub.css` nuevo, favicon y og-image nuevos.

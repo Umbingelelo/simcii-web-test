@@ -5,11 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SIMCII · Monitoreo ambiental y telemetría territorial en Chile</title>
   <meta name="description" content="Plataforma chilena de monitoreo ambiental y telemetría: KPIs, control ambiental por territorio, relacionamiento comunitario y compromisos RCA — con evidencia." />
-  <link rel="canonical" href="https://simcii.ai/" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://simcii.ai/" />
   <meta name="author" content="Accionet" />
+  <meta name="theme-color" content="#1A1D20" />
   <link rel="icon" href="/assets/favicon.ico" sizes="any" />
-  <meta name="theme-color" content="#101114" />
+  <link rel="icon" href="/assets/logo/favicon.svg" type="image/svg+xml" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="SIMCII" />
   <meta property="og:locale" content="es_CL" />
@@ -27,7 +28,7 @@
   <script type="application/ld+json">
   {"@context":"https://schema.org","@graph":[
     {"@type":"WebSite","@id":"https://simcii.ai/#website","url":"https://simcii.ai/","name":"SIMCII","inLanguage":"es-CL","publisher":{"@id":"https://simcii.ai/#organization"}},
-    {"@type":"Organization","@id":"https://simcii.ai/#organization","name":"SIMCII","alternateName":["SIMCII by Accionet","Accionet SIMCII"],"url":"https://simcii.ai/","logo":"https://simcii.ai/assets/logo-simcii-oscuro.svg","description":"Plataforma de monitoreo ambiental, telemetría y control territorial desarrollada por Accionet SpA en Chile.","sameAs":["https://www.accionet.cl/"],"parentOrganization":{"@type":"Organization","@id":"https://simcii.ai/#accionet","name":"Accionet","legalName":"Accionet SpA","url":"https://www.accionet.cl/","sameAs":["https://www.accionet.cl/"],"email":"contacto@accionet.net","address":{"@type":"PostalAddress","addressLocality":"Santiago","addressCountry":"CL"}},"areaServed":{"@type":"Country","name":"Chile"},"email":"contacto@accionet.net","address":{"@type":"PostalAddress","addressLocality":"Santiago","addressCountry":"CL"},"contactPoint":{"@type":"ContactPoint","contactType":"ventas","email":"contacto@accionet.net","areaServed":"CL","availableLanguage":"es"}},
+    {"@type":"Organization","@id":"https://simcii.ai/#organization","name":"SIMCII","alternateName":["SIMCII by Accionet","Accionet SIMCII"],"url":"https://simcii.ai/","logo":"https://simcii.ai/assets/logo/simcii-horizontal-caliche.svg","description":"Plataforma de monitoreo ambiental, telemetría y control territorial desarrollada por Accionet SpA en Chile.","sameAs":["https://www.accionet.cl/"],"parentOrganization":{"@type":"Organization","@id":"https://simcii.ai/#accionet","name":"Accionet","legalName":"Accionet SpA","url":"https://www.accionet.cl/","sameAs":["https://www.accionet.cl/"],"email":"contacto@accionet.net","address":{"@type":"PostalAddress","addressLocality":"Santiago","addressCountry":"CL"}},"areaServed":{"@type":"Country","name":"Chile"},"email":"contacto@accionet.net","address":{"@type":"PostalAddress","addressLocality":"Santiago","addressCountry":"CL"},"contactPoint":{"@type":"ContactPoint","contactType":"ventas","email":"contacto@accionet.net","areaServed":"CL","availableLanguage":"es"}},
     {"@type":"SoftwareApplication","name":"SIMCII","alternateName":"SIMCII de Accionet","applicationCategory":"BusinessApplication","operatingSystem":"Web","url":"https://simcii.ai/","description":"Plataforma de monitoreo ambiental, social y territorial: telemetría de estaciones, KPIs medioambientales, control ambiental por territorio, gestión social y comunitaria, compromisos, regulación y licencia social para la operación, con scores por territorio y alertas.","featureList":["Telemetría ambiental en línea","Monitoreo ambiental y KPIs","Control ambiental por territorio y comuna","Seguimiento de compromisos RCA","Relacionamiento comunitario","Scores territoriales de 0 a 100","Alertas por desviación de umbral"],"offers":{"@type":"Offer","price":"0","priceCurrency":"CLP","description":"Demo a solicitud"},"publisher":{"@id":"https://simcii.ai/#organization"}},
     {"@type":"FAQPage","mainEntity":[
       {"@type":"Question","name":"¿Qué es SIMCII?","acceptedAnswer":{"@type":"Answer","text":"Una plataforma de inteligencia territorial que integra monitoreo ambiental, relacionamiento comunitario, contexto y compromisos en scores comparables de 0 a 100 por territorio, con evidencia trazable."}},
@@ -39,43 +40,42 @@
     ]}
   ]}
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" href="/assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preconnect" href="https://api.mapbox.com" crossorigin />
-  <link rel="dns-prefetch" href="https://unpkg.com" />
-  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link href="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css" rel="stylesheet" media="print" onload="this.media='all'" />
-  <noscript><link href="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css" rel="stylesheet" /></noscript>
-  <link rel="preload" href="/assets/v5.css" as="style" />
-  <link rel="stylesheet" href="/assets/v5.css" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script type="importmap">
+  {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}
+  </script>
+  <script type="module" src="/assets/site.js"></script>
 </head>
 <body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
 
 <header class="nav">
-  <a class="nav-logo" href="/" aria-label="SIMCII — inicio"><img src="/assets/logo-simcii-oscuro.svg" alt="SIMCII — inteligencia territorial" /></a>
-  <nav class="nav-menu" aria-label="Principal">
-    <a href="#plataforma">Plataforma</a>
-    <a href="#mapa">Red en vivo</a>
-    <a href="#industrias">Industrias</a>
-    <a href="#faq">Preguntas</a>
-    <a class="btn" href="#demo">Solicitar una demo</a>
-  </nav>
+  <div class="marco nav-fila">
+    <a class="nav-logo" href="/" aria-label="SIMCII — inicio"><img src="/assets/logo/simcii-horizontal-caliche.svg" alt="SIMCII — inteligencia territorial" width="132" height="27" /></a>
+    <nav class="nav-menu" aria-label="Principal">
+      <a href="#plataforma">Plataforma</a>
+      <a href="#mapa">Red en vivo</a>
+      <a href="#industrias">Industrias</a>
+      <a href="#faq">Preguntas</a>
+    </nav>
+    <a class="btn btn-1 nav-cta" href="#demo">Solicitar una demo</a>
+  </div>
 </header>
 
-<main>
+<main id="contenido">
 
-  <!-- 1 · HERO: promesa + cordillera de partículas -->
+  <!-- 1 · HERO: promesa + mapa del territorio (modelo de Blender) -->
   <section class="hero">
-    <div id="terrain" aria-hidden="true"></div>
-    <div class="wrap">
-      <div class="hero-inner">
-        <span class="stake">SIMCII<i></i>Inteligencia territorial</span>
-        <h1 class="hd">Mide lo que pasa.<br /><em>Anticipa lo que viene.</em></h1>
-        <p class="hero-sub">SIMCII lee tu territorio completo — aire, ruido, comunidad y compromisos — y lo convierte en scores de 0 a 100 con evidencia trazable.</p>
-        <div class="hero-actions">
-          <a class="btn" href="#demo">Solicitar una demo</a>
-          <a class="btn-2" href="#plataforma">Ver cómo funciona</a>
+    <div class="marco hero-grid">
+      <div class="hero-texto">
+        <p class="eyebrow">SIMCII · Inteligencia territorial</p>
+        <h1 class="display">Mide lo que pasa.<br /><em>Anticipa lo que viene.</em></h1>
+        <p class="lead">SIMCII lee tu territorio completo — aire, ruido, comunidad y compromisos — y lo convierte en scores de 0 a 100 con evidencia trazable.</p>
+        <div class="acciones">
+          <a class="btn btn-1" href="#demo">Solicitar una demo</a>
+          <a class="btn btn-2" href="#plataforma">Ver cómo funciona</a>
         </div>
         <div class="hero-datos" role="list" aria-label="Cifras de operación">
           <div role="listitem"><b>5 min</b><span>frecuencia de datos</span></div>
@@ -83,14 +83,29 @@
           <div role="listitem"><b>0–100</b><span>scores por territorio</span></div>
         </div>
       </div>
+      <figure class="mapa3d" data-territorio>
+        <div class="mapa3d-escena">
+          <img class="mapa3d-respaldo" src="/assets/3d/territorio.webp" alt="Mapa 3D de un territorio de ejemplo con cinco estaciones. La altura de cada barra es su score: E-01 82, E-03 54, E-05 76, E-07 71 y E-09 88. La estación E-03 está sobre el umbral de MP10 y los reclamos de la semana se concentran a su alrededor, en Localidad Norte." width="1600" height="1100" />
+          <canvas data-territorio-canvas aria-hidden="true"></canvas>
+          <div class="mapa3d-rotulos" aria-hidden="true" data-rotulos></div>
+        </div>
+        <figcaption class="mapa3d-pie">
+          <ul class="leyenda">
+            <li><i class="l-estacion"></i>Estación: la altura es su score (0–100, más alto es mejor)</li>
+            <li><i class="l-sobre"></i>E-03, sobre el umbral de MP10</li>
+            <li><i class="l-reclamo"></i>Reclamo</li>
+          </ul>
+          <p>Datos de ejemplo. La estación E-03 está sobre el umbral de MP10 y los reclamos de la semana se concentran a su alrededor, en Localidad Norte.</p>
+        </figcaption>
+      </figure>
     </div>
   </section>
 
   <!-- 2 · CÓMO FUNCIONA -->
-  <section class="sec alt" id="plataforma">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2 class="hs">Conecta tus datos. Lee tu territorio. <em>Decide con evidencia.</em></h2>
+  <section class="sec sec-hondo" id="plataforma">
+    <div class="marco">
+      <div class="sec-cab">
+        <h2 class="titulo">Conecta tus datos. Lee tu territorio. <em>Decide con evidencia.</em></h2>
       </div>
       <div class="tres">
         <div class="paso"><span class="n">Paso 1</span><h3>Conecta</h3><p>Tus estaciones, registros de terreno y fuentes públicas entran solos a la plataforma. Sin planillas.</p></div>
@@ -102,47 +117,47 @@
 
   <!-- 3 · PRODUCTO REAL -->
   <section class="sec">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2 class="hs">Así se ve tu operación <em>en una sola pantalla</em>.</h2>
+    <div class="marco">
+      <div class="sec-cab">
+        <h2 class="titulo">Así se ve tu operación <em>en una sola pantalla</em>.</h2>
         <p>Esto no es una imagen: es una muestra funcional de la plataforma, con datos de ejemplo moviéndose como en producción.</p>
       </div>
       <div class="play" id="play">
-        <div class="play-bar"><span class="dg" aria-hidden="true"></span><span class="mono">SIMCII · muestra funcional — datos de ejemplo</span><span class="mono clock" id="play-clock">--:--:--</span></div>
+        <div class="play-bar"><span class="vivo" aria-hidden="true"></span><span>SIMCII · muestra funcional — datos de ejemplo</span><span class="clock" id="play-clock">--:--:--</span></div>
         <div class="app">
           <aside class="app-side">
-            <div class="app-brand"><img src="/assets/logo-simcii-oscuro.svg" alt="" style="height:34px;width:auto" /><span class="mono" style="color:var(--tx-3)">Faena Norte · operativo</span></div>
+            <div class="app-brand"><img src="/assets/logo/simcii-horizontal-caliche.svg" alt="" width="110" height="22" /><span>Faena Norte · operativo</span></div>
             <nav class="app-nav" aria-label="Módulos de la muestra">
               <span class="it active">Inicio</span>
-              <span class="it">Territorio<b data-side>79.8</b><u><i style="width:80%;background:#6FBF8B"></i></u></span>
-              <span class="it">Contexto<b data-side>73.7</b><u><i style="width:74%;background:#E0B15C"></i></u></span>
-              <span class="it">Comunidad<b data-side>53.8</b><u><i style="width:54%;background:#C06A42"></i></u></span>
+              <span class="it">Territorio<b>79.8</b><u><i class="ok" style="width:80%"></i></u></span>
+              <span class="it">Contexto<b>73.7</b><u><i class="warn" style="width:74%"></i></u></span>
+              <span class="it">Comunidad<b>53.8</b><u><i class="err" style="width:54%"></i></u></span>
               <span class="it">Gestión territorial</span>
               <span class="it">Puntajes</span>
             </nav>
-            <div class="app-foot mono">Ayuda · Modo claro · Colapsar</div>
+            <div class="app-foot">Ayuda · Modo claro · Colapsar</div>
           </aside>
           <div class="app-main">
-            <div class="app-head"><div><h4>Resumen general</h4><span>Últimas 24 horas</span></div><span class="live-chip"><span class="dg"></span>EN VIVO</span></div>
+            <div class="app-head"><div><h4>Resumen general</h4><span>Últimas 24 horas</span></div><span class="live-chip"><span class="vivo"></span>EN VIVO</span></div>
             <div class="play-scores">
-              <div class="ps"><span class="mono">General</span><b data-ps="69.1">69.1<small> /100</small></b><span class="bar"><i style="width:69%;background:#E0B15C"></i></span></div>
-              <div class="ps"><span class="mono">Territorial</span><b data-ps="79.8">79.8<small> /100</small></b><span class="bar"><i style="width:80%;background:#6FBF8B"></i></span></div>
-              <div class="ps"><span class="mono">Contexto</span><b data-ps="73.7">73.7<small> /100</small></b><span class="bar"><i style="width:74%;background:#E0B15C"></i></span></div>
-              <div class="ps"><span class="mono">Comunidad</span><b data-ps="53.8">53.8<small> /100</small></b><span class="bar"><i style="width:54%;background:#C06A42"></i></span></div>
+              <div class="ps"><span class="k">General</span><b data-ps="69.1">69.1<small> /100</small></b><span class="bar"><i class="warn" style="width:69%"></i></span></div>
+              <div class="ps"><span class="k">Territorial</span><b data-ps="79.8">79.8<small> /100</small></b><span class="bar"><i class="ok" style="width:80%"></i></span></div>
+              <div class="ps"><span class="k">Contexto</span><b data-ps="73.7">73.7<small> /100</small></b><span class="bar"><i class="warn" style="width:74%"></i></span></div>
+              <div class="ps"><span class="k">Comunidad</span><b data-ps="53.8">53.8<small> /100</small></b><span class="bar"><i class="err" style="width:54%"></i></span></div>
             </div>
             <div class="app-cols">
               <div class="app-panel">
-                <span class="mono ph">Parámetros en tiempo real</span>
-                <div class="pp" data-pp="40.5" data-max="150"><span class="k">MP10</span><span class="v">40.5</span><span class="u">µg/m³</span><span class="st st-ok">normal</span></div>
-                <div class="pp" data-pp="13.6" data-max="37.5"><span class="k">MP2.5</span><span class="v">13.6</span><span class="u">µg/m³</span><span class="st st-ok">normal</span></div>
-                <div class="pp" data-pp="23.6" data-max="250"><span class="k">SO₂</span><span class="v">23.6</span><span class="u">µg/m³</span><span class="st st-ok">normal</span></div>
-                <div class="pp" data-pp="50.1" data-max="65"><span class="k">NPSEQ</span><span class="v">50.1</span><span class="u">dB</span><span class="st st-w">precaución</span></div>
-                <div class="pp" data-pp="14.2" data-max="60"><span class="k">VIENTO</span><span class="v">14.2</span><span class="u">km/h</span><span class="st st-ok">normal</span></div>
-                <div class="pp" data-pp="18.4" data-max="40"><span class="k">TEMP</span><span class="v">18.4</span><span class="u">°C</span><span class="st st-ok">normal</span></div>
+                <span class="ph">Parámetros en tiempo real</span>
+                <div class="pp" data-pp="40.5"><span class="k">MP10</span><span class="v">40.5</span><span class="u">µg/m³</span><span class="st st-ok">normal</span></div>
+                <div class="pp" data-pp="13.6"><span class="k">MP2.5</span><span class="v">13.6</span><span class="u">µg/m³</span><span class="st st-ok">normal</span></div>
+                <div class="pp" data-pp="23.6"><span class="k">SO₂</span><span class="v">23.6</span><span class="u">µg/m³</span><span class="st st-ok">normal</span></div>
+                <div class="pp" data-pp="50.1"><span class="k">NPSEQ</span><span class="v">50.1</span><span class="u">dB</span><span class="st st-w">precaución</span></div>
+                <div class="pp" data-pp="14.2"><span class="k">VIENTO</span><span class="v">14.2</span><span class="u">km/h</span><span class="st st-ok">normal</span></div>
+                <div class="pp" data-pp="18.4"><span class="k">TEMP</span><span class="v">18.4</span><span class="u">°C</span><span class="st st-ok">normal</span></div>
               </div>
               <div class="app-panel">
-                <div class="play-log" id="play-log"><span class="mono ph">Bitácora · 12 compromisos activos · 2 por vencer</span></div>
-                <div class="play-chart"><span class="mono ph">Score general · última hora</span><svg viewBox="0 0 300 74" preserveAspectRatio="none"><polyline id="play-line" fill="none" stroke="#7FA3BF" stroke-width="1.8" stroke-linejoin="round" points=""/></svg></div>
+                <div class="play-log" id="play-log"><span class="ph">Bitácora · 12 compromisos activos · 2 por vencer</span></div>
+                <div class="play-chart"><span class="ph">Score general · última hora</span><svg viewBox="0 0 300 74" preserveAspectRatio="none" aria-hidden="true"><polyline id="play-line" fill="none" stroke="#8FA6E0" stroke-width="1.8" stroke-linejoin="round" points="" /></svg></div>
               </div>
             </div>
           </div>
@@ -151,14 +166,14 @@
     </div>
   </section>
 
-  <!-- 4 · MAPA VIVO (Mapbox, API key propia) -->
-  <section class="sec alt" id="mapa">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2 class="hs">Tu red de monitoreo, <em>en el mapa</em>.</h2>
+  <!-- 4 · MAPA VIVO (Mapbox, token vía /api/config) -->
+  <section class="sec sec-hondo" id="mapa">
+    <div class="marco">
+      <div class="sec-cab">
+        <h2 class="titulo">Tu red de monitoreo, <em>en el mapa</em>.</h2>
         <p>Cada estación reporta su score en tiempo real. Pasa el cursor por los puntos.</p>
       </div>
-      <div class="mapa-shell">
+      <div class="mapa-shell" data-mapa>
         <div id="mapbox"></div>
         <div class="mapa-fallback" id="mapa-fallback" hidden><span>El mapa en vivo se carga con la clave Mapbox de la operación</span></div>
         <span class="mapa-tag">8 estaciones · datos de ejemplo</span>
@@ -168,95 +183,103 @@
 
   <!-- 5 · MÓDULOS -->
   <section class="sec">
-    <div class="wrap">
-      <div class="sec-head"><h2 class="hs">Cuatro módulos. <em>Una lectura.</em></h2></div>
-      <div class="mods">
-        <a class="mod" href="/soluciones/monitoreo-ambiental"><span class="mono">Ambiental</span><h3>Monitorea el entorno sin planillas</h3><p>Telemetría de estaciones y parámetros en KPIs con umbrales, series históricas y alertas por desviación.</p><b>Ver solución</b></a>
-        <a class="mod" href="/soluciones/relacionamiento-comunitario"><span class="mono">Comunidad</span><h3>Gestiona la relación con evidencia</h3><p>Actores, compromisos, reclamos y encuestas con historial trazable por territorio.</p><b>Ver solución</b></a>
-        <a class="mod" href="/soluciones/cumplimiento-rca"><span class="mono">Cumplimiento</span><h3>Controla tu RCA antes del vencimiento</h3><p>Cada compromiso con estado, plazo, responsable y evidencia lista para fiscalización.</p><b>Ver solución</b></a>
-        <a class="mod" href="/soluciones/gestion-territorial"><span class="mono">Territorio</span><h3>Compara territorios con una misma vara</h3><p>Scores General, Territorial, Contexto y Comunidad — comparables entre sí y en el tiempo.</p><b>Ver solución</b></a>
-      </div>
-      <p class="mods-nota">¿Sus estaciones ya miden, pero el dato llega tarde? Vea cómo funciona la <a href="/soluciones/telemetria-ambiental">telemetría ambiental en línea</a>.</p>
+    <div class="marco">
+      <div class="sec-cab"><h2 class="titulo">Cuatro módulos. <em>Una lectura.</em></h2></div>
+      <ul class="modulos">
+        <li><a href="/soluciones/monitoreo-ambiental"><span class="mod-k">Ambiental</span><h3 class="mod-t">Monitorea el entorno sin planillas</h3><span class="mod-d">Telemetría de estaciones y parámetros en KPIs con umbrales, series históricas y alertas por desviación.</span><span class="mod-l">Ver solución</span></a></li>
+        <li><a href="/soluciones/relacionamiento-comunitario"><span class="mod-k">Comunidad</span><h3 class="mod-t">Gestiona la relación con evidencia</h3><span class="mod-d">Actores, compromisos, reclamos y encuestas con historial trazable por territorio.</span><span class="mod-l">Ver solución</span></a></li>
+        <li><a href="/soluciones/cumplimiento-rca"><span class="mod-k">Cumplimiento</span><h3 class="mod-t">Controla tu RCA antes del vencimiento</h3><span class="mod-d">Cada compromiso con estado, plazo, responsable y evidencia lista para fiscalización.</span><span class="mod-l">Ver solución</span></a></li>
+        <li><a href="/soluciones/gestion-territorial"><span class="mod-k">Territorio</span><h3 class="mod-t">Compara territorios con una misma vara</h3><span class="mod-d">Scores General, Territorial, Contexto y Comunidad — comparables entre sí y en el tiempo.</span><span class="mod-l">Ver solución</span></a></li>
+      </ul>
+      <p class="nota">¿Sus estaciones ya miden, pero el dato llega tarde? Vea cómo funciona la <a href="/soluciones/telemetria-ambiental">telemetría ambiental en línea</a>.</p>
     </div>
   </section>
 
   <!-- 6 · INDUSTRIAS -->
-  <section class="sec alt" id="industrias">
-    <div class="wrap">
-      <div class="sec-head"><h2 class="hs">Donde hay territorio, <em>SIMCII lee</em>.</h2></div>
-      <div class="inds">
-        <a class="indu" href="/industrias/mineria"><span class="mono">01</span><h3>Minería</h3><p>Faenas, comunidades y licencia social.</p></a>
-        <a class="indu" href="/industrias/energia"><span class="mono">02</span><h3>Energía y renovables</h3><p>Portafolios comparables por proyecto.</p></a>
-        <a class="indu" href="/industrias/salmonicultura"><span class="mono">03</span><h3>Salmonicultura</h3><p>Centros de cultivo y convivencia costera.</p></a>
-        <a class="indu" href="/industrias/forestal"><span class="mono">04</span><h3>Forestal</h3><p>Patrimonio disperso y vecindad rural.</p></a>
-        <a class="indu" href="/industrias/inmobiliario"><span class="mono">05</span><h3>Inmobiliario</h3><p>Obras, vecinos y mitigaciones.</p></a>
-        <a class="indu" href="/industrias/sanitarias"><span class="mono">06</span><h3>Sanitarias</h3><p>Plantas y redes en la ciudad.</p></a>
-        <a class="indu" href="/industrias/carreteras"><span class="mono">07</span><h3>Carreteras</h3><p>Trazados leídos tramo a tramo.</p></a>
-        <a class="indu" href="/industrias/municipios"><span class="mono">08</span><h3>Municipios</h3><p>Control ambiental y telemetría comunal.</p></a>
-        <a class="indu" href="/industrias/sector-publico"><span class="mono">09</span><h3>Sector público</h3><p>Territorios en scores comparables.</p></a>
-      </div>
+  <section class="sec sec-hondo" id="industrias">
+    <div class="marco">
+      <div class="sec-cab"><h2 class="titulo">Donde hay territorio, <em>SIMCII lee</em>.</h2></div>
+      <ul class="industrias">
+        <li><a href="/industrias/mineria"><span class="n">01</span><h3>Minería</h3><span>Faenas, comunidades y licencia social.</span></a></li>
+        <li><a href="/industrias/energia"><span class="n">02</span><h3>Energía y renovables</h3><span>Portafolios comparables por proyecto.</span></a></li>
+        <li><a href="/industrias/salmonicultura"><span class="n">03</span><h3>Salmonicultura</h3><span>Centros de cultivo y convivencia costera.</span></a></li>
+        <li><a href="/industrias/forestal"><span class="n">04</span><h3>Forestal</h3><span>Patrimonio disperso y vecindad rural.</span></a></li>
+        <li><a href="/industrias/inmobiliario"><span class="n">05</span><h3>Inmobiliario</h3><span>Obras, vecinos y mitigaciones.</span></a></li>
+        <li><a href="/industrias/sanitarias"><span class="n">06</span><h3>Sanitarias</h3><span>Plantas y redes en la ciudad.</span></a></li>
+        <li><a href="/industrias/carreteras"><span class="n">07</span><h3>Carreteras</h3><span>Trazados leídos tramo a tramo.</span></a></li>
+        <li><a href="/industrias/municipios"><span class="n">08</span><h3>Municipios</h3><span>Control ambiental y telemetría comunal.</span></a></li>
+        <li><a href="/industrias/sector-publico"><span class="n">09</span><h3>Sector público</h3><span>Territorios en scores comparables.</span></a></li>
+      </ul>
     </div>
   </section>
 
   <!-- 7 · CONFIANZA -->
   <section class="sec">
-    <div class="wrap conf">
+    <div class="marco confianza">
       <div>
-        <h3>Protege los datos como se protege una operación</h3>
-        <div class="row"><span class="t"></span><div><b>Cifrado en el borde</b><span>TLS 1.3 y HTTPS forzado en todo el tráfico.</span></div></div>
-        <div class="row"><span class="t"></span><div><b>Red aislada</b><span>Base de datos sin exposición pública; administración solo por VPN.</span></div></div>
-        <div class="row"><span class="t"></span><div><b>Aislamiento por cliente</b><span>Datos segregados por organización; acceso siempre vía API.</span></div></div>
-        <div class="row"><span class="t"></span><div><b>Ley N° 21.719</b><span>Diseñada para cumplir la nueva Ley de Protección de Datos de Chile.</span></div></div>
+        <h3 class="subtitulo">Protege los datos como se protege una operación</h3>
+        <dl class="filas">
+          <div><dt>Cifrado en el borde</dt><dd>TLS 1.3 y HTTPS forzado en todo el tráfico.</dd></div>
+          <div><dt>Red aislada</dt><dd>Base de datos sin exposición pública; administración solo por VPN.</dd></div>
+          <div><dt>Aislamiento por cliente</dt><dd>Datos segregados por organización; acceso siempre vía API.</dd></div>
+          <div><dt>Ley N° 21.719</dt><dd>Diseñada para cumplir la nueva Ley de Protección de Datos de Chile.</dd></div>
+        </dl>
       </div>
       <div>
-        <h3>Parte en semanas, no en trimestres</h3>
-        <div class="row"><span class="chip">Sem 1–2</span><div><b>Levantamiento</b><span>Qué fuentes se integran y qué indicadores importan a tu operación.</span></div></div>
-        <div class="row"><span class="chip">Sem 3–5</span><div><b>Integración</b><span>Estaciones, fuentes, scores, umbrales y alertas para tu territorio.</span></div></div>
-        <div class="row"><span class="chip">Sem 6+</span><div><b>Producción</b><span>Jefe de proyecto dedicado como contraparte directa.</span></div></div>
+        <h3 class="subtitulo">Parte en semanas, no en trimestres</h3>
+        <dl class="filas">
+          <div><dt>Sem 1–2</dt><dd><b>Levantamiento</b> Qué fuentes se integran y qué indicadores importan a tu operación.</dd></div>
+          <div><dt>Sem 3–5</dt><dd><b>Integración</b> Estaciones, fuentes, scores, umbrales y alertas para tu territorio.</dd></div>
+          <div><dt>Sem 6+</dt><dd><b>Producción</b> Jefe de proyecto dedicado como contraparte directa.</dd></div>
+        </dl>
       </div>
     </div>
   </section>
 
   <!-- 8 · FAQ -->
-  <section class="sec alt" id="faq">
-    <div class="wrap">
-      <div class="sec-head"><h2 class="hs">Pregunta antes. <em>Decide mejor.</em></h2></div>
+  <section class="sec sec-hondo" id="faq">
+    <div class="marco preguntas">
+      <div class="sec-cab"><h2 class="titulo">Pregunta antes. <em>Decide mejor.</em></h2></div>
       <div class="faq">
-        <details open><summary><span class="fn">01</span>¿Qué es SIMCII?<span class="tr" aria-hidden="true"></span></summary><p>Una plataforma de inteligencia territorial que integra monitoreo ambiental, relacionamiento comunitario, contexto y compromisos en scores comparables de 0 a 100 por territorio, con evidencia trazable.</p></details>
-        <details><summary><span class="fn">02</span>¿Cuánto tarda la implementación?<span class="tr" aria-hidden="true"></span></summary><p>Semanas: levantamiento y definición (1–2), integración y configuración (3–5), y salida a producción con acompañamiento desde la semana 6. Los plazos exactos se ajustan en el kick-off.</p></details>
-        <details><summary><span class="fn">03</span>¿Cómo protege SIMCII los datos?<span class="tr" aria-hidden="true"></span></summary><p>Con defensa en profundidad: TLS 1.3, base de datos sin exposición pública, sesiones JWT con control por rol y por fila, aislamiento por cliente y trazabilidad de accesos — en cumplimiento de la Ley N° 21.719.</p></details>
-        <details><summary><span class="fn">04</span>¿SIMCII reemplaza mis estaciones de monitoreo?<span class="tr" aria-hidden="true"></span></summary><p>No. Se conecta a la infraestructura de medición existente y consolida sus datos en una sola lectura comparable. No exige reemplazar equipos ni programas.</p></details>
-        <details><summary><span class="fn">05</span>¿SIMCII incluye telemetría ambiental?<span class="tr" aria-hidden="true"></span></summary><p>Sí. Las mediciones de las estaciones llegan de forma automática a la plataforma, sin descargas manuales ni planillas, y quedan comparadas contra umbrales con alertas por desviación. La ausencia de dato también se detecta: una estación que deja de reportar queda visible como tal. Ver <a href="/soluciones/telemetria-ambiental">telemetría ambiental</a>.</p></details>
-        <details><summary><span class="fn">06</span>¿Sirve para municipios y control ambiental comunal?<span class="tr" aria-hidden="true"></span></summary><p>Sí. Un municipio puede leer su comuna con la telemetría de las estaciones disponibles en el territorio, cruzarla con las denuncias vecinales y comparar sectores mediante scores de 0 a 100 construidos con la misma metodología. Ver <a href="/industrias/municipios">control ambiental y telemetría para municipios</a>.</p></details>
+        <details open><summary><span class="fn">01</span>¿Qué es SIMCII?</summary><p>Una plataforma de inteligencia territorial que integra monitoreo ambiental, relacionamiento comunitario, contexto y compromisos en scores comparables de 0 a 100 por territorio, con evidencia trazable.</p></details>
+        <details><summary><span class="fn">02</span>¿Cuánto tarda la implementación?</summary><p>Semanas: levantamiento y definición (1–2), integración y configuración (3–5), y salida a producción con acompañamiento desde la semana 6. Los plazos exactos se ajustan en el kick-off.</p></details>
+        <details><summary><span class="fn">03</span>¿Cómo protege SIMCII los datos?</summary><p>Con defensa en profundidad: TLS 1.3, base de datos sin exposición pública, sesiones JWT con control por rol y por fila, aislamiento por cliente y trazabilidad de accesos — en cumplimiento de la Ley N° 21.719.</p></details>
+        <details><summary><span class="fn">04</span>¿SIMCII reemplaza mis estaciones de monitoreo?</summary><p>No. Se conecta a la infraestructura de medición existente y consolida sus datos en una sola lectura comparable. No exige reemplazar equipos ni programas.</p></details>
+        <details><summary><span class="fn">05</span>¿SIMCII incluye telemetría ambiental?</summary><p>Sí. Las mediciones de las estaciones llegan de forma automática a la plataforma, sin descargas manuales ni planillas, y quedan comparadas contra umbrales con alertas por desviación. La ausencia de dato también se detecta: una estación que deja de reportar queda visible como tal. Ver <a href="/soluciones/telemetria-ambiental">telemetría ambiental</a>.</p></details>
+        <details><summary><span class="fn">06</span>¿Sirve para municipios y control ambiental comunal?</summary><p>Sí. Un municipio puede leer su comuna con la telemetría de las estaciones disponibles en el territorio, cruzarla con las denuncias vecinales y comparar sectores mediante scores de 0 a 100 construidos con la misma metodología. Ver <a href="/industrias/municipios">control ambiental y telemetría para municipios</a>.</p></details>
       </div>
     </div>
   </section>
 
   <!-- 9 · CTA -->
-  <section class="sec final" id="demo">
-    <div class="wrap final-grid">
+  <section class="sec cierre" id="demo">
+    <div class="cierre-fondo" aria-hidden="true">
+      <video data-fondo muted loop playsinline preload="none" poster="/assets/video/datos-fondo.webp"><source src="/assets/video/datos-fondo.mp4" type="video/mp4" /></video>
+    </div>
+    <div class="marco cierre-grid">
       <div>
-        <h2>Conoce el territorio <em>antes</em> de decidir.</h2>
-        <p class="sub">Demo con datos de ejemplo, sin compromiso. Respondemos en 24 horas hábiles.</p>
-        <p class="mail"><a href="mailto:contacto@accionet.net">contacto@accionet.net</a></p>
+        <h2 class="display display-s">Conoce el territorio <em>antes</em> de decidir.</h2>
+        <p class="lead">Demo con datos de ejemplo, sin compromiso. Respondemos en 24 horas hábiles.</p>
+        <p class="correo"><a href="mailto:contacto@accionet.net">contacto@accionet.net</a></p>
       </div>
-      <div class="fcard">
-        <form data-demo-form novalidate>
-          <label for="email">Correo corporativo</label>
-          <input id="email" type="email" placeholder="tu@empresa.cl" required autocomplete="email" />
-          <p class="ferr" data-form-error hidden><span class="pip"></span><span data-error-text></span></p>
-          <button class="btn" type="submit">Solicitar una demo</button>
-          <p class="fnote"><span class="pip"></span>Respondemos en 24 h hábiles</p>
-        </form>
-      </div>
+      <form class="form" data-demo-form novalidate>
+        <label for="email">Correo corporativo</label>
+        <input id="email" type="email" placeholder="tu@empresa.cl" required autocomplete="email" />
+        <p class="form-error" data-form-error hidden></p>
+        <button class="btn btn-1" type="submit">Solicitar una demo</button>
+        <p class="form-nota">Respondemos en 24 h hábiles</p>
+      </form>
     </div>
   </section>
 </main>
 
-<footer class="footer">
-  <div class="wrap">
-    <div class="fgrid">
-      <div class="fbrand"><img src="/assets/logo-simcii-oscuro.svg" alt="SIMCII" style="height:44px;width:auto;margin-bottom:12px" /><p>Plataforma de monitoreo ambiental, telemetría y control territorial. Mide, lee y anticipa el territorio con evidencia. SIMCII es un producto de <a href="https://www.accionet.cl/"><strong>Accionet</strong></a>, Santiago de Chile.</p></div>
+<footer class="pie-pagina">
+  <div class="marco">
+    <div class="pie-grid">
+      <div class="pie-marca">
+        <img src="/assets/logo/simcii-horizontal-caliche.svg" alt="SIMCII" width="132" height="27" />
+        <p>Plataforma de monitoreo ambiental, telemetría y control territorial. Mide, lee y anticipa el territorio con evidencia. SIMCII es un producto de <a href="https://www.accionet.cl/"><strong>Accionet</strong></a>, Santiago de Chile.</p>
+      </div>
       <div><h4>Soluciones</h4><ul>
         <li><a href="/soluciones/monitoreo-ambiental">Monitoreo ambiental</a></li>
         <li><a href="/soluciones/telemetria-ambiental">Telemetría ambiental</a></li>
@@ -281,15 +304,8 @@
         <li>Santiago · Chile</li>
       </ul></div>
     </div>
-    <div class="flegal"><span>© 2026 <a href="https://www.accionet.cl/">Accionet SpA</a> · Santiago, Chile</span><a href="https://simcii.ai">simcii.ai</a></div>
+    <div class="pie-legal"><span>© 2026 <a href="https://www.accionet.cl/">Accionet SpA</a> · Santiago, Chile</span><a href="https://simcii.ai">simcii.ai</a></div>
   </div>
 </footer>
-
-<script src="https://unpkg.com/three@0.160.0/build/three.min.js" defer></script>
-<script src="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
-<script src="https://unpkg.com/lenis@1.3.25/dist/lenis.min.js" defer></script>
-<script src="/js/v5.js" defer></script>
 </body>
 </html>

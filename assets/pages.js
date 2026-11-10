@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var input = form.querySelector('input[type="email"]');
     var button = form.querySelector('button[type="submit"]');
     var errorEl = form.querySelector('[data-form-error]');
+    errorEl.setAttribute('role', 'alert');
 
     form.addEventListener('submit', async function (e) {
       e.preventDefault();
