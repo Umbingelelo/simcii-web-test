@@ -3,28 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Plataforma de cumplimiento ambiental y compromisos RCA · SIMCII</title>
-  <meta name="description" content="Plataforma de cumplimiento ambiental para los compromisos de su RCA: estados, plazos, responsables, evidencia trazable y alertas antes del vencimiento." />
+  <title>Plataforma de cumplimiento ambiental y RCA · SIMCII</title>
+  <meta name="description" content="Plataforma de cumplimiento ambiental para compromisos RCA: plazos, responsables, evidencia y alertas antes del vencimiento. Solicite una demo." />
   <link rel="canonical" href="https://simcii.ai/soluciones/cumplimiento-rca" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="author" content="Accionet" />
-  <link rel="icon" href="/assets/favicon.ico" sizes="any" />
-  <link rel="icon" href="/assets/logo/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
   <meta name="theme-color" content="#1A1D20" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="SIMCII" />
   <meta property="og:locale" content="es_CL" />
   <meta property="og:url" content="https://simcii.ai/soluciones/cumplimiento-rca" />
-  <meta property="og:title" content="Plataforma de cumplimiento ambiental y compromisos RCA · SIMCII" />
-  <meta property="og:description" content="Compromisos ambientales y de RCA con estado, plazo, responsable y evidencia trazable — con alertas antes del vencimiento." />
-  <meta property="og:image" content="https://simcii.ai/assets/og-image.png" />
-  <meta property="og:image:alt" content="SIMCII · plataforma de monitoreo ambiental y territorial" />
-  <meta property="og:image:width" content="2400" />
-  <meta property="og:image:height" content="1260" />
+  <meta property="og:title" content="Plataforma de cumplimiento ambiental y RCA · SIMCII" />
+  <meta property="og:description" content="Compromisos RCA extraídos con asistencia y validación humana, con estado, plazo, responsable, evidencia trazable y alertas antes del vencimiento." />
+  <meta property="og:image" content="https://simcii.ai/assets/og/cumplimiento-rca.jpg" />
+  <meta property="og:image:alt" content="Proyecto industrial en operación en el norte de Chile con su área de influencia ambiental alrededor" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Plataforma de cumplimiento ambiental y compromisos RCA · SIMCII" />
-  <meta name="twitter:description" content="Compromisos ambientales y de RCA con estado, plazo, responsable y evidencia trazable." />
-  <meta name="twitter:image" content="https://simcii.ai/assets/og-image.png" />
+  <meta name="twitter:title" content="Plataforma de cumplimiento ambiental y RCA · SIMCII" />
+  <meta name="twitter:description" content="Compromisos RCA con estado, plazo, responsable, evidencia trazable y alertas antes del vencimiento." />
+  <meta name="twitter:image" content="https://simcii.ai/assets/og/cumplimiento-rca.jpg" />
   <link rel="preload" href="/assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/assets/sub.css" />
   <script type="application/ld+json">
@@ -36,7 +38,7 @@
         "@id": "https://simcii.ai/#organization",
         "name": "SIMCII",
         "url": "https://simcii.ai/",
-        "logo": "https://simcii.ai/assets/logo/simcii-horizontal-caliche.svg",
+        "logo": "https://simcii.ai/assets/logo/simcii-logo-512.png",
         "email": "contacto@accionet.net",
         "sameAs": ["https://www.accionet.cl/"],
         "areaServed": { "@type": "Country", "name": "Chile" },
@@ -54,10 +56,10 @@
         "@type": "Service",
         "name": "Plataforma de cumplimiento ambiental SIMCII",
         "serviceType": "Plataforma de cumplimiento ambiental y seguimiento de compromisos RCA",
-        "areaServed": "CL",
+        "areaServed": { "@type": "Country", "name": "Chile" },
         "url": "https://simcii.ai/soluciones/cumplimiento-rca",
         "provider": { "@id": "https://simcii.ai/#organization" },
-        "description": "Plataforma de cumplimiento ambiental: seguimiento de los compromisos de la Resolución de Calificación Ambiental con estados, plazos, responsables, evidencia trazable y alertas antes del vencimiento."
+        "description": "Plataforma de cumplimiento ambiental: extracción de compromisos RCA asistida por IA con validación humana, relación RCA → compromiso → informe, estados, plazos, responsables, evidencia trazable, alertas antes del vencimiento y escalamiento a jefatura."
       },
       {
         "@type": "BreadcrumbList",
@@ -87,13 +89,23 @@
           },
           {
             "@type": "Question",
+            "name": "¿Hay que digitar a mano los compromisos de la RCA?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No. SIMCII extrae los compromisos del texto de la RCA con asistencia de IA y los propone como registros. Un profesional de su equipo los revisa y valida antes de que queden oficiales: la IA acelera la carga, la validación sigue siendo humana." }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Qué pasa si nadie actúa sobre una alerta?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Si el plazo avanza sin acción registrada, la alerta escala automáticamente a la jefatura del responsable, por la plataforma y por correo, para que el compromiso no quede sin dueño." }
+          },
+          {
+            "@type": "Question",
             "name": "¿La evidencia queda respaldada?",
             "acceptedAnswer": { "@type": "Answer", "text": "Cada compromiso admite archivos, datos y fechas; el historial completo es trazable, con fuente y fecha por cada registro, listo para una fiscalización o un reporte." }
           },
           {
             "@type": "Question",
             "name": "¿Cómo se contrata SIMCII?",
-            "acceptedAnswer": { "@type": "Answer", "text": "SIMCII se implementa por operación o territorio, con demo a solicitud. Escríbenos a contacto@accionet.net." }
+            "acceptedAnswer": { "@type": "Answer", "text": "SIMCII se implementa por operación o territorio, con demo a solicitud. Escríbanos a contacto@accionet.net." }
           }
         ]
       }
@@ -117,7 +129,9 @@
   <main class="page-main">
     <span class="stake">Soluciones<i></i>Cumplimiento ambiental</span>
     <h1>Plataforma de cumplimiento ambiental: sus compromisos RCA con evidencia trazable</h1>
-    <p>Una Resolución de Calificación Ambiental puede contener cientos de compromisos, con plazos distintos, responsables distintos y evidencias distintas. <strong>SIMCII</strong> los mantiene en un solo lugar: cada compromiso con su <strong>estado, plazo, responsable y evidencia</strong>, y con alertas que avisan antes del vencimiento — no después.</p>
+    <p>Una Resolución de Calificación Ambiental puede contener cientos de compromisos, con plazos distintos, responsables distintos y evidencias distintas. <strong>SIMCII</strong> los mantiene en un solo lugar: cada compromiso con su <strong>estado, plazo, responsable y evidencia</strong>, y con alertas que avisan antes del vencimiento, no después.</p>
+    <figure class="page-hero"><img src="/assets/img/cumplimiento-rca.webp" alt="Proyecto industrial en operación en el norte de Chile con su área de influencia ambiental alrededor" width="1600" height="900" fetchpriority="high" decoding="async" /></figure>
+    <p>¿Necesita primero el contexto normativo? Revise la guía <a href="/guias/que-es-una-rca"><strong>qué es una RCA (Resolución de Calificación Ambiental)</strong></a>: cómo se obtiene, qué contiene y qué obliga a cumplir.</p>
 
     <h2>Qué es una plataforma de cumplimiento ambiental</h2>
     <p>Una plataforma de cumplimiento ambiental es el sistema donde una operación mantiene todas sus obligaciones ambientales bajo una misma lectura: qué se comprometió, ante quién, en qué plazo, quién responde y con qué evidencia se acredita. No es un repositorio de documentos ni un calendario de vencimientos: es el lugar donde el estado de cumplimiento se puede afirmar en cualquier momento, con respaldo, sin reconstruirlo.</p>
@@ -130,13 +144,21 @@
     <ul>
       <li><strong>Un registro por compromiso</strong>: texto del compromiso, estado, plazo, responsable y territorio asociado.</li>
       <li><strong>Evidencia vinculada</strong>: archivos, datos y fechas quedan unidos al compromiso que respaldan; el historial es trazable de punta a punta.</li>
-      <li><strong>Alertas por plazo y estado</strong>: los compromisos próximos a vencer sin evidencia notifican a su responsable con anticipación.</li>
+      <li><strong>Alertas por plazo y estado</strong>: los compromisos próximos a vencer sin evidencia notifican a su responsable con la anticipación que usted configure.</li>
+      <li><strong>Escalamiento a jefatura</strong>: si el plazo avanza sin acción registrada, la alerta escala automáticamente a la jefatura del responsable, en la plataforma y por correo.</li>
       <li><strong>Vínculo con los datos ambientales</strong>: los compromisos de medición se conectan con el <a href="/soluciones/monitoreo-ambiental">monitoreo ambiental</a> de la plataforma, de modo que la evidencia numérica se genera donde ya está el dato. Si las estaciones reportan por <a href="/soluciones/telemetria-ambiental">telemetría</a>, la acreditación del compromiso deja de depender de que alguien arme la planilla.</li>
-      <li><strong>Una sola fuente para reportar</strong>: cumplimiento, sostenibilidad y gerencia leen el mismo estado, y la preparación de reportes deja de ser una recolección manual.</li>
+      <li><strong>Una sola fuente para reportar</strong>: cumplimiento, sostenibilidad y gerencia leen el mismo estado, y la preparación de informes deja de ser una recolección manual; vea <a href="/soluciones/reportabilidad-ambiental">reportabilidad ambiental</a>.</li>
     </ul>
 
+    <h2>Extracción de compromisos RCA asistida por IA, con validación humana</h2>
+    <p>El primer obstáculo de cualquier sistema de cumplimiento es la carga inicial: transcribir a mano cada considerando de la RCA es lento y propenso a omisiones. SIMCII lee el texto de la resolución y propone los compromisos como registros estructurados, con su descripción, componente ambiental y plazo cuando la resolución lo indica.</p>
+    <p>Ningún compromiso queda oficial sin revisión: un profesional de su equipo valida, corrige o descarta cada propuesta antes de que entre al sistema. La IA acelera la carga; la responsabilidad sobre qué se comprometió sigue siendo de las personas. Lo mismo vale para compromisos que no nacen de la RCA: los voluntarios y los acordados en actas con comunidades se registran con la misma estructura.</p>
+
+    <h2>RCA, compromiso e informe: una cadena trazable</h2>
+    <p>Cada compromiso cuelga de la RCA que lo origina, y cada informe cuelga del compromiso que acredita. Esa relación RCA → compromiso → informe permite responder en segundos tres preguntas que en una planilla toman días: qué obligaciones tiene esta resolución, cuáles están al día y con qué documento se demostró. Cuando el compromiso es de medición, la evidencia viene del mismo dato que alimenta el <a href="/soluciones/monitoreo-ambiental">sistema de seguimiento ambiental</a>; para ordenar esas obligaciones de medición, revise la guía <a href="/guias/plan-de-seguimiento-ambiental">plan de seguimiento ambiental</a>.</p>
+
     <h2>Para quién</h2>
-    <p>Titulares de proyectos con RCA vigente en Chile: <a href="/industrias/mineria">minería</a>, <a href="/industrias/energia">energía y renovables</a>, infraestructura y forestal, y los equipos de cumplimiento y <a href="/soluciones/relacionamiento-comunitario">relacionamiento comunitario</a> que responden por esos compromisos.</p>
+    <p>Titulares de proyectos con RCA vigente en Chile: <a href="/industrias/mineria">minería</a>, <a href="/industrias/energia">energía y renovables</a>, <a href="/industrias/desalinizacion">plantas desaladoras</a>, <a href="/industrias/puertos">puertos y terminales</a>, infraestructura y forestal, y los equipos de cumplimiento y <a href="/soluciones/relacionamiento-comunitario">relacionamiento comunitario</a> que responden por esos compromisos.</p>
 
 
     <h2>Preguntas frecuentes</h2>
@@ -144,8 +166,10 @@
       <div><h3>¿Qué es una plataforma de cumplimiento ambiental?</h3><p>Es el sistema donde una operación mantiene, en un solo lugar, todas sus obligaciones ambientales: qué se comprometió, ante quién, en qué plazo, quién responde y con qué evidencia se acredita. Reemplaza el conjunto de planillas, correos y carpetas en que suele vivir esa información, y permite saber el estado de cumplimiento en cualquier momento, no solo cuando lo pregunta la autoridad.</p></div>
       <div><h3>¿Qué es el seguimiento de compromisos RCA?</h3><p>La Resolución de Calificación Ambiental aprueba un proyecto bajo condiciones y compromisos concretos. Su seguimiento consiste en demostrar, con evidencia y en los plazos definidos, que cada compromiso se está cumpliendo ante la autoridad y las comunidades.</p></div>
       <div><h3>¿SIMCII alerta antes de que venza un compromiso?</h3><p>Sí. Las alertas se configuran por plazo y estado: un compromiso próximo a vencer sin evidencia cargada notifica a su responsable antes de que se convierta en un incumplimiento.</p></div>
+      <div><h3>¿Hay que digitar a mano los compromisos de la RCA?</h3><p>No. SIMCII extrae los compromisos del texto de la RCA con asistencia de IA y los propone como registros. Un profesional de su equipo los revisa y valida antes de que queden oficiales: la IA acelera la carga, la validación sigue siendo humana.</p></div>
+      <div><h3>¿Qué pasa si nadie actúa sobre una alerta?</h3><p>Si el plazo avanza sin acción registrada, la alerta escala automáticamente a la jefatura del responsable, por la plataforma y por correo, para que el compromiso no quede sin dueño.</p></div>
       <div><h3>¿La evidencia queda respaldada?</h3><p>Cada compromiso admite archivos, datos y fechas; el historial completo es trazable, con fuente y fecha por cada registro, listo para una fiscalización o un reporte.</p></div>
-      <div><h3>¿Cómo se contrata SIMCII?</h3><p>SIMCII se implementa por operación o territorio, con demo a solicitud. Escríbenos a <a href="mailto:contacto@accionet.net">contacto@accionet.net</a>.</p></div>
+      <div><h3>¿Cómo se contrata SIMCII?</h3><p>SIMCII se implementa por operación o territorio, con demo a solicitud. Escríbanos a <a href="mailto:contacto@accionet.net">contacto@accionet.net</a>.</p></div>
     </section>
 
     <div class="page-cta" id="demo">
@@ -174,7 +198,13 @@
           <li><a href="/soluciones/telemetria-ambiental">Telemetría ambiental</a></li>
           <li><a href="/soluciones/relacionamiento-comunitario">Relacionamiento comunitario</a></li>
           <li><a href="/soluciones/cumplimiento-rca">Cumplimiento ambiental y RCA</a></li>
+          <li><a href="/soluciones/reportabilidad-ambiental">Reportabilidad ambiental</a></li>
           <li><a href="/soluciones/gestion-territorial">Gestión territorial</a></li>
+        </ul>
+        <h4>Guías</h4>
+        <ul>
+          <li><a href="/guias/que-es-una-rca">Qué es una RCA</a></li>
+          <li><a href="/guias/plan-de-seguimiento-ambiental">Plan de seguimiento ambiental</a></li>
         </ul>
       </div>
       <div>
@@ -186,7 +216,9 @@
           <li><a href="/industrias/forestal">Forestal</a></li>
           <li><a href="/industrias/inmobiliario">Proyectos inmobiliarios</a></li>
           <li><a href="/industrias/sanitarias">Sanitarias</a></li>
+          <li><a href="/industrias/desalinizacion">Desalinización</a></li>
           <li><a href="/industrias/carreteras">Carreteras y concesiones viales</a></li>
+          <li><a href="/industrias/puertos">Puertos y terminales</a></li>
           <li><a href="/industrias/municipios">Municipios</a></li>
           <li><a href="/industrias/sector-publico">Sector público</a></li>
         </ul>

@@ -8,8 +8,10 @@
   <link rel="canonical" href="https://simcii.ai/industrias/mineria" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="author" content="Accionet" />
-  <link rel="icon" href="/assets/favicon.ico" sizes="any" />
-  <link rel="icon" href="/assets/logo/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
   <meta name="theme-color" content="#1A1D20" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="SIMCII" />
@@ -17,14 +19,14 @@
   <meta property="og:url" content="https://simcii.ai/industrias/mineria" />
   <meta property="og:title" content="Monitoreo ambiental y comunitario para minería · SIMCII" />
   <meta property="og:description" content="Monitoreo ambiental, comunidades, compromisos RCA y licencia social para faenas mineras — con evidencia." />
-  <meta property="og:image" content="https://simcii.ai/assets/og-image.png" />
-  <meta property="og:image:alt" content="SIMCII · plataforma de monitoreo ambiental y territorial" />
-  <meta property="og:image:width" content="2400" />
-  <meta property="og:image:height" content="1260" />
+  <meta property="og:image" content="https://simcii.ai/assets/og/mineria.jpg" />
+  <meta property="og:image:alt" content="Vista aérea de una mina de cobre a rajo abierto en el desierto de Atacama, con la planta y un poblado cercano" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Monitoreo ambiental y comunitario para minería · SIMCII" />
   <meta name="twitter:description" content="Monitoreo ambiental, comunidades, compromisos RCA y licencia social para faenas mineras — con evidencia." />
-  <meta name="twitter:image" content="https://simcii.ai/assets/og-image.png" />
+  <meta name="twitter:image" content="https://simcii.ai/assets/og/mineria.jpg" />
   <link rel="preload" href="/assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/assets/sub.css" />
   <script type="application/ld+json">
@@ -36,7 +38,7 @@
         "@id": "https://simcii.ai/#organization",
         "name": "SIMCII",
         "url": "https://simcii.ai/",
-        "logo": "https://simcii.ai/assets/logo/simcii-horizontal-caliche.svg",
+        "logo": "https://simcii.ai/assets/logo/simcii-logo-512.png",
         "email": "contacto@accionet.net",
         "sameAs": ["https://www.accionet.cl/"],
         "areaServed": { "@type": "Country", "name": "Chile" },
@@ -87,6 +89,11 @@
           },
           {
             "@type": "Question",
+            "name": "¿Qué pasa si una estación de la faena deja de reportar?",
+            "acceptedAnswer": { "@type": "Answer", "text": "La ausencia de dato es una alerta en sí misma. Si una estación deja de transmitir dentro del plazo esperado, el responsable recibe el aviso igual que ante una desviación de umbral, porque un período sin medición es un vacío de evidencia frente a la comunidad y a la autoridad." }
+          },
+          {
+            "@type": "Question",
             "name": "¿Cómo se contrata SIMCII?",
             "acceptedAnswer": { "@type": "Answer", "text": "SIMCII se implementa por operación o territorio, con demo a solicitud. Escríbenos a contacto@accionet.net." }
           }
@@ -113,6 +120,7 @@
     <span class="stake">Industrias<i></i>Minería</span>
     <h1>Monitoreo ambiental y relacionamiento comunitario para minería</h1>
     <p>Una faena minera opera en varios frentes territoriales a la vez: comunidades distintas, obligaciones ambientales distintas y una Resolución de Calificación Ambiental que compromete a toda la organización. <strong>SIMCII</strong> reúne esas capas en una sola plataforma, con un score por territorio y evidencia trazable en cada dato.</p>
+    <figure class="page-hero"><img src="/assets/img/mineria.webp" alt="Vista aérea de una mina de cobre a rajo abierto en el desierto de Atacama, con la planta y un poblado cercano" width="1600" height="900" fetchpriority="high" decoding="async" /></figure>
 
     <h2>El desafío territorial de una faena</h2>
     <p>La licencia social rara vez se pierde por un evento único; se pierde por señales que nadie leyó a tiempo — reclamos que se acumulan en un sector, un compromiso con la comunidad que venció sin evidencia, un parámetro ambiental que se acercó al umbral durante meses. Cuando esas señales viven en planillas de áreas distintas, la faena las descubre cuando ya son un conflicto o una fiscalización.</p>
@@ -128,12 +136,23 @@
     <h2>Un score por territorio</h2>
     <p>Cuando la operación abarca varios territorios, la pregunta de gerencia es siempre la misma: ¿dónde poner la atención primero? Los scores de SIMCII responden con datos comparables — el sector donde el score de Comunidad cae se prioriza sobre el que se mantiene estable, y la decisión queda respaldada por la evidencia que la originó.</p>
 
+    <h2>Del dato a la acción: dato, alerta, acción, informe</h2>
+    <p>En una faena, el valor del monitoreo no está en la medición aislada sino en la cadena completa: el sensor que registra, la alerta que avisa, la persona que actúa, la visita a terreno que lo verifica y el informe que lo deja documentado. SIMCII mantiene esa cadena trazable de punta a punta, de modo que cualquier eslabón — una alerta, un reclamo, una respuesta a la comunidad — se puede reconstruir con su fuente y su fecha.</p>
+    <ul>
+      <li><strong>Desviación y ausencia de dato</strong>: la plataforma alerta cuando un parámetro supera el umbral, pero también cuando una estación deja de reportar. Un período sin medición es un vacío de evidencia: si coincide con una tronadura o un episodio de viento, la faena no tendrá cómo responder.</li>
+      <li><strong>Reclamo con respaldo o sin causa medible</strong>: cada reclamo por polvo, ruido o vibraciones se cruza con las mediciones del mismo territorio y período. Algunos reclamos coinciden con una desviación registrada y piden acción; otros no tienen correlato en los datos y piden una conversación distinta. En ambos casos la respuesta se apoya en evidencia, no en impresiones.</li>
+      <li><strong>Compromisos con validación humana</strong>: los compromisos pueden extraerse de la RCA con asistencia de la plataforma, pero ninguno queda oficial hasta que un responsable lo valida. Cada compromiso — de la RCA, de un acta con la comunidad o voluntario — conserva su origen, plazo, responsable y evidencia.</li>
+      <li><strong>Informes por audiencia</strong>: el mismo dato alimenta el reporte a la autoridad, el informe a la comunidad y la lectura para gerencia, cada uno con el nivel de detalle que corresponde. Ver <a href="/soluciones/reportabilidad-ambiental">reportabilidad ambiental</a>.</li>
+    </ul>
+    <p>La plataforma no predice conflictos: detecta desviaciones, vacíos y plazos, y deja registro de qué alertas se atendieron y cuáles no. Para ordenar qué medir y con qué frecuencia, revise la guía sobre el <a href="/guias/plan-de-seguimiento-ambiental">plan de seguimiento ambiental</a>; si necesita repasar qué obliga una resolución, la guía <a href="/guias/que-es-una-rca">qué es una RCA</a> lo explica paso a paso.</p>
+
 
     <h2>Preguntas frecuentes</h2>
     <section class="page-faq">
       <div><h3>¿SIMCII sirve para faenas con varias comunidades aledañas?</h3><p>Sí. Cada territorio y cada actor se gestiona por separado, con su propio historial de interacciones, compromisos y reclamos, y los scores permiten comparar el estado de la relación entre sectores.</p></div>
       <div><h3>¿Cómo apoya SIMCII la licencia social para operar en minería?</h3><p>Registrando compromisos, reclamos y percepción con evidencia trazable, y marcando las señales tempranas — un score de comunidad que baja, reclamos que se repiten — antes de que se conviertan en conflicto.</p></div>
       <div><h3>¿Se integra con el monitoreo ambiental existente de la faena?</h3><p>Sí. SIMCII consolida las estaciones y parámetros ya instalados en la faena; no exige reemplazar la infraestructura de medición.</p></div>
+      <div><h3>¿Qué pasa si una estación de la faena deja de reportar?</h3><p>La ausencia de dato es una alerta en sí misma. Si una estación deja de transmitir dentro del plazo esperado, el responsable recibe el aviso igual que ante una desviación de umbral, porque un período sin medición es un vacío de evidencia frente a la comunidad y a la autoridad.</p></div>
       <div><h3>¿Cómo se contrata SIMCII?</h3><p>SIMCII se implementa por operación o territorio, con demo a solicitud. Escríbenos a <a href="mailto:contacto@accionet.net">contacto@accionet.net</a>.</p></div>
     </section>
 
@@ -163,7 +182,13 @@
           <li><a href="/soluciones/telemetria-ambiental">Telemetría ambiental</a></li>
           <li><a href="/soluciones/relacionamiento-comunitario">Relacionamiento comunitario</a></li>
           <li><a href="/soluciones/cumplimiento-rca">Cumplimiento ambiental y RCA</a></li>
+          <li><a href="/soluciones/reportabilidad-ambiental">Reportabilidad ambiental</a></li>
           <li><a href="/soluciones/gestion-territorial">Gestión territorial</a></li>
+        </ul>
+        <h4>Guías</h4>
+        <ul>
+          <li><a href="/guias/que-es-una-rca">Qué es una RCA</a></li>
+          <li><a href="/guias/plan-de-seguimiento-ambiental">Plan de seguimiento ambiental</a></li>
         </ul>
       </div>
       <div>
@@ -175,7 +200,9 @@
           <li><a href="/industrias/forestal">Forestal</a></li>
           <li><a href="/industrias/inmobiliario">Proyectos inmobiliarios</a></li>
           <li><a href="/industrias/sanitarias">Sanitarias</a></li>
+          <li><a href="/industrias/desalinizacion">Desalinización</a></li>
           <li><a href="/industrias/carreteras">Carreteras y concesiones viales</a></li>
+          <li><a href="/industrias/puertos">Puertos y terminales</a></li>
           <li><a href="/industrias/municipios">Municipios</a></li>
           <li><a href="/industrias/sector-publico">Sector público</a></li>
         </ul>

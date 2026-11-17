@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plan de seguimiento ambiental: guía práctica · SIMCII</title>
+  <meta name="description" content="Plan de seguimiento y monitoreo ambiental de una RCA: componentes, errores comunes y cómo la telemetría y las alertas lo ordenan. Solicite una demo." />
+  <link rel="canonical" href="https://simcii.ai/guias/plan-de-seguimiento-ambiental" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Accionet" />
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#1A1D20" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="SIMCII" />
+  <meta property="og:locale" content="es_CL" />
+  <meta property="og:url" content="https://simcii.ai/guias/plan-de-seguimiento-ambiental" />
+  <meta property="og:title" content="Plan de seguimiento ambiental: guía práctica · SIMCII" />
+  <meta property="og:description" content="Qué es el plan de seguimiento de variables ambientales de una RCA, sus componentes, errores comunes y cómo ayudan la telemetría y las alertas." />
+  <meta property="og:image" content="https://simcii.ai/assets/og/plan-de-seguimiento-ambiental.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Técnico en terreno revisando una estación de monitoreo ambiental en un sector costero de Chile" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Plan de seguimiento ambiental: guía práctica · SIMCII" />
+  <meta name="twitter:description" content="Qué es el plan de seguimiento de variables ambientales de una RCA, sus componentes, errores comunes y cómo ayudan la telemetría y las alertas." />
+  <meta name="twitter:image" content="https://simcii.ai/assets/og/plan-de-seguimiento-ambiental.jpg" />
+  <link rel="preload" href="/assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/sub.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://simcii.ai/#organization",
+        "name": "SIMCII",
+        "url": "https://simcii.ai/",
+        "logo": "https://simcii.ai/assets/logo/simcii-logo-512.png",
+        "email": "contacto@accionet.net",
+        "sameAs": [
+          "https://www.accionet.cl/"
+        ],
+        "areaServed": {
+          "@type": "Country",
+          "name": "Chile"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Santiago",
+          "addressCountry": "CL"
+        },
+        "parentOrganization": {
+          "@type": "Organization",
+          "@id": "https://simcii.ai/#accionet",
+          "name": "Accionet",
+          "legalName": "Accionet SpA",
+          "url": "https://www.accionet.cl/",
+          "sameAs": [
+            "https://www.accionet.cl/"
+          ]
+        }
+      },
+      {
+        "@type": "Article",
+        "headline": "Plan de seguimiento y monitoreo ambiental: qué es y cómo llevarlo",
+        "description": "Plan de seguimiento y monitoreo ambiental de una RCA: componentes, errores comunes y cómo la telemetría y las alertas lo ordenan. Solicite una demo.",
+        "inLanguage": "es-CL",
+        "datePublished": "2026-11-17",
+        "dateModified": "2026-11-17",
+        "author": {
+          "@id": "https://simcii.ai/#organization"
+        },
+        "publisher": {
+          "@id": "https://simcii.ai/#organization"
+        },
+        "image": "https://simcii.ai/assets/og/plan-de-seguimiento-ambiental.jpg",
+        "mainEntityOfPage": "https://simcii.ai/guias/plan-de-seguimiento-ambiental"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Inicio",
+            "item": "https://simcii.ai/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Plan de seguimiento ambiental",
+            "item": "https://simcii.ai/guias/plan-de-seguimiento-ambiental"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "¿Qué es un plan de seguimiento y monitoreo ambiental?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Es la parte de la RCA que define qué variables ambientales se miden, en qué puntos, con qué frecuencia y métodos, contra qué umbrales se comparan y cómo se informan sus resultados a la Superintendencia del Medio Ambiente. Su objetivo es verificar que el proyecto se comporta como se previó en la evaluación."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Qué es un sistema de seguimiento ambiental?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Es la herramienta que ejecuta el plan en el día a día: recibe las mediciones, las asocia a su punto y umbral, avisa cuando hay desviación o falta un dato, y genera los informes de seguimiento con trazabilidad. Puede ser una planilla, pero a medida que crecen las variables y los puntos conviene una plataforma con telemetría."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Cada cuánto se entregan los informes de seguimiento a la SMA?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Depende de lo que establezca la RCA de cada proyecto y de las instrucciones de la Superintendencia del Medio Ambiente. La periodicidad varía según la variable y la fase del proyecto, por lo que conviene revisarla compromiso por compromiso."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Dónde puedo consultar los monitoreos ambientales de un terreno en remediación en Chile?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Si el proyecto tiene RCA, sus informes de seguimiento ambiental son públicos en SNIFA, el Sistema Nacional de Información de Fiscalización Ambiental de la Superintendencia del Medio Ambiente: se busca la unidad fiscalizable y se revisan sus informes y fiscalizaciones. El expediente de evaluación, con el plan de seguimiento comprometido, está en el buscador e-SEIA del Servicio de Evaluación Ambiental."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Qué pasa si una estación deja de enviar datos?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "En un sistema basado en planillas, normalmente nadie lo nota hasta armar el informe. En SIMCII la ausencia de dato es una alerta en sí misma: avisa al responsable cuando una estación deja de reportar, para corregir antes de que el vacío se convierta en un período sin medición."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="page-header">
+    <a href="/" class="brand"><img src="/assets/logo/simcii-horizontal-caliche.svg" alt="SIMCII" width="132" height="27" /></a>
+    <nav>
+      <a href="/soluciones/monitoreo-ambiental">Monitoreo ambiental</a>
+      <a href="/soluciones/telemetria-ambiental">Telemetría</a>
+      <a href="/soluciones/relacionamiento-comunitario">Comunidades</a>
+      <a href="/soluciones/cumplimiento-rca">RCA</a>
+      <a href="#demo" class="cta">Solicitar demo</a>
+    </nav>
+  </header>
+
+  <main class="page-main">
+    <span class="stake">Guías<i></i>Plan de seguimiento ambiental</span>
+    <h1>Plan de seguimiento y monitoreo ambiental: qué es y cómo llevarlo</h1>
+    <p>El <strong>plan de seguimiento ambiental</strong> es la parte de la RCA que más trabajo genera después de aprobado un proyecto: mediciones periódicas, umbrales que vigilar e informes que entregar a la autoridad. Esta guía explica sus componentes, los errores más frecuentes y cómo un sistema de seguimiento ambiental con telemetría y alertas lo hace manejable.</p>
+    <figure class="page-hero"><img src="/assets/img/plan-de-seguimiento-ambiental.webp" alt="Técnico en terreno revisando una estación de monitoreo ambiental en un sector costero de Chile" width="1600" height="900" fetchpriority="high" decoding="async" /></figure>
+
+    <h2>Qué es el plan de seguimiento de las variables ambientales</h2>
+    <p>Cuando un proyecto obtiene su <a href="/guias/que-es-una-rca">Resolución de Calificación Ambiental (RCA)</a>, la resolución incluye un plan de seguimiento de las variables ambientales relevantes que fueron evaluadas. Su propósito es verificar, con mediciones, que esas variables evolucionan como se previó en la evaluación y que las medidas comprometidas funcionan.</p>
+    <p>En la práctica se le llama de varias formas: plan de seguimiento y monitoreo ambiental, programa de vigilancia ambiental, control y seguimiento ambiental. Lo común es que define qué se mide, dónde, cuándo, cómo y contra qué se compara, y que sus resultados se informan a la Superintendencia del Medio Ambiente (SMA), que fiscaliza su cumplimiento.</p>
+
+    <h2>Componentes de un plan de seguimiento</h2>
+    <ul>
+      <li><strong>Variables ambientales</strong>: calidad del aire (material particulado, gases), ruido, calidad y cantidad de agua superficial o subterránea, suelo, flora y fauna, medio humano, entre otras, según los impactos del proyecto.</li>
+      <li><strong>Puntos o estaciones de medición</strong>: ubicaciones georreferenciadas en el área de influencia, normalmente con puntos de control para comparar.</li>
+      <li><strong>Frecuencia</strong>: continua, diaria, mensual, estacional o anual, según la variable y la fase del proyecto.</li>
+      <li><strong>Métodos</strong>: equipos, normas técnicas de muestreo y análisis, y laboratorios cuando corresponde.</li>
+      <li><strong>Umbrales o límites</strong>: valores de referencia — normativos, de línea de base o comprometidos — que indican cuándo una medición deja de ser aceptable.</li>
+      <li><strong>Acciones ante desviación</strong>: qué hace el titular si se supera un umbral, y a quién avisa.</li>
+      <li><strong>Informes de seguimiento</strong>: los resultados se entregan a la SMA con la periodicidad y el formato que corresponda, y quedan disponibles públicamente.</li>
+    </ul>
+
+    <h2>Errores comunes en el seguimiento ambiental</h2>
+    <p>La mayoría de los problemas de un plan de seguimiento no está en el diseño, sino en la operación diaria:</p>
+    <ul>
+      <li><strong>Planillas como sistema</strong>: cada consultora o laboratorio entrega su archivo, con formatos distintos, y alguien los consolida a mano antes de cada informe. Cada copia es una oportunidad de error.</li>
+      <li><strong>Datos que llegan tarde</strong>: una superación detectada en el informe trimestral ya no se puede gestionar; solo se puede explicar.</li>
+      <li><strong>Ausencia de dato no detectada</strong>: una estación que deja de transmitir no genera ninguna alarma en una planilla. El vacío aparece cuando se arma el informe, y para entonces el período sin medición ya es un incumplimiento.</li>
+      <li><strong>Umbrales fuera del flujo</strong>: los límites están en la RCA, pero no en la herramienta donde se miran los datos, así que nadie compara a tiempo.</li>
+      <li><strong>Sin trazabilidad</strong>: cuando la autoridad o la comunidad pregunta por un valor, cuesta reconstruir de qué equipo vino, cuándo se midió y si fue corregido.</li>
+    </ul>
+
+    <h2>Cómo ayudan la telemetría y las alertas</h2>
+    <p>Un sistema de seguimiento ambiental moderno no reemplaza el plan; lo ejecuta mejor. Tres capacidades marcan la diferencia:</p>
+    <ul>
+      <li><strong>Telemetría</strong>: el dato viaja solo desde la estación a la plataforma, por protocolos como MQTT o HTTP, sin descargas manuales. Las fuentes que no tienen transmisión — informes de laboratorio, planillas de terreno — se cargan con el mismo modelo de datos. El detalle está en <a href="/soluciones/telemetria-ambiental">telemetría ambiental</a>.</li>
+      <li><strong>Dos tipos de alerta</strong>: desviación contra el umbral definido para cada variable y punto, y ausencia de dato cuando una estación deja de reportar. La segunda es tan importante como la primera, porque un dato faltante no se recupera.</li>
+      <li><strong>Lectura con contexto</strong>: cada medición se ve junto a la meteorología, la actividad del proyecto y los reclamos del mismo territorio, de modo que una superación puntual se distingue de una tendencia. Ver <a href="/soluciones/monitoreo-ambiental">monitoreo ambiental</a>.</li>
+    </ul>
+    <p>Un límite que conviene decir con claridad: la plataforma no predice episodios. Detecta desviaciones y vacíos en cuanto ocurren y deja registro de cada alerta y de lo que se hizo con ella. Esa honestidad es útil frente a la autoridad.</p>
+
+    <h2>Del dato al informe de seguimiento</h2>
+    <p>Si los datos ya están consolidados, validados y asociados a su punto y a su umbral, el informe de seguimiento deja de ser un proyecto mensual de copiar y pegar. Las series, tablas y gráficos salen de la misma base, con la fuente y la fecha de cada valor. La misma información sirve para otras audiencias — directorio, comunidad, clientes — con el nivel de detalle que cada una necesita. Así funciona la <a href="/soluciones/reportabilidad-ambiental">reportabilidad ambiental de SIMCII</a>.</p>
+    <p>El plan de seguimiento es además uno de los compromisos de la RCA. Llevarlo dentro del mismo registro que el resto de las obligaciones permite ver, en una sola vista, qué está al día y qué no: lo describe la página de <a href="/soluciones/cumplimiento-rca">cumplimiento ambiental y RCA</a>.</p>
+
+    <h2>Así se ve en la operación</h2>
+    <p>Un escenario típico: un programa sectorial de plantas desaladoras que debe vigilar descargas y estaciones en zonas de influencia y de control, con umbrales comunes para varias plantas. Cada planta carga sus matrices, la plataforma compara contra los umbrales y calcula qué porcentaje de ellos está en rango, y los informes por planta y por programa salen de la misma base. Más contexto en <a href="/industrias/desalinizacion">desalinización</a>.</p>
+
+
+    <h2>Preguntas frecuentes</h2>
+    <section class="page-faq">
+      <div><h3>¿Qué es un plan de seguimiento y monitoreo ambiental?</h3><p>Es la parte de la RCA que define qué variables ambientales se miden, en qué puntos, con qué frecuencia y métodos, contra qué umbrales se comparan y cómo se informan sus resultados a la Superintendencia del Medio Ambiente. Su objetivo es verificar que el proyecto se comporta como se previó en la evaluación.</p></div>
+      <div><h3>¿Qué es un sistema de seguimiento ambiental?</h3><p>Es la herramienta que ejecuta el plan en el día a día: recibe las mediciones, las asocia a su punto y umbral, avisa cuando hay desviación o falta un dato, y genera los informes de seguimiento con trazabilidad. Puede ser una planilla, pero a medida que crecen las variables y los puntos conviene una plataforma con telemetría.</p></div>
+      <div><h3>¿Cada cuánto se entregan los informes de seguimiento a la SMA?</h3><p>Depende de lo que establezca la RCA de cada proyecto y de las instrucciones de la Superintendencia del Medio Ambiente. La periodicidad varía según la variable y la fase del proyecto, por lo que conviene revisarla compromiso por compromiso.</p></div>
+      <div><h3>¿Dónde puedo consultar los monitoreos ambientales de un terreno en remediación en Chile?</h3><p>Si el proyecto tiene RCA, sus informes de seguimiento ambiental son públicos en SNIFA, el Sistema Nacional de Información de Fiscalización Ambiental de la Superintendencia del Medio Ambiente: se busca la unidad fiscalizable y se revisan sus informes y fiscalizaciones. El expediente de evaluación, con el plan de seguimiento comprometido, está en el buscador e-SEIA del Servicio de Evaluación Ambiental.</p></div>
+      <div><h3>¿Qué pasa si una estación deja de enviar datos?</h3><p>En un sistema basado en planillas, normalmente nadie lo nota hasta armar el informe. En SIMCII la ausencia de dato es una alerta en sí misma: avisa al responsable cuando una estación deja de reportar, para corregir antes de que el vacío se convierta en un período sin medición.</p></div>
+    </section>
+
+    <div class="page-cta" id="demo">
+      <h2 style="margin-top:0;">Su plan de seguimiento, al día y con evidencia</h2>
+      <p>Demo con datos de ejemplo, sin compromiso.</p>
+      <form class="page-form" data-demo-form novalidate>
+        <label for="demo-email">Correo corporativo</label>
+        <input id="demo-email" type="email" placeholder="tu@empresa.cl" required autocomplete="email" />
+        <button type="submit">Solicitar demo</button>
+        <p class="form-error" data-form-error hidden></p>
+        <p class="form-note"><span class="dot dot-ok"></span> Respondemos en 24 h hábiles</p>
+      </form>
+    </div>
+  </main>
+
+  <footer class="page-footer-full">
+    <div class="pff-grid">
+      <div class="pff-brand">
+        <img src="/assets/logo/simcii-horizontal-caliche.svg" alt="SIMCII" width="132" height="27" />
+        <p>Plataforma de monitoreo ambiental, social y territorial. Integra telemetría de estaciones, contexto y comunidad para gestionar compromisos, anticipar alertas y sostener la licencia social para operar — con evidencia.</p>
+      </div>
+      <div>
+        <h4>Soluciones</h4>
+        <ul>
+          <li><a href="/soluciones/monitoreo-ambiental">Monitoreo ambiental</a></li>
+          <li><a href="/soluciones/telemetria-ambiental">Telemetría ambiental</a></li>
+          <li><a href="/soluciones/relacionamiento-comunitario">Relacionamiento comunitario</a></li>
+          <li><a href="/soluciones/cumplimiento-rca">Cumplimiento ambiental y RCA</a></li>
+          <li><a href="/soluciones/reportabilidad-ambiental">Reportabilidad ambiental</a></li>
+          <li><a href="/soluciones/gestion-territorial">Gestión territorial</a></li>
+        </ul>
+        <h4>Guías</h4>
+        <ul>
+          <li><a href="/guias/que-es-una-rca">Qué es una RCA</a></li>
+          <li><a href="/guias/plan-de-seguimiento-ambiental">Plan de seguimiento ambiental</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Industrias</h4>
+        <ul>
+          <li><a href="/industrias/mineria">Minería</a></li>
+          <li><a href="/industrias/energia">Energía y renovables</a></li>
+          <li><a href="/industrias/salmonicultura">Salmonicultura</a></li>
+          <li><a href="/industrias/forestal">Forestal</a></li>
+          <li><a href="/industrias/inmobiliario">Proyectos inmobiliarios</a></li>
+          <li><a href="/industrias/sanitarias">Sanitarias</a></li>
+          <li><a href="/industrias/desalinizacion">Desalinización</a></li>
+          <li><a href="/industrias/carreteras">Carreteras y concesiones viales</a></li>
+          <li><a href="/industrias/puertos">Puertos y terminales</a></li>
+          <li><a href="/industrias/municipios">Municipios</a></li>
+          <li><a href="/industrias/sector-publico">Sector público</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="#demo">Solicitar una demo →</a></li>
+          <li><a href="mailto:contacto@accionet.net">contacto@accionet.net</a></li>
+          <li>Santiago · Chile</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pff-legal">
+      <span>© 2026 <a href="https://www.accionet.cl/">Accionet SpA</a> · Santiago, Chile · Todos los derechos reservados</span>
+      <a href="/">simcii.ai</a>
+    </div>
+  </footer>
+  <script src="/assets/pages.js" defer></script>
+</body>
+</html>

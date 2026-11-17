@@ -8,8 +8,10 @@
   <link rel="canonical" href="https://simcii.ai/industrias/salmonicultura" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="author" content="Accionet" />
-  <link rel="icon" href="/assets/favicon.ico" sizes="any" />
-  <link rel="icon" href="/assets/logo/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
   <meta name="theme-color" content="#1A1D20" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="SIMCII" />
@@ -17,14 +19,14 @@
   <meta property="og:url" content="https://simcii.ai/industrias/salmonicultura" />
   <meta property="og:title" content="Monitoreo territorial para salmonicultura · SIMCII" />
   <meta property="og:description" content="Para centros de cultivo y plantas en el sur de Chile: monitoreo ambiental, relación con comunidades costeras y compromisos con evidencia." />
-  <meta property="og:image" content="https://simcii.ai/assets/og-image.png" />
-  <meta property="og:image:alt" content="SIMCII · plataforma de monitoreo ambiental y territorial" />
-  <meta property="og:image:width" content="2400" />
-  <meta property="og:image:height" content="1260" />
+  <meta property="og:image" content="https://simcii.ai/assets/og/salmonicultura.jpg" />
+  <meta property="og:image:alt" content="Centros de cultivo de salmón en un canal del sur de Chile, con una caleta y bosque nativo en la costa" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Monitoreo territorial para salmonicultura · SIMCII" />
   <meta name="twitter:description" content="Para centros de cultivo y plantas en el sur de Chile: monitoreo ambiental, relación con comunidades costeras y compromisos con evidencia." />
-  <meta name="twitter:image" content="https://simcii.ai/assets/og-image.png" />
+  <meta name="twitter:image" content="https://simcii.ai/assets/og/salmonicultura.jpg" />
   <link rel="preload" href="/assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/assets/sub.css" />
   <script type="application/ld+json">
@@ -36,7 +38,7 @@
         "@id": "https://simcii.ai/#organization",
         "name": "SIMCII",
         "url": "https://simcii.ai/",
-        "logo": "https://simcii.ai/assets/logo/simcii-horizontal-caliche.svg",
+        "logo": "https://simcii.ai/assets/logo/simcii-logo-512.png",
         "email": "contacto@accionet.net",
         "sameAs": ["https://www.accionet.cl/"],
         "areaServed": { "@type": "Country", "name": "Chile" },
@@ -87,6 +89,11 @@
           },
           {
             "@type": "Question",
+            "name": "¿Qué fuentes públicas puede leer SIMCII para un territorio salmonero?",
+            "acceptedAnswer": { "@type": "Answer", "text": "La plataforma puede incorporar fuentes públicas como los proyectos georreferenciados del e-SEIA, las unidades fiscalizables y su historial en SNIFA, las concesiones de acuicultura publicadas por SUBPESCA y los informes sanitarios de SERNAPESCA, y cruzarlas con los datos propios de cada centro." }
+          },
+          {
+            "@type": "Question",
             "name": "¿Cómo se contrata SIMCII?",
             "acceptedAnswer": { "@type": "Answer", "text": "SIMCII se implementa por operación o territorio, con demo a solicitud. Escríbenos a contacto@accionet.net." }
           }
@@ -113,6 +120,7 @@
     <span class="stake">Industrias<i></i>Salmonicultura</span>
     <h1>Monitoreo ambiental y comunitario para salmonicultura</h1>
     <p>Un centro de cultivo opera en un territorio doble: el mar donde produce y la costa donde vive su entorno — pescadores artesanales, comunidades costeras, autoridades locales. <strong>SIMCII</strong> lee ambos en una sola plataforma, con un <strong>score de 0 a 100</strong> por concesión o barrio de cultivo y evidencia trazable en cada dato.</p>
+    <figure class="page-hero"><img src="/assets/img/salmonicultura.webp" alt="Centros de cultivo de salmón en un canal del sur de Chile, con una caleta y bosque nativo en la costa" width="1600" height="900" fetchpriority="high" decoding="async" /></figure>
 
     <h2>El territorio de un centro también es el mar</h2>
     <p>La salmonicultura responde a la vez por parámetros ambientales exigentes y por una convivencia costera sensible: una mortalidad mal comunicada, un reclamo de pescadores que se repite, un compromiso con la caleta que venció sin respaldo. Cuando esos registros viven en planillas separadas de las áreas ambiental y comunitaria, la empresa se entera tarde — y en este rubro, tarde es caro.</p>
@@ -133,12 +141,27 @@
       <li><strong>Portafolio de concesiones</strong>: comparar centros con un mismo score y concentrar el trabajo territorial donde el indicador baja.</li>
     </ul>
 
+    <h2>Fuentes públicas que la plataforma puede incorporar</h2>
+    <p>Buena parte del contexto de un territorio salmonero ya es público, pero está repartido en portales que nadie consulta a la vez. SIMCII puede incorporar esas fuentes junto a los datos propios de cada centro:</p>
+    <ul>
+      <li><strong>e-SEIA</strong>: los proyectos ingresados al Sistema de Evaluación de Impacto Ambiental en el territorio, con su georreferencia, su estado y la inversión declarada.</li>
+      <li><strong>SNIFA</strong>: las unidades fiscalizables de pesca y acuicultura que publica la Superintendencia del Medio Ambiente, con su historial de fiscalizaciones y procesos.</li>
+      <li><strong>SUBPESCA</strong>: las concesiones de acuicultura y su ubicación. El código de centro permite cruzar una concesión con su unidad fiscalizable y leer ambas historias juntas.</li>
+      <li><strong>SERNAPESCA</strong>: informes sanitarios y estadísticas sectoriales que dan contexto a la lectura de cada barrio de cultivo.</li>
+    </ul>
+    <p>Cada dato conserva su fuente y su fecha de consulta, porque estas bases cambian con el tiempo y la lectura debe poder reconstruirse.</p>
+
+    <h2>Una lectura neutral del territorio, agregada por localidad</h2>
+    <p>Hay preguntas que ninguna empresa puede responder sola: cuántos proyectos conviven en una misma localidad, cómo se reparte la presión sobre la costa, dónde se concentran las fiscalizaciones. Una plataforma operada como tercero neutral puede mostrar ese dato agregado por localidad — sin exponer la información de una empresa a otra — y ofrecer a gremios, autoridades y comunidades una base común para conversar. Las mediciones propias de cada centro siguen siendo de cada centro; lo que se comparte es la lectura del territorio.</p>
+    <p>Para ordenar los monitoreos que exige la autoridad, la guía del <a href="/guias/plan-de-seguimiento-ambiental">plan de seguimiento ambiental</a> explica cómo estructurarlos; y los informes a la autoridad, a la comunidad y a la gerencia pueden salir del mismo dato con la <a href="/soluciones/reportabilidad-ambiental">reportabilidad ambiental</a> de SIMCII.</p>
+
 
     <h2>Preguntas frecuentes</h2>
     <section class="page-faq">
       <div><h3>¿SIMCII sirve para varios centros de cultivo a la vez?</h3><p>Sí. Cada centro o concesión se lee con sus propios scores y todos se comparan en una misma vista, lo que permite priorizar con un criterio común.</p></div>
       <div><h3>¿Cómo apoya SIMCII la relación con pescadores artesanales y caletas?</h3><p>Cada sindicato, caleta u organización queda registrada como actor, con su historial de interacciones, acuerdos y reclamos, y los compromisos generan alertas antes de vencer.</p></div>
       <div><h3>¿Se integra con los monitoreos ambientales que ya exige la autoridad?</h3><p>Sí. SIMCII consolida las mediciones existentes del centro y las convierte en KPIs y scores comparables; no reemplaza los programas de monitoreo, los hace legibles.</p></div>
+      <div><h3>¿Qué fuentes públicas puede leer SIMCII para un territorio salmonero?</h3><p>La plataforma puede incorporar fuentes públicas como los proyectos georreferenciados del e-SEIA, las unidades fiscalizables y su historial en SNIFA, las concesiones de acuicultura publicadas por SUBPESCA y los informes sanitarios de SERNAPESCA, y cruzarlas con los datos propios de cada centro.</p></div>
       <div><h3>¿Cómo se contrata SIMCII?</h3><p>SIMCII se implementa por operación o territorio, con demo a solicitud. Escríbenos a <a href="mailto:contacto@accionet.net">contacto@accionet.net</a>.</p></div>
     </section>
 
@@ -168,7 +191,13 @@
           <li><a href="/soluciones/telemetria-ambiental">Telemetría ambiental</a></li>
           <li><a href="/soluciones/relacionamiento-comunitario">Relacionamiento comunitario</a></li>
           <li><a href="/soluciones/cumplimiento-rca">Cumplimiento ambiental y RCA</a></li>
+          <li><a href="/soluciones/reportabilidad-ambiental">Reportabilidad ambiental</a></li>
           <li><a href="/soluciones/gestion-territorial">Gestión territorial</a></li>
+        </ul>
+        <h4>Guías</h4>
+        <ul>
+          <li><a href="/guias/que-es-una-rca">Qué es una RCA</a></li>
+          <li><a href="/guias/plan-de-seguimiento-ambiental">Plan de seguimiento ambiental</a></li>
         </ul>
       </div>
       <div>
@@ -180,7 +209,9 @@
           <li><a href="/industrias/forestal">Forestal</a></li>
           <li><a href="/industrias/inmobiliario">Proyectos inmobiliarios</a></li>
           <li><a href="/industrias/sanitarias">Sanitarias</a></li>
+          <li><a href="/industrias/desalinizacion">Desalinización</a></li>
           <li><a href="/industrias/carreteras">Carreteras y concesiones viales</a></li>
+          <li><a href="/industrias/puertos">Puertos y terminales</a></li>
           <li><a href="/industrias/municipios">Municipios</a></li>
           <li><a href="/industrias/sector-publico">Sector público</a></li>
         </ul>

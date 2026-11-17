@@ -3,26 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Telemetría ambiental · Sistema de seguimiento en línea · SIMCII</title>
-  <meta name="description" content="Telemetría ambiental en línea: las mediciones de sus estaciones llegan solas a un sistema de seguimiento único, con umbrales, alertas y evidencia trazable." />
+  <title>Telemetría ambiental y gestión de datos ambientales · SIMCII</title>
+  <meta name="description" content="Gestión de datos ambientales y telemetría: estaciones, planillas e informes en un solo sistema con umbrales, alertas y evidencia. Solicite una demo." />
   <link rel="canonical" href="https://simcii.ai/soluciones/telemetria-ambiental" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="author" content="Accionet" />
-  <link rel="icon" href="/assets/favicon.ico" sizes="any" />
-  <link rel="icon" href="/assets/logo/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
   <meta name="theme-color" content="#1A1D20" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="SIMCII" />
   <meta property="og:locale" content="es_CL" />
   <meta property="og:url" content="https://simcii.ai/soluciones/telemetria-ambiental" />
-  <meta property="og:title" content="Telemetría ambiental · Sistema de seguimiento en línea · SIMCII" />
-  <meta property="og:description" content="Las mediciones de sus estaciones llegan solas a un sistema de seguimiento único, con umbrales, alertas y evidencia trazable." />
-  <meta property="og:image" content="https://simcii.ai/assets/og-image.png" />
-  <meta property="og:image:alt" content="SIMCII · plataforma de monitoreo ambiental y territorial" />
+  <meta property="og:title" content="Telemetría ambiental y gestión de datos ambientales · SIMCII" />
+  <meta property="og:description" content="Gestión de datos ambientales y telemetría: estaciones, planillas e informes en un solo sistema, con umbrales, alertas y evidencia trazable." />
+  <meta property="og:image" content="https://simcii.ai/assets/og/telemetria-ambiental.jpg" />
+  <meta property="og:image:alt" content="Estación de telemetría con panel solar y antena transmitiendo mediciones ambientales en terreno" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Telemetría ambiental · Sistema de seguimiento en línea · SIMCII" />
-  <meta name="twitter:description" content="Las mediciones de sus estaciones llegan solas a un sistema de seguimiento único, con umbrales, alertas y evidencia trazable." />
-  <meta name="twitter:image" content="https://simcii.ai/assets/og-image.png" />
+  <meta name="twitter:title" content="Telemetría ambiental y gestión de datos ambientales · SIMCII" />
+  <meta name="twitter:description" content="Gestión de datos ambientales y telemetría: estaciones, planillas e informes en un solo sistema, con umbrales, alertas y evidencia trazable." />
+  <meta name="twitter:image" content="https://simcii.ai/assets/og/telemetria-ambiental.jpg" />
   <link rel="preload" href="/assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/assets/sub.css" />
   <script type="application/ld+json">
@@ -34,7 +38,7 @@
         "@id": "https://simcii.ai/#organization",
         "name": "SIMCII",
         "url": "https://simcii.ai/",
-        "logo": "https://simcii.ai/assets/logo/simcii-horizontal-caliche.svg",
+        "logo": "https://simcii.ai/assets/logo/simcii-logo-512.png",
         "email": "contacto@accionet.net",
         "sameAs": ["https://www.accionet.cl/"],
         "areaServed": { "@type": "Country", "name": "Chile" },
@@ -50,12 +54,12 @@
       },
       {
         "@type": "Service",
-        "name": "Telemetría ambiental SIMCII",
-        "serviceType": "Sistema de telemetría y seguimiento ambiental",
-        "areaServed": "CL",
+        "name": "Telemetría ambiental y gestión de datos ambientales SIMCII",
+        "serviceType": "Telemetría ambiental y gestión de datos ambientales",
+        "areaServed": { "@type": "Country", "name": "Chile" },
         "url": "https://simcii.ai/soluciones/telemetria-ambiental",
         "provider": { "@id": "https://simcii.ai/#organization" },
-        "description": "Sistema de telemetría ambiental en línea: las mediciones de estaciones y sensores llegan de forma automática a una plataforma única, con validación, umbrales, alertas por desviación, series históricas y evidencia trazable."
+        "description": "Telemetría ambiental y gestión de datos ambientales: mediciones de estaciones y sensores (MQTT, HTTP), planillas Excel, SharePoint y exportaciones programadas llegan a una plataforma única con validación, umbrales, alertas, series históricas y salidas a Power BI, Tableau, Qlik, CSV, JSON y API REST."
       },
       {
         "@type": "BreadcrumbList",
@@ -81,7 +85,12 @@
           {
             "@type": "Question",
             "name": "¿Con qué equipos y sistemas se integra SIMCII?",
-            "acceptedAnswer": { "@type": "Answer", "text": "SIMCII no reemplaza la infraestructura de medición: se conecta a la que ya existe. La vía de integración se define en el levantamiento según el equipamiento — salida del datalogger o del sistema de adquisición, servicio del proveedor de monitoreo, o entrega periódica de archivos — y desde ahí el dato entra normalizado a la plataforma." }
+            "acceptedAnswer": { "@type": "Answer", "text": "SIMCII no reemplaza la infraestructura de medición: se conecta a la que ya existe. Recibe datos de sensores y equipos IoT por MQTT o HTTP, planillas Excel, archivos en SharePoint (vía Microsoft Graph) y exportaciones programadas desde el sistema del proveedor de monitoreo. La vía concreta se define en el levantamiento según el equipamiento." }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Puedo llevar los datos a mis propias herramientas de análisis?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Sí. Los datos normalizados se pueden consumir desde Power BI, Tableau o Qlik Sense, exportar en CSV o JSON, o leer mediante una API REST con permisos por rol. Los datos son del cliente y se pueden exportar completos." }
           },
           {
             "@type": "Question",
@@ -113,8 +122,9 @@
 
   <main class="page-main">
     <span class="stake">Soluciones<i></i>Telemetría ambiental</span>
-    <h1>Telemetría ambiental: un sistema de seguimiento para todas sus estaciones</h1>
-    <p>Medir no es el problema. El problema es que la medición quede atrapada en el equipo, en un correo o en una planilla que alguien tiene que armar cada mes. <strong>SIMCII</strong> es el sistema de seguimiento ambiental donde esas mediciones llegan solas, se comparan contra umbrales y se convierten en <strong>indicadores y scores de 0 a 100</strong> — con la fuente y la fecha de cada dato.</p>
+    <h1>Telemetría ambiental y gestión de datos ambientales en un solo sistema de seguimiento</h1>
+    <p>Medir no es el problema. El problema es que la medición quede atrapada en el equipo, en un correo o en una planilla que alguien tiene que armar cada mes. <strong>SIMCII</strong> es la plataforma de gestión de datos ambientales donde esas mediciones llegan solas por telemetría, se comparan contra umbrales y se convierten en <strong>indicadores y scores de 0 a 100</strong>, con la fuente y la fecha de cada dato.</p>
+    <figure class="page-hero"><img src="/assets/img/telemetria-ambiental.webp" alt="Estación de telemetría con panel solar y antena transmitiendo mediciones ambientales en terreno" width="1600" height="900" fetchpriority="high" decoding="async" /></figure>
 
     <h2>Qué es la telemetría ambiental</h2>
     <p>Telemetría es medir a distancia: el equipo en terreno transmite su lectura hasta un sistema central sin que nadie vaya a buscarla. Aplicada al ámbito ambiental, significa que los datos de calidad del aire, ruido, agua o meteorología dejan de depender de una visita a terreno, de una descarga manual del datalogger y de una consolidación posterior en planillas.</p>
@@ -136,8 +146,18 @@
     <p>SIMCII cubre el tramo que suele faltar: recibe la medición y la pone a trabajar. El mismo dato que prueba el cumplimiento de un umbral alimenta el <a href="/soluciones/monitoreo-ambiental">monitoreo ambiental</a> del territorio, respalda un <a href="/soluciones/cumplimiento-rca">compromiso de la RCA</a> y entra al score que se compara en <a href="/soluciones/gestion-territorial">gestión territorial</a>. Un solo dato, tres usos, ninguna transcripción.</p>
 
     <h2>Integración con la infraestructura que ya existe</h2>
-    <p>SIMCII no exige reemplazar equipos, cambiar de proveedor de monitoreo ni instalar sensores nuevos. Es la capa de lectura sobre lo que ya está operando. La vía concreta de integración se define en el levantamiento inicial según el equipamiento de cada operación — salida del datalogger o del sistema de adquisición, servicio del proveedor de monitoreo, o entrega periódica de archivos — y desde ese punto el flujo queda automático.</p>
-    <p>Si conviven varias redes de monitoreo con distintos proveedores, la plataforma las consolida en una sola lectura: es el caso habitual en operaciones con varias faenas, o en un municipio donde miden tanto el propio municipio como los titulares de proyectos instalados en la comuna.</p>
+    <p>SIMCII no exige reemplazar equipos, cambiar de proveedor de monitoreo ni instalar sensores nuevos. Es la capa de lectura sobre lo que ya está operando. La vía concreta de integración se define en el levantamiento inicial según el equipamiento de cada operación, y desde ese punto el flujo queda automático.</p>
+    <p>Si conviven varias redes de monitoreo con distintos proveedores, la plataforma las consolida en una sola lectura: es el caso habitual en operaciones con varias faenas o en territorios donde miden varios titulares a la vez.</p>
+
+    <h2>Gestión de datos ambientales: conectores de entrada y salida</h2>
+    <p>La telemetría es solo una de las vías por las que llega el dato ambiental. Buena parte del monitoreo todavía vive en planillas, informes de laboratorio y carpetas compartidas. SIMCII recibe todas esas fuentes y las deja en un mismo modelo de datos:</p>
+    <ul>
+      <li><strong>Sensores e IoT</strong>: ingreso por MQTT o HTTP, directo desde el equipo, el datalogger o el sistema de adquisición.</li>
+      <li><strong>Planillas Excel</strong>: carga de informes y campañas de medición con validación de formato, unidades y fechas.</li>
+      <li><strong>SharePoint</strong>: lectura de archivos y listas vía Microsoft Graph, sin mover a las personas de donde ya trabajan.</li>
+      <li><strong>Exportación programada</strong>: cuando el sistema del proveedor de monitoreo no ofrece API, se acuerda una entrega periódica de archivos que entra de forma automática.</li>
+    </ul>
+    <p>Y el dato no queda encerrado: puede salir hacia <strong>Power BI, Tableau o Qlik Sense</strong>, exportarse en <strong>CSV o JSON</strong>, o consultarse por <strong>API REST</strong> con permisos por rol. Los mismos datos alimentan los informes de <a href="/soluciones/reportabilidad-ambiental">reportabilidad ambiental</a> por audiencia.</p>
 
     <h2>Qué se puede seguir</h2>
     <ul>
@@ -148,14 +168,16 @@
     </ul>
 
     <h2>Para quién</h2>
-    <p>Operaciones con obligaciones de monitoreo continuo y territorio alrededor: <a href="/industrias/mineria">minería</a>, <a href="/industrias/energia">energía y renovables</a>, <a href="/industrias/sanitarias">sanitarias</a>, <a href="/industrias/forestal">forestal</a>, <a href="/industrias/carreteras">concesiones viales</a>, y también <a href="/industrias/municipios">municipios</a> y <a href="/industrias/sector-publico">servicios públicos</a> que necesitan control ambiental sobre territorios completos.</p>
+    <p>Operaciones con obligaciones de monitoreo continuo y territorio alrededor: <a href="/industrias/mineria">minería</a>, <a href="/industrias/energia">energía y renovables</a>, <a href="/industrias/sanitarias">sanitarias</a>, <a href="/industrias/desalinizacion">desalinización</a>, <a href="/industrias/puertos">puertos y terminales</a>, <a href="/industrias/forestal">forestal</a> y <a href="/industrias/carreteras">concesiones viales</a>. También gobiernos locales que necesitan control ambiental sobre la comuna; para ese caso, vea <a href="/industrias/municipios">control ambiental y telemetría para municipios</a>.</p>
+    <p>Si está ordenando las obligaciones de medición de un proyecto, la guía <a href="/guias/plan-de-seguimiento-ambiental">plan de seguimiento ambiental</a> explica cómo se estructura.</p>
 
 
     <h2>Preguntas frecuentes</h2>
     <section class="page-faq">
       <div><h3>¿Qué es la telemetría ambiental?</h3><p>Es la transmisión automática de las mediciones desde los equipos en terreno hasta un sistema central, sin intervención manual. En lugar de descargar datos del datalogger y consolidarlos en planillas, las mediciones de calidad del aire, ruido, agua o meteorología llegan solas y quedan disponibles para su lectura, comparación y alerta.</p></div>
       <div><h3>¿En qué se diferencia la telemetría de un sistema de seguimiento ambiental?</h3><p>La telemetría resuelve el transporte del dato; el sistema de seguimiento resuelve qué hacer con él. SIMCII cubre ambos extremos: recibe la medición y además la valida, la compara contra umbrales, la convierte en indicadores y scores, la vincula a compromisos y genera alertas cuando se desvía.</p></div>
-      <div><h3>¿Con qué equipos y sistemas se integra SIMCII?</h3><p>SIMCII no reemplaza la infraestructura de medición: se conecta a la que ya existe. La vía de integración se define en el levantamiento según el equipamiento — salida del datalogger o del sistema de adquisición, servicio del proveedor de monitoreo, o entrega periódica de archivos — y desde ahí el dato entra normalizado a la plataforma.</p></div>
+      <div><h3>¿Con qué equipos y sistemas se integra SIMCII?</h3><p>SIMCII no reemplaza la infraestructura de medición: se conecta a la que ya existe. Recibe datos de sensores y equipos IoT por MQTT o HTTP, planillas Excel, archivos en SharePoint (vía Microsoft Graph) y exportaciones programadas desde el sistema del proveedor de monitoreo. La vía concreta se define en el levantamiento según el equipamiento.</p></div>
+      <div><h3>¿Puedo llevar los datos a mis propias herramientas de análisis?</h3><p>Sí. Los datos normalizados se pueden consumir desde Power BI, Tableau o Qlik Sense, exportar en CSV o JSON, o leer mediante una API REST con permisos por rol. Los datos son del cliente y se pueden exportar completos.</p></div>
       <div><h3>¿Cada cuánto se actualizan los datos?</h3><p>La frecuencia depende del equipo y de lo que se quiera observar. La plataforma está diseñada para operar con datos de alta frecuencia — del orden de minutos — y para agregarlos luego a las ventanas que la operación o la normativa requieran: horaria, diaria, mensual.</p></div>
       <div><h3>¿Qué pasa si una estación deja de reportar?</h3><p>La ausencia de dato también es información. Una estación que deja de transmitir queda visible como tal y puede generar alerta, de modo que el vacío se detecta cuando ocurre y no al cerrar el informe del período.</p></div>
     </section>
@@ -186,7 +208,13 @@
           <li><a href="/soluciones/telemetria-ambiental">Telemetría ambiental</a></li>
           <li><a href="/soluciones/relacionamiento-comunitario">Relacionamiento comunitario</a></li>
           <li><a href="/soluciones/cumplimiento-rca">Cumplimiento ambiental y RCA</a></li>
+          <li><a href="/soluciones/reportabilidad-ambiental">Reportabilidad ambiental</a></li>
           <li><a href="/soluciones/gestion-territorial">Gestión territorial</a></li>
+        </ul>
+        <h4>Guías</h4>
+        <ul>
+          <li><a href="/guias/que-es-una-rca">Qué es una RCA</a></li>
+          <li><a href="/guias/plan-de-seguimiento-ambiental">Plan de seguimiento ambiental</a></li>
         </ul>
       </div>
       <div>
@@ -198,7 +226,9 @@
           <li><a href="/industrias/forestal">Forestal</a></li>
           <li><a href="/industrias/inmobiliario">Proyectos inmobiliarios</a></li>
           <li><a href="/industrias/sanitarias">Sanitarias</a></li>
+          <li><a href="/industrias/desalinizacion">Desalinización</a></li>
           <li><a href="/industrias/carreteras">Carreteras y concesiones viales</a></li>
+          <li><a href="/industrias/puertos">Puertos y terminales</a></li>
           <li><a href="/industrias/municipios">Municipios</a></li>
           <li><a href="/industrias/sector-publico">Sector público</a></li>
         </ul>

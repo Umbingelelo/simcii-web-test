@@ -402,6 +402,7 @@ i.ok { background: var(--ok); } i.warn { background: var(--warn); } i.err { back
 .pie-marca img { height: 27px; width: auto; margin-bottom: 18px; }
 .pie-marca p { color: var(--mu); font-size: 15px; max-width: 40ch; }
 .pie-grid h4 { font-size: 13px; font-weight: 600; color: var(--mu); margin-bottom: 14px; }
+.pie-grid ul + h4 { margin-top: 28px; }
 .pie-grid li { font-size: 15px; padding: 3px 0; }
 .pie-grid ul a { text-decoration: none; opacity: .85; }
 .pie-grid ul a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 3px; }

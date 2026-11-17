@@ -8,8 +8,10 @@
   <link rel="canonical" href="https://simcii.ai/industrias/energia" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="author" content="Accionet" />
-  <link rel="icon" href="/assets/favicon.ico" sizes="any" />
-  <link rel="icon" href="/assets/logo/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
   <meta name="theme-color" content="#1A1D20" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="SIMCII" />
@@ -17,14 +19,14 @@
   <meta property="og:url" content="https://simcii.ai/industrias/energia" />
   <meta property="og:title" content="Monitoreo territorial para energía y renovables · SIMCII" />
   <meta property="og:description" content="Monitoreo ambiental, comunidades y compromisos RCA para proyectos de energía, del desarrollo a la operación." />
-  <meta property="og:image" content="https://simcii.ai/assets/og-image.png" />
-  <meta property="og:image:alt" content="SIMCII · plataforma de monitoreo ambiental y territorial" />
-  <meta property="og:image:width" content="2400" />
-  <meta property="og:image:height" content="1260" />
+  <meta property="og:image" content="https://simcii.ai/assets/og/energia.jpg" />
+  <meta property="og:image:alt" content="Parque solar fotovoltaico y aerogeneradores en el norte de Chile, con una línea de transmisión que cruza el valle" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Monitoreo territorial para energía y renovables · SIMCII" />
   <meta name="twitter:description" content="Monitoreo ambiental, comunidades y compromisos RCA para proyectos de energía, del desarrollo a la operación." />
-  <meta name="twitter:image" content="https://simcii.ai/assets/og-image.png" />
+  <meta name="twitter:image" content="https://simcii.ai/assets/og/energia.jpg" />
   <link rel="preload" href="/assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/assets/sub.css" />
   <script type="application/ld+json">
@@ -36,7 +38,7 @@
         "@id": "https://simcii.ai/#organization",
         "name": "SIMCII",
         "url": "https://simcii.ai/",
-        "logo": "https://simcii.ai/assets/logo/simcii-horizontal-caliche.svg",
+        "logo": "https://simcii.ai/assets/logo/simcii-logo-512.png",
         "email": "contacto@accionet.net",
         "sameAs": ["https://www.accionet.cl/"],
         "areaServed": { "@type": "Country", "name": "Chile" },
@@ -87,6 +89,11 @@
           },
           {
             "@type": "Question",
+            "name": "¿Hay que reemplazar los sistemas de relacionamiento que ya usamos?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No. SIMCII se conecta a los sistemas existentes — por la API del proveedor cuando existe, por la API de la plataforma documental en el caso de matrices en planillas compartidas, o por exportación programada cuando no hay API — y los unifica con claves comunes de territorio, activo y contacto. Un piloto típico toma 12 semanas con un territorio y todas sus fuentes." }
+          },
+          {
+            "@type": "Question",
             "name": "¿Cómo se contrata SIMCII?",
             "acceptedAnswer": { "@type": "Answer", "text": "SIMCII se implementa por operación o territorio, con demo a solicitud. Escríbenos a contacto@accionet.net." }
           }
@@ -113,6 +120,7 @@
     <span class="stake">Industrias<i></i>Energía y renovables</span>
     <h1>Monitoreo ambiental y social para proyectos de energía</h1>
     <p>Los proyectos de energía — solares, eólicos, de transmisión — se juegan su viabilidad en el territorio: permisos, comunidades y una RCA que fija compromisos desde antes de instalar el primer panel. <strong>SIMCII</strong> acompaña esa trayectoria completa, del desarrollo a la operación, con evidencia trazable en cada etapa.</p>
+    <figure class="page-hero"><img src="/assets/img/energia.webp" alt="Parque solar fotovoltaico y aerogeneradores en el norte de Chile, con una línea de transmisión que cruza el valle" width="1600" height="900" fetchpriority="high" decoding="async" /></figure>
 
     <h2>Del desarrollo a la operación</h2>
     <p>La relación territorial de un proyecto de energía se define temprano: los actores que participaron en la evaluación, los acuerdos del proceso de participación, los compromisos que quedaron en la RCA. Si ese historial se pierde en el traspaso entre el equipo de desarrollo y el de operación, la empresa queda respondiendo por acuerdos que ya nadie recuerda completos. En SIMCII el historial es de la organización, no de las personas: cada actor, acuerdo y compromiso queda registrado con su fecha y su respaldo.</p>
@@ -128,6 +136,16 @@
     <h2>Portafolios comparables</h2>
     <p>Las empresas de renovables rara vez tienen un solo proyecto. SIMCII lee cada proyecto con los mismos cuatro scores, de modo que el portafolio se gestiona con un criterio común: dónde la relación comunitaria pide atención, qué RCA concentra compromisos próximos a vencer, qué territorio cambió su contexto.</p>
 
+    <h2>Así se ve en la operación: siete fuentes de relacionamiento, una sola lectura</h2>
+    <p>Un escenario frecuente en una empresa de energía con varios activos: la información del territorio existe, pero vive en siete fuentes separadas. Un registro de relacionamiento con actores y reuniones; un sistema de postulaciones a fondos comunitarios; un canal de sugerencias y reclamos; matrices de riesgo social en planillas compartidas; matrices de riesgo por activo; el sistema de gestión de riesgos corporativos; y un registro de incidentes. A eso se suman las líneas base, la RCA y sus compromisos. Cada fuente responde bien a su área, pero ninguna responde a la pregunta de gerencia: ¿cómo está este territorio hoy?</p>
+    <p>SIMCII no reemplaza esos sistemas. Los conecta y los ordena sobre tres <strong>claves comunes — territorio, activo y contacto</strong> — para que un reclamo, una postulación, un riesgo y un compromiso que hablan del mismo lugar y de la misma persona aparezcan juntos. Sobre esa base se define un <strong>diccionario común de estados y criticidad</strong>: "abierto", "en gestión" o "cerrado" significan lo mismo en todas las fuentes, y la criticidad se alinea con la escala del sistema de riesgos corporativos, de modo que un riesgo "alto" en el territorio y uno "alto" en la matriz corporativa sean comparables.</p>
+    <ul>
+      <li><strong>Conexión según lo que exista</strong>: la API del proveedor cuando el sistema la ofrece; la API de la plataforma documental para matrices en planillas compartidas; exportación programada cuando no hay API.</li>
+      <li><strong>Piloto acotado</strong>: lo típico es un piloto de 12 semanas con un territorio y todas sus fuentes conectadas, y luego el despliegue al resto de los activos en un plazo similar.</li>
+      <li><strong>Informes con una sola fuente de verdad</strong>: el reporte al directorio, a la autoridad y a la comunidad sale del mismo dato consolidado. Ver <a href="/soluciones/reportabilidad-ambiental">reportabilidad ambiental</a>.</li>
+    </ul>
+    <p>Si su proyecto está en evaluación, la guía <a href="/guias/que-es-una-rca">qué es una RCA</a> explica cómo se fijan los compromisos que después habrá que acreditar, y la guía del <a href="/guias/plan-de-seguimiento-ambiental">plan de seguimiento ambiental</a> detalla cómo ordenar las mediciones de la operación.</p>
+
     <h2>Casos de uso en energía</h2>
     <ul>
       <li><strong>Parque solar en evaluación</strong>: registrar actores y acuerdos del proceso de participación temprana, de modo que el historial completo llegue intacto a construcción y operación.</li>
@@ -142,6 +160,7 @@
       <div><h3>¿SIMCII sirve en la etapa de desarrollo de un proyecto de energía?</h3><p>Sí. El registro de actores, compromisos y señales de contexto parte antes de la construcción, que es cuando la relación territorial del proyecto se define; ese historial acompaña al proyecto hasta la operación.</p></div>
       <div><h3>¿Se puede gestionar un portafolio de proyectos con SIMCII?</h3><p>Sí. Cada proyecto o territorio tiene sus propios scores y todos se comparan en una misma vista, lo que permite priorizar la atención dentro del portafolio con un criterio común.</p></div>
       <div><h3>¿Cómo apoya SIMCII el cumplimiento de la RCA de un parque?</h3><p>Cada compromiso de la RCA queda con estado, plazo, responsable y evidencia, y las alertas avisan antes del vencimiento — el estado de cumplimiento del parque se conoce en todo momento.</p></div>
+      <div><h3>¿Hay que reemplazar los sistemas de relacionamiento que ya usamos?</h3><p>No. SIMCII se conecta a los sistemas existentes — por la API del proveedor cuando existe, por la API de la plataforma documental en el caso de matrices en planillas compartidas, o por exportación programada cuando no hay API — y los unifica con claves comunes de territorio, activo y contacto. Un piloto típico toma 12 semanas con un territorio y todas sus fuentes.</p></div>
       <div><h3>¿Cómo se contrata SIMCII?</h3><p>SIMCII se implementa por operación o territorio, con demo a solicitud. Escríbenos a <a href="mailto:contacto@accionet.net">contacto@accionet.net</a>.</p></div>
     </section>
 
@@ -171,7 +190,13 @@
           <li><a href="/soluciones/telemetria-ambiental">Telemetría ambiental</a></li>
           <li><a href="/soluciones/relacionamiento-comunitario">Relacionamiento comunitario</a></li>
           <li><a href="/soluciones/cumplimiento-rca">Cumplimiento ambiental y RCA</a></li>
+          <li><a href="/soluciones/reportabilidad-ambiental">Reportabilidad ambiental</a></li>
           <li><a href="/soluciones/gestion-territorial">Gestión territorial</a></li>
+        </ul>
+        <h4>Guías</h4>
+        <ul>
+          <li><a href="/guias/que-es-una-rca">Qué es una RCA</a></li>
+          <li><a href="/guias/plan-de-seguimiento-ambiental">Plan de seguimiento ambiental</a></li>
         </ul>
       </div>
       <div>
@@ -183,7 +208,9 @@
           <li><a href="/industrias/forestal">Forestal</a></li>
           <li><a href="/industrias/inmobiliario">Proyectos inmobiliarios</a></li>
           <li><a href="/industrias/sanitarias">Sanitarias</a></li>
+          <li><a href="/industrias/desalinizacion">Desalinización</a></li>
           <li><a href="/industrias/carreteras">Carreteras y concesiones viales</a></li>
+          <li><a href="/industrias/puertos">Puertos y terminales</a></li>
           <li><a href="/industrias/municipios">Municipios</a></li>
           <li><a href="/industrias/sector-publico">Sector público</a></li>
         </ul>
